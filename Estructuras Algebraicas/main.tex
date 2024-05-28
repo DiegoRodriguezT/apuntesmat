@@ -1,0 +1,25 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\usepackage{apuntes}
+\usepackage{quiver,circuitikz}
+\newcommand{\framedtext}[1]{%
+\par%
+\noindent\fbox{%
+    \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{#1}%
+}%
+}
+\numberwithin{theoremeT}{section}
+\numberwithin{definitionT}{section}
+\numberwithin{corollaryT}{section}
+\numberwithin{propositionT}{section}
+\numberwithin{lemmaT}{section}
+\numberwithin{exampleT}{section}
+\numberwithin{remarkT}{section}
+\usepackage{cancel}
+\title{Estructuras Algebraicas\\{\small 	Profesores: Ángel Pérez y Esther García}}
+\begin{document}
+\maketitle
+\newpage
+\pagestyle{fancynotes}
+
+\input{clase.tex}
+\end{document}

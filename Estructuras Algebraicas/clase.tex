@@ -1,0 +1,3691 @@
+\part{Anillos}
+\section{Anillos. Generalidades.}
+\subsection{Definiciones basicas}
+\begin{definition}
+	Un grupo es un par \((G, \odot )\) donde:
+	\begin{itemize}
+		\item \(G \) es un conjunto no vacio.
+		\item \(\odot: G \times G \to G\) es una operacion interna
+	\end{itemize}
+	que cumplen:
+	\begin{enumerate}
+		\item Asociativa: \(\forall a,b,c \in G \quad (a \odot b ) \otimes c = a \odot (b \odot c )\)
+		\item Existencia de neutro: \(\exists e_G \in G \) tal que \(\forall  a \in G \quad a \odot e_G = e_G \odot a = a \)
+		\item Existencia de inversos: \(\forall a \in G \exists b \in G \) tal que \(a \odot b = b \odot a = e_G \)
+	\end{enumerate}
+\end{definition}
+\begin{definition}
+	Un grupo \((G, \odot )\) es abeliano o conmutativo si la operacion \(\odot \) es conmutativa, es decir, \(\forall  a, b \in  G \quad a \odot b = b \odot a\)
+\end{definition}
+
+\begin{definition}
+	Un anillo es una terna \((A, \oplus, \otimes )\) donde:
+	\begin{itemize}
+		\item \(A \) es un conjunto no vacio
+		\item \(\oplus \colon A \times A \to A \) es una operacion interna, denominada suma.
+		\item \(\otimes \colon A \times A \to A \) es una operacion interna, denominada producto.
+	\end{itemize}
+	que cumplen:
+	\begin{enumerate}
+		\item Suma asociativa: \(\forall  a,b,c \in A \quad (a \oplus b) \oplus c = a \oplus (b \oplus c )\)
+		\item Existencia de neutro: \(\exists 0_A \in A \) tal que \(\forall a \in A \quad a \oplus 0_A = 0_A \oplus a = a \)
+		\item Existencia de opuestos: \(\forall a \in A \exists  b \in A \) tal que \(a \oplus b = b \oplus a = 0_A \)
+		\item Suma conmutativa: \(\forall a,b \in A \quad a \oplus b = b \oplus a \)
+		\item Producto asociativo: \(\forall a,b,c \in A \quad (a\otimes b) \otimes c = a \otimes (b \otimes c )\)
+		\item Distributiva: \(\forall a,b,c \in A \quad a\otimes(b \oplus c ) = (a \otimes b) \oplus (a \otimes c), (b \oplus c) \otimes a = (b \otimes a ) \oplus (c \otimes a)\)
+	\end{enumerate}
+\end{definition}
+\begin{definition}[Anillo conmutativo]
+	Un anillo \(A \) es conmutativo si el producto \(\otimes \) es conmutativo.
+\end{definition}
+\begin{definition}[Anillo unitario]
+	Un anillo \(A \) es unitario o anillo con unidad si existe un neutro para el producto \(\otimes \) distinto del neutro para la suma \(\oplus \), es decir
+	\[
+		\exists 1_A \in A \setminus \set{0_A } \,/\, \forall a \in A \quad a \otimes 1_A = 1_A \otimes a = a
+	\]
+\end{definition}
+Usualmente denotaremos la suma \(a \oplus b \) como \(a + b \) y el producto \(a \otimes b \) como \(a \cdot b \).
+
+Si no hay ambiguedad, denotaremos los neutros como \(0 \) y \(1. \)
+
+\begin{definition}[Elemento invertible]
+	En un anillo con unidad, decimos que \(a \in A \) es invertible si \(\exists  b \in A \) tal que \(ab = ba = 1 \).
+\end{definition}
+
+\begin{definition}[Anillo de division]
+	Un anillo de division es un anillo con unidad \(A \) tal que todo elemento distinto de \(0 \) es invertible.
+\end{definition}
+
+\begin{definition}[Cuerpo]
+	Un cuerpo es un anillo conmutativo con unidad \(A \) tal que todo elemento distinto de 0 es invertible.
+\end{definition}
+
+\begin{proposition}
+	~\begin{enumerate}
+		\item Sea \((G, \odot )\) un grupo con elemento neutro \(e \). Se cumple que \(e \) es el unico elemento de \(G \) con la propiedad que define al neutro.
+		\item Sea \((G, \odot )\) un grupo. Se cumplen las propiedades de cancelacion:
+		      \[
+			      \begin{array}{cc}
+				      \forall a,b,c \in G & a \odot b = a \odot c \Rightarrow b = c  \\
+				                          & b \odot a = c \odot a \Rightarrow b = c
+			      \end{array}
+		      \]
+		\item En un grupo el inverso de cualquier elemento es unico.
+		      
+		      En un anillo con unidad el neutro para el producto es unico.
+		      
+		      En un anillo con unidad el inverso de un elemento invertible es unico.
+		      
+		\item En un anillo \(A \) se cumple
+		      \[
+			      \forall a \in A \quad 0a = a0 = 0
+		      \]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Sea \(G \) un grupo y \(e \) un elemento neutro de \(G \).
+		      
+		      Supongamos que \(e^\prime  \) es un elemento de \(G \) con la propiedad que define el neutro. Vamos a ver que necesariamente \(e = e^\prime \).
+		      \[
+			      e \overset{e^\prime \text{ neutro}}{=} e \odot e^\prime \overset{e\text{ neutro}}{=} e^\prime
+		      \]
+		      \begin{remark}
+			      Como consecuencia, el neutro 0 de la suma para un anillo \(A \) es unico (porque \((A, \oplus )\) es un grupo).
+		      \end{remark}
+		\item Sean \(a,b,c \in G \) tal que \(a \cdot b = a \cdot c \).
+		      
+		      Por el axioma de inversos \(\Rightarrow \) existe \(d \in G \) tal que \(a \cdot d = e \).
+		      \[
+			      d \cdot (a \cdot b ) = d \cdot (a \cdot c) \overset{\text{Asociativa}}{\Rightarrow} (d\cdot a) \cdot b = (d \cdot a) \cdot c \Rightarrow e \cdot b = e \cdot c \overset{\text{Neutro}}{\Rightarrow} b = c
+		      \]
+		      
+		      \(b \cdot a = c \cdot a \Rightarrow b = c \) es analogo.
+		      \begin{remark}
+			      Como consecuencia, en un anillo \(A \) se tiene cancelacion para la suma: \(\forall a,b,c \in A \quad a + b = a + c \Rightarrow b = c\)
+		      \end{remark}
+		\item Sea \(a \in G \). Supongamos que \(b,c\) son inversos de \(a \Rightarrow a \cdot b = e \) y \(a \cdot c = e \), siendo \(e \) el neutro de \(G \).
+		      
+		      Como \(ab = ac \), por cancelacion \(b = c \).
+		      \begin{remark}
+			      Esto implica que en un anillo el opuesto para la suma es unico.
+		      \end{remark}
+		      --
+		      
+		      Supongamos que \(u,v \in A \) son neutros para el producto. Entonces \(u \overset{v \text{ neutro} }{=} u \cdot v \overset{u \text{ neutro} }{=} v\). Luego el neutro es unico.
+		      
+		      --
+		      
+		      Sea \(a \in A \) un elemento invertible. Supongamos que \(b,c \in A \) son inversos de \(a \). Entonces \(a \cdot b = 1 = a \cdot c \). Multiplicando por \(b \),
+		      \[
+			      b \cdot a \cdot b = b \cdot a \cdot c \Rightarrow 1 \cdot b = 1 \cdot c \Rightarrow b = c
+		      \]
+		      
+		\item \(a \cdot 0 = a \cdot (0+0) = a0 + a0 \Rightarrow 0 + a0 = a0 + a0 \overset{\text{Cancelacion} }{\Rightarrow} 0 = a0\).
+	\end{enumerate}
+\end{proof}
+
+\vspace{0.2cm}
+Como notacion para el opuesto e inverso de un elemento, usaremos:
+\begin{itemize}
+	\item \(-a \) para el opuesto de \(a \).
+	\item \(a^{-1} \) para el inverso de \(a \).
+\end{itemize}
+
+Para la resta, \(a-b \) denota el elemento \(a + (-b )\).
+
+% Para la division, \(\frac{a}{b }\) denota el elemento \(a \cdot b^{-1} \). 
+
+\begin{definition}[Restriccion de una funcion]
+	Sean \(B \subseteq A \) y \(C \) tres conjuntos y \(f \colon A \to C \) una funcion. Llamamos restriccion de \(f \) al conjunto \(B \) a la funcion
+	\[
+		\begin{aligned}
+			f|_B \colon B & \longrightarrow C             \\
+			x             & \longmapsto f|_B (x ) = f(x)
+		\end{aligned}
+	\]
+	
+\end{definition}
+\begin{definition}[Subanillo]
+	Sea \((A,+,\cdot )\) un anillo y \(\varnothing \neq B \subseteq A \). Decimos que \(B \) es subanillo de \(A \) si:
+	\begin{enumerate}
+		\item \(\forall r,s \in B \), \(r+s \in B \)
+		\item \(\forall r,s \in B\), \(r \cdot s \in B \)
+		\item \((B, +|_{B \times B}, \cdot|_{B \times B })\) cumple la definicion de anillo
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Caracterizacion 1 de subanillo]
+	Sea \((A,+,\cdot )\) un anillo y \(B \subseteq A \).
+	
+	\(B \) es subanillo de \(A \) si y solo si se cumplen:
+	\begin{enumerate}
+		\item \(0_A \in B \)
+		\item \(\forall r \in B \quad -r \in B \)
+		\item \(\forall r,s \in B \quad r + s \in B \)
+		\item \(\forall r,s \in B \quad r \cdot s \in B \)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	D1: Cerrado para la suma
+	
+	D2: Cerrado para el producto
+	
+	D3: Cumple la def de anillo
+	
+	D1,D2,D3 \(\iff\) 1,2,3,4
+	
+	``\(\Rightarrow \)'' D1 = 3 y D2 = 4.
+	
+	Como \(B \) es anillo por \(D3 \Rightarrow \exists 0_B \in B \). Vamos a demostrar que \(0_B = 0_A \).
+	\[
+		\begin{dcases}
+			0_B + 0_A = 0_B \text{ (porque } 0_A \text{ es el neutro para la suma en } A) \\
+			0_B = 0_B +_B + 0_B = 0_B + 0_B
+		\end{dcases}
+	\]
+	Igualando, \(0_B + 0_A = 0_B + 0_B \Rightarrow 0_A = 0_B \).
+	
+	Por tanto, \(0_A \in B \). Hemos demostrado 1.
+	
+	Nos queda demostrar 2.
+	
+	Sea \(r \in B \). Como por D3 \(B \) es un subanillo, \(r \) tiene opuesto en \(B \Rightarrow \exists s \in B / r +_B s = 0_B \Rightarrow r + s = 0_A\) (usamos que \(0_A = 0_B\) y que \(+_B\) es la operacion restringida). Por unicidad del opuesto, \(s = -r \Rightarrow -r \in B\).
+	
+	``\(\Leftarrow \)'' Se tienen D1 y D2 porque se cumplen 3 y 4.
+	
+	\(B \neq \varnothing\) porque \(0_A \in B \).
+	
+	Me falta demostrar D3 que son los 6 axiomas de la definicion de anillo: A1, A2, A3, A4, A5, A6.
+	
+	A1, A4, A5, A6 se cumplen para la \(+_B \) y \(\cdot_B \) porque se cumplen para todos los elementos de \(A \) y las operaciones en \(B \) son las de \(A \) restringidas. Es decir, las propiedades se ``heredan'' en \(B \).
+	
+	Vamos a demostrar A2 (existencia de neutro para la suma). Como por 1 se tiene que \(0_A \in B \) tengo que \(0_A \) funciona como neutro para la suma en \(B \).
+	
+	Ademas, se que \(0_A = 0_B \).
+	
+	Vamos a demostrar A3 (existencia de opuestos).
+	
+	Sea \(r \in B \), tengo que demostrar que \(r \) tiene opuesto en \(B \). Sea \(s \) el opuesto de r en \(A \). Se que \(r + s = 0_A \). Por 2, se que \(s \in B \).
+	
+	Por tanto, \( r +_B s = 0_A = 0_B \Rightarrow s\) es el opuesto de \(r \) en \(B \).
+\end{proof}
+
+\begin{example}
+	Demostrar que \(A = \set{n + \sqrt{2}m  / n,m \in \Z}\) es un anillo.
+	
+	Vamos a demostrar que \(A \) es un subanillo de \(\R \) aplicando la proposicion 2.
+	
+	\begin{enumerate}
+		\item \(0 \in A \) porque se obtiene con \(n=m=0 \).
+		\item El opuesto de \(n + m\sqrt{2} \) es \(-(n + m\sqrt{2}  ) = (-n) + (-m)\sqrt{2} \in A  \)
+		\item Sean \(n + m\sqrt{2} \in A  \) y \(p + q \sqrt{2}  \in A \), \((n + m\sqrt{2} ) + (p + q \sqrt{2}   ) = n + p + (m + q)\sqrt{2} \in A \).
+		\item Dados los elementos anteriores, \((n + m\sqrt{2} ) \cdot (p + q \sqrt{2} ) = np + mp\sqrt{2} + nq \sqrt{2} + 2mq = (np + 2mq) + (np+mq)\sqrt{2} \in A \).
+	\end{enumerate}
+	Luego \(A \) es subanillo de \(\R \) y, por tanto, anillo.
+\end{example}
+
+\begin{remark}
+	\(A \) es el subanillo mas pequeño de \(\R \) que contiene a \(\Z\) y a \(\sqrt{2 } \) (no lo estamos demostrando). Se denota \(A = \Z [\sqrt{2} ]\).
+	
+	Tomando \(\Z[x ]\), los polinomios con coeficientes en \(\Z \), y sustituyendo \(x = \sqrt{2 } \), se obtiene dicho anillo.
+\end{remark}
+
+\begin{proposition}[Caracterizacion 2 de subanillo]
+	Sea \((A,+,\cdot )\) un anillo y \(B \subseteq A \).
+	
+	\(B \) es subanillo de \(A \) si y solo si se cumplen:
+	\begin{enumerate}
+		\item \(0_A \in B \)
+		\item \(\forall r,s \in B \quad r-s \in B \)
+		\item \(\forall r,s \in B \quad r \cdot s \in B \)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Queda como ejercicio.
+\end{proof}
+
+\subsection{Ejemplos de anillos}
+\begin{itemize}
+	\item \(\Z \), con la suma y producto usuales, es un anillo conmutativo con unidad.
+	\item \(\Q, \R \) y \(\C \), con la suma y producto usuales, son cuerpos. Cada uno es subanillo de los que lo contienen.
+	\item Sean \(A \) un anillo, \(n \geq 2 \) un entero.
+	      
+	      \(\mathcal{\MakeUppercase{m}}_{n \times n }(A )\), el conjunto de las matrices cuadradas \(n \times n \) con coeficientes en \(A \), con la suma y producto usual de matrices, es un anillo.
+	      
+	      Si \(A \) es unitario, \(\mathcal{\MakeUppercase{m}}_{n \times n}(A )\) tambien lo es.
+	      
+	\item Sea \(A \) un anillo conmutativo.
+	      
+	      \(A[x ]\), el conjunto de los polinomios con coeficientes en \(A \) en la variable \(x \), con la suma y producto usual de polinomios, es un anillo conmutativo.
+	      
+	      Si \(A \) es unitario, \(A[x ]\) tambien lo es.
+	      
+	      \(A_3[x ]\), el conjunto de los polinomios con grado menor o igual que 3 con coeficientes en \(A \), no es un anillo por no ser cerrado para el producto.
+	      
+	\item Dado \(m \in \Z \), el conjunto \(m\Z \coloneqq \set{mx \mid x \in \Z }\) es un subanillo de \(\Z \).
+	      \begin{proof}
+		      Usamos la caracterizacion 2.
+		      
+		      \begin{enumerate}
+			      \item \(0 \in m\Z \) tomando \(x = 0 \)
+			      \item Sean \(mx, mx^\prime \in m\Z \), \(mx - mx^\prime = m(x-x^\prime ) \in m\Z \)
+			      \item Sean \(mx, mx^\prime \in m\Z \), \(\underbrace{mx \cdot mx^\prime}_{\in \Z} \in m\Z \).
+		      \end{enumerate}
+		      
+	      \end{proof}
+	      \begin{remark}
+		      Si \(n < 0 \). Entonces \(m\Z = (-m)\Z \).
+		      
+		      Usaremos solo \(m \geq 0\).
+		      \[
+			      \begin{rcases}
+				      m = 0 \quad 0\Z = \set{0x \mid x \in \Z} = \set{0} \\
+				      m = 1 \quad 1\Z = \Z
+			      \end{rcases}
+			      \text{ (son los dos subanillos triviales)}
+		      \]
+		      
+		      Si \(m \geq 2\), \(m\Z \) tiene unidad?
+		      \begin{description}
+			      \item[\(2\Z \)] \(a \cdot b = b \quad \forall b \in 2\Z \)
+				      
+				      \(a = 2x \Rightarrow 2x b = b \Rightarrow 2x = 1\). Contradiccion.
+				      
+				      Luego \(2\Z \) no tiene unidad.
+		      \end{description}
+		      Ningun \(m\Z \) con \(m \geq 2 \) tiene unidad.
+	      \end{remark}
+	\item El anillo de los enteros modulo \(n \).
+	      
+\end{itemize}
+
+\subsection{Divisores de cero. Dominios de integridad.}
+\begin{definition}[Divisor de cero]
+	Sean \(A \) un anillo conmutativo y \(a \in A \setminus \set{0 }\). Decimos que \(a \) es divisor de cero si \(\exists b \in A \setminus \set{0 }\) tal que \(ab =0 \).
+\end{definition}
+
+\begin{definition}[Dominio de integridad]
+	Un dominio de integridad (DI) es un anillo conmutativo con unidad (a.c.c.u.) que no tiene divisores de cero.
+\end{definition}
+\begin{remark}
+	DI \(\iff \) a.c.c.u. donde \(\forall a,b \in A (a \neq 0, b \neq 0 \Rightarrow ab \neq 0)\)
+\end{remark}
+\begin{theorem}
+	Sean \(A \) un a.c.c.u. y \(a \in A \)
+	\[
+		a \text{ invertible} \Rightarrow a \text{ no es divisor de cero}
+	\]
+\end{theorem}
+\begin{proof}
+	Sea \(a \in A \) invertible. Sabemos que si \(a \) es invertible, \(a \neq  0 \).
+	
+	Supongamos que \(a \) es divisor de cero \(\Rightarrow \exists b \neq 0 \mid a \cdot b = 0 \).
+	
+	En la igualdad multiplico por \(a^{-1}  \) y tengo
+	\[
+		a^{-1} a b = a^{-1} 0 \Rightarrow b = 0
+	\]
+	Esto es una contradiccion porque hemos supuesto que \(b \neq 0 \).
+	
+	Luego \(a \) no es divisor de cero.
+\end{proof}
+\begin{remark}
+	Esto es equivalente a
+	\[
+		a \text{ es divisor de cero} \Rightarrow a \text{ no es invertible}
+	\]
+\end{remark}
+\begin{remark}
+	El reciproco del teorema 1 no es cierto.
+	% \[
+	% 	a \text{ no divisor de cero } \not\Rightarrow a \text{ invertible}
+	% \]
+	Veamos un ejemplo en \(\Z\). \(2 \) es divisor de cero?
+	
+	\(2x = 0 \Rightarrow x = 0 \).
+	
+	Luego \(2 \) no es divisor de cero. Es \(2 \) invertible?
+	
+	\(2x = 1 \) no tiene solucion en \(\Z \). Luego no es invertible.
+\end{remark}
+
+\begin{theorem}
+	\[
+		A \text{ cuerpo} \Rightarrow A \text{ dominio de integridad}
+	\]
+\end{theorem}
+\begin{proof}
+	Si \(A \) es un cuerpo, tambien es un a.c.c.u.
+	
+	Ademas, como \(A \) es un cuerpo se cumple que \( \forall a \neq 0, a\) es invertible. Por el teorema 1,  \(\forall a \neq 0 \), a no es divisor de cero \(\Rightarrow A \) es D.I.
+\end{proof}
+
+\begin{remark}
+	El reciproco del teorema 2 no es cierto.
+	
+	Un contraejemplo es el conjunto de los numeros enteros. Como \(\Q \) es un cuerpo, \(\Q \) es D.I. Ademas, \(\Z \subseteq \Q \). Por tanto, \(\Z \) tambien es D.I. (si hubieran divisores de cero en \(\Z \) tambien los habria en \(\Q \)).
+	
+	Y sabemos que \(\Z \) no es un cuerpo (por ejemplo, \(2\) no es invertible).
+\end{remark}
+\begin{remark}
+	Los unicos elementos invertibles de \(\Z \) son \(1 \) y \(-1\).
+	\[
+		ab = 1 \Rightarrow |a| |b| = 1 \Rightarrow |a| = |b| = 1 \Rightarrow |a| = |b| = 1
+	\]
+\end{remark}
+
+\begin{lemma}
+	Sea \(A \) a.c.c.u.
+	
+	\(A \) es un dominio de integridad \(\iff \) \(A \) tiene la propiedad de cancelacion para el producto: \(\forall a,b,c \in A \) tales que \(a \neq 0 \) y \(ab = ac \) se tiene \(b = c \).
+\end{lemma}
+
+\vspace{1.2cm}
+\begin{proof}
+	``\(\Rightarrow \)'' Tenemos que \(a \neq  0 \) y \(ab = ac \). Entonces
+	\[
+		ab - ac = 0 \Rightarrow a(b-c) = 0 \overset{\substack{A\, D.I. \\ a \neq 0}}{\Rightarrow} b-c = 0 \Rightarrow b= c
+	\]
+	
+	``\(\Leftarrow \)'' Tengo que demostrar que \(A \) no tiene divisores de cero.
+	
+	Lo demostramos por reduccion al absurdo. Supongamos que si hay divisores de cero. Entonces \(\exists  a,b \neq 0 \mid a \cdot b = 0 \).
+	\[
+		ab = 0 = a \cdot 0 \overset{\substack{a \neq 0 \\ \text{Cancelacion} }}{\Rightarrow} b = 0
+	\]
+	Esto es una contradiccion porque \(b \neq 0 \).
+	
+	Luego no hay divisor de cero en \(A \Rightarrow A\) es D.I.
+\end{proof}
+\begin{remark}
+	La cancelacion para el producto es falsa en general.
+	
+	Ejemplo: en \(\Z_6 \), \([2][3] = [4][3] = [0]\). No puedo cancelar \([3]\) porque \([2] \neq [4]\).
+\end{remark}
+
+\begin{theorem}
+	\(A \) dominio de integridad finito \(\Rightarrow A \) cuerpo.
+\end{theorem}
+\begin{proof}
+	Quiero demostrar que \(A \) es un cuerpo. Como \(A \) es D.I. \(\Rightarrow \) A es un anillo conmutativo con unidad. Tengo que demostrar que todo elemento no nulo de \(A \) tiene inverso.
+	
+	Sea \(a \in A \) con \(a \neq 0 \), veamos que \(a \) tiene inverso.
+	
+	Defino una funcion, que consiste en multiplicar por \(a \)
+	\[
+		\begin{aligned}
+			f \colon A & \longrightarrow A               \\
+			x          & \longmapsto f (x ) = a \cdot x
+		\end{aligned}
+	\]
+	Si consigo demostrar que \(f \) es suprayectiva \(\Rightarrow 1 \in Imf \Rightarrow \exists b \in A \mid f(b) = 1 \Rightarrow ab = 1 \Rightarrow b = a^{-1}\) y \(a \) es invertible.
+	
+	Vamos a demostrar que \(f \) es inyectiva. Sean \(b_1,b_2 \in A \) tales que \(f(b_1) = f(b_2 ) \overset{DEF}{\Rightarrow} ab_1 = ab_2 \overset{\text{Lema 1}}{\Rightarrow} b_1 = b_2\) \(\Rightarrow f \) es inyectiva.
+	
+	Como \(f \) es una funcion inyectiva entre dos conjuntos finitos del mismo cardinal, \(f \) tiene que ser suprayectiva.
+\end{proof}
+
+\begin{theorem}[Wedderburn]
+	\(A \) anillo de division finito \(\Rightarrow A \) cuerpo
+\end{theorem}
+
+\begin{proposition}
+	Sea \([a] \in \Z_n \).
+	
+	\([a ]\) es invertible \(\iff mcd(a,n) = 1 \).
+\end{proposition}
+\begin{proof}
+	\([a ]\) tiene inverso \(\iff ax \equiv 1 \text{ mod } n  \) tiene solucion \(\iff ax - 1 = n \cdot y \) tiene solucion \(\iff ax + (-n)y = 1 \) tiene solucion \(\iff mcd(a,n) = 1\).
+\end{proof}
+\begin{corollary}
+	\(\Z_n \) es un cuerpo \(\iff n \) es primo
+\end{corollary}
+\begin{proof}
+	\(n \) primo \(\Rightarrow 1,2,\ldots,n-1\) tienen \(mcd = 1 \) con \(n \).
+	
+	\(n \) compuesto \(\Rightarrow \exists d \in {1,2,\ldots,n-1}\) tal que \(d \) tiene un factor comun con \(n \Rightarrow mcd(b,n) \geq 2 \Rightarrow [d]\) no es invertible.
+\end{proof}
+\begin{corollary}
+	Sea \([a] \in \Z_n\), \([a] \neq [0]\).
+	
+	\([a ]\) no es invertible \(\Rightarrow [a ]\) es divisor de cero.
+\end{corollary}
+\begin{example}
+	En \(\Z_{12}\), \([10]\) no es invertible porque \(mcd(10,12) = 2 \).
+	
+	Por otro lado \([10] = [2] \cdot [5]\)
+	
+	\([10] \cdot [6] = [2] \cdot [5] \cdot [6] \overset{[2][6]=[0]}{=} [0]\) \(\Rightarrow [10]\) es divisor de cero.
+	
+	En general si en \(\Z_n\) \(mcd(d,n) = x \geq 2\)
+	
+	\([d] \neq [0]\)
+	
+	\([d]\left[\frac{n}{x}\right] = \left[\frac{d}{x}\right] [n] = [0]\). Luego \(d \) es divisor de cero.
+\end{example}
+
+\subsection{Homomorfismos de anillos}
+\begin{definition}[Homomorfismo]
+	Sean \(A \) y \(B \) dos anillos y \(f \colon A \to B \) una funcion. Decimos que \(f \) es un homomorfismo de anillos si cumple:
+	\begin{itemize}
+		\item \(\forall x,y \in A \quad f(x + y ) = f(x) + f(y )\)
+		\item \(\forall x,y \in A \quad f(x \cdot y ) = f(x) \cdot f(y )\)
+	\end{itemize}
+\end{definition}
+\begin{definition}[Isomorfismo]
+	Sean \(A \) y \(B \) dos anillos y \(f \colon A \to B \) una funcion. Decimos que \(f \) es un isomorfismo de anillos si \(f \) es un homomorfismo biyectivo.
+\end{definition}
+\begin{definition}[Anillos isomorfos]
+	Sean \(A \) y \(B \) dos anillos. Decimos que \(A \) y \(B \) son anillos isomorfos si existe algun isomorfismo \(f \colon A \to B \).
+\end{definition}
+\begin{proposition}
+	Sea \(f \colon A \to B \) un homomorfismo de anillos. Se cumple:
+	\begin{enumerate}
+		\item \(f(0_A) = 0_B  \)
+		\item \(\forall a \in A \quad f(-a) = -f(a )\)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	~\begin{enumerate}
+		\item \(f(0_A) = f(0_A + 0_A) = f(0_A) + f(0_A) \Rightarrow 0_B + f(0_A) = f(0_A) + f(0_A) \Rightarrow 0_B = f(0_A) \)
+		\item \(f(a) + f(-a) = f(a + (-a)) = f(0_A) = 0_B\). Por la unicidad del elemento opuesto, llegamos a que \(f(-a) = -f(a )\).
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Sean \(f \colon A \to B\) y \(g \colon B \to C \) homomorfismos de anillos. Entonces \(g \circ f \) es un homomorfismo de anillos.
+\end{proposition}
+\begin{proof}
+	Sean \(a,b \in A \)
+	\begin{multline*}
+		(g \circ f)(a+b) = g(f(a + b)) = g(f(a) + f(b)) = g(f(a)) + g(f(b)) = \\  = (g \circ f)(a) + (g \circ f)(b)
+	\end{multline*}
+	Esto es analogo para el producto.
+\end{proof}
+\begin{remark}
+	En la definicion de homomorfismo, si la quiero ``bien escrita'',
+	\[
+		f(a +_A b) = f(a) +_B f(b )
+	\]
+\end{remark}
+
+\begin{proposition}
+	Sea \(f \colon A \to B \) un isomorfismo de anillos. Se cumple:
+	\begin{enumerate}
+		\item \(f^{-1} \) es isomorfismo de anillos.
+		\item \(A \) conmutativo \(\Rightarrow B \) conmutativo.
+		\item \(A \) unitario \(\Rightarrow B \) unitario. Ademas: \begin{itemize}
+			      \item \(f(1_A) = 1_B \)
+			      \item \(a \) invertible \(\Rightarrow f(a )\) invertible y \((f(a))^{-1} = f(a^{-1} )\)
+		      \end{itemize}
+		\item \(A \) cuerpo \(\Rightarrow B \) cuerpo.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item \(f \) es isomorfismo. Como \(f \) es biyectiva \(\Rightarrow \exists f^{-1} \colon B \to A \) otra funcion biyectiva. Tengo que demostrar que \(f^{-1} \) es isomorfismo. Falta ver que preserva suma y producto.
+		      
+		      Tenemos que demostrar que \(\forall b_1,b_2 \in B \; f^{-1} (b_1 + b_2) = f^{-1} (b_1) + f^{-1} (b_2)\).
+		      
+		      Como \(f \) es biyectiva, sabemos que \(\exists a_1,a_{2} \in A \mid f(a_1) = b_1\), \(f(a_2) = b_2 \). Luego
+		      \begin{multline*}
+			      f^{-1} (b_1 + b_2) = f^{-1} (f(a_1) + f(a_2)) = f^{-1} (f(a_1 + a_2)) = a_1 + a_2 = \\ = f^{-1} (b_1) + f^{-1} (b_2 )
+		      \end{multline*}
+		      La demostracion para el producto es analoga.
+		\item Supongamos que \(A \) es conmutativo.
+		      
+		      Sean \(b_1,b_2 \in B \) cualesquiera. Tenemos que ver si \(b_1 \cdot b_2 = b_2 \cdot b_1 \)
+		      
+		      Sean \(a_1,a_2 \in A \) tales que \(f(a_1) = b_1 \), \(f(a_2) = b_2 \) (existen por ser \(f \) biyectiva). Entonces
+		      \begin{multline*}
+			      b_1 \cdot b_2 = f(a_1) \cdot f(a_2) = f (a_1 \cdot a_2) = f(a_2 \cdot a_1) = f(a_2) \cdot f(a_1) = b_2 \cdot b_1
+		      \end{multline*}
+		\item Por el enunciado, se que el candidato a neutro del producto en \(B \) es \(f(1_A )\). Voy a comprobar que funciona.
+		      
+		      Tengo que ver que \(\forall b \in B \; f(1_A) \cdot b =  b\) y \(b \cdot f(1_A) = b \).
+		      
+		      Como \(f \) es biyectiva \(\Rightarrow \exists a \in A \mid f(a) = b \). Entonces
+		      \[
+			      f(1_A) \cdot b = f(1_A) \cdot f(a) \overset{f hom}{=} f(1_A \cdot a) \overset{\text{Neutro}}{=} f(a) = b
+		      \]
+		      Analogamente, \(b \cdot f(1_A) = b \).
+		      
+		      Por tanto \(B \) es unitario \(1_B = f(1_A )\).
+		      \begin{remark}
+			      Es suficiente con que \(f \) sea un homomorfismo suprayectivo.
+		      \end{remark}
+		      
+		      Sea ahora \(a \in A \) invertible. Tengo que ver que \(f(a)\) es invertible en \(B \). El enunciado me da el candidato \(f(a^{-1} )\). Pruebo que funciona.
+		      
+		      Multiplico \(f(a) \cdot f(a^{-1} ) = f(a \cdot a^{-1} ) = f(1_A) = 1_B \).
+		      
+		      Analogamente \(f(a^{-1} ) \cdot f(a) = 1_B \Rightarrow \) los dos elementos son inversos uno de otro, es decir, el inverso de \((f(a))^{-1} = f(a^{-1})\).
+		\item Si \(A \) es cuerpo,
+		      \[
+			      \begin{dcases}
+				      A \text{ conmutativo} \overset{2}{\Rightarrow} B \text{ conmutativo} \\
+				      A \text{ unitario} \overset{3}{\Rightarrow} B \text{ unitario}
+			      \end{dcases}
+		      \]
+		      Sea \(b \in B, b \neq 0_B\), tengo que ver que \(b \) es invertible.
+		      
+		      Como \(f \) es biyectiva, existe \(a \in A \) tal que \(f(a) = b \). Como \(f(0_A) = f(0_B )\), \(b \neq 0_B \) y \(f \) es biyectiva, \(a \neq 0_A \Rightarrow a \) es invertible. Por la propiedad 3 y que \(b = f(a) \), \(b \) es invertible.
+	\end{enumerate}
+\end{proof}
+\begin{remark}
+	Si \(\exists  f \colon A \to B \) isomorfismo, decimos que \(A \) es isomorfo a \(B \) y lo denotamos
+	\[
+		A \cong B
+	\]
+\end{remark}
+\begin{proposition}
+	La relacion de isomorfia de anillos es una relacion de equivalencia.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Reflexiva: \(id \colon A \to A \) es obviamente biyectiva y homomorfismo \(\Rightarrow A \cong A \)
+		\item Simetrica:
+		      
+		      Si \(A \cong B \Rightarrow \exists f \colon A \to B\) isomorfismo \(\Rightarrow f^{-1} \colon B \to A \) isomorfismo (prop 11) \(\Rightarrow B \cong A\)
+		      
+		\item Transitiva:
+		      
+		      Supongamos que \(A \cong B \) y \(B \cong C \) \(\Rightarrow \exists f \colon A \to B \) y \(\exists g \colon B \to C \) isomorfismos \(\Rightarrow g \circ f \) homomorfismo.
+		      
+		      Veamos que la composicion de funciones biyectivas es biyectiva
+		      \[
+			      (g \circ f)^{-1} = f^{-1} \circ g^{-1}
+		      \] porque
+		      \[
+			      (g \circ f)(f^{-1} \circ g^{-1} ) = g \circ id_B \circ g^{-1} = g \circ g^{-1} = id_C
+		      \]
+		      \[
+			      (f^{-1} \circ g^{-1} ) (g \circ f) = f^{-1} \circ id_B \circ f = f^{-1} \circ f = id_A
+		      \]
+		      Luego \(g \circ f \colon A \to C \) isomorfismo \(\Rightarrow A \cong C \)
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Sea \(f \colon A \to B \) un isomorfismo de anillos. Se definen el nucleo y la imagen de \(f \) como:
+	\begin{itemize}
+		\item \(Kerf \coloneqq \set{x \in A \mid f(x) = 0_B }\)
+		\item \(Imf \coloneqq \set{y \in B \mid \exists x \in A \mid f(x) = y }\)
+	\end{itemize}
+\end{definition}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item \(Kerf \) es un subanillo de \(A \)
+		\item \(f \) es inyectiva \(\iff Kerf = \set{0_A}\)
+		\item \(Imf \) es un subanillo de \(B \)
+		\item \(f \) es suprayectiva \(\iff  Imf = B \)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Veamos que \(Kerf \) es subanillo de \(A \)
+		      
+		      \begin{itemize}
+			      \item \(0_A \in Kerf \) porque \(f(0_A) = 0_B \)
+			      \item Cerrado para la resta: Sean \(a,b \in Kerf \),
+			            \[
+				            f(a-b) = f(a + (-b)) = f(a) + f(-b) = f(a) - f(b)= 0_B - 0_B = 0_B
+			            \]
+			            
+			            Luego \(a - b \in Kerf \).
+			      \item Cerrado para el producto: Sean \(a,b \in A \)
+			            \[
+				            f(a \cdot b) = f(a) \cdot f(b) = 0_B \cdot 0_B = 0_B \Rightarrow a \cdot b \in Kerf
+			            \]
+		      \end{itemize}
+		\item \(f \) inyectiva \(\iff Kerf = \set{0_A }\)
+		      
+		      ``\(\Rightarrow \)'' Se que \(0_A \in Kerf \).
+		      
+		      Sea \(a \neq 0_A \Rightarrow f(a) \neq f(0_A) = 0_B \Rightarrow Kerf = \set{0_A}\)
+		      
+		      ``\(\Leftarrow \)'' Voy a ver que \(f \) es inyectiva.
+		      
+		      Sea \(a,b \in A \). Supongamos que \(f(a) = f(b )\). Entonces
+		      \[
+			      f(a) - f(b) = 0_B \Rightarrow f(a-b) = 0_B \Rightarrow a - b \in Kerf \Rightarrow a - b = 0_A \Rightarrow a = b
+		      \]
+		\item Veamos que \(Imf \) es subanillo de \(B \).
+		      
+		      \begin{itemize}
+			      \item \(0_B \in Imf\) porque \(f(0_A) = 0_B \)
+			      \item Sean \(b_1,b_2 \in Imf \Rightarrow \exists a_1,a_2 \in A \mid f(a_1) = b_1 \) y \(f(a_2) = b_2 \).
+			            \[
+				            b_1 - b_2 = f(a_1) - f(a_2) = f(a_1 - a_2) \Rightarrow b_1 - b_2 \in Imf
+			            \]
+			      \item \(b_1 \cdot b_2 = f(a_1) \cdot f(a_2) = f(a_1 \cdot a_2) \Rightarrow b_1 \cdot b_2 \in Imf \)
+		      \end{itemize}
+		\item Es la definicion de suprayectiva.
+	\end{enumerate}
+\end{proof}
+\pagebreak
+\section{Ideales y anillos cociente. Teoremas de isomorfía}
+\subsection{Ideales}
+\begin{definition}
+	Sea \(A \) un anillo. Decimos que \(I \) es un ideal de \(A \) si cumple:
+	\begin{enumerate}
+		\item \(I \) es un subanillo de \(A \)
+		\item \(I \) tiene la propiedad de absorcion:
+		      
+		      \(\forall a \in A \), \(\forall r \in I \):
+		      
+		      \begin{itemize}
+			      \item \(ar \in I \)
+			      \item \(ra \in I \)
+		      \end{itemize}
+	\end{enumerate}
+\end{definition}
+\begin{proposition}[Caracterizacion de ideal]
+	Sean \(A \) un anillo e \(I \subseteq A \), \(I \) es ideal de \(A \) si y solo si
+	\begin{itemize}
+		\item \(0_A \in I \)
+		\item \(\forall a,b \in I \quad a - b \in I \)
+		\item \(I \) tiene la propiedad de absorcion.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Usar la caracterizacion que teniamos de subanillo y darse cuenta de que la absorcion implica que el producto sea cerrado.
+\end{proof}
+
+\begin{proposition}
+	Sean \(A \) un anillo conmutativo y \(c \in A \). El conjunto
+	\[
+		I_c \coloneqq \set{ac \mid a \in A }
+	\]
+	es un ideal de \(A \).
+\end{proposition}
+\begin{proof}
+
+	\begin{enumerate}
+		\item \(0_A \in I_c \) porque \(0_A = c \cdot 0_A \).
+		\item Sean \(x,y \in I_c \Rightarrow\exists a,b \in A \mid x = c \cdot a \) y \(y = c \cdot b \Rightarrow x - y = c \cdot a - c \cdot b = c (a - b) \in I_c \)
+		\item Sea \(x \in I_c \) y \(a \in A \), \(\exists  b \in A \mid x = cb \).
+		      
+		      Entonces \(x \cdot a = c \cdot b \cdot a \in I_c \).
+	\end{enumerate}
+\end{proof}
+\begin{remark}
+	\(n\Z \) es un ideal de \(\Z \) porque, con la notacion que estamos usando, \(n\Z = I_n \).
+\end{remark}
+\begin{remark}
+	En general, \(c \in I_c\) no se cumple.
+	
+	Como contraejemplo, \(A = 2\Z \) no tiene unidad y \(I_2 = \set{2x \mid x \in 2\Z } = \set{\ldots,-8,-4,0,4,\ldots } = 4\Z \). En este caso \(2 \not\in I_2 \).
+\end{remark}
+\begin{proposition}
+	Si \(A \) es un a.c.c.u. y \(c \in A \), entonces \(I_c\) se llama el ideal principal generado por \(c \). Es el minimo ideal (respecto de la relacion de contenido) al que \(c \) pertenece.
+	
+	\underline{Notacion}: En este caso se usa la notacion \(I_c = (c )\).
+\end{proposition}
+\begin{proof}
+	Sabemos, por la proposicion 2, que \(I_c \) es ideal de \(A \).
+	
+	Cumple que \(c \in I_c \) porque \(c = c \cdot 1_A \in I_c\).
+	
+	Falta ``es el minimo ideal con respecto la propiedad de ser ideal al que c pertenece''.
+	
+	Demostrar eso se puede formalizar de la siguiente forma: Dado cualquier ideal \(J \) de \(A \) tal que \(c \in J \), entonces \(I_c \subseteq J \).
+	
+	Sea \(J \) ideal de \(A \) tal que \(c \in J \). Quiero ver que \(I_c \subseteq J\).
+	
+	Sea \(x \in I_c \Rightarrow \exists a \in A \mid x = c \cdot a \Rightarrow \) Como \(J \) es ideal y \(c \in J \), por absorcion \(x = c \cdot a \in J\).
+\end{proof}
+
+\begin{example}
+	\label{ejemploanillos}
+	\begin{itemize}
+		\item Sea \(A \) un anillo cualquiera. \(A \) y \(\set{0_A }\) son ideales de \(A \). Se consideran los ideales triviales de \(A \).
+		\item \(7\Z \) es ideal de \(\Z \). Hemos visto en general que \(\forall n \in \Z\), \(n\Z \) es ideal de \(\Z \) (por la proposicion 2).
+		\item \(\set{0,3 }\) es ideal de \(\Z_6 \).
+		      
+		      \(\Z_6 = \set{0,1,2,3,4,5}\). Veamos que \(\set{0,3}\) es ideal:
+		      \begin{enumerate}
+			      \item \(0 \in I \)
+			      \item Cerrado para la resta: \begin{itemize}
+				            \item \(0 - 0 = 0 \in I\)
+				            \item \(0 - 3 = -3 = 3 \in I \)
+				            \item \(3 - 0 = 3 \in I\)
+				            \item \(3 - 3 = 0 \in I\)
+			            \end{itemize}
+			      \item Cumple la propiedad de absorcion.
+		      \end{enumerate}
+		      Luego \(I = \set{0,3}\) es ideal de \(\Z_6\).
+		      
+		      Como alternativa, se puede demostrar teniendo en cuenta que \(I = \set{0,3} = I_3 = (3 )\). \(\set{0,3 }\) es el conjunto de todos los multiplos de \(3 \).
+		\item \(\set{x^{2}p(x) \mid p \in \Z[x] }\) es ideal de \(\Z[x ]\).
+		      
+		      Para demostrar que \(I \) es ideal basta con darse cuenta de que \(I \) es el conjunto de todos los multiplos de \(\Z[x ]\) del polinomio \(x^{2} \) y utilizar la propiedad 2. \(I = (x^{2 } )\).
+		\item \(\set{2a + xp(x) \mid a \in \Z, p \in \Z[x ]}\) es ideal de \(\Z[x ]\).
+		      
+		      \(I \) consiste en todos los polinomios con termino independiente par.
+		      
+		      Vamos a demostrar que \(I \) es ideal de \(\Z[x ]\):
+		      \begin{enumerate}
+			      \item \(c(x) = 0\), el polinomio constante \(0 \), es el neutro para la suma de este anillo.
+			            
+			            \(0 \in I \) porque se obtiene tomando \(a = 0 \) y \(p(x) = 0 \).
+			      \item Cerrado para la resta:
+			            \[
+				            \begin{rcases}
+					            2a + xp(x) \in I \\
+					            2b + x q(x) \in I
+				            \end{rcases} \Rightarrow (2a + xp(x)) - (2b + xq(x)) = 2\underbrace{(a - b)}_{\in \Z} + x\underbrace{(p(x) - q(x))}_{\in \Z[x]} \in I
+			            \]
+			      \item Absorcion:
+			            \[
+				            \begin{rcases}
+					            (x) = 2a + a_1 x + a_2 x^{2} + \cdots  \in I \\
+					            g(x) = b_0 + b_1 x + \cdots\in \Z[x]
+				            \end{rcases} \Rightarrow f(x) \cdot g(x) = 2 \cdot a \cdot b_0  + \cdots \in I
+			            \]
+			            Luego \(I \) es ideal de \(\Z[x]\)
+		      \end{enumerate}
+		      Vamos a demostrar que \(I \) no es principal, es decir, que \(I \) no esta generado por un solo elemento. Por reduccion al absurdo, vamos a suponer que \(I \) es principal, es decir, que existe \(q(x)\) tal que \(I = (q(x ))\).
+		      
+		      Observamos que \(f(x) = 2 \) (polinomio constante).
+		      
+		      Como \(2 \in I \) y estoy suponiendo que \(q(x) \) genera \(I \Rightarrow \exists p(x) \in \Z[x] \mid 2 = p(x) q(x)\).
+		      
+		      La unica opcion es que tanto \(p(x )\) como \(q(x )\) sean polinomios constantes.
+		      
+		      Solo hay 4 opciones: \(p(x) = 1 \text{ y }  q(x) = 2 \), \(p(x) = 2 \) y \(q(x) = 1 \), \(p(x)  -1 \) y \(q(x) = -2\), y \(p(x) = -2 \) y \(q(x) = -1\).
+		      
+		      Como \(1, -1 \not\in I \) pero \(q(x) \in I \), esto no es una opcion.
+		      
+		      Puede ser \(I = (2) = (-2 )\).
+		      
+		      \(g(x) = x \not \in (2 )\).
+		      
+		      Pero \(x \in I \) porque tiene termino independiente par. Esto es una contradiccion. Por tanto, \(I \) no es principal.
+		\item \(\Z \) es subanillo pero no ideal de \(\Z[x ]\).
+		      
+		      Puedo ver \(\Z \) como un subanillo de \(\Z[x ]\) identificando \(\Z \) como el conjunto de los polinomios constantes.
+		      
+		      \(\Z \), obviamente, es subanillo. Sin embargo, no tiene la propiedad de absorcion:
+		      \[
+			      \begin{rcases}
+				      f(x) = 1 \in \Z \\
+				      g(x) = x \in \Z[x]
+			      \end{rcases} \Rightarrow f(x) \cdot g(x) = x \not \in \Z
+		      \]
+		      Esto es un contraejemplo a la absorcion.
+		      
+		\item \(K \coloneqq \left\{\begin{pmatrix}
+			      a & b \\
+			      0 & 0 \\
+		      \end{pmatrix} \mid a,b \in \R\right \}\)
+		      es subanillo pero no ideal de \(\mathcal{\MakeUppercase{M}}_{2 \times 2}(\R )\).
+		      
+		      Se puede verificar facilmente que cumple la caracterizacion de subanillo. Veamos que no tiene absorcion.
+		      \[
+			      \begin{pmatrix}
+				      a & b \\
+				      0 & 0 \\
+			      \end{pmatrix} \cdot \begin{pmatrix}
+				      a^\prime & b^\prime \\
+				      c^\prime & d^\prime \\
+			      \end{pmatrix} = \begin{pmatrix}
+				      a \cdot a^\prime & b \cdot b^\prime \\
+				      0                & 0                \\
+			      \end{pmatrix}
+		      \]
+		      Pero no se tiene la absorcion por el otro lado:
+		      \[
+			      \begin{pmatrix}
+				      a^\prime & b^\prime \\
+				      c^\prime & d^\prime \\
+			      \end{pmatrix}\cdot \begin{pmatrix}
+				      a & b \\
+				      0 & 0 \\
+			      \end{pmatrix} = \begin{pmatrix}
+				      a \cdot a^\prime & b \cdot b^\prime \\
+				      c^\prime \cdot a & c^\prime \cdot b \\
+			      \end{pmatrix} \not\in K
+		      \]
+		      
+		      Por ejemplo, \(\begin{pmatrix}
+			      0 & 0 \\
+			      1 & 0 \\
+		      \end{pmatrix} \cdot \begin{pmatrix}
+			      1 & 1 \\
+			      0 & 0 \\
+		      \end{pmatrix} = \begin{pmatrix}
+			      0 & 0 \\
+			      1 & 1 \\
+		      \end{pmatrix} \not\in K\).
+		      
+		      Luego \(K \) no es ideal.
+	\end{itemize}
+\end{example}
+\subsection{Anillo cociente}
+\begin{definition}[Congruencia modulo un ideal]
+	\label{congideal}
+	Sean \(A \) un anillo e \(I \) un ideal de \(A \).
+	
+	Se dice que dos elementos \(a,b \in A \) son congruentes modulo \(I \) si
+	\[
+		a - b \in I
+	\]
+	Notacion: \(a \equiv b \text{ mod } I  \)
+\end{definition}
+\begin{proposition}
+	La relacion de la definicion anterior es una relacion de equivalencia.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Reflexiva: \(\forall a \in A \; a \equiv a \text{ mod } I \)?
+		      
+		      \(a - a = 0_A \in I \) (porque \(I \) es subanillo).
+		\item Simetrica: \(\forall a,b \in A \) si \(a \equiv b \text{ mod } I  \Rightarrow a - b \in I \Rightarrow -(a-b) = b - a \in I \text{ (I es cerrado para opuestos) } \Rightarrow b \equiv a \text{ mod } I \).
+		\item Transitiva: \(\forall a,b,c \in A \) si \(a \equiv b \text{ mod } I \) y \(b \equiv c \text{ mod } I \Rightarrow a - b \in I\) y \(b - c \in I \Rightarrow a - b + b - c = a - c \in I \) (porque es cerrado para la suma) \(\Rightarrow a \equiv c \text{ mod } I \).
+	\end{enumerate}
+\end{proof}
+Las clases de equivalencia de la relacion anterior son \([a]_I \coloneqq \set{b \in A \mid a \equiv b \text{ mod } I }\).
+
+\begin{proposition}[Descripcion de las clases de equivalencia]
+	\label{clasess}
+	\[
+		[a]_I =  \set{a + r \mid r \in I }
+	\]
+\end{proposition}
+\begin{proof}
+	Lo demostraremos por doble contenido.
+	
+	``\(\subseteq \)'' \(x \in [a]_I \Rightarrow a \equiv x \text{ mod } I \Rightarrow x - a \in I \Rightarrow \exists r \in I \mid x - a = r \Rightarrow x = a + r \).
+	
+	``\(\supseteq \)'' Si \(x = a + r \) con \(r \in I \), entonces \(x - a = r \in I \Rightarrow x \equiv a \text{ mod } I \Rightarrow x \in [a]_I \).
+\end{proof}
+La Proposicion \ref{clasess} sugiere la siguiente notacion, que sera la que usaremos a partir de ahora para las clases de equivalencia de la relacion anterior:
+\[
+	[a]_I \coloneqq  a + I
+\]
+
+\begin{definition}
+	Sean \(A \) un anillo e \(I \) un ideal de \(A \). Denotamos el cociente de \(A \) bajo la relacion de la Definicion \ref{congideal} como
+	\[
+		A/I \coloneqq \set{a + I \mid a \in A }
+	\]
+\end{definition}
+\begin{proposition}
+	Sean \(A \) un anillo e \(I \) un ideal de \(A \). Las operaciones en el cociente \(A/I \) definidas como:
+	\begin{itemize}
+		\item \((a + I) + (b + I) \coloneqq (a+b) + I \)
+		\item \((a + I) \cdot (b + I ) \coloneqq (a \cdot b) + I\)
+		      
+	\end{itemize}
+	son operaciones internas bien definidas en el cociente \(A/I . \)
+	
+	El cociente \(A/I\) dotado de estas dos operaciones es un anillo. Ademas:
+	\begin{itemize}
+		\item Si \(A \) es conmutativo, \(A/I \) tambien lo es.
+		\item Si \(A \) es unitario, \(A/I \) tambien lo es.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Empezamos viendo que las operaciones esten bien definidas.
+	
+	Supongamos \(a + I = c + I \) y \(b + I = d + I \).
+	
+	Tengo que ver que \((a + b) + I = (c + d ) + I \). Esto es lo mismo que ver si \((a + b) - (c + d ) \in I \).
+	
+	\[
+		\underbrace{a-c}_{\substack{\in I \\(a + I = c + I)}} + \underbrace{b - d}_{\substack{\in I \\(b + I = d + I)}} \in I \text{ (cerrado para la suma)} \Rightarrow (a + b) + I = (c + d) + I 	.
+	\]
+	He visto que la suma esta bien definida.
+	
+	Veamos si tambien el producto: \((a \cdot b) + I \overset{?}{=} (c \cdot d ) + I \Rightarrow ab - cd \overset{?}{\in } I \).
+	
+	\[
+		ab - ad + ad - cd = \underbrace{a\underbrace{(b - d)}_{\in I}}_{\substack{\in I \\ \text{(absorcion)}}} + \underbrace{\underbrace{(a - c)}_{\in I}d }_{\substack{\in I \\ \text{(absorcion)}}} \in I \Rightarrow ab + I = cd + I
+	\]
+	\begin{remark}
+		Hemos necesitado absorcion para demostrar que el producto esta bien definido.
+	\end{remark}
+	
+	Tenemos que ver que \(A/I \) con esta suma y este producto es un anillo.
+	
+	\begin{itemize}
+		\item Suma conmutativa: \((a + I) + (b + I) \overset{DEF}{=} (a + b) + I\). Como la suma es conmutativa en \(A \), \((a + b) + I = (b + a) + I \overset{DEF}{=} (b + I) + (a + I )\).
+		      
+		      Analogamente, se demuestra que la suma es asociativa, el producto asociativo y la propiedad distributiva del producto respecto de la suma.
+		\item Neutro de la suma: \(0_A + I \) porque \(\forall a + I \in A/I \) \((a + I) + (0_A + I) = (a + 0_A) + I = a + I \).
+		\item Opuestos: Dado \(a + I \in A/I \), su opuesto es \(-a + I \) porque \((a + I) + (-a + I) = (a + (-a)) + I = 0_A + I\) .
+	\end{itemize}
+	Por lo tanto, \(A/I \) es un anillo.
+	
+	Tenemos que demostrar que si \(A \) es conmutativo, la propiedad se hereda a \(A/I \Rightarrow A/I \) tambien es conmutativo.
+	
+	Si \(A \) es unitario, vamos a ver que \(1_A + I \) es neutro para el producto en \(A/I \).
+	
+	Para todo \(a + I \in A/I \) se tiene que \((a + I )(1_A + I) \overset{DEF}{=} (a \cdot 1_A) + I = a + I \).
+	
+	Tambien \((1_A + I)(a + I) = (1_A \cdot a ) + I = a + I \).
+\end{proof}
+
+\begin{remark}
+	Como conjunto, quien es \(0_A + I ? \)
+	
+	\(0_A + I = \set{0_A + r \mid r + I} = \set{r \mid r \in I } = I \).
+\end{remark}
+\begin{example}
+	Veremos cuales son los anillos cociente de los anillos en el ejemplo \ref{ejemploanillos}.
+	
+	\begin{itemize}
+		\item Sea \(A \) un anillo cualquiera y \(I = A \). Dados \(x, y \in A \), \(x \equiv y \text{ mod } I \iff x - y \in I = A \). Luego en \(A/A \) solo hay una clase: \(0_A + A \).
+		      
+		      \(A/A = \set{0_A + A }\) es un anillo con un unico elemento.
+		      
+		      Si \(I = \set{0_A}\), \(x \equiv y \text{ mod } \set{0_A} \Rightarrow x - y = 0_A \Rightarrow x = y  \).
+		      
+		      Luego \(a + \set{0_A} = \set{a }\). Cada clase tiene un unico elemento.
+		      
+		      Obtengo un anillo que es practicamente \(A \). La diferencia es que en lugar de ser los elementos de \(A \), son sus clases.
+		      
+		      En general, la funcion
+		      \[
+			      \begin{aligned}
+				      f \colon A & \longrightarrow A/\set{0_A }  \\
+				      a          & \longmapsto f (a ) = \set{a }
+			      \end{aligned}
+		      \]
+		      es isomorfismo de anillos (\(A/\set{0_A} \cong A\)).
+		\item Sea \(\Z \) y \(I = 7\Z \). Las clases son \(0 + 7\Z \), \(1 + 7\Z \), \(2 + 7\Z  \), \(3 + 7\Z \), \(4 + 7\Z \), \(5 + 7\Z \), \(6 + 7\Z \).
+		      
+		      En este caso \(\Z/7\Z = \Z_7 \).
+		      
+		      \(x \equiv y \text{ mod } 7\Z \iff x - y \in 7\Z \Rightarrow x - y \) es multiplo de 7 \(\iff x \equiv y \text{ mod } 7 \).
+		      
+		      En general, si \(n \geq 2 \), \(\Z/n\Z = \Z_n \).
+		      
+		\item \(\Z_6 = \set{[0],[1],[2],[3],[4],[5]}\) \(\leftarrow \) es un anillo cociente de \(\Z \) porque \(\Z_6 = \Z/6\Z \).
+		      
+		      \(I = \set{[0], [3 ]}\) es un ideal de \(\Z_6 \).
+		      
+		      Veamos quien es \(\Z_6/I \).
+		      
+		      \([0] + I = \set{[0] + [0], [0] + [3]} = \set{[0], [3]}\).
+		      
+		      \([1] + I = \set{[1] + [0], [1] + [3]} = \set{[1], [4]}\).
+		      
+		      \([2] + I = \set{[2] + [0], [2] + [3]} = \set{[2], [5 ]}\).
+		      
+		      Ya estan todos los elementos de \(\Z_6 \).
+		      \[
+			      \Z_6/I = \set{0 + I, 1 + I, 2 + I }.
+		      \]
+		      Ademas, se tiene que \(\Z_6/I \cong \Z_3 \) (se puede comprobar haciendo tabla para la suma y el producto, observando que son modulo 3).
+		\item \(A = \Z[x ]\) y \(I = (x^{2} ) = \set{x^{2} \cdot p(x) \mid p(x ) \in \Z[x] }\).
+		      
+		      \(A/I = \set{q(x) + I \mid q(x) \in \Z[x ]}\).
+		      
+		      Dada una clase, cual sera el representante mas sencillo?
+		      
+		      Un ejemplo de polinomio es \(q(x) = 3 + 7x - 8x^{2} + 15x^{4}  \). Si tomo \(g(x) = 3 + 7x \), tengo que \(g(x) + I = q(x) + I \) porque \(q(x) - g(x) = 3 + 7x - 8x^{2} + 14x^{4} - (3 + 7x) = -8x^{2} + 15x^{4} = x^{2}(-8 + 15x^{2} ) \in I\).
+		      
+		      En general, dado \(q(x) = a_0 + a_1 x + a_2 x^{2} + \cdots + a_n x^{n } 	 \) el polinomio \(g(x) = a_0 + a_1 x \) esta en la misma clase porque \(q(x) - g(x) = a_2 x^{2} + \cdots + a_n x^{n} = x^{2} (a_2 + \cdots) \in I\).
+		      
+		      Mi cociente lo puedo expresar como \(A/I = \set{a_0 + a_1 x + I \mid a_0, a_1 \in \Z }\).
+		      
+		      Ademas, estos representantes forman un ``conjunto completo de representantes'', es decir, estan todas las clases y no hay clases repetidas.
+		      
+		      Supongamos que \(a_0 + a_{1} x + I = b_0 + b_1 x + I \). Entonces \(a_0 + a_1 x - b_0 - b_1 x \) es multiplo de \(x^{2 } \). La unica forma es que sea \(0 \Rightarrow a_0 + a_{1} x = b_0 + b_1 x \).
+		      
+		      Este cociente es el que tiene como representantes a todas las clases de polinomios de grado \(\leq 1 \).
+		\item \(A = \Z[x ]\) y \(I = \set{2a + xp(x) \mid a \in \Z, p \in \Z[x ]}\).
+		      
+		      \(f(x) \equiv g(x) \text{ mod } I \iff   f(x) - g(x) \in I \iff f(x) - g(x)\) tiene termino independiente par.
+		      
+		      Quien es \(0 + I \)? \(0 + I = I  \).
+		      
+		      Si \(f(x), g(x) \neq I \Rightarrow\) tienen termino independiente impar \(\Rightarrow \) su resta tiene termino independiente par \(\Rightarrow f(x) \equiv g(x) \text{ mod } I \).
+		      
+		      Solo hay 2 clases de equivalencia.
+		      
+		      \(A/I = \set{0 + I, 1 + I }\).
+		      
+		      Ya sabemos que \(A/I \cong \Z_2 \) (porque es el unico anillo unitario con 2 elementos).
+		\item \(\Z\) es subanillo de \(\Z[x ]\).
+		      
+		      \(f(x) \equiv g(x) \text{ mod } \Z \).
+		      
+		      Supongamos que en el cociente que queda intento definir la multiplicacion operando representantes: \(((x + 1) + \Z)((x + 2) + \Z) = (x^{2} + 3x + 2 ) + \Z \).
+		      
+		      Cambiando representante, \(((x + 2) + \Z)((x + 2) + \Z) = (x^{2} + 4x + 4 ) + \Z\) pero \((x^{2} + 3x + 2 ) + \Z \neq (x^{2} + 4x + 4 ) + \Z\)
+		      
+		      Esta operacion no esta bien definida porque depende de la eleccion de representante (no ha funcionado porque \(\Z \) no es ideal de \(\Z[x ]\)).
+	\end{itemize}
+\end{example}
+
+\subsection{Teoremas de isomorfía para anillos}
+\begin{proposition}
+	Sean \(A \) un anillo y \(C \) un subanillo de \(A \). La funcion inclusion de \(C \) en \(A \) definida como
+	\[
+		\begin{aligned}
+			i \colon C & \longrightarrow A \\
+			x          & \longmapsto x
+		\end{aligned}
+	\]
+	es un homomorfismo inyectivo de anillos (o monomorfismo).
+\end{proposition}
+\begin{proof}
+	Trivial.
+\end{proof}
+\begin{proposition}
+	Sean \(A \) un anillo e \(I \) un ideal de \(A \). La funcion proyeccion sobre el cociente definida como
+	\[
+		\begin{aligned}
+			\pi \colon A & \longrightarrow A/I \\
+			x            & \longmapsto x + I
+		\end{aligned}
+	\]
+	es un homomorfismo suprayectivo de anillos (o epimorfismo).
+\end{proposition}
+\begin{proof}
+	Usando las propiedades de la suma y producto de clases,
+	
+	Suma: \(\pi(x + y) = (x + y) + I \overset{DEF}{=} (x + I) + (y + I) = \pi(x) + \pi(y)\).
+	
+	Producto: \(\pi(x \cdot y) = (x \cdot y) + I \overset{DEF}{=} (x + I) \cdot (y + I) = \pi(x) \cdot \pi(y)\).
+	
+	Luego es un homomorfismo.
+	
+	Veamos que \(\pi \) es suprayectiva.
+	
+	Sea \(z \in A/I \), \(z \) es de la forma \(z = x + I \) para algun \(x \in A \).
+	
+	Entonces \(\pi(x) = x + I = z \).
+	
+	Luego \(z \) tiene una preimagen que es \(x \Rightarrow \pi\) es suprayectiva.
+\end{proof}
+
+\begin{proposition}
+	Sea \(f \colon A \to B \) un homomorfismo de anillos. \(Kerf \) es un ideal de \(A \).
+\end{proposition}
+\begin{proof}
+	Veamos que \(Kerf \) es ideal de \(A \).
+	
+	Sabemos, por el tema 1, que \(Kerf \) es subanillo de \(A \). Falta demostrar la propiedad de absorcion.
+	
+	Sean \(a \in A, r \in Kerf \). Comprobemos si \(a \cdot r \in Kerf \).
+	
+	\[
+		f(a \cdot r) = f(a) \cdot f(r) \overset{r \in Kerf}{=} f(a) \cdot 0_B = 0_B \Rightarrow a\cdot r \in Kerf
+	\]
+	Analogamente, \(r \cdot a \in Kerf\).
+\end{proof}
+\begin{theorem}[Primer teorema de isomorfia de anillos]
+	Sea \(f \colon A \to B \) un homomorfismo de anillos suprayectivo. Entonces la siguiente funcion es un isomorfismo de anillos:
+	\[
+		\begin{aligned}
+			\overline{f} \colon A/Kerf & \longrightarrow B                                    \\
+			a + Kerf                   & \longmapsto \overline{f} (a + Kerf) \coloneqq  f(a)
+		\end{aligned}
+	\]
+	
+\end{theorem}
+\begin{proof}
+	Denotaremos con \(K = Kerf \).
+	
+	Definimos
+	\[
+		\begin{aligned}
+			\overline{f} \colon A/K \to B \\
+			a + I \to f(a)
+		\end{aligned}
+	\]
+	Como tengo una funcion definida sobre un cociente en terminos del representante, tengo que demostrar que esta bien definida.
+	
+	Es decir, \(\forall (a + K), (b + K) \in A/K \) si \(a + K = b + K \), entonces \(\overline{f}(a+K) = \overline{f}(b + K)\).
+	
+	\begin{multline*}
+		a + K = b + K \overset{DEF}{\Rightarrow} a - b \in K \Rightarrow f(a-b) = 0 \Rightarrow f(a) - f(b) = 0 \Rightarrow \\ \Rightarrow f(a) = f(b) \Rightarrow \overline{f}(a + K) = \overline{f}(b + K)
+	\end{multline*}
+	
+	Veamos que es homomorfismo. Sean \((a + K), (b + K) \in A/K \),
+	\[
+		\overline{f}((a + K) + (b + K)) \overset{\substack{DEF \\Suma\\ A/K}}{=} \overline{f}((a + b) + K) \overset{\text{DEF }  f}{=} f(a + b) \overset{f hom}{=} f(a) + f(b) = \overline{f}(a + K) + \overline{f}(b + K )
+	\]
+	Esto es analogo para el producto.
+	
+	Comprobamos que \(f \) es inyectiva: \(\overline{f}(a + K) = \overline{f}(b + K) \overset{?}{\Rightarrow} a + K = b + K \).
+	\begin{multline*}
+		\overline{f}(a + K) = \overline{f}(b + K) \Rightarrow f(a) = f(b) \Rightarrow f(a) - f(b) = 0_B \Rightarrow f(a-b) = 0_B \Rightarrow \\ \Rightarrow a - b \in K \Rightarrow a + K = b + K
+	\end{multline*}
+	
+	Veamos que \(\overline{f }\) es suprayectiva.
+	
+	Sea \(z \in B \), como \(f \) es suprayectiva \(\Rightarrow \exists a \in A \mid f(a) = z \).
+	
+	Entonces \(\overline{f}(a + K) \coloneqq f(a) = z \).
+\end{proof}
+
+\begin{corollary}
+	Sea \(f \colon A \to B \) un homomorfismo de anillos. Entonces la siguiente funcion es un isomorfismo de anillos:
+	\[
+		\begin{aligned}
+			\overline{f} \colon A/Kerf & \longrightarrow Imf                                 \\
+			a + Kerf                   & \longmapsto \overline{f} (a + Kerf) \coloneqq f(a)
+		\end{aligned}
+	\]
+\end{corollary}
+\begin{proof}
+	Dado \(f \colon A \to B \), defino una nueva funcion
+	\[
+		\begin{aligned}
+			\hat{f}\colon A & \longrightarrow Imf              \\
+			x               & \longmapsto \hat{f}(x ) = f(x )
+		\end{aligned}
+	\]
+	Obviamente \(\hat{f }\) es un homomorfismo suprayectivo de anillos.
+	
+	Aplico el teorema 1 que acabo de demostrar a \(\hat{f }\) y tenemos
+	\[
+		\begin{aligned}
+			\overline{f} \colon A/Kerf & \longrightarrow Imf                                                                  \\
+			a + Ker\hat{f}             & \longmapsto \overline{f} (a + \underbrace{Ker\hat{f}}_{= Kerf} = \hat{f}(a ) = f(a)
+		\end{aligned}
+	\]
+	Luego la funcion
+	\[
+		\begin{aligned}
+			\overline{f} \colon A/Kerf & \longrightarrow Imf                          \\
+			a + Kerf                   & \longmapsto \overline{f} (a + Kerf ) = f(a)
+		\end{aligned}
+	\]
+	es isomorfismo de anillos.
+	
+	En particular, \(A/Kerf \cong Imf \).
+\end{proof}
+
+\begin{corollary}
+	Sea \(f \colon A \to B \) un homomorfismo de anillos. Entonces existen:
+	\begin{itemize}
+		\item \(\pi \) homomorfismo suprayectivo
+		\item \(\overline{f }\) isomorfismo
+		\item \(i \) homomorfismo inyectivo
+	\end{itemize}
+	tales que \(f = i \circ \overline{f} \circ \pi \).
+\end{corollary}
+\begin{proof}
+	Sea \(f \colon A \to B \) homomorfismo.
+	
+	Por el corolario 2, \(\overline{f} \colon A/Kerf \to Imf \) es un isomorfismo.
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzMsMCwiQiJdLFswLDIsIkEvS2VyZiJdLFszLDIsIkltZiJdLFswLDIsIlxccGkiXSxbMywxLCJpIiwyXSxbMCwxLCJmIiwxXSxbMiwzLCJcXG92ZXJsaW5le2Z9IiwxXV0=
+	\[\begin{tikzcd}
+			A &&& B \\
+			\\
+			{A/Kerf} &&& Imf
+			\arrow["\pi", from=1-1, to=3-1]
+			\arrow["i"', from=3-4, to=1-4]
+			\arrow["f"{description}, from=1-1, to=1-4]
+			\arrow["{\overline{f}}"{description}, from=3-1, to=3-4]
+		\end{tikzcd}\]
+	
+	Por tanto \(f = i \circ  \overline{f} \circ  \pi \) porque \(\forall a \in A \) \(i(\overline{f}(\pi(a))) = i(\overline{f}(a + K)) = i(f(a)) = f(a)\).
+\end{proof}
+\begin{example}
+	Dada la funcion
+	\[
+		\begin{aligned}
+			f \colon \Z_{20 } & \longrightarrow \Z_{10 }              \\
+			[x]_{20}          & \longmapsto f ([x]_{20}) = [6x]_{10}
+		\end{aligned}
+	\]
+	demostrar que esra bien definida y que es un homomorfismo de anillos. Hallar explicitamente \(Kerf \), \(Imf \), el anillo cociente \(\Z_{20}/Kerf \) y la funcion \(\overline{f }\) que aparece en el corolario 1 del primer teorema de isomorfia.
+	
+	Vamos a ver que \( f \) esta bien definida (porque esta definida sobre un cociente y depende del representante).
+	
+	\([x]_{20} = [y]_{20} \overset{?}{\Rightarrow} [6x]_{10} = [6y]_{10}\).
+	
+	\([x]_{20} = [y]_{20} \Rightarrow x - y = 20 \cdot k \Rightarrow 6x - 6y = 120k = 10 \cdot 12 \cdot k \Rightarrow [6x]_{10} = [6y]_{10}\). Luego esta bien definida.
+	
+	Veamos que \(f \) es homomorfismo.
+	\[
+		f([x]_{20} + [y]_{20}) = f([x+y]_{20}) = [6(x+y)]_{10} = [6x + 6y]_{10} = [6x]_{10} + [6y]_{10} = f([x]_20) + f([y]_{20})
+	\]
+	Para el producto, \(f([x]_{20} \cdot [y]_{20}) = f([xy]_20) = [6xy]_{10}\) y \(f([x]_{20}) f([y]_20) = [6x]_{10} \cdot [6y]_{10} = [36xy]_{10} = [36]_{10} \cdot [xy]_{10} = [6]_{10} \cdot [xy]_10 = [6xy]_{10}\).
+	
+	Ya se que \(f \) es homomorfismo de anillos.
+	
+	\(Kerf? \), \(Imf? \).
+	\[
+		\begin{aligned}
+			[0]_{20} & \to [0]_{10}             \\
+			[1]_{20} & \to [6]_{10}             \\
+			[2]_{20} & \to [12]_{10} = [2]_{10} \\
+			[3]_{20} & \to [18]_{10} = [8]_{10} \\
+			[4]_{20} & \to [24]_{10} = [4]_{10} \\
+		\end{aligned}
+	\]
+	Por tanto, \(Imf = \set{[0]_{10}, [6]_{10}, [2]_{10}, [8]_{10}, [4]_{10}} = P \).
+	
+	\(K = Kerf = \set{[0]_{20}, [5]_{20}, [10]_{20},[15]_{20}}\) \(\rightarrow \) ideal de \(\Z_{20 }\) porque es el nucleo de un homomorfismo.
+	
+	Quien es \(\Z_{20}/K \)?
+	\[
+		\begin{aligned}
+			[0]_{20} + K = K                                              \\
+			[1]_{20} + K = \set{[1]_{20}, [6]_{20}, [11]_{20}, [16]_{20}} \\
+			[2]_{20} + K= \set{[2]_{20}, [7]_{20}, [12]_{20}, [17]_{20}}  \\
+			[3]_{20} + K= \set{[3]_{20}, [8]_{20}, [13]_{20}, [18]_{20}}  \\
+			[4]_{20} + K= \set{[4]_{20}, [9]_{20}, [14]_{20}, [19]_{20}}  \\
+		\end{aligned}
+	\]
+	\(\Z_{20}/K = \set{[0]_{20} + K,[1]_{20} + K,[2]_{20} + K,[3]_{20} + K, [4]_{20} + K}\)
+	
+	Quien es la \(\overline{f}\) del primer teorema de isomorfia que hace que en \(\Z_{20}/K \cong P\)?
+	\[
+		\begin{aligned}
+			\overline{f} \colon \Z_{20}/K & \longrightarrow P                                 \\
+			[a]_{20} + K                  & \longmapsto \overline{f} ([a]_{20} + K ) = f(a )
+		\end{aligned}
+	\]
+	% https://q.uiver.app/#q=WzAsMTAsWzQsMCwiWzBdX3sxMH0iXSxbNCwxLCJbMV1fezEwfSJdLFs0LDIsIlsyXV97MTB9Il0sWzQsMywiWzNdX3sxMH0iXSxbNCw0LCJbNF1fezEwfSJdLFswLDAsIjAsIDUsIDEwLCAxNSJdLFswLDEsIjEsNiwxMSwxNiJdLFswLDIsIjIsNywxMiwxNyJdLFswLDMsIjIsOCwxMywxOCJdLFswLDQsIjQsOSwxNCwxOSJdLFs1LDAsIlxcb3ZlcmxpbmV7Zn0iXSxbNywxXSxbOSwyXSxbNiwzXSxbOCw0XV0=
+	\[\begin{tikzcd}
+			{0, 5, 10, 15} &&&& {[0]_{10}} \\
+			{1,6,11,16} &&&& {[1]_{10}} \\
+			{2,7,12,17} &&&& {[2]_{10}} \\
+			{2,8,13,18} &&&& {[3]_{10}} \\
+			{4,9,14,19} &&&& {[4]_{10}}
+			\arrow["{\overline{f}}", from=1-1, to=1-5]
+			\arrow[from=3-1, to=2-5]
+			\arrow[from=5-1, to=3-5]
+			\arrow[from=2-1, to=4-5]
+			\arrow[from=4-1, to=5-5]
+		\end{tikzcd}\]
+	
+	El primer teorema de isomorfia me dice que \(\overline{f }\) es isomorfismo de anillos.
+	
+	Por tanto, tenemos que \(\Z_{20} = \Z/\Z_{20}\), \(K = \frac{5}{Z} / 20/Z \) y \(\Z_{20}/K = (\Z / \Z_{20 }) / 5\Z / 20\Z \).
+	
+	Aplicando el tercer teorema de isomorfia, \(\Z / 5\Z = \Z_5 \).
+\end{example}
+
+\begin{example}
+	Usar el Primer Teorema de Isomorfia para demostrar que \(\Z[x]/(x) \cong \Z \).
+	
+	\(I = (x) = \set{xp(x) \mid p(x) \in \Z }\) (polinomios con term. indep. 0).
+	
+	Tengo el cociente \(A/I = \Z[x]/(x)\).
+	
+	Ejemplo: \(5 + 7x + 9x^{3} + (x) = 5 + (x) \) porque \(5 + 7x + 9x^{3} - 5 = 7x + 9x^{3} \in I = (x)  \).
+	
+	Otra forma de visualizarlo \(5 + 7x + 9x^{3} + (x) = 5 + (x) + \underbrace{(7x + 9x^{3} ) + (x)}_{\substack{0 + (x) \\ \text{porque } 7x + 9x^{3} \in (x) }} \).
+	
+	En general, \(a_0 + a_1 x + a_2 \cdot x^{2} + \cdots + (x) = a_0 + (x) \).
+	
+	\(\Z[x]/(x) = \set{a + (x) \mid a \in \Z }\).
+	
+	Vamos a demostrar que \(\Z[x]/(x) \cong \Z \) usando el primer teorema de isomorfia.
+	\[
+		\begin{aligned}
+			f \colon \Z[x ]                 & \longrightarrow \Z \\
+			a_0 + a_1x + a_2 x^{2} + \cdots & \longmapsto a_0
+		\end{aligned}
+	\]
+	Es f homomorfismo de anillos?
+	\begin{multline*}
+		f(a_0 + a_1 x + cdots + b_0 + b_1 x + \cdots ) = f(a_0 + b_0 + (a_1 + b_1) x + \cdots) = a_0 + b_0 = \\ = f(a_0 + a_1 x + \cdots) +  f(b_0 + b_1 x + \cdots)
+	\end{multline*}
+	\begin{multline*}
+		f((a_0 + a_1 x + \cdots) (b_0 + b_1 x + \cdots)) = f(a_0 b_0 + \text{ terminos de grado } \geq 1 ) = \\ = a_0 b_0 = f(a_0 + a_1 x + \cdots) \cdot f(b_0 + b_1 x + \cdots )
+	\end{multline*}
+	Aplicando el primer teorema de isomorfia, \(\Z[x]/Kerf \cong Imf \).
+	
+	\(f \) es suprayectiva porque dado \(a \in \Z \) tiene preimagen.
+	
+	\(f(p(x) + a) = a \Rightarrow Imf = \Z\).
+	
+	\(Kerf = \set{p(x) \mid f(p(x)) = 0 } = \set{a_0 + a_1 x + a_2 x^{2} + \cdots \mid a_ 0 = 0 } = \set{a_1 x + a_2 x^{2} } = (x) = I \Rightarrow \Z[x]/(x) \cong \Z\).
+	
+	Quien es \(\overline{f }\)?
+	\[
+		\begin{aligned}
+			\overline{f} \colon \Z[x]/(x ) & \longrightarrow \Z                                                     \\
+			a_0 + (x )                     & \longmapsto \overline{f} (a_0 + (x )) = f(a_0 + a_1 x + \cdots) = a_0
+		\end{aligned}
+	\]
+	
+\end{example}
+\begin{theorem}[Segundo teorema de isomorfia]
+	Sean \(I,J \) ideales de un anillo \(A \). Entonces:
+	\begin{enumerate}
+		\item \(I \cap J \) es un ideal de \(I \).
+		\item \(J \) es ideal de \(I + J \).
+		\item Los anillos \(I/(I \cap J)\) y \((I+J)/J \) son isomorfos.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	Ejercicio.
+\end{proof}
+\begin{theorem}[Tercer teorema de isomorfia]
+	Sean \(I,K \) ideales de un anillo \(A \) tales que \(I \subseteq K \). Entonces \((A/I)/(K/I )\) y \(A/K \) son anillos isomorfos.
+\end{theorem}
+\begin{proof}
+	Ejercicio.
+\end{proof}
+\subsection{Ideales primos y maximales}
+\begin{definition}
+	Sea \(A \) un anillo conmutativo y \(P  \) un ideal de \(A \). Decimos que \(P \) es ideal primo de \(A \) si cumple:
+	\begin{itemize}
+		\item \(P \neq A \)
+		\item \(\forall a,b \in A \; (ab \in P \Rightarrow a \in P \vee  b \in P )\)
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	En \(\Z \), dado \(n \geq 2 \), se cumple
+	\[
+		n\Z \text{ es ideal primo} \iff n \text{ es numero primo}
+	\]
+\end{proposition}
+\begin{proof}
+	``\(\Leftarrow\)'' Quiero ver que \(n\Z \) es ideal primo de \(\Z \) (sabemos que \(n\Z \) es ideal).
+	
+	\(n \geq  2 \Rightarrow n \Z \neq \Z \).
+	
+	Supongamos que \(a \cdot b \in n \Z \Rightarrow n | a \cdot b\). Como \(n \) es primo, por el lema de Euclides se cumple que \(n | a \) o \(n | b \Rightarrow a \in n \Z \) o \(b \in n\Z \).
+	
+	``\(\Rightarrow \)'' Por contrarreciproco, voy a demostrar que, si \(n \) es compuesto, entonces \(n\Z \) no es ideal primo.
+	
+	Como \(n \) es compuesto, \(\exists d_1, d_2 \in \N \), \(2 \leq d_1,d_2 \leq n- 1 \) tales que \(n = d_1 \cdot d_2 \).
+	
+	Luego \(n = d_1 \cdot d_2 \in n\Z \) pero \(d_1 \notin n\Z \) y \(d_2 \notin n\Z \) porque \(2 \leq d_1, d_2 \leq n -1 \). Luego \(n\Z \) no es primo.
+\end{proof}
+\begin{proposition}
+	\label{idealprimonz}
+	Sean \(A \) un a.c.c.u. y \(P \neq A \) un ideal de \(A \). Se cumple
+	\[
+		P \text{ es ideal primo} \iff A / P \text{ es dominio de integridad}
+	\]
+\end{proposition}
+\begin{proof}
+	``\(\Rightarrow \)'' Por reduccion al absurdo, supongamos que \(A / P \) no es dominio de integridad. Entonces, \( \exists (a + P), (b + P ) \in A / P \) que son divisores de cero, es decir, \(\underbrace{(a + P)}_{\neq 0 + P }\underbrace{(b + P)}_{\neq 0 + P} = 0 + P \Rightarrow ab + P = 0 + P \Rightarrow a \cdot b \in P \Rightarrow a \in P \vee b \in P\). Por tanto, o bien \(a + P = 0 + P \) o bien \(b + P = 0 + P \), pero esto es una contradiccion.
+	
+	``\(\Leftarrow \)'' Supongamos que \(A / P \) es dominio de integridad. Quiero demostrar que \(P \) es primo.
+	
+	Supongamos que \(a \cdot b \in P \Rightarrow a \cdot b + P = 0 + P \Rightarrow (a + P )(b + P) = 0 + P \). Como \(A / P \) es D.I., o bien \(a + P = 0 + P \) o bien \(b + P = 0 + P \Rightarrow a \in P \vee b \in P\).
+\end{proof}
+\begin{example}
+	Forma alternativa de demostrar la proposicion \ref{idealprimonz}:
+	\[
+		n\Z \text{ primo} \iff \Z / n\Z = \Z_n \text{ es D.I.} \overset{\text{Tema 1}}{\iff} n \text{ primo}
+	\]
+\end{example}
+\begin{definition}
+	Sea \(A \) un a.c.c.u. y \(M \) un ideal de \(A \). Decimos que \(M \) es ideal maximal de \(A \) si cumple:
+	\begin{itemize}
+		\item \(M \neq A \)
+		\item \(M \) es un elemento maximal con respecto a la relacion de contenido entre los ideales distintos de \(A \), es decir, \(\forall J \) ideal de \(A \) tal que \(M \subseteq J \) se tiene que \(J = M \) o \(J = A \).
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	\label{maximal}
+	Sean \(A \) un a.c.c.u. y \(M \neq A \) un ideal de \(A \). Se cumple
+	\[
+		M \text{ es ideal maximal} \iff A / M \text{ es cuerpo}
+	\]
+\end{proposition}
+\begin{proof}
+	``\(\Rightarrow \)'' Supongamos que \(M \) es ideal maximal. Quiero demostrar que \(A / M \) es un cuerpo, es decir, \(\forall a + M \in A / M  \) con \(a + M \neq 0 + M \), \(a + M \) tiene que ser invertible.
+	
+	Por otro lado, \(a \notin M \) porque \(a + M \neq 0 + M \).
+	
+	Construyo \(J = M + (a )\). Sabemos (ejercicios) que \(J \) es ideal de \(A \). Ademas, \(M \subseteq J \) y \(a \in (a ) \Rightarrow a \in J \Rightarrow J \neq M\).
+	
+	Como \(M \) es maximal, la unica opcion es \(J = A \).
+	
+	Tambien, \(1 \in J = M + (a ) \Rightarrow \exists m \in M, \exists r \in A \mid 1 = m + r \cdot a \). Tomo clase modulo M:
+	\[
+		1 + M = \underbrace{(m + M)}_{= 0 + M } + (ra + M) \Rightarrow 1 + M = (r + M) (a + M) \Rightarrow a + M \text{ invertible }.
+	\]
+	
+	``\(\Leftarrow \)'' Veamos que si \(A / M \) es un cuerpo, entonces \(M \) es maximal.
+	
+	Sea \(J \) ideal de \(A \) con \(M \subseteq J \) pero \(M \neq J \). Tengo que demostrar que \(J = A \).
+	
+	Como \(J \neq M \Rightarrow \exists a \in A\) tal que \(a \in J \) pero \(a \notin M \). Como \(a \notin M \Rightarrow a + M \neq 0 + M \) en \(A / M \).
+	
+	Al ser \(A / M \) un cuerpo, \(\exists b + M \) tal que \((a + M)(b + M) = 1 + M \Rightarrow (a \cdot b) + M = 1 + M \Rightarrow a \cdot b - 1 \in M \Rightarrow \exists m \in M \) tal que \(ab - 1 = m \Rightarrow 1 = \underbrace{\underbrace{a}_{\in J}b}_{\in  J} + \underbrace{(-m)}_{\in M \subseteq J} \in J \Rightarrow 1 \in J \overset{(ej)}{\Rightarrow} J = A\).
+\end{proof}
+\begin{example}
+	En \(\Z\), \(2\Z \) es maximal. Por que?
+	
+	\(\Z / 2\Z = \Z_2 \) que es un cuerpo (por ser 2 primo). Por la proposicion \ref{maximal}, \(2\Z \) es maximal en \(\Z \).
+	
+	En general, si tengo \(n \geq 2 \), \(n\Z \) es maximal \(\iff \Z / n\Z = \Z_n\) es cuerpo \(\iff n \) es primo.
+	
+\end{example}
+\begin{corollary}
+	Sean \(A \) un a.c.c.u. e \(I \) un ideal de \(A \). Se cumple
+	\[
+		I \text{ ideal maximal} \Rightarrow I \text{ ideal primo}
+	\]
+\end{corollary}
+\begin{proof}
+	Si un ideal \(I \) es maximal, por la proposicion \ref{maximal}, \(A / I \) es cuerpo \(\Rightarrow A/ I \) es dominio de integridad. Por la proposicion \ref{idealprimonz}, \(I \) es primo.
+\end{proof}
+\begin{remark}
+	El reciproco del resultado anterior no es cierto.
+\end{remark}
+\begin{example}
+	~\begin{enumerate}
+		\item \(\set{0 }\) es primo en \(\Z \) pero no maximal.
+		\item \((x )\) es primo en \(\Z[x ]\) pero no maximal.
+		      
+		      Vimos que \(\Z[X] / (x ) \cong \Z \Rightarrow (x)\) es primo en \(\Z[x ]\) pero \((x )\) no es maximal en \(\Z[x ]\) (aplicando \ref{idealprimonz} y \ref{maximal}).
+		      
+		      \(p(x)q(x) \in (x) \Rightarrow p(x)q(x) = a_1 x + a_2 x^{2} + \cdots \). Luego uno de los dos no tiene termino independiente \(\Rightarrow p(x) \in (x) \vee q(x) \in (x)\Rightarrow (x) \) es primo.
+		      
+		      Por que no es maximal? Sea \(J = \set{2a + xp(x )}\). Se cumple que \((x) \subset J \subset \Z[x ]\).
+	\end{enumerate}
+\end{example}
+\pagebreak
+\section{Anillos de polinomios}
+\subsection{Generalidades y teorema de la division}
+\begin{definition}[Polinomio]
+	Sea \(A \) un anillo. Un polinomio en una variable \(x \) con coeficientes en \(A \) es una expresion formal del tipo
+	\[
+		p(x) = a_0 + a_1 x + a_2 x^{2} + \cdots + a_n x^{n} = \sum_{i=0}^{n} a_i x^{i}
+	\]
+	donde \(n \in \N \cup \set{0 }\) y cada \(a_i \in A \).
+\end{definition}
+\(A[x ]\) denota el conjunto de todos los polinomios en la variable \(x \) con coeficientes en el anillo \(A \).
+\begin{definition}[Suma y producto de polinomios]
+	Sean \(p,q \in A[x ]\) de la forma \(p(x) = \sum_{i=0 }^{m } a_i x^{i } \) y \(q(x) = \sum_{i=0 }^{n } b_i x^{i } \). Se define la suma de \(p \) y \(q \) como otro polinomio
+	\[
+		(p + q)(x) = \sum_{i=0 }^{max(m,n)} c_i x^{i}
+	\]
+	donde cada \(c_i = a_i + b_i \) (considerando coeficientes igual a cero si no estan definidos).
+	
+	Se define el producto de \(p \) y \(q \) como otro polinomio
+	\[
+		(p \cdot q)(x) = \sum_{i=0 }^{m + n} d_i x^{i}
+	\]
+	donde cada \(d_i = \sum_{j=0 }^{i} a_j b_{i-j }\) (considerando coeficientes igual a cero si no estan definidos).
+\end{definition}
+
+\begin{proposition}
+	Sea \(A \) un anillo. Entonces \((A[x], +, \cdot )\) es un anillo. Ademas:
+	
+	\(A \) conmutativo \(\Rightarrow A[x ]\) conmutativo.
+	
+	\(A \) unitario \(\Rightarrow A[x ]\) unitario.
+\end{proposition}
+\begin{definition}
+	Sea \(p(x) = \sum_{i=0 }^{n } a_i x^{i} \in A[x] \) con \(a_n \neq 0 \). Decimos que:
+	\begin{itemize}
+		\item \(a_n\) es el coeficiente director de \( p \).
+		      
+		      Notacion: \(a_n \coloneqq cd(p )\)
+		      
+		\item \(n \) es el grado de \(p \).
+		      
+		      Notacion: \(n \coloneqq gr(p )\)
+		      
+		\item Si \(a_n = 1\) decimos que p es monico
+	\end{itemize}
+	Si \(p(x) = 0 \) se define \(gr(p) \coloneqq -\infty \) y \(p \) no tiene coeficiente director.
+\end{definition}
+\begin{proposition}
+	Sean \(p,q \in A[x ]\). Se cumple:
+	\[
+		gr(p \cdot q) \leq gr(p) + gr(q )
+	\]
+\end{proposition}
+\begin{proof}
+	Porque la potencia mas alta que puede salir es la suma de los grados.
+\end{proof}
+\begin{example}
+	En \(\Z_6[x ]\),
+	
+	\(p(x) = 3x^{2} + 2 \) (grado 3), \(q(x) = 2x^{2} + x + 1 \) (grado 2).
+	
+	Multiplicando, \(p(x)q(x) = 6x^{5} + 3x^{4} + 3x^{3} + 4x^{2} + 2x + 1\) (grado 4).
+	
+	En general no tengo que \(gr(p \cdot q) = \) suma de los grados.
+\end{example}
+
+\vspace{0.2cm}
+\begin{proposition}[Formula del grado]
+	Sean \(A \) un DI y \(p,q \in A[x ]\). Se cumple:
+	\[
+		gr(p \cdot q) = gr(p) + gr(q )
+	\]
+\end{proposition}
+\begin{proof}
+	Si \(A \) es un DI \(\Rightarrow \underbrace{cd(p \cdot q)}_{\neq 0 \text{(DI)} } = \underbrace{cd(p)}_{\Leftarrow\; \neq 0} \cdot \underbrace{cd(q)}_{\neq 0} \Rightarrow gr(p \cdot q) = gr(p) + gr(q)\).
+\end{proof}
+\begin{corollary}
+	\(A \) es DI \(\Rightarrow A[x ]\) es DI.
+\end{corollary}
+\begin{proof}
+	Supongamos que \(A \) es DI.
+	
+	Sean \(p(x) \neq 0, q(x) \neq 0 \) (ambos tienen coeficiente director \(\neq  0 \)).
+	
+	Entonces \((p \cdot q)(x) \) tiene coeficiente director distinto de cero \(\Rightarrow (p \cdot q)(x) \neq 0 \).
+	
+	Luego \(A[x ]\) es DI.
+	
+\end{proof}
+\begin{theorem}[Teorema de la division]
+	Sean \(K \) un cuerpo y \(f,g \in K[x ]\) con \(g \neq 0 \). Entonces \(\exists q,r \in K[x ]\) tales que:
+	\begin{itemize}
+		\item \(f = g \cdot q + r \)
+		\item \(gr(r) < gr(g )\).
+	\end{itemize}
+	Ademas \(q \) y \(r \) son los unicos polinomios que cumplen simultaneamente las dos propiedades anteriores.
+\end{theorem}
+\begin{example}
+	Division en \(\Q[x ]\):
+	\[
+		x^{3 } + 7x^{2} - 2x + 1 = (2x^{2}  +3 ) \cdot (\frac{1}{2}x + \frac{7}{2}) + (\frac{7}{2}x - \frac{19}{2 })
+	\]
+	Otro ejemplo:
+	\(x^{2} + 1 = 2 \cdot (\frac{1}{2}x^{2} + 1 ) + 0 \).
+	
+	Se cumple que \(\underbrace{gr(\text{resto} )}_{-\infty} < \underbrace{gr(\text{divisor} )}_{0}\)
+\end{example}
+
+
+\subsection{Divisibilidad en \(K[x ]\)}
+\begin{definition}[Divisor y multiplo]
+	Sean \(K \) un cuerpo y \(f,g \in K[x ]\). Decimos que \(f \) divide a \(g \) si \(\exists p \in  K[x ]\) tal que \(g = p \cdot f. \)
+	
+	Decimos tambien que \( f \) es divisor de \(g \) y que \(g \) es multiplo de f.
+	
+	Notacion: \(f | g \).
+\end{definition}
+\begin{proposition}
+	~\begin{itemize}
+		\item \(f | g \Rightarrow \forall c \in K \setminus \set{0} \; cf | g \)
+		\item \(g \neq 0, f|g \Rightarrow gr(f) \leq gr(g )\)
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Si \(f |g \Rightarrow \exists p(x) \in K[x ] \mid g(x) = f(x) \cdot p(x) \). Como \(K \) es cuerpo, dado \(c \neq 0, \exists c^{-1} \in K \). Luego \(g(x) = (cf(x)) \cdot (c^{-1} p(x)) = f(x) \cdot p(x)\Rightarrow cf(x) | g(x )\).
+		\item Sea \(g(x) \neq 0 \) y \(f(x) | g(x ) \Rightarrow \exists p(x) \in K[x ] \mid g(x) = p(x) \cdot f(x) \). Por la formula de los grados, \(gr(g) = gr(p) + gr(f )\) (porque los coeficientes estan en \(K \) que es cuerpo y, por tanto, DI).
+		      
+		      Sabemos que \(gr(p) \geq 0 \) porque la unica opcion de que no pasara esto seria con \(p(x) = 0 \Rightarrow g(x) = 0 \). Esto seria una contradiccion.
+		      
+		      Luego \(gr(g) = gr(p) + gr(f) \geq 0 + gr(f) = gr(f )\).
+	\end{itemize}
+\end{proof}
+\begin{definition}[Maximo comun divisor]
+	Sean \(f,g \in K[x ]\). Decimos que \(p \) es un maximo comun divisor de \(f \) y \(g \) si \(p \) es un polinomio monico, divisor comun de \(f \) y \(g \) de grado maximo.
+\end{definition}
+\begin{example}
+	En \(\R[x ]\),
+	
+	\(f(x) = x^{3} - x = x(x^{2}-1 ) = x(x+1)(x-1) \)
+	
+	\(g(x) = x^{2} + 2x + 1 = (x+1)^{2 } \)
+	
+	Vemos que \(x + 1 \) es un divisor comun y polinomio monico.
+\end{example}
+\begin{proposition}[Unicidad]
+	El maximo comun divisor de dos polinomios es unico.
+\end{proposition}
+Asimismo, el maximo comun divisor de \(f \) y \(g \) se denota por \(mcd(f,g )\).
+\begin{proposition}[Identidad de Bezout]
+	Sean \(K \) un cuerpo y \(f,g \in K[x ]\). Entonces \(\exists u,v \in K[x ]\) tales que
+	\[
+		mcd(f,g) = uf + vg
+	\]
+\end{proposition}
+\begin{remark}
+	El algoritmo de Euclides y su extension para calcular identidades de Bezout funcionan en \(K[x ]\).
+	
+	\(x^{3} - x = (x^{2} + 2x + 1 ) \cdot (x-2) + (2x + 2) \Rightarrow x^{2} + 2x + 1 = (2x +2) \cdot (\frac{1}{2}x + \frac{1}{2}) + 0   \).
+	
+	El \(mcd \) es el ultimo resto antes de tener resto \(0 \) (ajustado con una constante para que sea monico).
+	
+	Entonces \(mcd(f,g) = \frac{1}{2}(2x + 2) = x + 1\).
+	
+	Ahora puedo usar los cocientes para encontrar una identidad de Bezout entre \(f \) y \(g \).
+	\[
+		2x + 2 = (x^{3} - x ) - (x^{2} + 2x + 1)(x-2) \Rightarrow \underbrace{x + 1}_{mcd(f,g)} = \underbrace{\frac{1}{2}}_{u(x)}\underbrace{(x^{3} - x )}_{f(x)} + \underbrace{(-\frac{1}{2})(x-2)}_{v(x)}\underbrace{(x^{2} + 2x + 1 )}_{g(x)}
+	\]
+\end{remark}
+
+\subsection{Polinomios irreducibles en \(K[x ]\)}
+\begin{proposition}
+	Sean \(K \) un cuerpo y \(p(x) \in K[x ]\)
+	\[
+		p(x) \text{ es invertible en } K[x] \iff p(x) \in K \setminus \set{0}
+	\]
+\end{proposition}
+\begin{proof}
+	``\(\Leftarrow \)'' Sea \(p(x) = c \neq 0 \) polinomio constante. Como \(K \) es un cuerpo \(\Rightarrow \exists c^{-1} \in K \). Luego \(c \cdot c^{-1} = 1 \Rightarrow p(x) = c \) es invertible.
+	
+	``\(\Rightarrow \)'' Supongamos \(p(x )\) invertible \(\Rightarrow \exists q(x) \in K[x ]\) tal que \(p(x) \cdot q(x) = 1 \).
+	
+	Por la formula de los grados, \(gr(p) + gr(q) = gr(1) = 0\).
+	
+	La unica opcion es \(gr(p) = gr(q) = 0 \Rightarrow p(x )\) y \(q(x )\) son constantes.
+\end{proof}
+\begin{remark}
+	No es cierto en general, si los coeficientes no estan en un DI. Veamos un contraejemplo en \(\Z_4[x ]\).
+	
+	\((2x + 1)(2x + 1) = 4x^{2} + 2x + 2x + 1 = 4x^{2} + 4x + 1 = 1 \Rightarrow 2x + 1  \) es invertible en \(\Z_4[x ]\).
+\end{remark}
+\begin{definition}[Polinomios asociados]
+	Sean \(p(x), q(x) \in K[x ]\). Decimos que \(p(x )\) es asociado de \(q(x )\) si \(\exists  c \neq 0 \in K \) tal que \(p(x) = cq(x )\) (es decir, si existe un elemento invertible que pasa de uno a otro).
+\end{definition}
+\begin{definition}[Polinomio irreducible]
+	Sea \(p(x) \in K[x ]\) un polinomio no constante. Decimos que \(p \) es irreducible si sus unicos divisores son constantes y asociados de \(p \). En caso contrario decimos que \(p \) es reducible.
+\end{definition}
+\begin{remark}
+	Para definir polinomios irreducibles no puedo decir que solo tiene 2 divisores.
+	
+	\(x^{2} + 1 \) tiene infinitos divisores: \(x^{2} + 1, 2(x^{2} + 1 ), 7(x^{2} + 1 ), \ldots, 1, -3, \pi, \ldots \) porque \(x^{2} + 1 = (7)(\frac{1}{7} (x^{2} + 1 )) \).
+	
+	Estos divisores estan siempre. Si son los unicos, decimos que el polinomio es irreducible.
+\end{remark}
+\begin{proposition}
+	Sea \(p \in K[x ]\) un polinomio de grado 1. Entonces \(p \) es irreducible.
+\end{proposition}
+\begin{proof}
+	Supongamos que \(f(x )\) es divisor de \(p(x) \Rightarrow \exists g(x) \in K[x ] \mid p(x) = f(x) \cdot g(x)\).
+	
+	La formula de los grados nos dice que \(gr(p) = gr(f) + gr(p)\), pero \(gr(p) = 1\). Luego hay dos opciones:
+	\begin{itemize}
+		\item \(gr(f) = 0 \Rightarrow f \) constante
+		\item \(gr(f) = 1 \Rightarrow gr(g) = 0 \Rightarrow g(x) = c \) constante
+		      
+		      \(p(x) = c f(x) \Rightarrow f(x) = c^{-1} p(x )\Rightarrow f(x )\) es asociado de \(p(x )\).
+	\end{itemize}
+	Luego \(p \) es irreducible (porque sus unicos divisores son constantes y asociados).
+	
+\end{proof}
+\begin{proposition}
+	Sea \(p(x) \in K[x ]\) no constante
+	\[
+		p(x) \text{ es reducible} \iff \exists q(x), r(x) \in K[x] \mid p(x) = q(x) r(x) \text{ con } gr(q), gr(r) < gr(p)
+	\]
+\end{proposition}
+\begin{proof}
+	``\(\Rightarrow \)'' \(p(x )\) es reducible \(\Rightarrow \exists q(x) \) divisor de \(p(x )\) que no es ni constante ni asociado de \(p(x ) \Rightarrow \exists r(x) \mid p (x) = q(x) \cdot r(x) \).
+	
+	Falta demostrar que \(gr(q), gr(r) < gr(p)\). Por reduccion al absurdo, supongo que \(gr(q) = gr(p) \Rightarrow gr(p) =\underbrace{ gr(q)}_{= gr(p)} + gr(r) \Rightarrow gr(r) = 0 \Rightarrow r(x) = c  \) constante \(\Rightarrow q(x) = c^{-1} p(x) \Rightarrow q(x) \) es asociado de \(p(x )\). Esto es una contradiccion porque habiamos dicho que \(q(x )\) no era asociado.
+	
+	Supongamos que \(gr(r) = gr(p )\Rightarrow gr(p) = gr(q) + \underbrace{gr(r)}_{= gr(p )} \Rightarrow gr(q) = 0 \Rightarrow q(x) = c \) constante.
+	
+	``\(\Leftarrow \)'' Supongamos que \(f(x) = g(x) \cdot h(x) \) con \(gr(q), gr(r) < gr(p) \Rightarrow g(x)\) y \(h(x)\) no pueden ser constantes y no pueden ser asociados de \(f(x )\).
+	
+	Como \(f(x) = g(x) h(x )\), \(g(x )\) divide a \(f(x )\) asi que \(f(x )\) es reducible.
+\end{proof}
+
+\begin{proposition}
+	~\begin{enumerate}
+		\item Si \(p(x )\) irreducible cumple \(p(x) | a(x) b(x )\) entonces \(p(x) | a(x )\) o \(p(x) | b(x )\).
+		\item Si \(p(x )\) divide a \(\prod\limits_{i =1}^{n} f_i (x) \) entonces \(\exists i \) tal que \(p(x) | f_i (x )\).
+	\end{enumerate}
+\end{proposition}
+\begin{theorem}[Factorizacion unica]
+	Se dice que \(K[x]\) es un dominio de factorizacion unica (DFU) si todo \(f(x) \in K[x ]\) es producto de polinomios irreducibles.
+	
+	Ademas, si \(f(x) = p_1 (x) \cdots p_r (x) = q_1(x) \cdots q_s (x )\), entonces \(r = s \) y los factores se pueden reordenar de manera que cada \(f_j \) sea asociado de \(q_j \).
+\end{theorem}
+
+\subsection{Raices de un polinomio}
+\begin{definition}
+	Si \(A \) es un a.c.c.u. y sea \(p(x) \in A[x ]\), definimos la funcion inducida por \(p(x )\) (o funcion evaluacion de \(p(x )\)) de la siguiente forma:
+	\[
+		\begin{aligned}
+			p \colon A & \longrightarrow A                                                        \\
+			b          & \longmapsto p (b ) = a_n b^{n} + a_{n-1} b^{n-1} + \cdots + a_1 b + a_0
+		\end{aligned}
+	\]
+	
+\end{definition}
+\begin{definition}
+	Dado \(p(x) \in A [x]\), decimos que \(b \) es una raiz de \(b\) si \(p(b) = 0 \).
+\end{definition}
+\begin{theorem}[Teorema del resto]
+	Sean \(K \) un cuerpo, \(p(x) \in K[x ]\) y \(b \in K \). El resto de dividir \(p(x )\) entre \(g(x) = x - b \) es \(p(b )\).
+\end{theorem}
+\begin{proof}
+	Como \(gr(r(x )) < 1 \), \( r(x)\) es una constante y la denotamos \(r \).
+	
+	Por el algoritmo de la division \(p(x) = (x - b) \cdot q(x) + r \).
+	
+	Evaluando en \(b \): \(p(b) = (b - b) \cdot q(b) + r \), es decir, \(r = p(a\b )\).
+\end{proof}
+\begin{corollary}[Teorema del factor lineal]
+	Sean \(p(x) \in K[x ]\) y \(b \in K \),
+	\[
+		p(b) = 0 \iff (x-b)|p \text{ (b es una raiz de } p(x))
+	\]
+\end{corollary}
+\begin{proof}
+	El resto de dividir \(p(x )\) entre \(x - b \) da cero \(\overset{\text{T. resto} }{\iff } p(b) = 0 \iff b \) es una raiz.
+\end{proof}
+\begin{corollary}
+	\label{raices}
+	Sea \(f(x) \in K[x ]\) de grado \(n \geq  1 \). Entonces \(f\) tiene, como mucho, \(n \) raices.
+\end{corollary}
+\begin{proof}
+	Lo demostraremos por induccion.
+	
+	Para \(n = 1 \), \(f(x) = a_1 x + a_0 \Rightarrow\) la raiz es \(\frac{-a_0}{a_1}\). Luego se cumple para el caso base.
+	
+	Supongamos que es cierto para \(n \) y veamos que tambien lo es para \(n + 1 \).
+	
+	Sea \(f(x )\) con \(gr(f(x)) = n + 1 \).
+	\begin{itemize}
+		\item Si no tiene raices, ya estaria.
+		\item Si tiene raices, sea \(a \in K \) una de las raices.
+		      \[
+			      f(x) = (x - a) \cdot h(x )
+		      \]
+		      Veamos que \(\set{\text{ raices de }f(x) } = \set{a} \cup \set{\text{raices de } h(x) }\).
+		      
+		      \(\subseteq ]\) Sea \(c \) una raiz de \(f(x )\) que no sea \( a \). Como sabemos que \(f(x) = (x-a)h (x)\), evaluando en \(c \), \(u = f(c) = \underbrace{(c - a )}_{\neq 0} \cdot h(c) \Rightarrow h(c) = 0\), por lo que \(c \) es raiz de \(h \).
+		      
+		      \(\supseteq ] \) Claramente \( a \) es una raiz de \(f(x )\) porque lo estamos suponiendo.
+		      
+		      Si \(b \) es raiz de \(h(x )\) (\(h(b) = 0\)) \(\Rightarrow f(b) = (b-a) \cdot \underbrace{h(b)}_{= 0} = 0\). Luego \(b \) es raiz de \(f(x )\).
+		      
+		      Aplicamos la hipotesis de induccion a \(h(x )\), que tiene grado \(n \). \(h(x )\) tiene, como mucho, \(n \) raices (que son raices de \(f(x )\)).
+		      
+		      Ademas, tenemos que \(a \) es una raiz de \(f(x ) \Rightarrow f(x)\) tiene como mucho \(n + 1 \) raices.
+	\end{itemize}
+\end{proof}
+\begin{corollary}
+	Sean \(p \in K[x ]\) con \(gr(p) \geq 2 \).
+	\begin{enumerate}
+		\item \(p \) irreducible \(\Rightarrow p \) no tiene raices en \(K \).
+		\item \(p \) no tiene raices en \(K \) y \(gr(p) \in \set{2,3} \Rightarrow p\) irreducible
+	\end{enumerate}
+\end{corollary}
+\begin{remark}
+	~\begin{enumerate}
+		\item Los polinomios irreducibles no tienen raices.
+		\item Si \(f(x )\) tiene grado \(2 \) o \(3 \) y no tiene raices, entonces \(f(x )\) es irreducible.
+	\end{enumerate}
+\end{remark}
+\begin{corollary}
+	Sean \(K \) un cuerpo infinito y \(f,g \in K[x ]\).
+	\[
+		f(x) = g(x) \iff f \text{ y } g \text{ inducen la misma funcion en }K
+	\]
+\end{corollary}
+\begin{proof}
+	``\(\Rightarrow \)'' Obvio.
+	
+	``\(\Leftarrow \)'' Consideremos \(h(x) = f(x) - g(x )\) un polinomio de cierto grado \(m < \infty \).
+	
+	Tenemos que \(\forall a \in K \), \(h(a) = f(a) - g(a) = 0 \). Es decir, todos los numeros de \(K \) (infinitos) son raices de \(h(x)\). Por el corolario \ref{raices}, \(h(x) \) es el polinomio \(0 \), es decir, \(f(x) = g(x )\).
+\end{proof}
+
+\subsection{Criterios de irreducibilidad}
+\subsubsection{Polinomios en \(\C[x ]\)}
+\begin{theorem}[Teorema fundamental del Algebra]
+	Sea \(p \in \C[x ]\) no constante. Entonces \(p \) tiene una raiz en \(\C \).
+\end{theorem}
+\begin{proof}
+	Gauss, 1789. Demostracion compleja.
+\end{proof}
+
+\begin{corollary}
+	Todo polinomio de grado \(n \) factoriza como producto de \(n \) polinomios de grado \(1 \).
+\end{corollary}
+\begin{proof}
+	Sea \(f(x )\) de grado \(n \geq  2 \).
+	
+	Buscamos \(a_1 \in \C \) raiz de \(f(x )\). Entonces, \(f(x) = (x - a_1) \cdot f_1(x) = (x-a_1) (x-a_2) f_2 (x) = (x - a_1) (x - a_2) \cdots (x - a_{n-1}) \cdot \) factor de grado 1.
+\end{proof}
+\begin{corollary}
+	Sea \(p \in \C[x ]\) no constante. Entonces \(p \) es irreducible si y solo si \(gr(p) = 1 \).
+\end{corollary}
+
+\subsubsection{Polinomios en \(\R[x ]\)}
+\begin{definition}
+	Dado un \(z = a + bi \in \C \), se define su conjugado \(\overline{z }\) como \(\overline{z} = a - bi \)
+\end{definition}
+\begin{remark}
+	Dados \(z_1,z_2 \in \C \), \(\overline{z_1 \cdot z_2} = \overline{z_1} \cdot \overline{z_2 }\).
+	
+	Luego \(\overline{(z)^{n} } = (\overline{z})^{n} \)
+\end{remark}
+\begin{proposition}
+	Sea \(p(x) \in \R[x ]\) y \(z = a + bi \) una raiz de \(p \) en \(\C \). Entonces \(\overline{z} = a - bi \) es tambien raiz de \(p \) en \(\C \) con la misma multiplicidad que \(z \).
+\end{proposition}
+\begin{proof}
+	Sea \(f(x) = a_n x^{n} + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0  \in \R[x]\).
+	
+	Sea \(z \in \C \) raiz de \(f(x )\). Entonces, \(f(z) = 0 \), es decir, \(a_n z^{n} + \cdots + a_1 z + a_0 = 0\).
+	
+	Tomamos conjugados en los dos lados de la igualdad \(\Rightarrow \overline{a_n z^{n} + \cdots + a_1 z + a_0} = \overline{0} = 0 \).
+	
+	Asi, nos queda \(a_n (\overline{z})^{n} + a_{n-1} (\overline{z})^{n-1} + \cdots + a_1 \overline{z} + a_0  \) (usando que \(a_n, a_{n-1}, \ldots, a_0 \in \R \)). Luego tenemos que \(f(\overline{z}) = 0 \), es decir, \(\overline{z }\) es raiz de \(f(x )\).
+\end{proof}
+\begin{theorem}
+	Sea \(f(x) \in \R[x ]\) no constante. Entonces
+	\[
+		f(x) \text{ es irreducible} \iff \begin{dcases}
+			gr(p) = 1                                   \\
+			\text{o bien}                               \\
+			gr(p) = 2 \text{ y } p(x) = ax^{2} + bx + c \\
+			\; \text{ con }b^{2} - 4ac < 0
+		\end{dcases}
+	\]
+\end{theorem}
+\begin{proof}
+	``\(\Leftarrow \)'' Obvia.
+	
+	``\(\Rightarrow \)'' No la hacemos.
+\end{proof}
+\begin{corollary}
+	Sea \(p \in \R[x ]\) no constante. Entonces \(p \) factoriza en producto de factores irreducibles de grados \(1 \) y \(2 \).
+\end{corollary}
+\begin{corollary}
+	Si \(f(x) \in \R[x ]\) de grado impar, al menos tiene una raiz real.
+\end{corollary}
+
+\subsubsection{Polinomios en \(\Q[x ]\)}
+\begin{remark}
+	Lo mejor es ``quitar denominadores'' y suponer que \(p(x) \in \Z[x ]\). Ejemplo: \(\frac{1}{2}x^{2} + \frac{3}{2}x + \frac{7}{2} = \frac{1}{2} (x^{2} + 3x + 7 ) \)
+\end{remark}
+\begin{definition}
+	Decimos que un numero racional \(x = \frac{r}{ s }\) esta en forma reducida si \(mcd(r,s) = 1 \).
+\end{definition}
+\begin{theorem}
+	Sea \(f(x) = a_n x^{n} + a_{n-1} x^{n-1} +
+	\cdots + a_1 x + a_0 \in \Z[x]  \).
+	
+	\[
+		\text{Un racional } \frac{r}{s} \text{ (en forma reducida) es raiz de }f(x) \Rightarrow r | a_0, s | a_n
+	\]
+\end{theorem}
+\begin{proof}
+	Supongamos que \(\frac{r}{s }\) es raiz de \(f(x )\).
+	\begin{multline*}
+		0 = a_n (\frac{r}{s})^{n} + \cdots + a_1 \frac{r}{s} + a_0 \overset{\cdot s^{n} }{\Rightarrow} 0 = a_n r^{n} + a_{n-1} r^{n-1} s  + a_1 r s^{n-1} + a_0 \cdot s^{n} \Rightarrow -a_0 s^{n} = \\ = r (a_n r^{n-1} + a_{n-1} r^{n-2} s +  \cdots + a_1 s^{n-1}  )
+	\end{multline*}
+	Por tanto, \(r | -a_0 \cdot s^{n} \Rightarrow r | a_0  \).
+	
+	Ademas, \(-a_n r^{n} = s( \cdots ) \Rightarrow s | -a_n r^{n} \Rightarrow s | a_n \).
+\end{proof}
+\begin{example}
+	El polinomio \(x^{4} - 5x^{2} + 1 \) tiene alguna raiz en \(\Q \)?
+	
+	\(\set{\text{candidatos a raices}} = \set{\frac{r}{s} \mid r|1, s|1  } = \set{\pm 1}\).
+	
+	Tomo \(\lambda = 1 \), \(1^{4} - 5 \cdot 1^{2} + 1 \neq 0  \).
+	
+	Tomo \(\lambda = -1 \), \((-1)^{4} - 5 \cdot (-1)^{2} + 1  \neq 0\).
+	
+	Por tanto, este polinomio no tiene raices racionales, es decir, no tiene factores de grado 1.
+	
+	Demostrar que tampoco tiene factores de grado 2:
+	Por reduccion al absurdo, supongamos que \(x^{4} - 5x^{2} + 1 = (x^{2} + ax + b )(x^{2} + cx + d ) \; a,b,c,d \in \Z \).
+	
+	\((x^{2} + ax + b )(x^{2} + cx + d ) = x^{4} + \underbrace{(a+c)x^{3}}_{0} + \underbrace{(d + b + ac)x^{2}}_{-5} + \underbrace{(ad + bc)x}_{0} + \underbrace{bd}_1    \). Esto acaba en una contradiccion.
+\end{example}
+
+\begin{lemma}[Lema de Gauss]
+	Dado \(p(x) \in \Z[x]\). Si \(p(x) \) es irreducible en \(\Z[x ]\), entonces \(p(x )\) es irreducible en \(\Q[x ]\).
+\end{lemma}
+
+\begin{theorem}[Criterio de Eisenstein]
+	Sea \(p(x) = \sum_{i=1}^{n } a_i x^{i} \in \Z[x] \) no constante con \(a_n \neq 0 \).
+	
+	Si \(\exists p \in \N \) primo tal que:
+	\begin{itemize}
+		\item \(p | a_0, a_1 ,\ldots,a_{n-1}\)
+		\item \(p \nmid a_n \)
+		\item \(p^{2} \nmid a_0 \)
+	\end{itemize}
+	entonces \(p(x )\) es irreducible en \(\Q[x ]\).
+\end{theorem}
+\begin{proof}
+	En el libro de Hungerford.
+\end{proof}
+\begin{example}
+	Ejemplo: \(x^{4} + 2x^{2} + 2x + 2  \). Tomando \(p = 2 \), vemos que es irreducible.
+\end{example}
+\begin{theorem}[Criterio modular]
+	Sea \(p(x) = \sum_{i=0 }^{n } a_i x^{i } \in \Z[x ]\) no constante con \(a_n \neq 0 \).
+	
+	Si \(\exists q \in \N \) primo tal que:
+	\begin{itemize}
+		\item \(q \nmid a_n \) (es decir, el grado no varia).
+		\item \(\overline{p}(x) \coloneqq \sum_{i =0 }^{n } [a_i]_q x^{i} \) es irreducible en \(\Z_q [x ]\)
+	\end{itemize}
+	entonces \(p(x )\) es irreducible en \(\Q[x ]\).
+\end{theorem}
+\begin{proof}
+	En el libro de Hungerford.
+\end{proof}
+\begin{example}
+	Sea \(p(x) = x^{5} + 8x^{4} + 3x^{2} + 4x + 7\). Pensamos este polinomio en \(\Z_2 \): \(\overline{p}(x) = x^{5} + x^{2} + 1 \in \Z_2[x]  \).
+	
+	\(\overline{p}(0) = 1 \neq 0\) y \(\overline{p}(1) = 1 \neq 0 \Rightarrow\) no tiene factores de grado 1.
+	
+	En caso de ser reducible, tendria que descomponerse en dos factores irreducibles, siendo uno de grado 2 y otro de grado 3.
+	
+	Como son los irreducibles en \(\Z_2[x ]\) de grado 2? \(x^{2} + ax + b \Rightarrow g(0)\) tiene que ser distinto de cero \(\Rightarrow g(0) = b = 1\). Tambien \(g(1) = 1 + a + b \neq 0 \Rightarrow a = 1\).
+	
+	Vamos a ver dividir \(x^{5} + x^{4} + 1  \) entre \(x^{2} + x + 1 \). Nos da resto \(1 \). Por tanto no tiene factores de grado 2. Hemos llegado a que \(x^{5} + x^{4} + 1   \) es irreducible en \(\Z_2[x ]\). Aplicando el criterio modular, \(x^{5} + 8x^{4} + 3x^{2} + 4x + 7    \) es irreducible en \(\Q[x ]\).
+\end{example}
+
+\subsection{Cuerpos finitos}
+\begin{theorem}
+	Sean \(K \) un cuerpo, \(p(x ) \in K[x ]\) no constante e \(I = (p(x ))\) el ideal principal generado por \(p(x )\). Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item \(p(x )\) es irreducible
+		\item \(K[x]/I \) es un dominio de integridad
+		\item \(K[x]/I \) es un cuerpo
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{itemize}
+		\item \(3) \Rightarrow 2) \) Obvio (tema 1).
+		\item \(1) \Rightarrow 3)\) Vamos a ver que \(I = (p(x ))\) es un ideal maximal de \(K[x ]\). Supongamos que \(\exists  M \) ideal de \(K[x ]\) tal que \(I \subsetneq M \subseteq K[x ]\). Por tanto, \(\exists q(x) \in M \) pero \(q(x) \not\in I \).
+		      
+		      Como \(p(x )\) es irreducible, \(mcd(p(x),q(x )) = 1\). Por el teorema de existencia de identidades de Bezout, \(\exists a(x), b(x )\) tal que \(1 = \underbrace{a(x) \underbrace{p(x)}_{\in M}}_{\in M} + \underbrace{b(x) \underbrace{q(x)}_{M}}_{\in M} \in M \Rightarrow K[x] \subseteq M\).
+		      
+		      Luego \(I \) es maximal. Por el teorema, \(K[x]/I \) es un cuerpo
+		\item \(2) \Rightarrow 1)\) Supongamos que \(K[x]/(p(x)) \) es dominio de integridad y veamos que \(p(x )\) es irreducible.
+		      
+		      Por reduccion al absurdo, supongamos que \(p(x) = q_1(x) \cdot q_2(x) \) con \(gr(q_1), gr(q_2) < gr(p )\).
+		      
+		      \[
+			      \begin{rcases}
+				      0 \neq q(x) + I \\
+				      0 \neq q_2 (x) + I
+			      \end{rcases} \Rightarrow \underbrace{(q_1(x) + I)}_{\neq 0} \underbrace{(q_2(x) + I)}_{\neq 0} = p(x) + I = 0
+		      \]
+		      Esto es una contradiccion porque es dominio de integridad. Luego \(p(x )\) es irreducible.
+		      
+	\end{itemize}
+\end{proof}
+\begin{example}
+	Sea \(p(x) - x^{2} + x + 1 \leftarrow \) irreducible en \(\Z_2[x ]\).
+	
+	\[
+		\Z_2[x] / (p(x)) \leftarrow \text{ cuerpo de 4 elementos.}
+	\]
+	Todos los restos de dividir \(a_1 x + a_0 \) entre \(p(x )\)  son \(\set{[0],[1],[x],[1] + [x]}\).
+\end{example}
+\begin{theorem}
+	Sea \(p(x )\) irreducible en \(\Z_p[x ]\). Entonces \(\Z_p[x ]/ (p(x))\) es un cuerpo finito con \(p^{n } \)-elementos donde \(n = gr(p(x))\).
+\end{theorem}
+
+\section{Mas ejemplos de anillos. DFU, DIP y DE.}
+\subsection{Cuerpo de fracciones de un anillo}
+\begin{proposition}
+	Sea \(A \) un dominio de integridad. Consideramos el conjunto
+	\[
+		S = \set{(a,b) / a,b \in A, b \neq 0_A }
+	\]
+	junto con la relacion \((a,b) \thicksim (c,d )\) si y solo si \(ad = bc \). Esta relacion es de equivalencia.
+\end{proposition}
+\begin{proposition}
+	Consideramos el conjunto cociente \(K = S/\thicksim \). Para la clase de equivalencia de un elemento, utilizaremos la notacion
+	\[
+		[(a,b)]_{\thicksim} = \frac{a}{b }
+	\]
+	Definimos en \(K \) las siguientes dos operaciones:
+	\[
+		\frac{a}{b} + \frac{c}{d} \coloneqq \frac{ad + bc}{bd} \; \forall \frac{a}{b}, \frac{c}{d} \in S / \thicksim
+	\]
+	\[
+		\frac{a}{b} \cdot \frac{c}{d} \coloneqq \frac{ad}{bc } \forall \frac{a}{b}, \frac{c}{d} \in S / \thicksim
+	\]
+	Estas operaciones estan bien definidas (no dependen de la eleccion de representantes).
+\end{proposition}
+\begin{proposition}
+	\(K \) dotado de las dos operaciones anteriores es un cuerpo.
+	
+	El conjunto \(K \) recibe el nombre de \textbf{cuerpo de fracciones}  de \(A  \). Se denota \(K = cdf(A )\).
+	
+	Ademas, existe un monomorfismo de anillos unitarios \(\varphi \colon A \to cdf(A ), \; a \mapsto \frac{a}{1}\). Mas aun, si \(A\) es un cuerpo entonces \(\varphi\) es un isomorfismo: \(A \cong cdf(A )\).
+\end{proposition}
+\begin{example}
+	\begin{itemize}
+		\item Si \(A = \Z \), entonces \(cdf(A) = \Q \).
+		\item Si \(A = K[x ]\) (sirve con que \(K \) sea DI), \(cdf(A) = \set{\underbrace{\frac{p(x)}{q(x)}}_{\text{(clases)} } / p(x), q(x) \in A, q(x) \neq 0}\). En este caso \(cdf(A) = K(x )\).
+	\end{itemize}
+\end{example}
+\subsection{Los anillos \(A[b ]\), \(K(b )\)}
+Vamos a ver otros dominios de integridad de los que podemos hallar su cuerpo de fracciones.
+
+\begin{proposition}
+	Sea \(B \) un a.c.c.u., \(A \) un subanillo de \(B \), \(b \in B \) y la funcion
+	\[
+		\begin{aligned}
+			f_b \colon A[x ] & \longrightarrow B                \\
+			p(x )            & \longmapsto f_b (p(x )) = p(b )
+		\end{aligned}
+	\]
+	Entonces \(f_b \) es un homomorfismo de anillos.
+\end{proposition}
+\begin{definition}
+	\(A[b] \coloneqq im(f_b) = \set{p(b) \mid p \in A[x ]}\)
+\end{definition}
+\begin{corollary}
+	\(A[b ]\) es un subanillo de \(B \).
+\end{corollary}
+
+\begin{example}
+	\begin{itemize}
+		\item \(\R[i] = \set{p(i) \mid p(x) \in \R[x]} \overset{i^{2} = -1 }{=} \set{a + bi \mid a,b \in \R} = \C \).
+		      
+		      Por ejemplo, \(3x^{3} + x^{2} + x + 2 = p(x) \rightarrow p(i) = -3 i - 1 + i + 2 = -2i + 1 \in \R[i] \).
+		      
+		      Ademas, se tiene que \(x^{2} + 1 \) es el polinomio minimo de \(i \).
+		\item \(\Z[\sqrt{2} ] = \set{p(\sqrt{2} ) \mid p \in \Z[x]} = \set{a + b\sqrt{2} \mid a,b \in \Z } \subseteq \R \).
+		      
+		      \(\Z[x] \Rightarrow p(x) = (x^{2} - 2 )q(x) + \underbrace{r(x)}_{a + bx}\).
+		      
+		      Al evaluarlo en \(\sqrt{2}, p(\sqrt{2} ) = ((\sqrt{2} )^{2} - 2 )q(x) + r(\sqrt{2} ) = r(\sqrt{2} ) = a + b\sqrt{2} \).
+		\item \(\Q[\sqrt{2} ] = \set{a + b\sqrt{2} \mid a,b \in \Q}\subseteq \R \).
+		\item \(\Q[\sqrt[3]{2} ] = \set{a + b \sqrt[3]{2}\mid a,b \in \Q }\). El polinomio minimo es \(x^{3} - 2  \).
+		      
+		\item \(\Z[i] = \set{a + bi \mid a,b \in \Z} \subseteq \C \) (enteros de Gauss).
+		      
+		      
+	\end{itemize}
+\end{example}
+\begin{definition}
+	Sea \(K \) un cuerpo.
+	\[
+		K(x) \coloneqq cdf(K[x]) = \set{\frac{p(x)}{q(x)} \mid p,q \in K[x ], q \neq 0 }
+	\]
+\end{definition}
+\begin{definition}
+	Sean \(L \) otro cuerpo tal que \(K \subseteq L \) y \(  b \in L\).
+	\[
+		K(b) \coloneqq cdf(K[b]) = \left\{ \frac{p(b)}{q(b) }\mid p,q \in K[x], q(b) \neq 0\right\}
+	\]
+\end{definition}
+\begin{remark}
+	Si \(K[b ]\) es cuerpo, entonces \(K[b] = K(b )\).
+	
+	Por ejemplo \(\Q[\sqrt{2} ] = \Q(\sqrt{2} )\).
+\end{remark}
+
+\subsection{DFU, DIP, DE}
+\begin{definition}
+	Sea \(A \) un anillo con unidad.
+	\[
+		A^{*} \coloneqq \set{a \in A \mid a \text{ es invertible} }
+	\]
+\end{definition}
+\begin{definition}[Elemento irreducible]
+	Sea \(a \in A \setminus A^{*}, a \neq 0 \). Decimos que \(a \) es irreducible si sus unicos divisores son elementos invertibles y asociados de \(a \). En caso contrario decimos que \(a \) es reducible.
+\end{definition}
+\begin{definition}[DFU]
+	Sean \(A \) un DI. Decimos que \(A \) es dominio de factorizacion unica (DFU) si todo elemento \(a \in A \setminus A^{*}, a \neq 0  \), factoriza como producto de elementos irreducibles de manera unica (salvo reordenacion y asociados).
+\end{definition}
+\begin{example}
+	~\begin{itemize}
+		\item \(K[x ]\) es un DFU.
+		\item \(\Z \) es un DFU (teorema fundamental de la aritmetica).
+	\end{itemize}
+\end{example}
+\begin{definition}[DIP]
+	Sea \(A \) un DI. Decimos que \(A\) es dominio de ideales principales (DIP) si todo ideal de \(A \) es principal, es decir, \(\forall I \) ideal de \(A \) existe \(a \in A \) tal que \(I = (a )\).
+\end{definition}
+\begin{example}
+	\begin{itemize}
+		\item \(\Z \) es DIP. Todos los ideales de \(\Z \) son de la forma \(m\Z \) para algun \( m \in \Z \).
+		\item \(\Z[x ]\) no es DIP.
+		\item \(K[x ]\) es DIP.
+	\end{itemize}
+\end{example}
+\begin{definition}[DE]
+	Sea \(A \) un DI. Decimos que \(A \) es \textbf{dominio euclideo} (DE) si existe una funcion, llamada \textbf{norma}, \(\delta \colon A \setminus \set{0_A} \rightarrow \N \cup \set{0 }\) tal que
+	\begin{enumerate}
+		\item \(\forall a,b \in A \setminus \set{0_A }\) se tiene que \(\delta(a) \leq \delta(ab )\)
+		\item \(\forall a,b \in A, b \neq 0_A \), \(\exists q,r \in A \) tales que \(a = bq + r \) y \(r \) cumple que \(\delta(r) < \delta(b )\) o bien \(r = 0_A \).
+	\end{enumerate}
+\end{definition}
+\begin{example}
+	\begin{itemize}
+		\item \(K[x ]\) es un DE con \(\delta = \) grado.
+		\item \(\Z\) con \(\delta = \) ``valor absoluto'' tambien es DE.
+	\end{itemize}
+\end{example}
+\begin{theorem}
+	\(A \) DE \(\Rightarrow A \) DIP \(\Rightarrow A \) DFU \(\Rightarrow A \text{ DI }\)
+\end{theorem}
+\begin{example}
+	Contraejemplos a los reciprocos:
+	\begin{itemize}
+		\item \(\Z[\sqrt{-5} ]\) es DI pero no DFU.
+		\item \(\Z[x ]\) es DFU pero no DIP.
+		\item \(\Z \left [ \frac{n + \sqrt{-19} }{2} \right ]\)
+	\end{itemize}
+\end{example}
+
+\part{Grupos}
+\section{Grupos. Generalidades}
+\subsection{Definiciones básicas}
+\begin{definition}[Grupo]
+	Un grupo es un par \((G, \otimes )\) donde:
+	\begin{itemize}
+		\item \(G \) es un conjunto no vacio
+		\item \(\otimes\colon G \times G \to G \) es una operacion interna
+	\end{itemize}
+	que cumplen:
+	\begin{enumerate}
+		\item Asociativa: \(\forall a,b,c \in G \; (a \otimes b) \otimes c = a \otimes (b \otimes c)\)
+		\item Existencia de neutro: \(\exists e_G \in G \mid \forall a \in G \; a \otimes e_G = e_G \otimes a = a \)
+		\item Existencia de inversos: \(\forall a \in G \; \exists b \in G \mid a \otimes b = b \otimes a = e_G \)
+	\end{enumerate}
+\end{definition}
+\begin{definition}
+	Un grupo \((G,\otimes )\) es abeliano o conmutativo si la operacion \(\otimes \) es conmutativa, es decir, \(\forall a,b \in G \; a \otimes b = b \otimes a \).
+\end{definition}
+\begin{proposition}
+	\begin{enumerate}
+		\item Sean \(G \) un conjunto y \(\otimes \) una opreacion en \(G \) con elemento neutro \(e_G \). Se cumple que \(e_G \) es el unico elemento de \(G \) con la propiedad que define al neutro.
+		\item Sea \((G, \otimes )\) un grupo. Se cumplen las propiedades de cancelacion:
+		      \[
+			      \begin{aligned}
+				      \forall a,b,c \in G \quad & \quad a \otimes b = a \otimes c \Rightarrow b = c \\
+				                                & b \otimes a = c \otimes a \Rightarrow b = c
+			      \end{aligned}
+		      \]
+		\item En un grupo, el inverso de cualquier elemento es unico.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Supongamos que \(\exists e_1,e_2 \) que tienen la propiedad de neutro. Entonces \(e_1 = e_1 \otimes e_2 = e_2 \Rightarrow e_1 = e_2 \).
+		\item Como \(a \in G \) tiene inverso, multiplicando por el inverso en ambos lados se obtiene el resultado (trivial).
+		\item Sea \(a \in G \) y supongamos que \(\exists b_1,b_2 \) que actuan como inversos de \(a \). Entonces \(b_1 = b_1 \otimes e = b_1 \otimes (a \otimes b_2) = (b_1 \otimes a) \otimes b_2 = e \otimes b_2 = b_2 \).
+	\end{enumerate}
+\end{proof}
+En el caso en el que \(G \) sea conmutativo, \(\otimes \) se suele denotar \(+ \), al elemento neutro se le denota \(0 \) y el inverso de cada elemento \(a \in G \) se llama opuesto y se denota \(-a \).
+
+En general, la operacion interna en el grupo se denota como \(\cdot \) o simplemente por yuxtaposicion \(a \cdot b = ab = a \otimes b \), y \(a^{-1}  \) denota el inverso de \(a \in G \).
+
+\begin{definition}
+	El orden de un grupo \(G \) es su numero de elementos, es decir, \(\left\vert G  \right\vert \).
+	
+	Notacion: \(ord(G)\).
+\end{definition}
+\begin{example}
+	\begin{itemize}
+		\item \((A, +, \cdot )\) es un anillo \(\Rightarrow (A, + )\) es un grupo abeliano.
+		\item \((A, +, \cdot )\) es un anillo \(\Rightarrow (A^{*}, \cdot )\) es un grupo, con \(A^{*} = \set{\text{elementos invertibles de A} }\)
+		\item En particular, \(\Z^{*}_p = \Z_p - \set{0}\) con \(p \) primo.
+		      
+		      \(\Z^{*}_6 = \set{1,5} = \set{m \in \Z_6 \mid mcd(m,6)= 1}\)
+		      
+		      \(\Z^{*}_8 = \set{1,3,5,7} \)
+		\item (\(\mathcal{\MakeUppercase{m}}_{m\times n}(K), + \)) es un abeliano.
+		\item Se denomina grupo general lineal a \( GL_n = (\set{A \in \mathcal{\MakeUppercase{m}}_n (K) \mid det(A) \neq 0}, \cdot\)).
+		\item Se denomina grupo especial lineal a \(SL_n = (\set{A \in \mathcal{\MakeUppercase{m}}(K) \mid det(A) = 1}, \cdot)\) (contenido en el anterior).
+	\end{itemize}
+\end{example}
+\begin{proposition}
+	Sean \(G \) un grupo y \(a \in G \). Las funciones \(f_a \colon G \to G \) y \(g_a \colon G \to G \) definidas como \(f_a(x) \coloneqq ax \) y \(g_a (x) \coloneqq xa \) son biyectivas.
+\end{proposition}
+\begin{definition}[Funcion phi de Euler]
+	La funcion \(\varphi \colon \N \setminus \set{1 } \to \N \) definida como \(\varphi(n) \coloneqq ord(\Z^{*}_n )\) recibe el nombre de funcion phi de Euler.
+\end{definition}
+\begin{proposition}
+	\begin{enumerate}
+		\item \(p \) es primo \(\Rightarrow \varphi(p) = p - 1\)
+		\item \(p \) es primo y \(k \geq 2 \Rightarrow \varphi(p^{k} ) = (p-1)p^{k-1 } \)
+		\item \(m,n \geq 2 \) tales que \(mcd(m,n) = 1 \Rightarrow \varphi(mn) = \varphi(m) \varphi(n )\)
+	\end{enumerate}
+\end{proposition}
+\begin{definition}
+	Sea \((G, \cdot )\) un grupo y \(\varnothing \neq H \subseteq G \). Decimos que \(H \) es subgrupo de \(G \) si:
+	\begin{enumerate}
+		\item \(\forall r,s \in H \quad r \cdot s \in H \)
+		\item \((H,\cdot|_{H \times H })\) cumple la definicion de grupo.
+	\end{enumerate}
+\end{definition}
+\begin{proposition}[Caracterizacion 1 de subgrupo]
+	Sea \((G, \cdot )\) un grupo y \(H \subseteq G \).
+	
+	\(H \) es subgrupo de \(G \) si y solo si se cumplen:
+	\begin{enumerate}
+		\item \(e_g \in H \)
+		\item \(\forall r \in H \quad r^{-1} \in H \)
+		\item \(\forall r,s \in H \quad r \cdot s \in H \)
+	\end{enumerate}
+\end{proposition}
+\begin{proposition}[Caracterizacion 2 de subgrupo]
+	Sea \((G, \cdot )\) un grupo y \(H \subseteq G \).
+	
+	\(H \) es subgrupo de \(G \) si y solo si se cumplen:
+	\begin{itemize}
+		\item \(e_g \in H \)
+		\item \(\forall r,s \in H \quad r \cdot s^{-1} \in H \)
+	\end{itemize}
+\end{proposition}
+\begin{definition}
+	Sean \((G_1, \otimes_1)\) y \((G_2, \otimes_2 )\) dos grupos. En el conjunto \(G_1 \times G_2 \) se define la operacion
+	\[
+		(x_1,x_2) \otimes (y_1, y_2) \coloneqq (x_1 \otimes_1 y_1,x_2 \otimes_2 y_2 ) \in G_1 \times G_2
+	\]
+\end{definition}
+\begin{proposition}
+	\((G_1 \times G_2, \otimes )\) es un grupo.
+\end{proposition}
+\begin{definition}
+	Sea \((G, \cdot )\) un grupo y \(a \in G \) podemos definir:
+	\[
+		\begin{aligned}
+			L_a \colon G & \longrightarrow G \\
+			x            & \longmapsto ax
+		\end{aligned} \qquad
+		\begin{aligned}
+			R_a \colon G & \longrightarrow G \\
+			x            & \longmapsto  xa
+		\end{aligned}
+	\]
+	Ademas, \(L_a \) y \(R_a \) son biyectivas.
+\end{definition}
+\begin{definition}[Homomorfismo]
+	Sean \((G_1, \otimes_1 )\) y \((G_2, \otimes_2 )\) dos grupos y \(f \colon G_1 \to G_2 \) una funcion. Decimos que \(f \) es homomorfismo de grupos si cumple:
+	\[
+		\forall x,y \in G_1 \quad f(x \otimes_1 y ) = f(x) \otimes_2 f(y )
+	\]
+\end{definition}
+\begin{remark}
+	En general, \(L_a \) y \(R_a \) no son homomorfismos de grupos.
+\end{remark}
+\begin{definition}[Monomorfismo, epimorfismo, isomorfismo, automorfismo]
+	Sean \(G_1 \) y \(G_2 \) dos grupos y \(f \colon G_1 \to G_2 \) una funcion.
+	
+	Decimos que \(f \) es un monomorfismo de grupos si \(f \) es un homomorfismo inyectivo (\(G_1 \hookrightarrow G_2	\)),  epimorfismo si \(f \) es un homomorfismo suprayectivo \((G_1 \twoheadrightarrow G_2	)\), isomorfismo si \(f \) es un homomorfismo biyectivo, y automorfismo si \(f \) es un isomorfismo tal que \(G_1 = G_2 \).
+\end{definition}
+\begin{definition}[Grupos isomorfos]
+	Sean \(G_1 \) y \(G_2 \) dos grupos. Decimos que \(G_1 \) y \(G_2 \) son grupos isomorfos si existe algun isomorfismo \(f \colon G_1 \to G_2 \).
+	
+	Notacion: \(G_1 \cong G_2 \).
+\end{definition}
+\begin{proposition}
+	Sea \(f \colon G_1 \to G_2 \) un homomorfismo de grupos. Se cumple:
+	\begin{enumerate}
+		\item \(f(e_1) = e_2 \)
+		\item \(\forall a \in G_1 \; f(a^{-1} ) = (f(a))^{-1} \)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item \(f(e_1) = f(e_1 \cdot_1 e_1) = f(e_1) \cdot_2 f(e_1) \overset{\text{Cancelacion}}{\Rightarrow} e_2 = f(e_1)\).
+		\item \(f(a) \cdot f(a^{-1} ) = f(a \cdot a^{-1} )=  f(e_1) = e_2 \Rightarrow (f(a))^{-1} = f(a)\).
+		      
+		      Analogamente, \(f(a^{-1} ) \cdot f(a ) = e_2 \).
+		      
+	\end{enumerate}
+\end{proof}
+\begin{proposition}
+	Sean \(f \colon G \to H \) y \(g \colon H \to L \) homomorfismos de grupos. Entonces \(g \circ f \) es un homomorfismo de grupos.
+\end{proposition}
+\begin{proof}
+	Trivial.
+\end{proof}
+\begin{proposition}
+	Sea \(f \colon G \to H \) un isomorfismo de grupos. Se cumple:
+	\begin{enumerate}
+		\item \(f^{-1} \) es isomorfismo de grupos.
+		\item \(G \) abeliano \(\Rightarrow H \) abeliano.
+	\end{enumerate}
+\end{proposition}
+\begin{proposition}
+	La relacion de isomorfia de grupos es una relacion de de equivalencia.
+\end{proposition}
+\begin{definition}
+	Sea \(f \colon G \to H \) un homomorfismo de grupos. Se definen el nucleo y la imagen de \(f \) como:
+	\begin{itemize}
+		\item \(Kerf \coloneqq \set{x \in G \mid f(x) = e_H }\)
+		\item \(Imf \coloneqq \set{y \in H \mid \exists x \in G \mid \exists f(x) = y }\)
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	\begin{enumerate}
+		\item \(Kerf \) es un subgrupo de \(G \).
+		\item \(f \) es inyectiva \(\iff  Kerf = \set{e_G }\).
+		\item \(Imf \) es un subgrupo de \(H \).
+		\item \(f \) es suprayectiva \(\iff Imf = H \).
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Veamos que \(Kerf \) es cerrado para la operacion. Si \(h_1, h_2 \in Kerf \), \(h_1 h_2 \in Kerf? \).
+		      \[
+			      f(h_1 h_2) \overset{\text{Homomorfismo} }{=} \underbrace{f(h_1)}_e \underbrace{f(h_2)}_e = e
+		      \]
+		      Luego \(h_1 h_2 \in Kerf \).
+		      
+		      Si \(h \in  H \), \(f(h^{-1} ) = (\underbrace{f(h)}_e)^{-1} = e \). \(Kerf \) es cerrado para opuestos.
+		      
+		      
+	\end{itemize}
+\end{proof}
+
+\subsection{Orden de un elemento}
+Sean \(G \) un grupo, \(a \in G \) y \(k \in \N \), denotamos \(a^{k} \coloneqq  \underbrace{a \cdot a \cdots a}_{k \text{ veces} } \), \(a^{-k} \coloneqq  (a^{-1} )^{k } 	 \) y \(a^{0} \coloneqq e_G \).
+
+\begin{definition}[Orden de un elemento]
+	Sean \(G \) un grupo y \(a \in G \).
+	\begin{itemize}
+		\item Decimos que \(a \) es de orden finito si \(\exists k \in \N \) tal que \(a^{k}  = e\). En ese caso definimos el orden de \(a \) como:
+		      \[
+			      ord(a) \coloneqq \min\set{k \in \N \mid a^{k} = e }
+		      \]
+		\item Decimos que \(a \) es de orden infinito si \(\not\exists k \in \N \) tal que \(a^{k}  = e\). En ese caso definimos el orden de \(a \) como:
+		      \[
+			      ord(a) \coloneqq \infty
+		      \]
+	\end{itemize}
+\end{definition}
+\begin{example}
+	\begin{enumerate}
+		\item \(G = (\Z_3, + ) \leftarrow\) grupo abeliano con neutro 0. En vez de escribir \(a^{k } ,\) escribiremos \(Ka = a + a + \cdots + a \) (k veces). Tenemos que \(o(0) = 1 \), \(o(1) = 8 \), \(o(2) = 4 \), \(o(3) = 8 \), \(o(4) = 2\), \(o(5) = 8 \), \(o(6) =4 \) y \(o(7) = 8\).
+		\item En \(G = (\Z^{*}_8, \cdot )\), \(o(1) = 1\), \(o(3) = 2\), \(o(5) = 2\), \(o(7) = 2\).
+		\item En \(G = (\Z, + )\), \(o(0) = 1 \) y \(\forall x \neq 0 \; o(1) = \infty \).
+		\item \(G = (\Z_2 \times \Z_3, + )\), \(o(1,1) = 6 \)...
+	\end{enumerate}
+\end{example}
+\begin{proposition}
+	\label{orden}
+	Sean \(G \) un grupo y \(a \in G \).
+	\begin{enumerate}
+		\item \(G \) finito \(\Rightarrow \forall a \in G \; a\) es de orden finito.
+		\item \(ord(a) = \infty \Rightarrow \set{a^{0}, a^{1}, a^{2}, \ldots, a^{k}, \ldots }\) esta formado por elementos distintos dos a dos.
+		\item Sean \(k \in \Z \) y \(n = ord(a )\). Entonces:
+		      \[
+			      a^{k} = e \iff n|k
+		      \]
+		\item Sean \(j,k \in \Z \) y \(n = ord(a )\). Entonces:
+		      \[
+			      a^{j} = a^{k } \iff j \equiv k \pmod n
+		      \]
+		\item Sea \(n = ord(a )\) y supongamos que \(n = td \). Entonces \(ord(a^{t } ) = d\).
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Supongamos que \(|G| = n \) con \(n \in \N \). Consideramos \(a, a^{2}, a^{3}, \ldots, a^{n}, a^{n+1 }    \).
+		      
+		      Como \(|G| = n \), tiene que haber al menos \(2 \) iguales en la lista anterior.
+		      
+		      Sea \(a^{k} = a^{m } \) con \(k > m \). Multiplicando por \((a^{m} )^{-1} \) (\((a^{m} )^{-1} = a^{-1} \cdot a^{-1} \cdots a^{-1} \) (m veces)) en ambos lados, \(a^{k} \cdot a^{-m} = a^{m} \cdot a^{-m} = e \Rightarrow a^{k-m}= e \Rightarrow ord(a) < \infty     \).
+		\item Por reduccion al absurdo, supongamos que en la lista \(a, a^{2}, \ldots, a^{m}, \ldots  \) hay dos elementos \(a^{k } \) y \(a^{m } \) que son iguales.
+		      
+		      Supongamos que \(a^{k} = a^{m } \) con \(k > m \). Multiplicando por \((a^{m} )^{-1} \), \(a^{k - m} = a^{k} \cdot a^{-m} = e \Rightarrow ord(a) < \infty   \).
+		\item Supongamos que \(o(a) = n < \infty \).
+		      
+		      ``\(\Rightarrow \)'' Supongamos que \(a^{k} = e \). Tengo que \(k = n \cdot q + r \Rightarrow e = a^{k} = a^{nq + r} = (a^{n} )^{q} \cdot a^{r} = e^{q} a^{r}  = a^{r}    \). Hay dos casos: \(r = 0 \) o \(n > r \neq 0 \). Si \(n > r \neq 0\), hay una contradiccion con que \(o(a) = n \). Luego \(r = 0 \) y por tanto \(n|k \).
+		      
+		      ``\(\Leftarrow \)'' \(n|k \), es decir, \(k = n q\). Entonces \(a^{k} = a^{nq} = (a^{n} )^{q} = e   \).
+		\item
+		
+		      ``\(\Rightarrow \)'' Supongamos que \(a^{i} = a^{j }  \)  y que \(i > j \). Multiplicamos por \(a^{-j } \) y nos queda \(\underbrace{a^{i} \cdot a^{-j} }_{a^{i-j} }= a^{j} \cdot a^{-j} = e   \Rightarrow n|i - j \iff i \equiv j  \pmod n\).
+		      
+		      ``\(\Leftarrow \)'' Supongamos que \(i \equiv j \pmod n \), es decir, \(i - j \) es multiplo de \(n \): \(\exists k \in \Z \mid i - j = n \cdot k \) (\(i = j + nk \)). Nos queda
+		      \[
+			      a^{i} = a^{j + nk} = a^{j} \cdot (\underbrace{a^{n}}_{e})^{k} = a^{j }
+		      \]
+		\item Queremos ver que \(ord(a^{2} ) = d \). Hay que ver que \((a^{t} )^{d} = e \) (a) y que \(\not \exists d^\prime < d \) tal que \((a^{t} )^{d} = e \) (b).
+		      
+		      En primer lugar, \((a^{t} )^{d} = a^{td} = a^{n} = e   \) (a).
+		      
+		      (b) Por reduccion al absurdo, supongamos que \(\exists d^\prime  < d \) tal que \((a^{t} )^{d} = e \). Entonces tendriamos que \(n^\prime  = td^\prime < td = n \). Esto no puede ser porque entonces existiria \(n^\prime < n \) tal que \(a^{n^\prime } = e\) y es una contradiccion con que \(ord(a) = n \).
+	\end{enumerate}
+\end{proof}
+\subsection{Grupos cíclicos}
+\begin{definition}
+	Decimos que un grupo \(G \) es cíclico si \(\exists a \in G \) tal que \(G = \set{a^{k} \mid k \in \Z }\). En ese caso decimos tambien que \(a \) es un generador de \(G \).
+	
+	Notacion: \(G = \langle a \rangle \).
+\end{definition}
+\begin{remark}
+	Un grupo cíclico puede tener varios generadores distintos.
+\end{remark}
+\begin{remark}
+	Los grupos cíclicos siempre son abelianos. Dados \(a^{k}, a^{j} \in G  \),
+	\[
+		a^{k} \cdot a^{j} = a^{k + j} = a^{j + k} = a^{j} \cdot a^{k}
+	\]
+\end{remark}
+\begin{proposition}
+	Sean \(G \) un grupo cíclico y \(a \) un generador de \(G \). Entonces:
+	\begin{itemize}
+		\item Si \(ord(a) = \infty \Rightarrow G \cong \Z \)
+		      
+		      Es más, la siguiente funcion es un isomorfismo
+		      \[
+			      \begin{aligned}
+				      f \colon \Z & \longrightarrow G \\
+				      k           & \longmapsto a^{k}
+			      \end{aligned}
+		      \]
+		\item Si \(ord(a) = n \Rightarrow G \cong \Z_n \)
+		      
+		      Es más, la siguiente funcion es un isomorfismo
+		      \[
+			      \begin{aligned}
+				      f \colon \Z_n & \longrightarrow G \\
+				      [k]_n         & \longmapsto a^{k}
+			      \end{aligned}
+		      \]
+		      
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Veamos que \(f \) es homomorfismo de grupos:
+		      \[
+			      f(n + m) = a^{n + m} = a^{n} \cdot a^{m} = f(n) \cdot f(m)
+		      \]
+		      También es inyectivo por el apartado 2 de la proposición \ref{orden}.
+		      
+		      Es suprayectiva por la definición de grupo cíclico (todo elemento es de la forma \(a^{k } \) así que \(f(k) = a^{k} \)).
+		      
+		      Luego \(f \) es isomorfismo.
+		\item Supongamos que \(ord(a) = n < \infty \).
+		      
+		      Definimos \(f \colon \Z_n \rightarrow G, [k] \mapsto a^{k} \). Veamos si está bien definida: si \(k^\prime \in [k]_n \Rightarrow k^\prime \equiv_n k \overset{\text{4) de }  \ref{orden}}{\Rightarrow} a^{k} = a^{k^\prime } = f([k])   \).
+		      
+		      Es homomorfismo de grupos ya que \(f([k] + [j]) = f([k + j]) = a^{k + j} = a^{k} \cdot a^{j} = f([k]) \cdot f([j])   \).
+		      
+		      \(f \) es inyectiva porque si \(a^{k} = a^{j } \overset{\text{4) de } \ref{orden}}{\Rightarrow} k \equiv_n j \iff [k] = [j] \).
+		      
+		      Como el grupo es cíclico, todo elemento es de la forma \(a^{k } \), una preimagen es \([k]_n \) ya que \(f(k) \coloneqq  a^{k} \). Por tanto es suprayectiva.
+	\end{itemize}
+\end{proof}
+\begin{proposition}[Subgrupo cíclico generado por un elemento]
+	Sean \(G \) un grupo y \(b \in G \).
+	
+	\[
+		\langle b \rangle \coloneqq \set{b^{k} \mid k \in \Z } \text{ es un subgrupo de }G
+	\]
+\end{proposition}
+
+\subsection{Grupos de permutaciones}
+\begin{definition}
+	Sea \(T \neq \varnothing, G = \set{f \colon T \to T \mid f \text{ es biyectiva} }\) y \(\circ \) el simbolo que denota la composición de funciones.
+	
+	Entonces \((G, \circ )\) es un grupo ya que la composición es una operación interna en \(G \), es asociativa, tiene elemento neutro (\(id\colon T \to T \)) y \(\forall f \in G, \exists f^{-1} \in G \mid f \circ f^{-1} = id \).
+	
+	Además, \((G, \circ )\) recibe el nombre de grupos de permutaciones de \(G\).
+\end{definition}
+\begin{definition}[Grupo de permutaciones de \(n \) elementos]
+	Sea \(T_n = \set{1,2,\ldots,n }\) el conjunto formado por los primeros \(n \) números naturales. Definimos:
+	\[
+		S_n \coloneqq \set{\sigma \colon T_n \to T_n \mid \sigma \text{ es biyectiva} }
+	\]
+	\((S_n, \circ )\) recibe el nombre de grupo de permutaciones de \(n \) elementos o grupo simetrico.
+\end{definition}
+\begin{proposition}
+	\(|S_n| = n! \)
+\end{proposition}
+Dado \(\sigma \in S_n\) usaremos la siguiente notacion matricial para referirnos a \(\sigma \):
+\[
+	\sigma = \begin{pmatrix}
+		1          & 2          & 3          & \cdots & n         \\
+		\sigma(1 ) & \sigma(2 ) & \sigma(3 ) & \cdots & \sigma(n) \\
+	\end{pmatrix}
+\]
+\begin{example}
+	\[
+		\sigma = \begin{pmatrix}
+			1 & 2 & 3 & 4 & 5 \\
+			2 & 1 & 3 & 5 & 4 \\
+		\end{pmatrix} \in S_5
+	\]
+	
+\end{example}
+Un caso particular de permutacion viene dado por los ciclos.
+\begin{definition}
+	Sea \(k \in \N \), \(k \geq 2 \). Decimos que una permutacion \(\sigma \in S_n \) es un \(k \)-ciclo si \(\exists a_1,a_2, \ldots, a_k \in T_n \) tal que:
+	\begin{itemize}
+		\item \(\forall i \in \set{1,\ldots,k-1 } \; \sigma(a_i) = a_{i + 1}\)
+		\item \(\sigma(a_n) = a_1 \)
+		\item \(\forall a \notin \set{a_1,\ldots,a_k } \quad \sigma(a) = a \)
+	\end{itemize}
+	% https://q.uiver.app/#q=WzAsNCxbMCwwLCJpXzEiXSxbMiwwLCJpXzIiXSxbNCwwLCJcXGxkb3RzIl0sWzYsMCwiaV9rIl0sWzAsMSwiXFxzaWdtYSJdLFsxLDIsIlxcc2lnbWEiXSxbMiwzLCJcXHNpZ21hIl0sWzMsMCwiXFxzaWdtYSIsMCx7ImN1cnZlIjotNX1dXQ==
+	\[\begin{tikzcd}
+			{i_1} && {i_2} && \ldots && {i_k}
+			\arrow["\sigma", from=1-1, to=1-3]
+			\arrow["\sigma", from=1-3, to=1-5]
+			\arrow["\sigma", from=1-5, to=1-7]
+			\arrow["\sigma", curve={height=-30pt}, from=1-7, to=1-1]
+		\end{tikzcd}\]
+	Dado \(\sigma \in S_n \) un \(k \)-ciclo, usaremos la siguiente notacion para referirnos a \(\sigma: \)
+	\[
+		\sigma = \begin{pmatrix} a_1 \ldots a_k \end{pmatrix}
+	\]
+\end{definition}
+\begin{example}
+	\(\sigma = \begin{pmatrix}
+		2 & 5 & 1 \\
+	\end{pmatrix} \in S_5  \equiv \begin{pmatrix}
+		1 & 2 & 3 & 4 & 5 \\
+		2 & 5 & 3 & 4 & 1 \\
+	\end{pmatrix} \qquad ord(\sigma) = 3\)
+\end{example}
+\begin{definition}
+	Se dice que un ciclo es una trasposición si tiene longitud 2.
+\end{definition}
+\begin{definition}
+	Dados dos ciclos \(\sigma, \tau \in S_n \), \(\sigma = \begin{pmatrix}
+		a_1 & a_2 & \cdots & a_k \\
+	\end{pmatrix}\) y \(\tau = \begin{pmatrix}
+		b_1 & b_2 & \cdots & b_m \\
+	\end{pmatrix}\), decimos que \(\sigma\) y \(\tau\) son disjuntos si
+	\[
+		\set{a_1,a_2,\ldots,a_k} \cap \set{b_1,b_2,\ldots,b_m} = \varnothing
+	\]
+\end{definition}
+\begin{example}
+	\begin{itemize}
+		\item \(\begin{pmatrix}
+			      2 & 5 & 1 \\
+		      \end{pmatrix}, \begin{pmatrix}
+			      3 & 4 \\
+		      \end{pmatrix} \) son disjuntos.
+		\item \(\begin{pmatrix}
+			      2 & 5 & 1 \\
+		      \end{pmatrix}, \begin{pmatrix}
+			      2 & 1 & 3 \\
+		      \end{pmatrix} \) son disjuntos.
+	\end{itemize}
+\end{example}
+\begin{remark}
+	Los ciclos disjuntos conmutan.
+\end{remark}
+Usualmente omitiremos el simbolo de composición y escribiremos simplemente las permutaciones una despues de otra:
+\[
+	\sigma \tau \coloneqq \sigma \circ \tau
+\]
+
+% \begin{example}
+% 	\begin{enumerate}
+% 		\item \(\begin{pmatrix}
+% 			2  & 5  &  1 \\
+% 		\end{pmatrix} \begin{pmatrix}
+% 			3  &  4  \\
+% 		\end{pmatrix}\colon\) 
+% 		\[
+% 			\begin{aligned}
+% 				\set{1,2,3,4,5} & \longrightarrow   \set{1,2,3,4,5}    \\
+% 				       2   & \longmapsto 1 \\
+% 					   5 & \longmapsto 1 \\ 
+% 					   1 & \longmapsto 2 \\ 
+% 					   3 & \longmapsto 4 \\
+% 					   4 & \longmapsto 3
+% 			\end{aligned}
+% 		\]
+
+% 	\end{enumerate}
+% \end{example}
+\begin{proposition}
+	Toda permutación \(\sigma \in S_n \) se puede escribir como composición de ciclos disjuntos.
+\end{proposition}
+\begin{proof}
+	Sea \(\sigma \in S_n \). Sea \(i_1 \) tal que \(i_1 \neq \sigma(i_1 ) = i_2, i_2 \neq \sigma(i_2) = i_3, i_3 \neq \sigma(i_3), i_4 \neq \sigma(i_4),\ldots\). Sea \(i_k \) el primero que cumple que \(\sigma(i_k) \in \set{i_1,i_2,\ldots,i_{k-1}} \).
+	
+	Veamos que \(\sigma(i_k) = i_1 \). Por reduccion al absurdo, supongamos que \(\sigma(i_k) = i_j \) con \(j > 1 \).
+	
+	Entonces \(\sigma(i_k) = i_j = \sigma(i_{j-1})\). Esto es imposible porque \(\sigma\) es biyectiva. Luego \(\sigma(i_k) = i_1 \).
+	
+	Sea \(b \in \set{1,\ldots,n} \setminus \set{i_1, i_2, \ldots, i_k} \) tal que \(\sigma(b) \neq  b\): \(b_1 = b, b_2 = \sigma(b_1), \ldots, b_s = \sigma(b_{s-1}), \sigma(b_s) = b_1 \).
+	
+	Repetimos el proceso hasta descomponer todo \(\sigma\) y nos queda que \(\sigma = (i_{1} i_2 \cdots i_k)(b_1 \cdots b_s)\)
+\end{proof}
+\begin{example}
+	\begin{enumerate}
+		\item \(\begin{pmatrix}
+			      1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+			      2 & 6 & 3 & 1 & 8 & 7 & 4 & 5 \\
+		      \end{pmatrix} \equiv \begin{pmatrix}
+			      1 & 2 & 6 & 7 & 4 \\
+		      \end{pmatrix} \begin{pmatrix}
+			      5 & 8 \\
+		      \end{pmatrix}\)
+		\item \(\begin{pmatrix}
+			      1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+			      5 & 1 & 7 & 2 & 4 & 6 & 3 & 8 \\
+		      \end{pmatrix} \equiv \begin{pmatrix}
+			      1 & 5 & 4 & 2 \\
+		      \end{pmatrix}\begin{pmatrix}
+			      3 & 7 \\
+		      \end{pmatrix}\begin{pmatrix}
+			      6 & 8 \\
+		      \end{pmatrix}\)
+	\end{enumerate}
+\end{example}
+\begin{example}
+	Composicion a la derecha:
+	
+	\(\begin{pmatrix}
+		2 & 5 & 1 \\
+	\end{pmatrix}\begin{pmatrix}
+		2 & 1 & 3 \\
+	\end{pmatrix} \begin{pmatrix}
+		5 & 2 \\
+	\end{pmatrix} \equiv \begin{pmatrix}
+		1 & 2 & 3 & 4 & 5 \\
+		3 & 1 & 5 & 4 & 2 \\
+	\end{pmatrix}\)
+\end{example}
+\begin{lemma}
+	Todo ciclo se escribe como producto de trasposiciones (no necesariamente disjuntas).
+\end{lemma}
+\begin{proof}
+	\(\begin{pmatrix}
+		i_1 & i_2 & \cdots & i_k \\
+	\end{pmatrix} = \begin{pmatrix}
+		i_1 & i_k \\
+	\end{pmatrix} \begin{pmatrix}
+		i_i & i_{k-1} \\
+	\end{pmatrix}\begin{pmatrix}
+		i_1 & i_{k-2} \\
+	\end{pmatrix} \cdots \begin{pmatrix}
+		i_1 & i_2 \\
+	\end{pmatrix}\)
+\end{proof}
+\begin{corollary}
+	Toda permutacion se escribe como producto de trasposiciones.
+\end{corollary}
+\begin{proof}
+	Trivial.
+\end{proof}
+\begin{definition}
+	Decimos que una permutacion es:
+	\begin{itemize}
+		\item par si se escribe como un numero par de trasposiciones
+		\item impar si se escribe como un numero impar de trasposiciones
+	\end{itemize}
+	\[
+		\begin{aligned}
+			s \colon S_n & \longrightarrow \Z_2               \\
+			\sigma       & \longmapsto 0 \text{ si es par }   \\
+			\sigma       & \longmapsto 1 \text{ si es impar }
+		\end{aligned}
+	\]
+\end{definition}
+\begin{remark}
+	La descomposicion con trasposiciones no es unica.
+\end{remark}
+\begin{lemma}
+	La identidad no se puede poner como un numero impar de trasposiciones.
+\end{lemma}
+\begin{proof}
+	Hungerford, pg 222.
+\end{proof}
+\begin{theorem}
+	Una permutacion no puede ser par e impar a la vez.
+\end{theorem}
+\begin{proof}
+	Sea \(\sigma\) una permutacion tal que \(\sigma = \tau_1 \tau_2 \cdots \tau_m = \mu_1 \mu_2 \cdots \mu_n \) con cada \(\tau_i \) y \(\mu_i \) una trasposicion y \(m\)  par y \(n \) impar. Entonces
+	\[
+		id = \sigma \sigma^{-1} = (\tau_1 \tau_2 \cdots \tau_m) \cdot (\mu_1 \mu_2 \cdots \mu_n)^{-1} =  \tau_1 \tau_2 \cdots \tau_m \cdot \mu_n \cdots \mu_1
+	\]
+	Hemos escrito \(id \) como producto de \(m + n \) trasposiciones. Pero esto es imposible porque \(m + n \) es impar y sabemos que la identidad solo se puede poner como un numero par de trasposiciones.
+	
+	Por tanto, una permutacion no puede ser par e impar a la vez.
+\end{proof}
+
+\begin{definition}
+	Se denomina signatura o signo de una permutacion a la funcion
+	\[
+		\begin{aligned}
+			f \colon S_n & \longrightarrow \Z_2                                             \\
+			\sigma       & \longmapsto f (\sigma ) = \begin{dcases}
+				                                         0 \text{ si } \sigma \text{ es par} \\
+				                                         1 \text{ si } \sigma \text{ es impar}
+			                                         \end{dcases}
+		\end{aligned}
+	\]
+	
+\end{definition}
+\begin{proposition}
+	Sea \(A_n \coloneqq \set{\sigma \in S_n \mid \sigma \text{ es par}}\). Se cumple que \(A_n \) es un subgrupo de \(S_n \). \(A_n \) recibe el nombre de grupo alternado de grado \(n \).
+\end{proposition}
+
+\begin{proposition}
+	\(|A_n| = \frac{n! }{2 }\)
+\end{proposition}
+
+\subsection{Grupo diédrico}
+\begin{definition}[Grupo diedrico]
+	Sea \(n \geq 3\). Definimos el grupo diedral o grupo diedrico de grado \(n \) como el conjunto \(D_n \) formado por los movimientos del plano que dejan invariante un poligono regular de \(n \) lados.
+\end{definition}
+
+\begin{proposition}
+	\begin{itemize}
+		\item \(D_n \) con la composicion de aplicaciones es un grupo.
+		\item \(|D_n| = 2n \)
+		\item \(D_n = \set{id, \sigma, \sigma^{2}, \ldots, \sigma^{n-1}, \tau_1, \tau_2,\ldots,\tau_n }\) donde \(\sigma\) es el giro de angulo \(2\pi / n \) en sentido positivo (antihorario) y \(\tau_1, \ldots, \tau_n \) son simetrias respecto de los \(n \) ejes que pasan por el centro del poligono.
+		\item Ademas: \begin{itemize}
+			      \item La identidad y los giros preservan la orientacion
+			      \item Las simetrias invierten la orientacion.
+		      \end{itemize}
+	\end{itemize}
+\end{proposition}
+
+\begin{example}
+	\begin{itemize}
+		\item \(D_3 = \set{1, \sigma, \sigma^{2}, \tau_1, \tau_2, \tau_3  }\)
+		      
+		      Composicion simetria y giro: \(\sigma \tau_1: 1 \to 3, 2 \to 2, 3 \to 1 = \tau_3\).
+		      
+		      \(\sigma = \tau_1 \tau_2: 1\to 2, 2\to 3, 3\to 1\).
+		\item \(D_4 = \set{1, \sigma, \sigma^{2}, \sigma^{3}, \tau_1, \tau_2, \tau_3, \tau_4  }\)
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		% \includegraphics[width=0.5\textwidth]{diedrico.png}
+		\begin{circuitikz}
+			\tikzstyle{every node}=[font=\normalsize]
+			\draw  (6,15.25) rectangle (10,11.25);
+			\draw [ color={rgb,255:red,0; green,123; blue,255}, dashed] (10.25,11) -- (5.75,15.5);
+			\draw [ color={rgb,255:red,0; green,125; blue,255}, dashed] (5.75,11) -- (10.25,15.5);
+			\draw [ color={rgb,255:red,0; green,125; blue,255}, dashed] (8,15.75) -- (8,10.75);
+			\draw [ color={rgb,255:red,0; green,125; blue,255}, dashed] (5.5,13.25) -- (10.5,13.25);
+			\node [font=\normalsize] at (10.5,15.5) {$\tau_1$};
+			\node [font=\normalsize] at (7.75,15.75) {$\tau_2$};
+			\node [font=\normalsize] at (5.5,15.5) {$\tau_3$};
+			\node [font=\normalsize] at (5.25,13) {$\tau_4$};
+			\node [font=\normalsize] at (10,15.5) {$1$};
+			\node [font=\normalsize] at (6,15.5) {$2$};
+			\node [font=\normalsize] at (6,11) {$3$};
+			\node [font=\normalsize] at (10,11) {$4$};
+			\node [font=\Large] at (8,10.3) {$D_4$};
+			\draw [short] (0,11.25) -- (4,11.25);
+			\draw [short] (4,11.25) -- (2,15.25);
+			\draw [short] (2,15.25) -- (0,11.25);
+			\node [font=\Large] at (2,10.3) {$D_3$};
+			\draw [ color={rgb,255:red,0; green,125; blue,255}, dashed] (2,15.5) -- (2,11);
+			\draw [ color={rgb,255:red,0; green,153; blue,255}, dashed] (4,11.25) -- (0.5,13.5);
+			\draw [ color={rgb,255:red,0; green,153; blue,255}, dashed] (0,11.25) -- (3.5,13.5);
+			\node [font=\normalsize] at (1.75,15.75) {$\tau_1$};
+			\node [font=\normalsize] at (0.5,13.25) {$\tau_2$};
+			\node [font=\normalsize] at (2.25,15.25) {$1$};
+			\node [font=\normalsize] at (0,11) {$2$};
+			\node [font=\normalsize] at (4,11) {$3$};
+			\node [font=\normalsize] at (3.5,13.25) {$\tau_3$};
+			\draw [->, >=Stealth] (2,15.25) .. controls (0.75,15.25) and (-0.75,12.75) .. (0,11.25) node[pos=0.5, fill=white]{$\sigma$};
+		\end{circuitikz}
+	\end{figure}
+\end{example}
+\begin{remark}
+	Otra forma de escribir \(D_n = \langle \sigma, \tau \mid o(\sigma) = n, o(\tau) = 2, \tau \sigma \tau = \sigma^{-1} \rangle \) (grupo dado por generadores y relaciones).
+\end{remark}
+\begin{remark}
+	\(D_n \) puede verse como un subgrupo de \(S_n \), numerando los vertices del poligono regular del \( 1\) al \(n \) e identificando cada movimiento con la permutacion que induce en el conjunto de los vertices.
+\end{remark}
+\begin{example}
+	\begin{itemize}
+		\item \(D_3 \leq S_3 : \)
+		      \[
+			      D_3 = \set{1, \underbrace{(123)}_{\sigma}, \underbrace{(132)}_{\sigma^{2}}, \underbrace{(12)}_{\tau_1}, \underbrace{(23)}_{\tau_2}, \underbrace{(13)}_{\tau_3}}
+		      \]
+		\item \(D_4 \leq S_4 : \)
+		      \[
+			      D_4 = \set{1, \underbrace{(1234)}_{\sigma}, \underbrace{(13)(24)}_{\sigma^{2}}, \underbrace{(1432)}_{\sigma^{3}}, \underbrace{(24)}_{\tau_1}, \underbrace{(12)(34)}_{\tau_2}, \underbrace{(13)}_{\tau_3}, \underbrace{(14)(23)}_{\tau_4}}
+		      \]
+	\end{itemize}
+\end{example}
+
+\section{Subgrupos normales y grupos cociente}
+\subsection{Definiciones basicas}
+\begin{definition}[Congruencia modulo un subgrupo]
+	\label{relaciones}
+	Sean \(G \) un grupo y \(H\) un subgrupo de \(G \) (notacion: \(H < G \)).
+	
+	Se dice que dos elementos \(a,b \in G \) son congruentes por la izquierda modulo \(H \) si
+	\[
+		a^{-1} \cdot b \in H
+	\]
+	Notacion: \(a \equiv_i b \pmod H \)
+	
+	Se dice que dos elementos \(a,b \in G \) son congruentes por la derecha modulo \(H \) si
+	\[
+		b \cdot a^{-1}  \in H
+	\]
+	Notacion: \(a \equiv_d b \pmod H \)
+\end{definition}
+
+\begin{remark}
+	Si \(G \) es abeliano, las dos definiciones anteriores coinciden.
+\end{remark}
+
+\begin{proposition}
+	Las dos relaciones de la Definicion \ref{relaciones} son relaciones de equivalencia.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Reflexiva: \(a \equiv_i a \pmod H ?\)
+		      
+		      Si porque \(a^{-1} \cdot a = e \in H \)
+		      
+		\item Simetrica: \(a \equiv_i b \pmod H \Rightarrow b \equiv_i a \pmod H \)?
+		      
+		      Por hipotesis: \(a^{-1}  \cdot b \in H \overset{H \leq G}{\Rightarrow} b^{-1} (a^{-1} )^{-1} = b^{-1} a = (a^{-1} b )^{-1} \in H\) es decir \(b \equiv_i a \pmod H \)
+		      
+		\item Transitiva: \(a \equiv_i b \pmod H, b \equiv_i c \pmod H \Rightarrow a \equiv_i c \pmod H \)?
+		      
+		      Como \(H \leq G \), \((a^{-1} b)(b^{-1} c) \in H \) y \((a^{-1} b)(b^{-1} c) = a^{-1} b b^{-1} c = a^{-1} c \in H \Rightarrow a\equiv_i c \pmod H \).
+	\end{enumerate}
+	Analogamente, se prueba que \(\equiv_d \) es una relacion de equivalencia.
+\end{proof}
+
+Las clases de equivalencia de estas relaciones (clases laterales o cogrupos) son:
+\[
+	[a]_{i,H} = \set{b \in G \mid a \equiv_i b \pmod H}
+\]
+\[
+	[a]_{d,H} = \set{b \in G \mid a\equiv_d b \pmod H }
+\]
+
+\begin{proposition}
+	\[
+		[a]_{i,H} = \set{a \cdot h \mid h \in H } \coloneqq aH \text{ (clase por la izquierda)}
+	\]
+	\[
+		[a]_{d,H} = \set{h \cdot a \mid h \in H } \coloneqq Ha \text{ (clase por la derecha)}
+	\]
+\end{proposition}
+\begin{proof}
+	Lo demostraremos por doble contenido.
+	
+	``\(\subseteq \)'' Sea \(b \in G \) tal que \(a^{-1} \cdot b \in H \), es decir, \(\exists h \in H \) tal que \(a^{-1} \cdot b = h \Rightarrow b = a \cdot h \in \set{a \cdot h \mid h \in H} = aH \)
+	
+	``\(\supseteq\)'' Sea \(\underbrace{ah}_{b} \in aH \). Entonces \(a^{-1} b = a^{-1}  a b = eh = h \in H \).
+	
+	Por tanto, \(ah \in \set{b \in G \mid a^{-1} b \in H }\).
+	
+	La demostracion para la relacion de equivalencia por la derecha es analoga.
+\end{proof}
+
+\begin{example}
+	Sea \(G = D_4 = \set{1, \underbrace{(1234)}_{\sigma}, \underbrace{(13)(24)}_{\sigma^{2}}, \underbrace{(1432)}_{\sigma^{3}}, \underbrace{(24)}_{\tau_1}, \underbrace{(12)(34)}_{\tau_2}, \underbrace{(13)}_{\tau_3}, \underbrace{(14)(23)}_{\tau_4}}\).
+	
+	Consideramos \(H = \set{id, (24)} \leq G\) (subgrupo abeliano).
+	
+	Vamos a coger \(\sigma H \) y \(\sigma^{3} H \). Tenemos \(\sigma H = \set{\sigma h \mid h \in H } = \set{\sigma, \sigma \tau_1} = \set{(1234), (14)(23)}\) y \(\sigma^{3} H = \set{\sigma^{3} h \mid h \in H } = \set{\sigma^{3}, \sigma^{3} \tau_3  } = \set{(1432), (12)(34)} \).
+	
+	Nos inventamos la operacion: \(\sigma H \cdot \sigma^{3} H = \sigma \sigma^{3} H = H = \set{1,(13)}   \).
+	
+	Si escogemos otro representante, \(\sigma \tau_3 H \cdot \sigma^{3} H = \sigma \tau_3 \sigma^{3} H = \tau_1 H = \set{(24),(24)(13)} \neq \set{1,(13)}  \). Esto no es posible.
+	
+	Para corregir este problema, vamos a imponer que \(aH = Ha \; \forall a \in G \).
+\end{example}
+
+\begin{definition}[Subgrupo normal]
+	Sean \(H < G \). Decimos que \(H \) es normal en \(G \) si \(\forall a \in G \) se tiene que \(aH = Ha \).
+	
+	Notacion: \(H \vartriangleleft G 	\).
+\end{definition}
+
+\begin{theorem}
+	Sea \(H \leq  G \). Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item \(H \) es normal en \(G \).
+		\item \(\forall a \in G \), \(a^{-1} H a = H \)
+		\item \(\forall a \in G\), \(a^{-1} Ha \subseteq H \)
+		\item \(\forall a \in G \), \(\forall h \in H \), \(a^{-1} h a \in H \)
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	1) \(\Rightarrow \) 2) Por hipotesis, \(H \) es un subgrupo normal de \(G \), asi que \(\forall a \in G \) \(aH = Ha \), es decir, \(\set{ah \mid h \in H} = \set{ha \mid h \in H}\). Multiplicando por la izquierda por \(a^{-1} \) cada uno de los elementos de estos conjuntos, \(\set{a^{-1} a h
+		\mid h \in H} = \set{a^{-1} ha \mid h \in H} \Rightarrow \set{h \mid h \in H} = H = a^{-1} Ha \).
+	
+	\vspace{0.2cm}
+	2) \(\Rightarrow \) 3) Obvio.
+	
+	\vspace{0.2cm}
+	3) \(\Rightarrow \) 4) Obvio.
+	
+	\vspace{0.2cm}
+	4) \(\Rightarrow \) 1) Queremos ver que \(aH = Ha \; \forall a \in G \). Por doble contenido,
+	
+	\(\supseteq ) \) Sea \(ha \in Ha \). Multiplicamos por la izquierda por \(a^{-1}  \) y tenemos \(\underbrace{a^{-1} ha}_{\in H (5)} = h_1 \in H \). Luego \(ha = a \underbrace{a^{-1} h a}_{h_1} = ah_1 \in aH \).
+	
+	\(\subseteq ) \) Tomamos \(ah \in aH \). Sabemos que si tomamos \(b = a^{-1} \), el apartado 5) nos dice que \(b^{-1} h b \in H \), es decir, \((a^{-1} )^{-1} h a^{-1} = a h a^{-1} \). Luego \(\exists h_2 \in H \) tal que \(ah a^{-1} = h_2 \in H \).
+	
+	Por tanto, \(ah = ah a^{-1} a = \underbrace{a h a^{-1} }_{h_2} \cdot a = h_2 a \in Ha \).
+\end{proof}
+
+\begin{definition}
+	Si \(G \) es abeliano, todo subgrupo de \(G \) es normal.
+\end{definition}
+\begin{proposition}[Subgrupo normal \(\Rightarrow \) producto bien definido]
+	Sean \(H \vartriangleleft G \). Sean \(a,b,c,d \in G \) tales que \(a_1H = a_2 H \) y \(b_1H = b_2H \). Entonces se tiene
+	\[
+		a_1b_1 H = a_{2}b_2H
+	\]
+\end{proposition}
+\begin{proof}
+	Veamos si este producto esta bien definido, es decir, que \(abH = cdH \).
+	
+	\[
+		(a_2 b_2)^{-1} \cdot a_1 b_1 = b^{-1}_2 \underbrace{a^{-1}_2 a_1}_{\in H } \cdot b_1 = b^{-1}_2 \cdot \underbrace{h_1 \cdot b_1 }_{Hb_1 = b_1 H} \overset{h_1 b_1 = b_1 h_2}{=} b^{-1}_2 b_1 h_2 \in H
+	\]
+	Es decir, \(a_1 b_1 \equiv_I a_2 b_2 \Rightarrow a_1 b_1 H = a_2 b_2 H \)
+\end{proof}
+\begin{definition}
+	Sean \(H \vartriangleleft G \). Denotamos el cociente de \(G \) bajo cualquiera de las relaciones de la definicion \ref{relaciones} (ambas coinciden) como
+	\[
+		G/H \coloneqq \set{aH \mid a \in G }
+	\]
+	
+\end{definition}
+\begin{proposition}[Grupo cociente]
+	Sean \(H \vartriangleleft G\). Definimos en el cociente \(G / H \) la operacion \((aH) \cdot (bH ) \coloneqq abH \). El conjunto \(G / H \) con esta operacion es un grupo.
+\end{proposition}
+
+\begin{lemma}
+	Si \(f \colon G \to H \) es un isomorfismo entonces \(\forall a \in G, o(a) = o(f(a ))\).
+\end{lemma}
+\begin{proof}
+	Si \(o(a) = n < \infty \), se cumple que \(o(f(a)) = n ? \)
+	
+	Sabemos que \((f(a))^{n} = \underbrace{f(a) \cdot f(a) \cdots f(a)}_{n \text{ veces} } \overset{\text{Hom} } = f(a \cdot a \cdots a) = f(a^{n} ) = f(e_G) = e_H\). Entonces supongamos que \(\exists m < n \) tal que \((f(a))^{m} = e \Rightarrow e = (f(a))^{m} = \underbrace{f(a) \cdots f(a)} = f(a^{m}) \Rightarrow f^{-1} (e) = f^{-1} \cdot f (a^{m} ) = a^{m}   \). Esto es una contradiccion porque \(m < n \) y \(o(a) = n \).
+	
+	Si \(o(a) = \infty \), por reduccion al absurdo supongamos que \(o(f(a)) \neq \infty \). Entonces \(e_H = (f(a))^{m} \overset{\text{Hom} }{\Rightarrow} e_H = f(a^{m} ) \Rightarrow  f^{-1} (e_H) = f^{-1} (f(a^{m} )) \Rightarrow e_G = a^{m} \Rightarrow o(a) \leq m \). Contradiccion con que \(a = \infty \).
+\end{proof}
+
+\subsection{Indice de un subgrupo y Teorema de Lagrange}
+\begin{proposition}
+	Sea \(G \) un grupo y \(H \) un subgrupo de \(G \), podemos definir una biyeccion
+	\[
+		\begin{aligned}
+			f \colon G / \cong_i & \longrightarrow G / \cong_d   \\
+			aH                   & \longmapsto f (aH ) = Ha^{-1}
+		\end{aligned}
+	\]
+\end{proposition}
+\begin{proof}
+	Veamos que \(f \) esta bien definida. Supongamos que \(aH = bH \), es decir, \(a \equiv_i b \Rightarrow a ^{-1} b \in H \Rightarrow b \cdot a^{-1} \in H \overset{def}{\iff } b^{-1} \equiv_d a^{-1} \pmod H \), es decir, \(Hb^{-1} = Ha^{-1} \).
+	
+	Veamos que \(f \) es inyectiva. Suponer que \(Ha^{-1} = Hb^{-1} \), es decir, \(a^{-1} \equiv_d b^{-1} \pmod H \iff a^{-1} (b^{-1} )^{-1}  = a^{-1} b \Rightarrow a \equiv b \pmod H \), es decir, \(aH = bH \).
+	
+	Tambien es suprayectiva. Si tomamos \(Hb \) en \(G / \cong_d \), \(f(b^{-1} H) = Hb \).
+\end{proof}
+\begin{definition}
+	Sean \(H < G \). Se define el indice de \(H \) en \(G \) como el cardinal del conjunto formado por las clases por la izquierda modulo \(H \) (que, por la proposicion anterior, coincide con el cardinal del conjunto formado por las clases por la izquierda modulo H). Se denota como \([G \colon H ]\).
+\end{definition}
+\begin{remark}
+	Si \(H \) es normal en \(G \), es trivial que los indices por la izquierda y por la derecha coinciden y se puede definir el indice. Pero la proposicion 5 demuestra que, aunque \(H \) no sea normal en \(G \), el indice esta bien definido.
+\end{remark}
+
+\begin{theorem}[de Lagrange]
+	Sean \(G \) un grupo finito y \(H < G \). Se cumple que
+	\[
+		|G| = [G \colon H] \cdot |H|.
+	\]
+	En particular notese que \(|H| \) divide a \(|G| \). Ademas, si \(H \trianglelefteq	G \), entonces \(| G / H | = \frac{|G| }{|H| }\).
+\end{theorem}
+\begin{proof}
+	Suponemos que \(H = \set{h_1,h_2, \ldots, h_n } \leftarrow n\) elementos. Vemos que \(aH = \set{ah_1, ah_2,\ldots, ah_n }\), con todos los elementos distintos dos a dos por la propiedad de cancelacion. Es decir, \(|aH| = |H| \).
+	
+	Como \(\equiv_i \) es una relacion de equivalencia, \(G \) es la union disjunta de las clases de equivalencia a la izquierda. Por tanto, \(|G| = \underbrace{|H| + \cdots + |H|}_{[G\colon H] \text{ veces} } = [G \colon H] \cdot |H|\).
+	
+	
+\end{proof}
+
+\begin{corollary}
+	Sea \(G \) un grupo finito:
+	\begin{enumerate}
+		\item \(\forall a \in G \), \(o(a) \) divide a \(|G| \)
+		\item \(\forall a \in G \), \(a^{|G|} = e \)
+		\item Si \(H \triangleleft G \), entonces
+		      \[
+			      |G / H| = \frac{|G|}{|H|}
+		      \]
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	\begin{enumerate}
+		\item Si tomamos \(H = \langle a \rangle \) (subgrupo ciclico generado por \(a \)), \(|H|= o (a)\). Por el teorema de Lagrange, \(o(a)\) divide a \(|G| \).
+		\item Sabemos que \(o(a)\) divide a \( |G| \). Por tanto, \(a^{|G|} = a^{o(a) \cdot m} = (\underbrace{a^{o(a)} }_e)^{m} = e   \).
+		\item Obvio.
+	\end{enumerate}
+\end{proof}
+\begin{corollary}[Teorema de Euler]
+	\(\forall a \in \Z^{*}_n \), \(a^{\varphi (n)} \equiv 1 \pmod n \)
+\end{corollary}
+\begin{proof}
+	Llamamos \(G = \Z^{*}_n \). Sabemos que \(|G| = \varphi (n )\). Por el apartado 2 del corolario anterior, \(a^{\varphi(n)} = 1_{\Z^{*}_n } \iff a^{\varphi(n)} \equiv 1 \pmod n   \)
+\end{proof}
+\begin{remark}
+	El pequeño teorema de Fermat es otro corolario importante.
+\end{remark}
+
+\subsubsection{Ejemplos de aplicacion del teorema de Lagrange}
+\begin{example}
+	\begin{itemize}
+		\item Dado un primo \(p \), hallar todos los grupos de orden \(p \) (salvo isomorfismo).
+		      
+		      Sea \(G \) un grupo con \(|G| = p \). Si \(a \in G \), \(o(a) = 1 \vee o(a) = p \) (porque \(o(a )\) divide a \(|G| \)). Sabemos que si \(o(a) = 1 \), \(a = e \).
+		      
+		      Si \(o(a) = p \), \(\langle a \rangle = \set{\underbrace{a, a^{2}, \ldots, a^{o(a)}}_{p \text{ elem} }  } = G \).
+		      
+		      Vamos a intentar definir un homomorfismo entre \(G \) y \(\Z_p \).
+		      \[
+			      \begin{aligned}
+				      f \colon (G, \cdot ) & \longrightarrow (\Z_p, + ) \\
+				      a^{k}                & \longmapsto [k]_p
+			      \end{aligned}
+		      \]
+		      \begin{itemize}
+			      \item Homomorfismo:
+			            \[
+				            f(a^{k} \cdot a^{l}) = f(a^{k + l} )
+			            \]
+			            Si \(k + l \leq  p \), \(f(a^{k + l} ) = k + l = f(a^{k} ) + f(a^{l} )\). Si \(k + l > p \), por el teorema de la division \(\exists q, r \in \Z \) tal que \(k + l = pq + r \). Luego \(f(a^{k + l} ) = f(a^{pq + r} ) = f(a^{r} ) = [r]_n = [k + l] = [k] + [l] = f(a^{k} ) + f(a^{l} )\).
+			      \item Inyectiva:
+			            \[
+				            Kerf = \set{a^{k} \mid k \leq p \mid f(a^{k} ) = 0 } = \set{a^{p} } = \set{e}
+			            \]
+			            Por tanto, es inyectiva.
+			      \item Es suprayectiva por construccion: \(k \in \Z_p, a^{k } \) cumple \(f(a^{k} ) = k\).
+		      \end{itemize}
+		      Por lo tanto, \(G \cong \Z_p \).
+		      
+		\item Hallar todos los grupos de tamaño 4. Sea \(|G| = 4 \). Dado un \(a \in G \), \(o(a) = 1 \vee o(a) = 2 \vee o(a) = 4 \). Si en \(G \) tenemos algun elemento \(a \) con \(o(a) = 4 \), \(\langle a \rangle = \set{a,a^{2}, a^{3}, a^{4}   } = G\) y \(G \cong \Z_4 \) (igual que antes para \(p \)).
+		      En caso contrario, todos los elementos salvo el neutro tienen orden 2. Sea \(G = \set{e,a,b,c}\).
+		      \begin{table}[H]
+			      \centering
+			      \begin{tabular}{|c|c|c|c|c|}
+				      \hline
+				      \(\cdot\) & e & a & b & c \\ \hline
+				      \hline
+				      e         & e & a & b & c \\ \hline
+				      a         & a & e & c & b \\ \hline
+				      b         & b & c & e & a \\ \hline
+				      c         & c & b & a & e \\
+				      \hline
+			      \end{tabular}
+		      \end{table}
+		      Podemos definir
+		      \[
+			      \begin{aligned}
+				      f \colon G & \longrightarrow \Z_2 \times \Z_2 \\
+				      e          & \longmapsto  (0,0 )              \\
+				      a          & \longmapsto  (1,0 )              \\
+				      b          & \longmapsto  (0,1 )              \\
+				      c          & \longmapsto  (1,1 )
+			      \end{aligned}
+		      \]
+		      Comprobar que es isomorfismo.
+		      
+		\item Hallar todos los subgrupos de \(S_3 \).
+		      
+		      \(|S_3| = 3! = 3 \cdot 2 = 6 \) y \(S_3 = \set{id, (12), (13), (23), (123), (132)}\).
+		      
+		      Sea \(\sigma \in S_3\), \(o(\sigma) \in \set{1,2,3}\). \(o(\sigma) \neq 6 \) porque entonces \(\underbrace{\langle \sigma \rangle}_{S_3} \cong \Z_6 \) pero \(S_3 \not \cong \Z_6 \) porque \(\Z_6 \) es conmutativo y \(S_3 \) no.
+		      
+		      Si \(o(\sigma) = 1, \langle \sigma \rangle = \set{id } \). Si \(o(\sigma) = 2 \), \(\langle (12) \rangle = \set{id, (12)} = H_1\), \(\langle (13) \rangle = \set{id, (13)} = H_2\), \(\langle (23) \rangle = \set{id, (23)} = H_3\). Si \(o(\sigma) = 3 ,\) \(\langle (123) \rangle = \set{id, (123), (132)} = H_4\). Estos son los conjuntos no triviales de \(S_3 \).
+	\end{itemize}
+\end{example}
+
+\begin{proposition}
+	Sean \(H \leq  G \) tales que \([G \colon H ] = 2 \). Entonces \(H \) es normal en \(G \).
+\end{proposition}
+\begin{proof}
+	Supongamos que \([G \colon H] = 2 \). Entonces \(\set{H, aH }\) (2 clases) o \(\set{H, Ha }\) (2 clases).
+	
+	\(G = H \underset{disjunta}{\cup } aH \), \(aH = \set{x \in G \mid x \notin H }\) y \(G = H \underset{disjunta}{\cup } Ha \), \(Ha = \set{x \in G \mid x \notin H }\).
+	
+	Por tanto, \(aH = Ha \) y \(H \) es normal.
+\end{proof}
+
+\subsection{Teoremas de isomorfia}
+\begin{proposition}
+	Sea \(f \colon G_1 \to G_2 \) un homomorfismo de grupos. Se cumple que \(Kerf \trianglelefteq G_1 \).
+\end{proposition}
+\begin{proof}
+	Sea \(H = Kerf \). Sabemos que \(Kerf \) es un subgrupo de \(G_1 \). Nos falta ver que \(H \trianglelefteq G_1 \Rightarrow \forall a \in G_1, \forall h \in H\), \(a^{-1} h a \in H \)?
+	\[
+		f(a^{-1} h a ) = \underbrace{f(a^{-1} )}_{(f(a))^{-1} } \underbrace{f(h)}_{e} f(a) = e
+	\]
+\end{proof}
+\begin{theorem}[Primer teorema de isomorfia]
+	Sea \(f \colon G_1 \to G_2 \) un homomorfismo de grupos. Entonces la siguiente funcion es un isomorfismo de grupos:
+	\[
+		\begin{aligned}
+			\overline{f} \colon G_1 / Kerf & \longrightarrow Imf                         \\
+			a Kerf                         & \longmapsto \overline{f} (a Kerf ) = f(a )
+		\end{aligned}
+	\]
+\end{theorem}
+\begin{proof}
+	En primer lugar, veamos que \(\overline{f}\) esta bien definida. Si \(a  Kerf = b Kerf \), \(f(a) = f(b )\)?
+	
+	Como \(a Kerf = bKerf \), \(a^{-1} b \in Kerf \Rightarrow \underbrace{f(a^{-1} b)}_e \overset{\text{Hom.} }{=} f(a^{-1} ) f(b) = (f(a))^{-1} \cdot f(b )\). Despejando, tenemos que \(f(a) = f(b )\).
+	
+	Veamos que \(f \) es homomorfismo: \(\overline{f}((aKerf)(bKerf)) = \overline{f}(abKerf) = f(ab) \overset{\text{Hom.} }{=} f(a) \cdot f(b) = \overline{f}(aKerf) \cdot \overline{f}(bKerf)\).
+	
+	Ademas, se cumple que es inyectiva. Si \(f(a) = f(b ), \) es lo mismo que \(e = f(a)^{-1} \cdot f(b) \Rightarrow e = f(a^{-1} ) \cdot f(b) \overset{\text{Hom} }{=} f(a^{-1} b )\), es decir, \(a^{-1} b \in Kerf \Rightarrow a \equiv_i b \pmod {Kerf} \Rightarrow aKerf = b Kerf\).
+	
+	Por ultimo, \(\overline{f }\) es suprayectiva por construccion.
+	
+	Luego \(\overline{f }\) es un isomorfismo de grupos.
+\end{proof}
+\begin{corollary}
+	\[
+		|A_n| = \frac{n! }{2 }
+	\]
+\end{corollary}
+\begin{proof}
+	Definimos la funcion
+	\[
+		\begin{aligned}
+			f \colon S_n & \longrightarrow \Z_2                                             \\
+			\sigma       & \longmapsto f (\sigma ) = \begin{cases}
+				                                         0 \text{ si } \sigma \text{ es par} \\
+				                                         1 \text{ si } \sigma \text{ es impar}
+			                                         \end{cases}
+		\end{aligned}
+	\]
+	Sabemos que \(f \) es un homomorfismo de grupos suprayectivo. Ademas, \(Kerf = A_n \). Por tanto, aplicando el primer teorema de isomorfia, \(S_n / A_n \cong \Z_2 \). Como \(|\Z_2| = 2\), \(|S_n / A_n| = 2 \) y aplicando el teorema de Lagrange \(|S_n | = 2 \cdot |A_n| \Rightarrow |A_n| = \frac{|S_n| }{2} = \frac{n! }{2}\).
+\end{proof}
+
+\begin{theorem}[Segundo teorema de isomorfia]
+	Sean \(G \) un grupo, \(H \leq G \) y \(N \trianglelefteq G \). Entonces:
+	\begin{enumerate}
+		\item \(HN \coloneqq \set{hn \mid h \in H, n \in N }\) es un subgrupo de \(G \).
+		\item \(N \triangleleft HN \) y \(H \cap N \triangleleft H \).
+		\item \(HN / N \cong H / H \cap N\).
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item Tenemos que ver que \(HN \) es un subgrupo de \(G \). Si \(h_1 n_1, h_2 n_2 \in HN \), como \(N \trianglelefteq G, \exists n_3 = h^{-1}_2 n_1 h_2 \in N \Rightarrow h_2 n_3 = n_1 h_2 \). Por tanto, \(h_1 n_1 h_2 n_2 = h_1 h_2 n_3 n_2 \in HN \). Luego es cerrado para el producto. Equivalentemente, \(n_1 h_2 \in Nh_2 = h_2 N \Rightarrow \exists n_3 \) tal que \(n_1 h_2 = h_2 n_3 \Rightarrow h_1 n_1 h_2 n_2 = h_1 h_2 n_3 n_2\).
+		      
+		      Si \(hn \in HN \), \((hn)^{-1} = n^{-1} h^{-1} \overset{\exists n_4 \in N} = h^{-1} n_4 \in HN \). Luego es cerrado para opuestos.
+		      
+		\item Veamos que \(N \triangleleft HN  \). Si \(\forall x \in G \) \(xN = Nx \), entonces \(\forall x \in HN\), \(xN = Nx  \) (porque \(HN \subseteq G \)).
+		\item Vamos a definir
+		      \[
+			      \begin{aligned}
+				      f \colon H & \longrightarrow G / N    \\
+				      h          & \longmapsto f (h ) = hN
+			      \end{aligned}
+		      \]
+		      \(f \) es homomorfismo de grupos: Dados \(h_1, h_2 \in H \), \(f(h_1 h_2) = h_1 h_2 N = (h_1 N)(h_2 N) = f(h_1 ) \cdot f(h_2 )\).
+		      
+		      Por otro lado, \(Kerf = \set{ h \in H \mid hN = N } = \set{h \in H \mid h \in N} = H \cap N \trianglelefteq H\) (porque \(Kerf \) es normal). Asi queda demostrada la segunda parte de 2).
+		      
+		      \(Imf = \set{f(h) \mid h \in H} = \set{hN \mid h \in H} \overset{*}{=} \set{hN \mid h \in HN }\).
+		      
+		      (*) \(\subseteq)\;\; hN = \underbrace{h}_{\in H}\underbrace{e}_{\in N} N \in \set{hN \mid h \in HN}\).
+		      
+		      \(\supseteq) \) \(hn N = hN \cdot nN = hN \in \set{hN \mid h \in H }\)
+		      
+		      \vspace{0.2cm}
+		      Por el primer teorema de isomorfia
+		      \[
+			      \begin{aligned}
+				      \overline{f} \colon H / Kerf & \longrightarrow Imf \\
+			      \end{aligned}
+		      \]
+		      es un isomorfismo. Por tanto, \(H / H \cap N \cong HN / N  \).
+	\end{enumerate}
+\end{proof}
+\begin{theorem}[Tercer teorema de isomorfia]
+	Sean \(G \) un grupo y \(K,H \triangleleft G \) tales que \(K \subseteq H \). Entonces:
+	\begin{enumerate}
+		\item \(K \triangleleft H \).
+		\item \((H/ K ) \triangleleft (G / K)\).
+		\item \(((G / K)/(H / K)) \cong (G / H )\).
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item Como \(K \) es subgrupo normal de \(G \), \(\forall x \in G \) se tiene que \(xK = Kx \). Por tanto, en particular \(\forall x \in H \), \(xK = Kx \). Luego \(K \trianglelefteq H \).
+		\item Se obtiene como consecuencia de la demostracion de \(3) \).
+		\item Vamos a definir
+		      \[
+			      \begin{aligned}
+				      f \colon G / K & \longrightarrow G / H     \\
+				      xK             & \longmapsto f (xK ) = xH
+			      \end{aligned}
+		      \]
+		      Veamos si esta bien definida, es decir, si dados \(x, y \in G \) \(xK = yK \) entonces \(xH = yH \). Como \(xK = yK \Rightarrow x^{-1} y \in K \subseteq H \). Por este contenido, \(x \equiv_ y \pmod H \). Luego tenemos que \(xH = yH \).
+		      
+		      Veamos si es homomorfismo de grupos. Dados \(xK, yK \in G/ K \), \(f((xK)(yK)) = f(xyK) = xyH = (xH)(yH) = f(xK) f(yK )\).
+		      
+		      Hallamos el nucleo de \(f \). \(Kerf = \set{x K \mid f(xK) = 1_{G / H}} = \set{x K \mid xH = H} = \set{xK \mid x \in H} = H / K \). Como \(Kerf \) es subgrupo normal de \(G / K \), tenemos que \((H / K) \triangleleft (G / K  )\) (2).
+		      
+		      Por construccion, \(f \) es suprayectiva. Luego \(Imf = G /H  \).
+		      
+		      Por el primer teorema de isomorfia,
+		      \[
+			      \begin{aligned}
+				      \overline{f} \colon (G / K) / Kerf & \longrightarrow Imf                          \\
+				      xK \cdot Kerf                      & \longmapsto \overline{f} (xK ) = f(xK) = xH
+			      \end{aligned}
+		      \]
+		      Luego \((G / K) / (H / K) \cong G / H \).
+	\end{enumerate}
+\end{proof}
+
+\section{Mas sobre grupos}
+\subsection{Centro, centralizador y normalizador}
+\begin{definition}[Centro de un grupo]
+	Sea \(G \) un grupo. Se define el centro de \(G \) como el conjunto
+	\[
+		Z (G) \coloneqq \set{x \in G \mid \forall g \in G \; gx = xg }
+	\]
+\end{definition}
+\begin{proposition}
+	\begin{itemize}
+		\item \(Z(G )\) es subgrupo normal de \(G \).
+		\item \(G \) es abeliano si y solo si \(G = Z (G )\).
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Veremos dentro de un rato que \(Z(G) = Ker(\hat{\varphi})\) donde \(\hat{\varphi}\) es un homomorfismo de grupos, y por tanto \(Z(G) \leq G \).
+		\item Trivial.
+	\end{itemize}
+\end{proof}
+\begin{example}
+	\begin{enumerate}
+		\item \(G = S_3 = \set{id, (123),(132),(13),(23),(12)}\).
+		      
+		      \(\sigma = (12) \in Z(G )\)? \((12)(13) = (132)\), \((13)(12) = (123)\). Luego \((12) \notin Z(G )\). Analogamente, \((13) \notin Z(G )\).
+		      
+		      \(\mu = (123) \in Z(G )\)? \((123)(12)= (123)\), \((12)(123) = (23 ) \Rightarrow \mu \notin Z(G)\). De modo analogo, \((132) \notin Z(G )\) (es su cuadrado).
+		      
+		      Luego, en este ejemplo, \(Z(G) = \set{id }\).
+		\item \(G = D_4 = \set{id, (1234), (13)(24), (1432), (24), (12)(34), (13), (14)(23)}\).
+		      
+		      \(\sigma = (1234) \in Z(G )\)? \((1234)(24) = (12)(34)\), \((24)(1234) = (14)(23)\). Como son distintos, \(\sigma \notin Z(G )\). De la misma manera \((1432) \notin Z(G )\).
+		      
+		      \(\sigma^{2} = (13)(24) \in Z(G) \)? \((13)(24)(12)(34) = (14)(32)\), \((12)(34)(13)(24) = (14)(32) \Rightarrow \) conmutan. Probamos con \((14)(23) \Rightarrow (13)(24)(14)(23) = (12)(34)\), \((14)(23)(13)(24) = (12)(34)\). Ademas, conmuta con \(\sigma^{n } \) por ser potencias y con \(\tau_1 \) porque se tachan los \((24)\).
+		      
+		      \(\tau_2 = (12)(34) \in Z(G )\)? \((12)(34)(24) = (1234)\) y \((24)(12)(34) = (1432 )\). Luego \(\tau_2 \notin Z(G )\).
+		      
+		      Por el teorema de Lagrange, \(Z(G) \) no puede tener 3 elementos. Descartamos \(\tau_4 \).
+		      
+		      Por tanto, \(Z(G) = \set{id, (13)(24 )}\).
+		\item \(G = \set{A \in \mathcal{\MakeUppercase{m}}_2(\R) \mid |A| \neq 0 }\).
+		      
+		      \(AB = BA \quad \forall B \Rightarrow A = \begin{pmatrix}
+			      \lambda & 0       \\
+			      0       & \lambda \\
+		      \end{pmatrix} \; \lambda \neq  0 \).
+		      
+		      Para \(n \), \(GL_n = \set{A \in \mathcal{\MakeUppercase{m}}_n(\R) \mid |A| \neq 0 }\).  Se tiene que \(Z(GL_n) = \set{\lambda I_n \mid \lambda \neq  0 }\).
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[Centralizador de un conjunto en un grupo]
+	Sean \(G \) un grupo y \(H\) un subgrupo de G. Se define el centralizador de \(H \) en \(G \) como el conjunto
+	\[
+		C_G (H) \coloneqq \set{x \in G \mid \forall h \in H \quad xh = hx} = \set{x \in G \mid \forall h \in H \quad xhx^{-1} = h }
+	\]
+\end{definition}
+
+\begin{definition}[Normalizador de un conjunto en un grupo]
+	Sean \(G \) un grupo y \(H\) un subgrupo de \(G \). Se define el normalizador de \(H \) en \(G \) como el conjunto
+	\[
+		N_G (H) \coloneqq \set{x \in G \mid xH = Hx} = \set{x \in G \mid xHx^{-1} = H }
+	\]
+\end{definition}
+\subsection{Acciones de grupos}
+\begin{definition}[Accion de un grupo sobre un conjunto]
+	Sean \(G \) un grupo y \(X \) un conjunto no vacio. Una accion (por la izquierda) de \(G \) sobre \(X \) es una aplicacion
+	\[
+		\begin{aligned}
+			\phi\colon G \times X & \longrightarrow X                  \\
+			(g,x)                 & \longmapsto \phi(g,x) = g \cdot x
+		\end{aligned}
+	\]
+	que cumple:
+	\begin{enumerate}
+		\item Si \(e \) es el neutro de \(G, \) entonces \(g \cdot x = x \)
+		\item \(g_1 \cdot(g_2 \cdot x) = (g_1 g_2) \cdot x \quad \forall g_1, g_2 \in G, \; \forall x \in X\).
+	\end{enumerate}
+	Usamos la notacion \(\cdot \) para la accion. Si queremos denotar que estamos operando dos elementos del grupo ponemos uno a continuacion del otro, sin nada en medio.
+\end{definition}
+\begin{proposition}
+	Dada una accion \(\varphi \colon G \times X \to X \), podemos definir un homomorfismo asociado
+	\[
+		\begin{aligned}
+			\hat{\phi} \colon G & \longrightarrow S(X) = \set{\sigma\colon X \to X \mid \sigma \text{ biyectiva} } \\
+			g                   & \longmapsto \phi_g
+		\end{aligned}
+	\]
+	con
+	\[
+		\begin{aligned}
+			\phi_g \colon X & \longrightarrow X                    \\
+			x               & \longmapsto \phi_g (x ) = g \cdot x
+		\end{aligned}
+	\]
+\end{proposition}
+\begin{proof}
+	Veamos que \(\hat{\phi}\) esta bien definida y que es homomorfismo de grupos:
+	\begin{itemize}
+		\item Bien definida: \(\phi_g \colon X \to X \) es una biyeccion de \(X \)?
+		      \begin{itemize}
+			      \item Inyectiva: si \(g \cdot x_1 = g \cdot x _2 \) entonces \(g^{-1} (g \cdot x_1) = g^{-1} (g \cdot x_2 ) \overset{2)}{\Rightarrow} (g^{-1} \cdot g) \cdot x_1 = (g^{-1} \cdot g) \cdot x_2 \overset{1)}{\Rightarrow} e \cdot x_1 = e \cdot x_2 \Rightarrow x_1 = x_2  \).
+			      \item  Suprayectiva: si \(y \in X \), \(\exists x \in X \) tal que \(g \cdot x = y \Rightarrow x = g^{-1} y \)?
+			            \[
+				            y = g \cdot \underbrace{(g^{-1} \cdot y)}_{\in X} = \phi_g (g^{-1} \cdot y) = y
+			            \]
+		      \end{itemize}
+		\item Homomorfismo: \(g_1, g_2 \in G \)
+		      \begin{itemize}
+			      \item \(\hat{\phi}(g_1 \cdot g_2) = \begin{aligned}
+				            \phi_{g_1 \cdot g_2} \colon X & \to X                      \\
+				            x_2                           & \mapsto (g_1 g_2)\cdot  x
+			            \end{aligned}\)
+			      \item \(\begin{aligned}
+				            \hat{\phi}(g_1 )\cdot \hat{\phi}(g_2)  \colon X & \to X                \\
+				            x                                               & \mapsto g_1 (g_2 x)
+			            \end{aligned}\) (composicion)
+		      \end{itemize}
+	\end{itemize}
+\end{proof}
+\begin{definition}
+	Una accion es fiel si \(Ker\hat{\phi} = \set{e}\).
+\end{definition}
+\begin{example}
+	\begin{enumerate}
+		\item Si \(\sigma \) es un grupo y \(x = \sigma\), podemos definir
+		      \[
+			      \begin{aligned}
+				      \varphi \colon X & \longrightarrow   X              \\
+				      (g,x)            & \longmapsto g \cdot x = gxg^{-1}
+			      \end{aligned}
+		      \]
+		      Es accion?
+		      \begin{itemize}
+			      \item \(e \cdot x = e x e^{-1}  = x \quad \forall x \in X = G \)
+			      \item \(g_1 \cdot(g_2 \cdot x ) = g_1 \cdot (g_2 x g^{-1}_2) = g_1 (g_2 x g^{-1}_2) g^{-1}_1 = (g_1 g_2) x (g_1 g_2)^{-1} = (g_1 g_2) \cdot x  \)
+		      \end{itemize}
+		      Si es una accion.
+		      
+		      Veamos su homomorfismo asociado.
+		      \[
+			      \begin{aligned}
+				      \hat{\varphi}\colon G & \longrightarrow Biy(x )                                                       \\
+				      g                     & \longmapsto \hat{\varphi}(g ) = \varphi_g\colon X \to X, x \mapsto g x g^{-1}
+			      \end{aligned}
+		      \]
+		      \(Ker \hat{\varphi} = \set{g \in G \mid \varphi_g = id} = \set{y \in G \mid gx g^{-1} = x \; \forall x \in X = G} = \set{g \in G \mid gx = xg \; \forall x \in G} = Z(G )\) y \(Ker\hat{\varphi} \trianglelefteq G \Rightarrow Z(G) \trianglelefteq G\) (resultado que faltaba por probar).
+		\item \(G \) grupo, \(X = \set{H \text{ tal que }H \leq G }\).
+		      \[
+			      \begin{aligned}
+				      \varphi\colon G \times X & \longrightarrow X                       \\
+				      (g,H )                   & \longmapsto \varphi((g,H )) = gH g^{-1}
+			      \end{aligned}
+		      \]
+		      \begin{itemize}
+			      \item Bien definida? \(gH g^{-1}  \) es subgrupo de \(G \)?
+			            
+			            Cerrado para el producto: sean \(g h_1 g^{-1} \), \(g h_2 g^{-1}  \in K \Rightarrow (g h_1 g^{-1} )(g h_2 g^{-1} ) = g h_1 h_2 g^{-1}  \in K\).
+			            
+			            Contiene inversos: \(gh g^{-1} \in K \), \((ghg^{-1} )^{-1} = g h^{-1} g^{-1} \in K \).
+		      \end{itemize}
+		      Veamos que es accion (accion por conjugacion sobre el conjunto de los subgrupos):
+		      \begin{enumerate}
+			      \item \(e \cdot H  = eH e^{-1} = H \; \forall H \in X\)
+			      \item \(g_1 \cdot (g_2 \cdot H) = g_1 (g_2 H g^{-1}_2) g^{-1}_1 = g_1 g_2 H (g_1 g_2)^{-1} \).
+		      \end{enumerate}
+		      Defino
+		      \[
+			      \begin{aligned}
+				      \hat{\varphi} \colon G & \longrightarrow Biy(X )                                      \\
+				      g                      & \longmapsto \varphi_{g} \colon X \to X, H \mapsto g H g^{-1}
+			      \end{aligned}
+		      \]
+		      \(Ker \hat{\varphi} = \set{g \in G \mid \varphi_g = id} = \set{g \in G \mid g H g^{-1} = H \quad \forall H \in X} = \set{g \in G \mid gH = Hg \quad \forall H \in X } = \bigcap_{H \in X} N(H)\)
+		\item Sea \(G \) un grupo y \(X = G \).
+		      \begin{itemize}
+			      \item Accion por traslacion a la izquierda.  \[
+				            \begin{aligned}
+					            \varphi\colon G \times X & \longrightarrow  X             \\
+					            (g,x)                    & \longmapsto \varphi(g,x) = gx
+				            \end{aligned}
+			            \]
+			            Ver que es accion y comprobar que es fiel.
+			      \item Accion por traslacion a la derecha. \[
+				            \begin{aligned}
+					            \varphi\colon G \times X & \longrightarrow X                      \\
+					            (g,x )                   & \longmapsto \varphi((g,x )) = x g^{-1}
+				            \end{aligned}
+			            \]
+			            Ver que es accion y comprobar que es fiel.
+		      \end{itemize}
+	\end{enumerate}
+\end{example}
+\begin{definition}
+	Si \(\varphi\colon G \times X \to X \) es una accion en \(X \) podemos definir la siguiente relacion:
+	\[
+		x \equiv_\varphi y \iff \exists g \in G \text{ tal que } \varphi(g,x) = y
+	\]
+\end{definition}
+\begin{proposition}
+	La relacion \(\equiv_\varphi\) es una relacion de equivalencia en \(X \).
+\end{proposition}
+\begin{proof}
+	Veamos que cumple las propiedades de relacion de equivalencia:
+	\begin{enumerate}
+		\item Reflexiva: \(x \equiv_\varphi x \) porque \(e \cdot x = x \)
+		\item Simetrica: si \(x \equiv_\varphi y \), \(\exists g \in G 	\) con \(g \cdot x  = y \), es decir, \(\varphi_g (x) = y \). Como \(\varphi_g \) es biyectiva,  \(g^{-1} \cdot y = x \Rightarrow y \equiv_\varphi x \).
+		\item Transitiva: si \(x \equiv_\varphi y \), \(y \equiv_\varphi z \Rightarrow \exists g_1 \in G \mid g_1 \cdot x = y\), \(\exists g_2 \in G \mid g_2 \cdot y = z \;(y = g^{-1}_2 \cdot z) \Rightarrow g_1  \cdot x = g^{-1}_2 \cdot z \Rightarrow g_2 \cdot g_1 \cdot x = g_2 \cdot g^{-1}_2 \cdot z \Rightarrow g_2 g_1 \cdot x = z \Rightarrow x \equiv_\varphi z\).
+	\end{enumerate}
+\end{proof}
+\begin{definition}
+	Dado \(x \in X \), se llama orbita de \(x \) bajo la accion de \(\varphi\) al conjunto:
+	\[
+		orb(x) \coloneqq \set{y \in X \mid x \equiv_\varphi y} = \set{y \in X \mid \exists g \in G \text{ tal que } g \cdot x = y  }.
+	\]
+	Notese que las orbitas son las clases de equivalencia de la relacion \(\equiv_\varphi\) y forman, por tanto, una particion de \(X \).
+\end{definition}
+\begin{definition}
+	Una accion es transitiva si solo hay una orbita
+	\[
+		orb(X) = X \text{, es decir, } \forall x,y \in X \quad \exists g \in G \text{ tal que } g \cdot x = y
+	\]
+\end{definition}
+\begin{definition}
+	Sean \(x \in B \) y \(\varphi\) una accion. Se define el estabilizador de \(x \) como el conjunto
+	\[
+		S_x = \set{g \in G \mid g \cdot x = x }
+	\]
+	Una notacion alternativa para el estabilizador es \(Stab_G(x )\). Notese que el estabilizador de \(x \) esta formado por los elementos de \(G \) que dejan fijo \(x \) cuando actuan sobre el.
+\end{definition}
+\begin{proposition}
+	\(\forall x \in B \), \(S_x \) es un subgrupo de \(G \).
+\end{proposition}
+\begin{proof}
+	Veamos que \(S_x \leq G \).
+	\begin{itemize}
+		\item Si \(g_1, g_2 \in Stab_G(x )\), \(g_1 g_2 \in Stab_G(x)\)?
+		      \[
+			      (g_1 g_2) \cdot x \overset{2)}{=} g_1 \cdot (g_2 \cdot x) \overset{g_2 \in S(x)}{=} g_1 \cdot x \overset{g_1 \in S(x)}{=} x \Rightarrow g_{1} g_2 \in Stab_G(x )
+		      \]
+		\item Si \(g \in Stab_G(x )\), \(g^{-1} \in Stab_G (x)\)?
+		      \[
+			      g^{-1} \cdot x \overset{g \cdot x = x}{=} g^{-1} \cdot (g \cdot x) \overset{2)}{=} \underbrace{(g^{-1} g)}_{e} \cdot x \overset{1)}{=} x \text{, es decir, } g^{-1} \in Stab_G (x)
+		      \]
+	\end{itemize}
+\end{proof}
+Sea
+\[
+	\begin{aligned}
+		\hat{\varphi} \colon G & \longrightarrow Biy(x )                     \\
+		g                      & \longmapsto \hat{\varphi} (g ) = \varphi_g
+	\end{aligned}
+\]
+Vamos a calcular \(Ker \hat{\varphi}\):
+\[
+	Ker \hat{\varphi} = \set{g \in G \mid \varphi_g = id} = \set{g \in G \mid g \cdot x = x \quad \forall x \in X} = \bigcap_{x \in X} Stab_G(x)
+\]
+\begin{example}
+	Si \(\varphi\) es la accion por conjugacion \(X = G \)
+	\[
+		\begin{aligned}
+			\varphi\colon G \times X & \longrightarrow X                        \\
+			(g, x )                  & \longmapsto \varphi((g, x )) = gx g^{-1}
+		\end{aligned}
+	\]
+	Para \(x \in X = G ,\) \(Stab_G(x) = \set{g \in G \mid g \times x = x } = \set{g \in G \mid g x g^{-1} = x } = \set{g \in G \mid gx = xg} = C_{G}(\set{x}) \leq G .\) Como consecuencia de esto, hemos obtenido que el centralizador es un subgrupo.
+	
+	\[
+		Ker \hat{\varphi} = \bigcap_{x\in X} Stab_G (x) = \bigcap_{x \in X} C_G (\set{x}) = \set{g \in G \mid gx = xg \quad \forall x \in X} = Z(G)
+	\]
+\end{example}
+
+% \begin{theorem}[de la orbita]
+% 	Sea \(\varphi\) una accion de un grupo \(G \) sobre un conjunto \(X \). Entonces \(\forall x \in X \) existe una biyeccion entre \(G / \equiv_{i, Sx} \) y \(orb(x )\). En particular se tiene que
+% 	\[
+% 		|orb(x)| = [G : S_x ]. 
+% 	\]
+% \end{theorem}
+\begin{theorem}[de la orbita]
+	Sea \(\varphi\) una accion de un grupo \(G \) sobre un conjunto \(X \). Consideramos \(H = Stab_{G}(x) \leq G \).
+	
+	Consideramos \(\set{g \cdot Stab_{G}(x) \mid g \in G }\) (conjunto de clases a la izquierda respecto de la relacion ser congruente a izquierda modulo H). Podemos definir una biyeccion entre \(\set{g  Stab_G(x) \mid g \in G}\) y \(orb(x )\) dada por
+	\[
+		\begin{aligned}
+			f \colon  \set{g Stab_G(x) \mid g \in G} & \longrightarrow   orb(x) \\
+			gStab_G(x)                               & \longmapsto g \cdot x
+		\end{aligned}
+	\]
+	En particular \([G:Stab_G(x)] = |orb(x)| \).
+	
+\end{theorem}
+\begin{proof}
+	Vamos a ver que \(f \) es una biyeccion. En primer lugar, veamos que esta bien definida: si \(g_1 Stab_G (x) = g_2 Stab_G (x)\), entonces \(g^{-1}_1 g_2 \in Stab_G(x ) \Rightarrow (g^{-1}_1 g_2) \cdot x = x \Rightarrow g_1 \cdot ((g^{-1}_1 g_2) \cdot x) = g_1 \cdot x \Rightarrow (g_1 g^{-1}_1 g_2 ) \cdot x = g_1 \cdot x \Rightarrow g_2 \cdot x = g_1 \cdot x\). Por lo tanto, \(f(g_1 Stab_G(x)) = f(g_2 Stab_G(x ))\).
+	
+	Veamos que es inyectiva. Si \(f(g_1 Stab_G (x)) = f(g_2 Stab_G (x)) \Rightarrow g_1 \cdot x = g_2 \cdot x \Rightarrow g^{-1}_1 \cdot (g_2 \cdot x) = g^{-1}_1 \cdot (g_2 \cdot x ) \Rightarrow (g^{-1}_1 g_1) \cdot x = (g^{-1}_1 g_2) \cdot x \Rightarrow x = (g^{-1}_1 g_2 ) \cdot x \). Luego \( g^{-1}_1 g_2 \in Stab_G (x) \Rightarrow g_1 \equiv_i g_2 \pmod {Stab_G (x)} \Rightarrow g_1 Stab_G(x) = g_2 Stab_G(x )\).
+	
+	Nos falta ver que es suprayectiva. Sea \(y \in orb(x )\), es decir, \(\exists g \in G \) tal que \(g \cdot x = y \). Entonces \(f(g Stab_G (x)) = y \) porque, por definicion, \( g \cdot x = y \). 
+	
+	Por tanto, \([G:Stab_G(x)] = |orb(x)| \). 
+\end{proof}
+\begin{remark}
+	En el caso de que \(G \) sea un grupo finito, el teorema anterior nos da la relacion:
+	\[
+		|orb(x)| = \frac{|G| }{|S_x| }
+	\]
+	por el teorema de Lagrange. 
+\end{remark}
+\subsection{Clasificacion de grupos}
+\begin{definition}[Conjunto generador]
+	Sean \(G \) un grupo y \(\varnothing \neq S \subseteq G \). Decimos que \(S \) es un conjunto generador de \(G \) si todo elemento de \(G \) se puede escribir como producto finito (que puede ser de un solo factor) de elementos de \(S \) y de inversos de elementos de \(S \).
+\end{definition}
+\begin{definition}[Grupo finitamente generado]
+	Decimos que un grupo \(G \) es finitamente generado si existe un conjunto \(S \) finito y generador de \(G  \).
+\end{definition}
+\begin{remark}
+	Si \(G \) es finito, es obvio que \(G \) es finitamente generado y se puede tomar como conjunto generador al propio \(G \). 
+\end{remark}
+\begin{remark}
+	\begin{itemize}
+		\item Si \(G \) es ciclico y \(G = \langle a \rangle \), \(S = \set{a }\) es el conjunto generador de \(G \).
+		\item \(D_n \) tiene como conjunto generador \(\set{\sigma, \tau}\) donde \(\sigma\) es el giro de angulo \(2\pi / n \) en sentido positivo y \(\tau\) es una simetria cualquiera.
+		\item \(S_n \) esta generado por el conjunto de las trasposiciones: \(S = \set{(ab) \mid a,b \in \set{1,\ldots,n }}\) es un conjunto generador de \(S_n \) porque todo \(\sigma \in S_n \) se escribe como producto de trasposiciones.
+		\item Si \(G = \Z \times \Z \times \cdots \times Z = \Z^{m} \), \(S = \set{(1, 0, \ldots, 0), (0,1,\ldots,0), \ldots, (0,0,\ldots,0,1)} \) es un conjunto generador de \(\Z^{m } \).
+	\end{itemize}
+\end{remark}
+Los dos siguientes teoremas proporcionan una clasificacion de los grupos abelianos finitamente generados. Ambas clasificaciones son equivalentes, simplemente cambia la presentacion de los grupos. 
+\begin{theorem}[Descomposicion en factores invariantes]
+	Sea \(G \) un grupo abeliano finitamente generado con \(|G| \geq 2 \). Entonces existen \(m \text{ (rango de la parte libre)} , k_1, \ldots, k_n \in \N \cup \set{0 } \text{ (factores invariantes de }G \text{)}  \) tales que 
+	\begin{itemize}
+		\item \(\forall j \in \set{1,\ldots,n} \quad k_j \geq 2	\)
+		\item \(\forall j \in \set{1,\ldots,n-1} \quad k_j | k_{j+1}\)
+		\item \(G \cong \underbrace{\Z^{m}}_{\substack{\text{parte}\\ \text{libre}  } } \times \underbrace{\Z_{k_1}\times \Z_{k_2} \times \cdots \times \Z_{k_n}}_{\text{ parte de torsion} } \)
+	\end{itemize}
+	donde 
+	\begin{itemize}
+		\item \(\Z^{0} \) se interpreta como que no aparece este factor.
+		\item Se incluye el caso en el que solo aparece un factor de tipo \(\Z^{m } \).
+	\end{itemize}
+	Ademas los numeros \(m,k_1, k_2, \ldots, k_n \) son unicos cumpliendo estas condiciones. 
+\end{theorem}
+\begin{example}
+	\begin{itemize}
+		\item Descomposicion de todos los grupos abelianos de orden \(36 \).
+		      
+		      \(m = 0\) porque son grupos finitos. Posibilidades para los factores invariantes: 
+		      \begin{itemize}
+			      \item \(k = 36 \rightarrow G \cong \Z_{36 }\).
+			      \item \(k_1 = 2, k_2 = 18 \rightarrow G \cong \Z_2 \times \Z_{18}\)
+			      \item \(k_1 = 3, k_2 = 12 \rightarrow G \cong \Z_3 \times \Z_{12}\)
+			      \item \(k_1 = 6, k_2 = 6 \rightarrow G \cong \Z_6 \times \Z_6 \)
+		      \end{itemize}
+		      Estos son los 4 grupos (salvo isomorfismo) que podemos tener con las condiciones de ser abeliano y tener orden \( 36 \). 
+	\end{itemize}
+\end{example}
+\begin{theorem}[Descomposicion en factores primarios]
+	Sea \(G \) un grupo abeliano finitamente generado con \(|G| \geq 2 \). Entonces existen \(m \text{ (rango de la parte libre)} ,q_1, q_2, \ldots, q_t \in \N \cup \set{0}\) tales que 
+	\begin{itemize}
+		\item \(\forall j \in \set{1,\ldots,t} \quad q_j \text{ es una potencia de un numero primo} \) (se llaman divisores elementales o factores primarios).
+		\item \(G \cong \underbrace{\Z^{m}}_{\substack{\text{parte}\\ \text{libre}  } } \times \underbrace{\Z_{k_1}\times \Z_{k_2} \times \cdots \times \Z_{k_n}}_{\text{ parte de torsion} } \)
+	\end{itemize}
+	donde 
+	% \begin{itemize}
+	% 	\item \(Z^{0} \) se interpreta como que no aparece este factor. 
+	% 	\item Se incluye el caso en el que solo aparece un factor de tipo \(\Z^{m } \).
+	% \end{itemize}
+	Ademas los numeros \(m,q_1, \ldots,q_t \) son unicos cumpliendo estas condiciones (salvo el orden de los \(q_j \)). 
+\end{theorem}
+\begin{example}
+	Descomposicion de todos los grupos abelianos de orden 36 (en funcion de sus divisores elementales). 
+	
+	Posibilidades para los divisores elementales: 
+	\begin{itemize}
+		\item \(2^{2} \), \(3^{2} \rightarrow G \cong \Z_{2^{2} } \times \Z_{3^{2} } \cong \Z_{36}\)
+		\item \(2,2,3^{2} \rightarrow G \cong \Z_2 \times \Z_2 \times \Z_{3^{2} } \cong \Z_2 \times \Z_{18} \)
+		\item \(2,2,3,3, \rightarrow G \cong \Z_2 \times \Z_2 \times \Z_3 \times \Z_3 \cong \Z_3 \times \Z_2\)
+		\item \(2^{2}, 3,3 \rightarrow G \cong \Z_{2^{2} } \times \Z_3 \times \Z_3 \cong \Z_6 \times \Z_6\)
+	\end{itemize}
+\end{example}
+
+Vamos a ver cuales son todos los grupos de orden menor o igual que 8. Para ello, introduciremos un grupo de orden 8 que aun no conocemos. 
+
+\begin{definition}
+	Consideremos el conjunto \(Q_8 = \set{1,i,j,k,-1,-i,-j,-k}\) donde 
+	\begin{itemize}
+		\item \(i^{2} = j^{2} = k^{2} = -1\).
+		\item \(ij = k \), \(jk = i \), \(ki = j \).
+	\end{itemize}
+	\(Q_8 \) es un grupo llamado grupo de los cuaternios (o cuaterniones). Ademas, \(Q_8 \) no es abeliano y \(Z(Q_8) = \set{1,-1}\). 
+\end{definition}
+
+A continuacion se enumeran todos los grupos (salvo isomorfismo) de un orden dado. En la primera linea aparecen los abelianos y en la segunda, si hay, los no abelianos: 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Orden & Grupos                                                           \\ \hline
+		\hline
+		1     & \(\set{e }\)                                                     \\ \hline
+		2     & \(\Z_2 \)                                                        \\ \hline
+		3     & \(\Z_3 \)                                                        \\ \hline
+		4     & \(\Z_4, \Z_2 \times \Z_2 \)                                      \\ \hline
+		5     & \(\Z_5 \)                                                        \\ \hline
+		6     & \(\substack{\Z_6                                                 \\ S_3 }\)  \\ \hline
+		7     & \(\Z_7 \)                                                        \\ \hline
+		8     & \(\substack{\Z_8, \Z_2 \times \Z_4, \Z_2 \times \Z_2 \times \Z_2 \\ D_4, Q_8}\)  \\
+		\hline
+	\end{tabular}
+	\caption{Grupos de orden menor o igual que 8.}
+	\label{tab:label}
+	
+\end{table}

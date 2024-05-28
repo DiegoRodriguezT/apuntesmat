@@ -1,0 +1,1887 @@
+\part{Matrices y determinantes. Sistemas de ecuaciones lineales, método de Gauss}
+
+\section{Nociones basicas}
+\begin{definition}
+	Un conjunto (denotado con letras mayusculas \\ \(A,B,C,\) etc.)  es una coleccion de elementos, usualmente denotados con letras minusculas (a,b,c,etc.). En los conjuntos no importa el orden de los elementos.
+\end{definition}
+Si queremos indicar todos los elementos que pertenecen a un conjunto, los indicaremos entre llaves. Por ejemplo,  \(A = \set{a,b,c}\)
+
+Para indicar que un elemento \(x \) pertenece a un conjunto \(A \) escribiremos \(x \in A\). El conjunto que no contiene ningun elemento se llama conjunto vacio y se escribe \(\varnothing\).
+
+\begin{example}
+	\(\N \) es el conjunto de los numeros naturales.
+
+	\(\Z\) es el conjunto de los numeros enteros.
+
+	\(\Q \) es el conjunto de los numeros racionales.
+
+	\(\R \) es el conjunto de los numeros reales.
+
+	\(\C \) es el conjunto de los numeros complejos. \(\C = \set{a+bi \colon a,b \in \R}\).
+\end{example}
+
+\begin{definition}
+	El producto cartesiano de dos conjuntos \(A \) y \(B \) se denota como \(A \times B \) y se define por
+	\[
+		A \times B = \set{(a,b) \mid a \in A, b \in B}
+	\]
+\end{definition}
+Es decir, es el conjunto de todas las posibles parejas donde el primer numero pertenece al conjunto \(A \) y el segundo pertenece al conjunto \(B \).
+
+El producto cartesiano \(A \times A \) se escribe \(A^{2} \). En caso general, se define \(A^{n }\) como
+\[
+	A^{n} = \set{(x_1,x_2,\ldots,x_n) \mid x_1,x_2,\dots,x_n \in A}
+\]
+
+\begin{definition}
+	Una operacion binaria interna \(* \) de un conjunto \(X\) es una aplicacion
+	\[
+		\begin{aligned}
+			* \colon X \times X & \longrightarrow X \\
+			(x,y )              & \longmapsto x * y
+		\end{aligned}
+	\]
+	que a cada elemento \((x,y) \in X \times X \) le asigna un unico elemento de \(X \), denotado por \(x * y \). Para indicar que \(X \) tiene una operacion binaria interna \(* \) habitualmente escribiremos \((X, * )\).
+\end{definition}
+
+\begin{example}
+	En el conjunto de los numeros naturales, se pueden definir dos operaciones binarias internas:
+	\[+ \colon \N \times \N \longrightarrow \N, (a,b) \longmapsto a + b\]
+	\[
+		\cdot \colon \N \times \N \longrightarrow \N
+	\]
+\end{example}
+
+Decimos que \(e \in X \) es elemento neutro de \((X, * )\) si \(e * x = x * e = x\) para todo \(x \in X\).
+
+La operación interna en \(X \) es asociativa si \(x * (y * z) = (x * y ) * z \; \forall x,y,z \in X \). La operación interna \(* \) en \(X \) es conmutativa si \(x * y = y * x \; \forall x,y \in X\).
+
+El inverso de un elemento \(x \in X\) respecto de la operación interna \(* \), si existe, es otro elemento \(y \in X\) tal que \(x * y = y * x = e\). El inverso de cada elemento es único cuando \(* \) es asociativa.
+
+\begin{proof}
+	Supongamos que existe \(y_1, y_{2}\) tal que \(y_1 * x = e \) y \(y_2 * x = e \), con \(* \) asociativa.
+	\[
+		y_1 = e * y_1 = (y_2 * x) * y_1 = y_2 * (x * y_1) = y_2 * e = y_2
+	\]
+\end{proof}
+El inverso de \(x \) respecto de \(* \) se suele denotar \(x^{-1} \).
+
+Caso particular: si la operacion interna en \(X \) es la suma \(+ \), el elemento neutro se denota como \(0 \) y el inverso, si existe, de un elemento \(x \) se suele llamar opuesto y se denota como \(-x \).
+
+\begin{definition}[Grupo]
+	Un conjunto \(G \) con una operacion binaria interna \(* \) es un grupo si tiene elemento neutro, si \(* \) es asociativa y si todo elemento de \(G \) tiene inverso. Si ademas \(* \) es conmutativa, \((G, * )\) es un grupo conmutativo o abeliano.
+\end{definition}
+
+\begin{definition}[Anillo]
+	Un conjunto \(A \) con dos operaciones internas, denotadas \(+ \) y \(\cdot \), es un anillo si cumple:
+	\begin{itemize}
+		\item \((A,+)\) es un grupo abeliano.
+		\item \(\cdot \) es asociativa.
+		\item Distributividad: \(x \cdot (y + z ) = x \cdot y + x \cdot z \quad \forall x,y,z \in A\)
+	\end{itemize}
+	Si, ademas, existe elemento neutro respecto de la operación \(\cdot \), será un anillo unitario. Si \(\cdot \) es conmutativa, \(A \) es un anillo conmutativo.
+\end{definition}
+
+\begin{definition}[Cuerpo]
+	Un cuerpo es un anillo conmutativo unitario \((X, +, \cdot )\) en el que, además, todo elemento distinto del elemento neutro de la suma tiene inverso respecto de \(\cdot \).
+\end{definition}
+
+\section{Matrices}
+
+\begin{definition}
+	Sea \(\K \) un cuerpo y sean \(m,n \in \N \). Una matriz \(m \times n \) sobre \(\K \) es una tabla rectangular formada por \(m \) filas y \(n \) columnas de elementos de \(\K\):
+	\[
+		A = \begin{pmatrix}
+			a_{11} & a_{12} & \cdots & a_{1n } \\
+			a_{21} & a_{22} & \cdots & a_{2n}  \\
+			\vdots & \vdots & \ddots & \vdots  \\
+			a_{m1} & a_{m2} & \cdots & a_{mn}  \\
+		\end{pmatrix}
+	\]
+	donde \(a_{ij} \in \K \), \(i = 1, \ldots, m \), \(j = 1,\ldots,n \).
+	\begin{itemize}
+		\item \(a_{ij}\) es el elemento \((ij )\) de la matriz \(A \), y se llama coeficiente de la matriz,
+		\item \(i \) es el índice de fila,
+		\item \(j \) es el índice de columna,
+		\item los elementos \(a_{11}, a_{22}, \ldots, a_{pp}\) (donde \(p = min\set{m,n}\)) se llaman elementos diagonales y \(\begin{pmatrix}
+			      a_{11 } & a_{22 } & \cdots & a_{pp } \\
+		      \end{pmatrix}\) se llama diagonal principal de \(A\).
+		\item Notacion: \(A = (a_{ij})_{i,j}\)
+	\end{itemize}
+\end{definition}
+
+Si \(m =n \), \(A \) se llama matriz cuadrada de orden \(n \).
+
+Si \(m = 1 \), \(A \) se llama matriz fila.
+
+Si \(n = 1 \), \(A \) se llama matriz columna.
+
+Si \(i_1, i_2, \ldots, i_p \) son algunos de los indices de fila de \(A \), y \(j_1, j_2, \ldots, j_q \) son algunos de los índices de columna de \(A \), la matriz \(p \times q \) formada por las filas y columnas correspondientes a los índices señalados se llama submatriz de \(A \).
+
+Cabe destacar que en una matriz \(A \) de tamaño \(m \times n \) cada fila de \(A \) viene dada por \(n \) elementos de \(K \) y puede interpretarse como un elemento de \(K^{n }: A_1, \ldots, A_m \in K^{n } \). Del mismo modo, cada columna de \(A \) viene dada por \(m \) elementos de \(K\) y puede interpretarse como un elemento de \(K^{m }: A^{1}, \ldots, A^{n} \in K^{m}  \).
+\begin{definition}
+	Dado un cuerpo \(\K \), denotamos
+	\[
+		\mathrm{Mat}_{m\times n}(\K) = \mathfrak{M}_{m \times n}(\mathbb{K}) = \set{A \mid A \text{ matriz } m \times n \text{ sobre } \K  }
+	\]
+	\[
+		\mathrm{Mat}_n(\K ) = \mathfrak{M}_{n}(\mathbb{K}) = \mathrm{Mat}_{n \times n }(\K)
+	\]
+\end{definition}
+\begin{definition}[Tipos de matrices]
+	~
+	\begin{enumerate}
+		\item Una matriz \(A \in \mathfrak{M}_{n}(\mathbb{K}) \) se llama matriz diagonal si \(a_{ij} = 0 \) para todo \(i \neq j \):
+		      \[
+			      A = \begin{pmatrix}
+				      a_{11 } &        & 0      \\
+				              & \ddots &        \\
+				      0       &        & a_{nn} \\
+			      \end{pmatrix}
+		      \]
+		\item Una matriz diagonal \(A \) tal que \(a_{11} = a_{22} = \cdots = a_{nn} \) se llama matriz escalar:
+		      \[
+			      A = \begin{pmatrix}
+				      \lambda &        & 0       \\
+				              & \ddots &         \\
+				      0       &        & \lambda \\
+			      \end{pmatrix}
+		      \]
+		      Si \(\lambda = 1\), la matriz \(A \) se llama matriz identidad y se denota \(I \).
+		\item La matriz \(m \times n \) tal que todos sus elementos son \(0_K\) se llama matriz nula:
+		      \[
+			      0_{mn} = \begin{pmatrix}
+				      0_K    & \cdots & 0_K    \\
+				      \vdots & \ddots & \vdots \\
+				      0_K    & \cdots & 0_K    \\
+			      \end{pmatrix}
+		      \]
+		\item Una matriz cuadrada \(A \in \mathfrak{M}_{n}(\mathbb{K}) \) se llama matriz triangular superior si \(a_{ij} = 0 \) para todo \(i>j \):
+		      \[
+			      A = \begin{pmatrix}
+				      a_{11 } & a_{12 } & \cdots & a_{1n } \\
+				      0_K     & a_{22 } & \cdots & a_{2n } \\
+				      \vdots  & \ddots  & \ddots & \vdots  \\
+				      0_K     & \cdots  & 0_K    & a_{nn}  \\
+			      \end{pmatrix}
+		      \]
+		\item Una matriz cuadrada \(A \in \mathfrak{M}_{n}(\mathbb{K}) \) se llama matriz triangular inferior si \(a_{ij} = 0 \) para todo \(i<j \).
+		      \[
+			      A = \begin{pmatrix}
+				      a_{11 } & 0_K     & \cdots & 0_K    \\
+				      a_{12 } & a_{22 } & \ddots & \vdots \\
+				      \vdots  & \vdots  & \ddots & 0_K    \\
+				      a_{n1 } & a_{n2 } & \cdots & a_{nn} \\
+			      \end{pmatrix}
+		      \]
+		\item \(E_{ij } \in \mathfrak{\MakeUppercase{m}}_{m\times n}(\mathbb{K })\) denota la matriz que tiene todos sus elementos nulos, salvo el elemento \((ij )\) (fila \(i \) columna \(j \)) que es \(1_K \).
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Dada \(A \in \mathfrak{M}_{m \times n}(\mathbb{K}) \),
+	\begin{enumerate}
+		\item la matriz opuesta de \(A \) es \(-A = (-a_{ij})_{ij} \in \mathfrak{M}_{m \times n}(\mathbb{K}) \)
+		\item la matriz traspuesta de \(A \) es \(A^{t} = (a_{ji})_{ji} \in \mathfrak{M}_{m \times n}(\mathbb{K}) \)
+	\end{enumerate}
+\end{definition}
+\begin{example}
+	Si \(A = \begin{pmatrix}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+	\end{pmatrix}\), entonces
+	\[
+		-A = \begin{pmatrix}
+			-1 & -2 & -3 \\
+			-4 & -5 & -6 \\
+		\end{pmatrix} \text{ y } A^{t} = \begin{pmatrix}
+			1 & 4 \\
+			2 & 5 \\
+			3 & 6 \\
+		\end{pmatrix}
+	\]
+\end{example}
+
+\begin{definition}
+	Dada una matriz cuadrada \(A \in \mathfrak{M}_{m \times n}(\mathbb{K}) \),
+	\begin{itemize}
+		\item se dice que \(A \) es simetrica si \(A^{t} = A \)
+		\item se dice que \(A \) es una matriz antisimetrica si \(A^{t} = -A \)
+	\end{itemize}
+\end{definition}
+
+\begin{definition}[Suma de matrices]
+	En \(\mathfrak{M}_{m \times n}(\mathbb{K}) \) se define la suma de matrices del siguiente modo:
+	\[
+		A + B = (a_{ij} + b_{ij})_{ij} \in \mathfrak{M}_{m \times n}(\mathbb{K})
+	\]
+	para toda \(A = (a_{ij})_{ij}\), \(B = (b_{ij})_{ij}\) en \(\mathfrak{M}_{m \times n}(\mathbb{K}) \). Es decir, para sumar dos matrices, ambas han de tener el mismo tamaño (mismo número de filas y mismo número de columnas) y la suma se realiza componente a componente (en cada una de las posiciones \((ij )\) de la matriz \(A + B \) escribiremos \(a_{ij} + b_{ij}\) ).
+\end{definition}
+
+\begin{proposition}
+	\((\mathfrak{\MakeUppercase{m}}_{m\times n}, + )\) es un grupo conmutativo.
+\end{proposition}
+\begin{proof}
+	Claramente, la suma de matrices satisface la propiedad asociativa y la propiedad conmutativa (porque son propiedades que se cumplen en \(\K \)). Además, \(\mathfrak{\MakeUppercase{m}}_{m \times n}(\K )\) tiene por elemento neutro de la suma a la matriz nula \(0_{m \times n }\), y todo elemento \(A \) de \(\mathfrak{\MakeUppercase{m}}_{m \times n }(\K)\) tiene por opuesto a su matriz opuesta \(-A \).
+\end{proof}
+
+\begin{definition}[Producto de una matriz por un escalar]
+	Dada una matriz \(A \in \mathfrak{\MakeUppercase{m}}_{m\times n}(\K )\) y un escalar \(t \in  \K \), definimos el producto de \(t \) por \(A = (a_{ij})_{ij}\) como la matriz de \(\mathfrak{\MakeUppercase{m}}_{m \times n}(\K )\) cuyo elemento en la posicion \((ij )\) es \(ta_{ij }\). Lo denotamos por \(tA \).
+\end{definition}
+\begin{definition}[Producto de matrices]
+	Dadas \(A = (a_{ij})_{ij} \in \mathfrak{\MakeUppercase{m}}_{m \times n}(\K)\) y \(B = (b_{ij})_{ij} \in \mathfrak{\MakeUppercase{m}}_{n \times p}(\K )\), definimos el producto de \(A \) por \(B \) como la matriz \(C = (c_{ij})_{ij} \in  \mathfrak{\MakeUppercase{M}}_{m \times p}(\K)\) cuyos elementos \(c_{ij }\) son
+	\[
+		c_{ij} = \begin{pmatrix}
+			a_{i1 } & \cdots & a_{in } \\
+		\end{pmatrix} \begin{pmatrix}
+			b_{1j } \\
+			\vdots  \\
+			b_{nj}  \\
+		\end{pmatrix} = \sum_{k =1}^{n } a_{ik}b_{kj}
+	\]
+	Notemos que solo se pueden multiplicar dos matrices \(A \) y \(B \) cuando el número de columnas de \(A \) coincide con el número de filas de \(B \).
+\end{definition}
+\begin{proposition}[Propiedades del producto de matrices]
+	Las propiedades del producto de matrices son las siguientes:
+	\begin{enumerate}
+		\item El producto no es conmutativo en general.
+		\item \(I_m A = A = AI_n \) para todo \(A \in  \mathfrak{M}_{m \times n}(\mathbb{K})\).
+		\item En general, \(AB = 0 \not\Rightarrow A = 0 \text{ o } B = 0 \)
+		\item El producto es asociativo: \((AB)C = A(BC)\)
+		\item \(A(B_1+B_2) = AB_1 + AB_2\)
+		\item \((A_1 + A_2)B = A_1 B + AB_2\)
+		\item \((tA)B = t(AB) = A(tB)\)
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Por ejemplo,
+		      \[
+			      AB = \begin{pmatrix}
+				      1 & 1 \\
+				      0 & 1 \\
+			      \end{pmatrix} \cdot \begin{pmatrix}
+				      1 & 1 \\
+				      1 & 0 \\
+			      \end{pmatrix} = \begin{pmatrix}
+				      2 & 1 \\
+				      1 & 0 \\
+			      \end{pmatrix}
+		      \]
+		      \[
+			      BA = \begin{pmatrix}
+				      1 & 1 \\
+				      1 & 0 \\
+			      \end{pmatrix} \cdot \begin{pmatrix}
+				      1 & 1 \\
+				      0 & 1 \\
+			      \end{pmatrix} = \begin{pmatrix}
+				      1 & 2 \\
+				      1 & 1 \\
+			      \end{pmatrix}
+		      \]
+		\item Es trivial.
+		\item Tomar por ejemplo \(A = \begin{pmatrix}
+			      0 & 1 \\
+			      0 & 0 \\
+		      \end{pmatrix}\) y \(B = \begin{pmatrix}
+			      1 & 0 \\
+			      0 & 0 \\
+		      \end{pmatrix}\), que cumplen \(AB = 0\).
+
+	\end{enumerate}
+	Las propiedades 4,5,6 y 7 se deducen de las correspondientes propiedades en el cuerpo \(\K  \).
+\end{proof}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item Dados \(A \in \mathfrak{M}_{m \times n}(\mathbb{K}) \) y \(E_{ij} \in \mathfrak{M}_{n \times p}(\mathbb{K}) \), \(AE_{ij}\) es la matriz que en la columna \(j \) tiene la columna \(i \) de \(A \), y en el resto ceros. Caso particular, \(p =1 \).
+		\item Dados \(A \in  \mathfrak{M}_{m \times n}(\mathbb{K}) \) y \(E_{ij} \in  \mathfrak{M}_{p \times m}(\mathbb{K}) \), \(E_{ij}A \) es la matriz que en la fila \(i \) tiene la fila \(j \) de \(A \), y en el resto ceros. Caso particular, \(p = 1\).
+		\item Si \(A \in \mathfrak{M}_{m \times n}(\mathbb{K}) \) es tal que \(AX = 0 \) para toda \(X \in \mathfrak{M}_{n \times p}(\mathbb{K}) \), entonces \(A = 0 \). Análogamente, si \(YA = 0 \) para toda \(Y \in  \mathfrak{M}_{p \times m}(\mathbb{K}) \), entonces \(A = 0\)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item \[
+			      AE_{ij} = \begin{pmatrix}
+				      a_{11} & \cdots & a_{1n} \\
+				      \vdots & \ddots & \vdots \\
+				      a_{m1} & \cdots & a_{mn} \\
+			      \end{pmatrix} \cdot E_{ij} = \begin{pmatrix}
+				      0      & \cdots & a_{1i } & \cdots & 0 \\
+				      0      & \cdots & a_{2i } & \cdots & 0 \\
+				      \vdots &        & \vdots  &        &   \\
+				      0      & \cdots & a_{mi } & \cdots & 0 \\
+			      \end{pmatrix}
+		      \]
+		\item
+		      \[
+			      E_{ij}A = E_{ij }\begin{pmatrix}
+				      a_{11} & \cdots & a_{1n} \\
+				      \vdots & \ddots & \vdots \\
+				      a_{m1} & \cdots & a_{mn} \\
+			      \end{pmatrix} = \begin{pmatrix}
+				      0       & \cdots & 0       \\
+				      \vdots  &        & \vdots  \\
+				      a_{j1 } & \cdots & a_{jn } \\
+				      \vdots  &        & \vdots  \\
+				      0       & \cdots & 0       \\
+			      \end{pmatrix}
+		      \]
+		\item Si \(AX = 0 \) para todo \(X \in \mathfrak{M}_{n \times p}(\mathbb{K}) \) entonces \(AE_{ij} = 0 \) para todo elemento \(E_{ij}\) de \(\mathfrak{\MakeUppercase{m}}_{n \times p }(\K )\). Por tanto, todas las columnas de \(A \) son cero, de donde \(A \) es cero. De modo similar, si \(YA = 0\) para toda \(Y \in \mathfrak{\MakeUppercase{m}}_{p \times m}(\K )\) entonces \(E_{ij}A = 0 \) para todo \(i,j \), de donde se deduce que todas las filas de \(A \) son cero.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	\((\mathfrak{M}_{n}(\mathbb{K}), +, \cdot)\) es un anillo con identidad, no conmutativo en general.
+\end{proposition}
+
+\begin{definition}[Inversa de una matriz]
+	Decimos que una matriz cuadrada \(A \) es invertible o regular si tiene inverso en el anillo de las matrices, es decir, si existe una matriz \(B \) del mismo tamaño tal que \(AB = BA = I_n \). La matriz \(B \) se dice inversa de \(A \).
+
+	Si \(A \) no es invertible, se dice singular.
+\end{definition}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item Si \(A \in  \mathfrak{M}_{n}(\mathbb{K}) \) es invertible, entonces la inversa de \(A \) es unica y se denota \(A^{-1} \).
+		\item Si \(A \) es invertible y \(B \) es tal que \(AB = I_n \), entonces \(B = A^{-1} \)
+		\item Si \(A \) es invertible y \(C \) es tal que \(CA = I_n \), entonces \(C = A^{-1}\).
+		\item Si \(A \) es invertible entonces \(A^{-1}  \) tambien es invertible y su inversa es \(A \).
+		\item Si \(A,B \in  \mathfrak{M}_{n}(\mathbb{K}) \) son matrices inversibles, entonces \(AB \) tambien es invertible, y su inversa es \(B^{-1} A^{-1} \).
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Si \(B_1, B_2 \) son inversas de \(A \) entonces \(B_1 = B_1 I_n = B_1 (A B_2) = (B_1 A) B_2 = I_N B_2 = B_2\)
+		\item Si \(AB = I_n \), entonces \(A^{-1} = A^{-1} \cdot I_n = A^{-1} \cdot (AB) = (A^{-1} A)B = I_n B \Rightarrow A^{-1} = B\)
+		\item Analogo a la propiedad 2.
+		\item Trivial.
+		\item \((AB)(B^{-1} A^{-1} ) = A(B B^{-1} ) A^{-1}  = AI_n A^{-1} = A A^{-1} = I_n \).
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}[Matrices elementales]
+	Se llama matriz elemental a toda matriz cuadrada de orden \(n \) de uno de los siguientes tipos:
+	\begin{enumerate}
+		\item \(P_{ij } = I_n - E_{ii} + E_{ii} + E_{ji}\)
+		\item \(P_{ij}(t) = I_n + tE_{ij},\) con \(t \in \K \)
+		\item \(Q_i(s) = I_n + (s-1)E_{ii}\), con \(0 \neq s \in  \K \)
+	\end{enumerate}
+	donde \(E_{ij }\) es la matriz cuadrada de orden \(n \) que tiene todas sus entradas nulas salvo la entrada de la posicion \((ij)\) que es \(1_K \) .
+\end{definition}
+\begin{example}
+	\[
+		P_{12} = \begin{pmatrix}
+			0 & 1 & 0 \\
+			1 & 0 & 0 \\
+			0 & 0 & 1 \\
+		\end{pmatrix}, \quad P_{31}(t) = \begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			t & 0 & 1 \\
+		\end{pmatrix}, \quad Q_3(s) = \begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & s \\
+		\end{pmatrix}
+	\]
+\end{example}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item Para toda \(A \) si \(P_{ij},P_{ij}(t), Q_i(s)\),
+
+		      \(AP_{ij}\) se obtiene intercambiando las columnas \(i,j \) de A.
+
+		      \(AP_{ij}(t)\) se obtiene sumando a la columna \(j \) de \(A \), la columna \(i \) de \(A \) multiplicada por \(t \).
+
+		      \(AQ_i (s)\) se obtiene multiplicando la columna \(i \) de \(A  \) por \(s\).
+
+		\item Para toda \(A \) si \(P_{ij},P_{ij}(t), Q_i(s)\),
+
+		      \(P_{ij}A\) se obtiene intercambiando las filas \(i,j \) de A.
+
+		      \(P_{ij}(t)A\) se obtiene sumando a la fila \(j \) de \(A \), la fila \(i \) de \(A \) multiplicada por \(t \).
+
+		      \(Q_i (s)A\) se obtiene multiplicando la fila \(i \) de \(A  \) por \(s\).
+		\item Las matrices elementales son inversibles: \(P_{ij}^{-1} = P_{ij}\), \(P_{ij}(t)^{-1} = P_{ij}(-t)\) y \(Q_{i}(s)^{-1}  = Q_i(s^{-1})\)
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Propiedades de la trasposicion de matrices]
+	Las propiedades de las trasposiciones de matrices son las siguientes:
+	\begin{enumerate}
+		\item \((A+B)^{t} = A^{t} + B^{t} \)
+		\item \((sA)^{t} = sA^{t}  \)
+		\item \((AB)^{t} = B^{t}A^{t}   \)
+		\item \(A \) es una matriz invertible si y solo si \(A^{t }\) tambien es invertible (y su inversa es \((A^{-1} )^{t} \))
+		\item \(E^{t}_{ij} = E_{ji}, P^{t}_{ij} = P_{ij}, Q_i(s)^{t} = Q_i(s)   \)
+	\end{enumerate}
+\end{proposition}
+
+\section{Sistemas de ecuaciones lineales}
+
+\begin{definition}[Sistema de ecuaciones lineales]
+	Sea \(\K \) un cuerpo. Un sistema lineal de \( m \) ecuaciones con \(n \) incognitas es una expresion del tipo
+	\[
+		\begin{cases}
+			a_{11}x_1 + \cdots + a_{1n}x_n = b_1 \\
+			a_{21}x_1 + \cdots + a_{2n}x_n = b_2 \\
+			\vdots                               \\
+			a_{m1}x_1 + \cdots + a_{mn}x_n = b_m
+		\end{cases}
+	\]
+	donde todos los \(a_{ij}, b_i \in  \K \), \(i = 1, \ldots, n, j = 1, \ldots, m \).
+	\begin{itemize}
+		\item los elementos \(a_{ij }\) se llaman coeficientes del sistema.
+		\item los \(x_1, \ldots, x_n \) se llaman incognitas
+		\item los \(b_1, \ldots, b_m \) son los terminos independientes
+		\item cada una de las expresiones
+		      \[
+			      a_{i1}x_1 + \cdots + a_{in} x_n = b_i
+		      \]
+		      se llama ecuacion del sistema.
+	\end{itemize}
+\end{definition}
+Los datos anteriores se pueden organizar utilizando matrices:
+\begin{itemize}
+	\item La matriz de tamaño \(m \times n \) formada por los coeficientes se llama la matriz del sistema:
+	      \[
+		      A = \begin{pmatrix}
+			      a_{11 } &        & a_{1n } \\
+			              & \ddots &         \\
+			      a_{m1 } &        & a_{mn}  \\
+		      \end{pmatrix} \in \mathfrak{M}_{m \times n}(\mathbb{K})
+	      \]
+	\item La matriz columna formada por los terminos independientes se llama matriz de terminos independientes:
+	      \[
+		      \mathbf{b}  = \begin{pmatrix}
+			      b_1    \\
+			      \vdots \\
+			      b_m    \\
+		      \end{pmatrix} \in \mathfrak{\MakeUppercase{M}}_{m \times 1} (\K )
+	      \]
+	\item La matriz columna formada por las incognitas se llama matriz de incognitas:
+	      \[
+		      \mathbf{x}  = \begin{pmatrix}
+			      x_1    \\
+			      \vdots \\
+			      x_n    \\
+		      \end{pmatrix}
+	      \]
+	\item La matriz de tamaño \(m \times (n+1 )\) formada por la matriz de coeficientes y una columna extra que contiene los terminos independientes se llama matriz ampliada:
+	      \[
+		      (A\mid \mathbf{b} ) = \left ( \begin{array}{ccc|c}
+				      a_{11} &        & a_{1n} & b_1    \\
+				             & \ddots &        & \vdots \\
+				      a_{m1} &        & a_{mn} & b_m
+			      \end{array}\right )
+		      \in \mathfrak{\MakeUppercase{M}}_{m \times (n + 1)}(\K)\]
+\end{itemize}
+
+Utilizando el producto de matrices, se puede comprobar que el sistema se puede reescribir de un modo mas compacto como
+\[
+	A \cdot \mathbf{x}  = \mathbf{b}
+\]
+\begin{definition}[Soluciones de un sistema de ecuaciones lineales]
+	Decimos que el vector columna
+	\[
+		c = \begin{pmatrix}
+			x_1    \\
+			\vdots \\
+			x_n    \\
+		\end{pmatrix}
+	\]
+	es una solucion del sistema \(A \cdot x = b \) si se cumple \(A \cdot \mathbf{c}  = \mathbf{b} \)
+\end{definition}
+Es decir, una solucion del sistema son valores \(c_1, \ldots, c_n \in \K \) que al sustituir \(x_1 \) por \(c_1 \), etc. en la expresion hacen que las ecuaciones se conviertan en igualdades en K.
+
+Según su numero de soluciones, los sistemas se clasifican en:
+\begin{itemize}
+	\item Sistemas incompatibles: no tienen ninguna solución.
+	\item Sistemas compatibles: tienen soluciones \begin{itemize}
+		      \item Si solo admiten una solución, se llaman sistemas compatibles determinados.
+		      \item En caso contrario, se llaman sistemas compatibles indeterminados.
+	      \end{itemize}
+\end{itemize}
+
+Un sistema es homogeneo si todos sus terminos independientes son 0. Estos sistemas siempre son sistemas compatibles porque admiten como solucion al vector
+\[
+	0 = \begin{pmatrix}
+		0      \\
+		\vdots \\
+		0      \\
+	\end{pmatrix}
+\]
+\begin{definition}
+	Se dice que dos sistemas \(A \cdot x = b \) y \(B \cdot x = c \) son equivalentes si tienen exactamente las mismas soluciones.
+\end{definition}
+
+\begin{proposition}
+	Si en un sistema de ecuaciones lineales
+	\begin{enumerate}
+		\item se intercambian dos ecuaciones,
+		\item se multiplica una ecuacion por un escalar no nulo, o
+		\item se suma a una ecuacion otra multiplicada por un escalar,
+	\end{enumerate}
+	el sistema resultante es equivalente al original.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Trivial.
+		\item Supongamos que multiplicamos por \(\alpha \in \K \neq  0\) la i-esima ecuacion del sistema
+		      \[
+			      a_{i1}x_1 + \cdots + a_{in}x_n = b_1
+		      \]
+		      y que las demas ecuaciones las dejamos igual. Veamos que \(c = (c_1 \, c_2 \, \cdots \, c_n )\) es solucion del primer sistema si y solo si es solucion del segundo: como hay una ecuacion diferente, basta comprobar que \(c \) cumple la ecuacion
+		      \[
+			      a_{i1}x_1 + \dots + a_{in}x_n = b_i
+		      \]
+		      si y solo si cumple la ecuacion
+		      \[
+			      \alpha a_{i1}x_1 + \dots + \alpha a_{in}x_n = b_i
+		      \]
+
+		      \(\Rightarrow )\) Por cumplir el primer sistema, sabemos
+		      \[
+			      a_{i1}c_1 + \cdots + a_{in}c_n = b_i
+		      \]
+		      y, multiplicando por \(\alpha\) en ambos lados de la igualdad, tenemos que
+		      \[
+			      \alpha a_{i1} c_1 + \cdots + \alpha a_{in}c_n = \alpha b_i
+		      \]
+		      Luego cumple la ecuacion \(i \) del segundo sistema. Esto implica que \((c_1 \, \cdots \, c_n )\) es solucion del segundo sistema.
+
+		      \(\Leftarrow ) \) Una solucion que cumple las ecuaciones del segundo sistema es \((c_1 \, \cdots \, c_n )\). Por cumplir el segundo sistema, sabemos que
+		      \[
+			      \alpha a_{i1} x_1 + \cdots + \alpha a_{in} x_n = b_i
+		      \]
+		      y multiplicando por \(\frac{1}{\alpha}\) llegamos a
+		      \[
+			      a_{i1} x_1 + \cdots + a_{in}x_n = b_i
+		      \]
+		      que es la ecuacion i-esima del primer sistema. Por tanto, \((c_1 \, \cdots \, c_n )\) tambien es solucion del primer sistema.
+
+		\item Supongamos que la i-esima y la j-esima ecuaciones del sistema original son
+		      \[
+			      \begin{dcases}
+				      a_{i1}x_1 + \cdots + a_{in}x_n = b_i \\
+				      a_{j1}x_1 + \cdots + a_{jn}x_n = b_j
+			      \end{dcases}
+		      \]
+		      y sustituimos la ecuacion j-esima por la suma de la j-esima mas la i-esima multiplicada por un escalar \(\lambda \in \K \):
+		      \[
+			      \begin{dcases}
+				      a_{i1}x_1 + \cdots + a_{in}x_n = b_i \\
+				      (a_{j1} + \lambda a_{i1})x_1 + \cdots + (a_{jn}+\lambda a_{in})x_n = b_j + \lambda b_i
+			      \end{dcases}
+		      \]
+		      \(\Rightarrow ) \) Supongamos que \((c_1 \, \cdots \, c_n )\) es solucion del primer sistema. En particular, en la i-esima ecuacion
+		      \[
+			      a_{i1}c_1 + \cdots + a_{in}c_n = b_i
+		      \]
+		      y en la j-esima
+		      \[
+			      a_{j1}x_1 + \cdots + a_{jn}x_n = b_i
+		      \]
+		      Multiplicando la i-esima ecuacion por \(\lambda \in  \K \) queda:
+		      \[
+			      \lambda a_{i1}c_1 + \cdots + \lambda a_{in}c_n = \lambda b_i
+		      \]
+		      que lo sumamos a la j-esima ecuacion
+		      \[
+			      (a_{j1} + \lambda a_{i1})c_1 + \cdots + (a_{jn}+\lambda a_{in})c_n = b_j + \lambda b_i
+		      \]
+		      Llegamos a que se cumple la ecuacion j del segundo sistema y, por tanto, se cumplen todas las ecuaciones. \(c_1 \, \cdots \, c_n \) es solucion del segundo sistema.
+
+		      \(\Leftarrow ) \) Supongamos que \((c_1 \, \cdots \, c_n )\) es una solucion del segundo sistema, cuya i-esima ecuacion es:
+		      \[
+			      a_{i1}c_1 + \cdots + a_{in}c_n =  b_i
+		      \]
+		      y su j-esima:
+		      \[
+			      (a_{j1} + \lambda a_{i1})c_1 + \cdots + (a_{jn}+\lambda a_{in})c_n = b_j + \lambda b_i
+		      \]
+		      Multiplicando en ambos lados de la i-esima ecuacion por \(-\lambda\) tenemos
+		      \[
+			      -\lambda a_{i1}c_1 + \cdots + -\lambda a_{in}c_n = -\lambda b_i
+		      \]
+		      Sumando a la j-esima ecuacion la anterior:
+		      \[
+			      a_{j1}x_1 + \cdots + a_{jn}x_n = b_i
+		      \]
+		      Por tanto, \((c_1 \, \cdots \, c_n )\) cumple todas las ecuaciones del primer sistema y, por tanto, es solucion de ambos.
+
+		      Los sistemas son equivalentes.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}[Matrices equivalentes por filas]
+	Dos matrices son equivalentes por filas si una se puede obtener a partir de la otra multiplicando por delante por una cantidad finita matrices elementales. Como las matrices elementales son todas invertibles, \(B \) es equivalente por filas a \(A \) si y solo si \(A \) es equivalente por filas a \(B \). Tienen una relacion de equivalencia ya que cumplen las propiedades reflexiva, transitiva y simetrica.
+\end{definition}
+
+\begin{definition}[Matriz escalonada]
+	Una matriz \(A \) esta en forma escalonada si cada fila no nula de \(A \) comienza con mas ceros que la fila anterior y sus filas nulas, si las tiene,  estan en la parte inferior de la matriz. Al primer elemento no nulo de cada fila no nula se le llama pivote de esa fila.
+\end{definition}
+
+\begin{definition}[Matriz escalonada reducida]
+	Una matriz \(A \) esta en forma escalonada reducida si, ademas de ser escalonada, el pivote de cada fila no nula es 1 y los elementos superiores al pivote en su misma columna son cero.
+\end{definition}
+
+Cuando la matriz de coeficientes de un sistema \(Ax = b \) esta en forma escalonada, la discusion y resolucion del sistema es casi directa. Los diferentes casos son:
+\begin{enumerate}
+	\item La ultima fila no nula de la matriz ampliada es de la forma
+	      \[
+		      \left (
+		      \begin{array}{ccc|c}
+				      0 & \cdots & 0 & \lambda \\
+			      \end{array}\right )
+	      \]
+	      con \(\lambda \neq  0 \in \K \). En este caso, el sistema es incompatible.
+	\item La ultima fila no nula de la matriz ampliada es de la forma
+	      \[
+		      \left (
+		      \begin{array}{ccc|c}
+				      0 & \cdots & \lambda & \alpha \\
+			      \end{array}\right )
+	      \]
+	      con \(\lambda \neq  0 \). En este caso el sistema es compatible. Para resolverlo, se despejan ``de abajo a arriba'' las incógnitas que corresponden a los pivotes de cada fila no nula. Las incógnitas que no correspondan a pivotes de ninguna fila serán parámetros libres en la solución del sistema. Para decidir si es determinado o indeterminado, nos fijamos en el numero de pivotes y comparamos con el numero de incognitas.
+	      \begin{enumerate}
+		      \item Si hay tantas incognitas como pivotes, el sistema es compatible determinado.
+		      \item Si hay mas incognitas que pivotes (hay filas no nulas) el sistema es compatible indeterminado, y va a depender exactamente del numero de incognitas que no corresponden a pivotes.
+	      \end{enumerate}
+	      % Completar
+\end{enumerate}
+
+\begin{proposition}[Método de Gauss]
+	Sea \(A\mathbf{x}  = \mathbf{b} \) un sistema de ecuaciones lineales. El metodo de Gauss transforma el sistema original en un sistema equivalente cuya matriz del sistema está en forma escalonada:
+	\begin{enumerate}
+		\item Conseguir que en la primera fila el pivote esté lo mas a la izquierda posible.
+		\item Hacer ceros debajo del pivote: se suma a cada una de las filas la primera multiplicada por el escalar adecuado.
+		\item Repetir todos los pasos para las siguientes filas y columnas.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Método de Gauss-Jordan]
+	Sea \(Ax = b \) un sistema de ecuaciones lineales. El método de Gauss-Jordan transforma el sistema original en un sistema equivalente cuya matriz del sistema está en formada escalonada reducida:
+	\begin{enumerate}
+		\item Aplicar el metodo de Gauss, obteniendo la matriz de coeficientes en forma escalonada.
+		\item Hacer que todos los pivotes sean iguales a \(1 \) multiplicando cada fila por un escalar.
+		\item De abajo a arriba hacer ceros encima de cada pivote: se suma a cada una de las filas encima del pivote la última fila multiplicada por el escalar adecuado.
+	\end{enumerate}
+\end{proposition}
+
+\underline{Calculo de la inversa de una matriz A:}
+
+Si \(A \) tiene inversa y \(A \cdot C = I \) entonces \(C = A^{-1} = \left (\begin{array}{c|c|c|c}
+		C^{1} & C^{2} & \cdots & C^{n } \\
+	\end{array} \right )\), donde \(C^{1} \), \(\ldots, C^{n } \) son las columnas de \(A^{-1} \). Por tanto, buscamos una matriz \(C \) tal que \(AC = I \).
+\[
+	AC^{1} = \begin{pmatrix}
+		1      \\
+		\vdots \\
+		0      \\
+	\end{pmatrix}, C^{1}  \text{ solucion de }A \mathbf{x}_1 = \begin{pmatrix}
+		1      \\
+		\vdots \\
+		0      \\
+	\end{pmatrix}
+\]
+\begin{center}
+	\(
+	\vdots
+	\)
+\end{center}
+\[
+	AC^{n} = \begin{pmatrix}
+		0      \\
+		\vdots \\
+		1      \\
+	\end{pmatrix}, C^{n}  \text{ solucion de }A \mathbf{x}_n = \begin{pmatrix}
+		0      \\
+		\vdots \\
+		1      \\
+	\end{pmatrix}
+\]
+% Para cada sistema, hay dos opciones:
+% \begin{itemize}
+% 	\item S.I. en algun momento \(\begin{pmatrix}
+% 		      0 & \cdots & 0 & | x \\
+% 	      \end{pmatrix}\)
+% 	\item SCD al hacer Gauss-Jordan
+% \end{itemize}
+Creamos una matriz ampliada con \(n \) columnas nuevas, resolviendo todos los sistemas a la vez:
+\[
+	\left (A \left | \begin{matrix}
+			1      & \cdots & 0      \\
+			\vdots & \ddots & \vdots \\
+			0      & \cdots & 1      \\
+		\end{matrix}\right . \right ) = \left ( A \left | I_n \right . \right)
+\]
+Hay dos casos:
+\begin{itemize}
+	\item Sistema incompatible: si en alguno de los pasos del método de Gauss sobre la matriz se obtiene una fila de la forma
+	      \[
+		      \begin{pmatrix}
+			      0 & \cdots & 0 & | \cdots & x \neq  0 & \cdots \\
+		      \end{pmatrix} \Rightarrow \text{No existe } A^{-1}
+	      \]
+	\item En caso contrario, la matriz escalonada reducida asociada a \(A \) es \(I_n \) y el método de Gauss-Jordan aplicado a \((A|I_n )\) nos proporciona una matriz de la forma \((I_n | C )\), con \(C \) la inversa de \(A \).
+\end{itemize}
+\[
+	(A | I_n) \sim_{\text{Gauss-Jordan}}(I_n | A^{-1} )
+\]
+
+\begin{proposition}
+	Una matriz \(A \) es invertible si y solo si \(A \) es producto de matrices elementales.
+\end{proposition}
+\begin{proof}
+	\(\Rightarrow ) \) Si \(A \) es invertible, el metodo de Gauss-Jordan sobre \((A \mid I )\) nos devuelve \((I \mid A^{-1} )\). Cada paso del metodo de Gauss-Jordan es una operacion elemental que implica multiplicar \(A \) por una matriz elemental: \[\underbrace{E_x \cdots E_1}_{\substack{matrices\\ elementales}} \cdot (A \mid I ) = (I \mid A^{-1})\]
+	Como las matrices son invertibles:
+	\[
+		E_k \cdots E_1 \cdot A = I \Rightarrow A = E^{-1}_1 \cdots E^{-1}_k
+	\]
+	Asi, tenemos que \(A \) es producto de matrices elementales (las inversas de matrices elementales son otras matrices elementales).
+
+	\(\Leftarrow ) \) Supongamos que \(A = E_1 \cdot E_2 \cdots E_k\) para ciertas matrices elementales. Por tanto, \(A \) es invertible y su inversa es \(A^{-1} = (E_1 \cdots E_k )^{-1} = E^{-1}_n \cdots E^{-1}_1\) (las matrices elementales son invertibles).
+\end{proof}
+
+\begin{proposition}
+	Dos matrices \(A, B \) son invertibles si y solo si su producto \(AB \) es invertible.
+\end{proposition}
+\begin{proof}
+	\(\Rightarrow )\) Ya esta demostrado.
+
+	\(\Leftarrow ) \) Lo probaremos por reduccion al absurdo. Supongamos que \(A \) no tiene inversa.
+
+	Como no es invertible, al usar Gauss-Jordan sobre \((A \mid I )\) aparecera una fila de ceros que haga el sistema un sistema incompatible. Es decir, habran matrices elementales que cumplan \(E_1, \ldots, E_k \) tales que en el producto \(E_k \cdots E_1 \cdot A \) aparece una fila de ceros. Multiplicando por B a la derecha:
+	\[
+		E_k \cdots E_1 \cdot A \cdot B = \begin{pmatrix}
+			  & \cdots &   \\
+			0 & \cdots & 0 \\
+			  & \cdots &   \\
+		\end{pmatrix} \cdot B = \begin{pmatrix}
+			  & \cdots &   \\
+			0 & \cdots & 0 \\
+			  & \cdots &   \\
+		\end{pmatrix}
+	\]
+	Esto es una contradiccion con que \(A \cdot B \) es invertible. Por lo tanto, \(A \) tiene que ser invertible.
+
+	Tenemos que \(AB \) es invertible y hemos visto que \(A \) tambien lo es. Queda demostrar que \(B \) es invertible.
+
+	Teniendo en cuenta que el producto de invertibles es invertible, llegamos a
+	\[
+		(A^{-1} )(A\cdot B) = B \Rightarrow \text{es invertible. }
+	\]
+\end{proof}
+
+\section{Determinantes de matrices cuadradas}
+\begin{definition}[Determinante]
+	Por inducción en el tamaño de \(A \in \mathfrak{M}_{n}(\mathbb{K}) \).
+
+	\begin{itemize}
+		\item Si \(a = 1\): \(\det((a_{11})) = a_{11}\).
+		\item
+		      Supongamos que sabemos calcular determinantes de matrices de orden \(n - 1 \) y sea \(A = (a_{ij} \in \mathfrak{M}_{n}(\mathbb{K}) )\). Llamamos \((ij)-esimo \) adjunto de la matriz \(A \) al numero
+		      \[
+			      \alpha_{ij} = (-1)^{i+1}\det(A_{ij})
+		      \]
+		      donde \(A_{ij } \) es la matriz de orden \(n - 1\) obtenida eliminando la fila \(i \) y la columna \(j \) de \(A \). Definimos el determinante de \(A \) como
+		      \[
+			      \det(A) = a_{11}\alpha_{11} + a_{21}\alpha_{21} + \cdots + a_{n1}\alpha_{n1}
+		      \]
+		      A esta formula se le llama \textit{desarrollo del determinante por adjuntos de la primera columna}.
+	\end{itemize}
+\end{definition}
+
+\begin{lemma}
+	El determinante de la matriz identidad es igual a \(1 \).
+\end{lemma}
+\begin{proof}
+	Por induccion en el orden \(n \) de la matriz identidad.
+	\begin{itemize}
+		\item Si \(n = 1 \), \(\det(I_1) = \det(1) = 1\).
+		\item Supongamos que \(\det(I_{n-1}) = 1\) y veamos que \(\det(I_n) = 1 \).
+
+		      Por una parte, el adjunto \((11)\)-esimo de \(I_n \) es \(\alpha_{11} = (-1)^{1+1} \det(I_{n-1})\), asi que por la hipotesis de induccion, \(\alpha_{11} = 1\).
+
+		      Ademas, las entradas \((21), (31), \ldots, (n1 )\) de la matriz identidad son todas iguales a cero, asi que no hace falta calcular \(\alpha_{21}, \ldots, \alpha_{n1}\). Sustituyendo en la formula del desarrollo del determinante por adjuntos de la primera columna
+		      \[
+			      \det(I_n) = 1\alpha_{11} + 0\alpha_{21} + \cdots + 0\alpha_{n1} = 1.
+		      \]
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[Propiedades de los determinantes]
+	~\\
+	\begin{enumerate}
+		\item Si \(A, A^\prime, A^{\prime\prime}\) son tres matrices identicas de orden \(n \) salvo en que la fila \(i \) de \(A \) es la suma de la fila \(i \) de \(A^\prime\) y la fila \(i \) de \(A^{\prime\prime}  \) entonces
+		      \[
+			      \det(A) = \det(A^\prime) + \det(A^{\prime\prime} )
+		      \]
+		\item Si dos filas de \(A \) son iguales, entonces \(\det(A) = 0 \).
+		\item Si se intercambian dos filas de \(A \), entonces el determinante cambia de signo.
+		\item Si multiplicamos una fila de \(A \) por un escalar \(\lambda \in K \) entonces el determinante de la matriz obtenida es igual a \(\lambda \det(A)\).
+		\item El determinante de \(A \) no varia si a una fila de \(A \) le sumamos otra fila multiplicada por un escalar.
+		\item \(A \) es invertible si y solo si \(\det(A) \neq  0 \).
+		\item \(\det(A \cdot B) = \det(A) \cdot \det(B )\).
+		\item \(\det(A) = \det(A^{t} )\). En particular, las propiedades \((1)-(5)\) anteriores se cumplen tambien si se cambia la palabra ``fila'' por la palabra ``columna''.
+		\item Se puede desarrollar el determinante por cualquier columna o cualquier fila de \(A\).
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Las propiedades 1), 2) y 4) se demuestran por inducción. Veamos la demostración del resto de propiedades:
+	\begin{enumerate}
+		\item[3.] Veamos que esta propiedad se deduce de 1) y 2). Expresamos \(A \) por filas:
+			\[
+				A = \left (\begin{array}{c}
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right )
+			\]
+			y construimos la matriz auxiliar
+			\[
+				A^\prime  = \left (\begin{array}{c}
+						\vdots    \\ \hline
+						A_i + A_i \\ \hline
+						\vdots    \\ \hline
+						A_j + A_i \\ \hline
+						\vdots    \\
+					\end{array} \right )
+			\]
+			Entonces, por 1) y 2),
+			\[
+				0 =_{1)} \det(A^\prime ) =_{2)}  \underbrace{\det \left (\begin{array}{c}
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\
+					\end{array} \right )}_{=_{1)} 0} + \det\left (\begin{array}{c}
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right ) + \det \left (\begin{array}{c}
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\
+					\end{array} \right ) + \underbrace{\det \left (\begin{array}{c}
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right )}_{=_{1)} 0}
+			\]
+			de donde
+			\[
+				\det(A) = \det\left (\begin{array}{c}
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right ) = - \det\left (\begin{array}{c}
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\
+					\end{array} \right )
+			\]
+
+		\item[5.] Si expresamos \(A \) por filas
+			\[
+				A = \left (\begin{array}{c}
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right ),
+			\]
+			tomamos \(\lambda \in  \K \) y vamos a calcular el determinante de la matriz que en la fila \(i \) tiene la fila \(i \) de \(A \) mas \(\lambda\) por la fila \(j \):
+			\[
+				\det \left (\begin{array}{c}
+						\vdots            \\ \hline
+						A_i + \lambda A_j \\ \hline
+						\vdots            \\ \hline
+						A_j               \\ \hline
+						\vdots            \\
+					\end{array} \right ) =_{1),4)} \det \left (\begin{array}{c}
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right ) + \lambda \det\left (\begin{array}{c}
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right ) =_{2)} \det \left (\begin{array}{c}
+						\vdots \\ \hline
+						A_i    \\ \hline
+						\vdots \\ \hline
+						A_j    \\ \hline
+						\vdots \\
+					\end{array} \right )
+			\]
+		\item[6.] Utilizando las propiedades anteriores y que \(\det(I_n) = 1 \), vamos a calcular cuánto valen los determinantes de las matrices elementales \(P_{ij}, P_{ij}(t) (i \neq j) \) y \(Q_i (s)\):
+			\begin{itemize}
+				\item Como \(P_{ij}\), \(i \neq j \), multiplicada por delante de la matriz identidad, intercambia las filas \(i \) y \(j \) de la matriz identidad,
+				      \[
+					      -1 =_{3)} \det(P_{ij} I_n) = \det(P_{ij }).
+				      \]
+				\item Como \(P_{ij}(\lambda)\), multiplicada por delante de la matriz identidad, suma a la fila \(i \) la fila \(j \) de la matriz identidad multiplicada por \(\lambda \), y eso no afecta al valor del determinante,
+				      \[
+					      1 =_{4)} \det(P_{ij}(\lambda) I_n) = \det(P_{ij}(\lambda)).
+				      \]
+				\item Como \(Q_i (s )\), multiplicada por delante de la matriz identidad, multiplica la fila \(i \) de la matriz identidad por \(s \), el determinante de la matriz resultante es \(s \det(I_n )\), asi que
+				      \[
+					      s =_{5)} \det(Q_i(s)I_n) = \det(Q_i(s)).
+				      \]
+			\end{itemize}
+			Las propiedades 3), 4) y 5) se pueden escribir usando matrices elementales. Si \(A \) es una matriz cualquiera, \(i \neq j \),
+			\begin{itemize}
+				\item \(\det(P_{ij}A ) =_{3)} -\det(A) = \det(P_{ij}) \det(A)\)
+				\item \(\det(P_{ij}A) =_{4)} \det(A) = \det(P_{ij}(\lambda)) \det(A)\)
+				\item \(\det(Q_i (s) A) =_{5)} s \det(A) = \det(Q_{i}(s)) \det(A )\)
+			\end{itemize}
+			y llegamos a la concluson de que si \(E \) denota cualquiera de las matrices elementales y \(A \) es una matriz en general
+			\[
+				\det(EA) = \det(E) \det(A )
+			\]
+			Vamos a usar esta propiedad para probar que \(A \) es invertible si y solo si el determinante de \(A \) es no nulo.
+
+			\(\Rightarrow ) \) Sabemos que \(A \) es invertible si y solo si \(A = E_1 \cdot E_2 \cdots E_k \) para ciertas matrices elementales \(E_1, \ldots, E_k \). Por tanto,
+			\[
+				\det(A) = \det(E_1 \cdot E_2 \cdots E_k) = \det(E_1) \det(E_2 \cdots E_k) = \underbrace{\det(E_1)}_{\neq 0} \underbrace{\det(E_2)}_{\neq 0} \cdots \underbrace{\det(E_k)}_{\neq 0} \neq 0
+			\]
+
+			\(\Leftarrow ) \) Veamos que si \(A \) no es invertible, entonces el determinante de \(A \) es cero: si \(A \) no es invertible, cuando apliquemos el método de Gauss-Jordan, que consiste en ir multiplicando \(A \) por delante por matrices elementales hasta encontrar una matriz escalonada reducida, nos encontraremos con una matriz escalonada reducida \(R \) que tiene toda una fila de ceros. Por la propiedad 4), si una matriz tiene toda una fila de ceros, su determinante es cero. Así
+			\[
+				0 =_{4)} \det(R) = \det(E_1 \cdots E_k A) = \underbrace{\det(E_1)}_{\neq 0}   \cdots \underbrace{\det(E_k)}_{\neq 0} \det(A)
+			\]
+			de donde se obtiene que \(\det(A) = 0 \).
+		\item[7.] Hasta ahora hemos probado que \(\det(EA) = \det(E) \det(A )\), para \( E \) una matriz elemental. Veamos que en general \(\det(AB) = \det(A) \det(B )\), para \(A \) y \(B \) dos matrices cualquiera. Distinguimos dos casos:
+			\begin{enumerate}
+				\item Si \(\det(A) = 0 \) o \(\det(B) = 0 \), entonces, por 6) \(A \) o \(B \) no son invertibles, con lo que \(AB \) no es invertible y, de nuevo, por \(6) \), \(0 = \det(AB) = \det(A) \det(B )\)
+				\item Si \(\det(A) \neq 0 \) y \(\det(B) \neq 0 \), entonces, por \(6)\), tanto \(A \) como \(B \) son invertibles (producto cada una de ellas por matrices elementales). Supongamos que \(A = E_1 \cdots E_k \), \(B = E^\prime_1 \cdots E^\prime_s \). Así, por la conclusión anterior,
+				      \[
+					      \begin{aligned}
+						      \det(AB) & = \det(E_1 \cdots E_k E^\prime_1 \cdots E^\prime_s) \\ & = \det(E_1) \cdots \det(E_k) \det(E^\prime_1) \cdots \det(E^\prime_s) \\ & = \det(A) \det(B).
+					      \end{aligned}
+				      \]
+			\end{enumerate}
+		\item[8.] Distinguimos dos casos:
+			\begin{enumerate}
+				\item Si \(\det(A) = 0 \), entonces, por \(6) ,\) \(A \) no es invertible, con lo que \(A^{t } \) tampoco es invertible y, por \(6) \), \(\det(A^{t} ) = 0\).
+				\item Si \(\det(A) \neq 0\), entonces, por \(6) \), \(A \) es invertible (\(A \) es producto de matrices elementales \(A = E_1 \cdots E_k \)). Para cada matriz elemental, es fácil comprobar que \(\det(E) = \det(E^{t} )\), así que
+				      \[
+					      \begin{aligned}
+						      \det(A^{t}) & = \det((E_1 \cdots E_k)^{t} ) = \det(E^{t}_k \cdots E^{t}_1  )     \\
+						                  & = \det(E^{t}_k) \cdots \det(E^{t}_1 ) = \det(E_k) \cdots \det(E_1) \\
+						                  & = \det(E_1) \cdots \det(E_k) = \det(E_1 \cdots E_k)                \\
+						                  & = \det(A)
+					      \end{aligned}
+				      \]
+			\end{enumerate}
+		\item[9.] Se sigue de 3) y 8).
+	\end{enumerate}
+\end{proof}
+\part{Espacios vectoriales}
+\section{Definición de espacio vectorial}
+\begin{definition}[Espacio vectorial sobre un cuerpo \(K \)]
+	Decimos que \(V \) es un espacio vectorial sobre el cuerpo \(\K \) si \(V \) es un conjunto dotado de dos operaciones
+	\[
+		\begin{aligned}
+			+\colon V \times V & \longrightarrow V \\
+			(v,w)              & \longmapsto v + w
+		\end{aligned} \qquad \begin{aligned}
+			\cdot_K\colon K \times V & \longrightarrow  V           \\
+			(\alpha, v)              & \longmapsto \alpha \cdot_K v
+		\end{aligned}
+	\]
+	y se cumplen las siguientes propiedades:
+	\begin{enumerate}
+		\item \((V, + )\) es un grupo abeliano.
+		\item \(\alpha(v_1 + v_2) = \alpha v_1 + \alpha v_2 \) para todo \(\alpha \in \K, v_1,v_2 \in V \)
+		\item \((\alpha + \beta)v = \alpha v + \beta v 	\) para todo \(\alpha,\beta \in  \K, v \in V \)
+		\item \((\alpha \beta)v = \alpha (\beta v)\) para todo \(\alpha, \beta \in \K, v \in V\)
+		\item \(1_K v = v \) para todo \(v \in V \)
+	\end{enumerate}
+	Los elementos de \(V \) se llaman vectores y los elementos de \(K \) se llaman escalares.
+\end{definition}
+\begin{example}
+	Veamos varios ejemplos de espacios vectoriales:
+	\begin{enumerate}
+		\item Sea \(\K \) un cuerpo. \(\K \) es un espacio vectorial sobre \(\K \) con la suma y el producto por escalares de \(\K \).
+		\item Si \(V \) es un espacio vectorial sobre un cuerpo \(\K \) y \(\hat{K }\) es subcuerpo de \(\K \) entonces \(V \) también es un espacio vectorial sobre \(\hat{K }\). Por ejemplo, como \(\Q \) es subcuerpo de \(\R \) y \(\R \) es subcuerpo de \(\C \), \(\C \) es un espacio vectorial sobre \(\C \) \(\C \) es un espacio vectorial sobre \(\R \) y \(\C \) es un espacio vectorial sobre \(\Q \). Además, estos tres espacios vectoriales son diferentes entre sí.
+		\item Si \(V \) y \(W \) son dos espacios vectoriales sobre el mismo cuerpo \(\K \), entonces el producto cartesiano
+		      \[
+			      V \times W = \set{(v,w) \mid v \in V, w \in W }
+		      \]
+		      es un espacio vectorial sobre \(K \) con las operaciones \((v_1,w_1) + (v_2, w_2) = (v_1 + v_2, w_1 + w_2 )\) y \(\alpha (v,w) = (\alpha v , \alpha w)\) para todo \(v,v_1,v_2 \in V \), \(w, w_1, w_2 \in W \), \(\alpha \in \K \). En particular, para \(n \in \N \)
+		      \[
+			      \K^{n} = \set{(x_1, \ldots, x_n ) \mid x_1, \ldots, x_n \in \K }
+		      \]
+		      es un espacio vectorial sobre \(\K \). Por ejemplo, tenemos los siguientes espacios vectoriales: \(\R^{2}, \Q^{2}, \R^{7}, \C^{3},    \) etc.
+		\item El conjunto de las matrices \(\mathfrak{\MakeUppercase{m}}_{m \times n}(\K )\) con la suma de matrices y el producto por escalares tiene estructura de espacio vectorial sobre \(\K \).
+		\item Si denotamos por \(\K[x ]\) al conjunto de todos los polinomios en la variable \(x \) con coeficientes en \(\K \), \(\K[x ]\) es un espacio vectorial sobre \(\K \) con la suma y el producto por escalares habituales.
+		\item Si denotamos por \(\K_n [x ]\) al conjunto de todos los polinomios de grado menor o igual que \(n \) en la variable \(x \) y con coeficientes en \(\K \), \(\K_n [x ]\) es un espacio vectorial sobre \(\K \).
+		\item Si \(\K \) es un cuerpo, las sucesiones de números de \(\K \) con la suma por componentes y el producto por escalares componente a componente forman un espacio vectorial sobre \(\K \).
+	\end{enumerate}
+\end{example}
+\begin{lemma}
+	Sea \(V \) un espacio vectorial sobre un cuerpo \(\K \).
+	\begin{enumerate}
+		\item \(\alpha 0_V = 0_V \) para todo \(\alpha \in \K \)
+		\item \(0_K v = 0_V \) para todo \(v \in V \)
+		\item Si \(\alpha v = 0_V \) entonces \(\alpha = 0_K \) o \(v = 0_V \)
+		\item \((-1)v = - (\alpha v) = -v \) para todo \(v \in V \)
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+		\item
+		      \[
+			      \alpha 0_V = \alpha (0_V + 0_V) =_{A2)} \alpha 0_V + \alpha 0_V
+		      \]
+		      así que sumando el opuesto de \(\alpha 0_V \) en ambos lados de la igualdad llegamos a que \(0_V = 0_V + \alpha 0_V = \alpha 0_V \).
+		\item
+		      \[
+			      0_K v = (0_K + 0_K) v =_{A3)} 0_K v + 0_K v
+		      \]
+		      asi que sumando el opuesto de \(0_K v \) en ambos lados de la igualdad llegamos a que \(0_V = 0_V + 0_K v = 0_K v \).
+		\item Supongamos que \(\alpha v = 0_V \) y que \(\alpha \neq 0_K \). Como \(\K \) es un cuerpo y \(\alpha \neq 0 \),
+		      \[
+			      v =_{A5)} 1_K v = (\frac{1}{\alpha} \alpha) v =_{A3)} \frac{1}{\alpha} (\alpha v) = \frac{1}{\alpha} 0_V =_{1)} 0_V
+		      \]
+		\item Veamos que \((-1)v \) es el vector opuesto de \(v \):
+		      \[
+			      v + (-1)v =_{A5)} 1v + (-1)v =_{A3)} (1-1) v = 0_K v =_{2)} 0_V
+		      \]
+		      así que \((-1)v = -v \).
+	\end{enumerate}
+\end{proof}
+\section{Subespacios vectoriales}
+\begin{definition}[Subespacio vectorial]
+	Sea \(V \) un espacio vectorial sobre un cuerpo \(\K \). Decimos que un subconjunto no vacío \(S \) de \(V \) es un subespacio vectorial de \(V \) si \(S \) con la suma y el producto de \(V \) tiene de nuevo estructura de espacio vectorial.
+
+	Notacion: \(S \leq V \).
+
+	En particular, la suma de vectores de \(S \) da vectores de \(S \) y el producto por escalares de vectores de \(S \) da vectores de \(S \):
+	\begin{itemize}
+		\item \(v,w \in S \Rightarrow v + w \in S \),
+		\item \(v \in S, \alpha \in \K \Rightarrow \alpha v \in S \).
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	Sea \(V \) un espacio vectorial sobre un cuerpo \(\K \). Las siguientes condiciones son equivalentes:
+	\begin{enumerate}
+		\item \(\varnothing \neq S \subset V \) es un subespacio vectorial de \(V \).
+		\item \(S \neq \varnothing \) y \(\alpha v + \beta w \in S \) para todo \(\alpha, \beta \in \K, v,w \in S \)
+		\item Se cumplen las tres condiciones:
+		      \begin{enumerate}
+			      \item \(0_V \in S \)
+			      \item \(v, w \in S \Rightarrow v + w \in S \)
+			      \item \(v \in S, \alpha \in S \Rightarrow \alpha v \in S \)
+		      \end{enumerate}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{description}
+		\item[\(1) \Rightarrow 2) \)]  Directo por la definicion.
+		\item[\(2) \Rightarrow 3)\)] Como \(S \neq \varnothing \) existe al menos un vector \(v \in S \). Tomando \(\alpha = 1, \beta = -1 \in \K\) tenemos que
+			\[
+				0_V = 1 v + (-1)v \in S
+			\]
+			Ademas, para todo \(v,w \in S\), tomando \(\alpha = \beta = 1 \in \K \), tenemos \(v + w \in S \), y tomando \(\alpha \in \K \) y \(\beta = 0\) tenemos \(\alpha v \in S \).
+
+		\item[\(3) \Rightarrow 1)\)] La condicion 1 asegura que \(S \neq \varnothing \). Ademas, las condiciones 2 y 3 aseguran que se pueden definir la suma de vectores y el producto por escalares en \(S \):
+			\[
+				\begin{aligned}
+					+ \colon S \times S & \longrightarrow S  \\
+					(v,w )              & \longmapsto  v + w
+				\end{aligned} \qquad \begin{aligned}
+					\cdot_K \colon K \times S & \longrightarrow S     \\
+					(\alpha,v )               & \longmapsto  \alpha v
+				\end{aligned}
+			\]
+			Ademas los axiomas 1-5 se cumplen para vectores de \(S\) porque se cumplen para vectores de \(V \) y \(S \subset V \).
+	\end{description}
+\end{proof}
+Cuando queramos comprobar si un subconjunto es o no subespacio vectorial de \(V \), usaremos normalmente la caracterizacion 3) de la proposicion anterior.
+\begin{example}
+	Veamos varios ejemplos de subconjuntos que son o no subespacios de los espacios vectoriales dados:
+	\begin{enumerate}
+		\item \(W = \C \) e.v. sobre \(\R \).
+
+		      \(S = \R \leq W \) ya que \(0 \in \R \), \(v + w \in \R \; \forall v,w \in \R \) y \(\alpha \cdot v \in \R \; \forall v \in \R, \forall a \in \R \).
+
+		      \(V = \C \) e.v. sobre \(\C \).
+
+		      \(S = \R \) no es un subespacio vectorial de V. Contraejemplo:
+		      \[
+			      v = 1 \in S, \alpha = i \in \C \Rightarrow \alpha \cdot v = i \notin S
+		      \]
+
+		\item \(V = K^{3 } \) e.v. sobre \(\K \).
+
+		      \begin{itemize}
+			      \item \(S_1 = \set{(x,x,x) \mid x \in \K }\) es un subespacio de V, demostrandolo con el mismo procedimiento.
+			      \item \(S_2 = \set{(x,0,0) \mid x \in \K}\) es un subespacio vectorial de \(V \).
+			      \item \(S_3 = \set{(x,y,z) \in \K^{3} \mid x + 3y - 2z = 0}\) es subespacio vectorial de \(V \).
+
+			            \begin{itemize}
+				            \item \((0,0,0) \in S^{3 } \) porque \(0 + 3 \cdot 0 - 2 \cdot 0 = 0 \).
+				            \item Sean \((x_1,y_1,z_1) \in S_3 \) y \((x_2,y_2,z_2) \in S_3 \). Sabemos que
+				                  \[
+					                  \begin{rcases}
+						                  x_{1} + 3y_1 -2z_1 = 0 \\
+						                  x_2 + 3y_2 - 2z_2 = 0
+					                  \end{rcases} \Rightarrow (x_1 + x_2) + 3(y_1 + y_2) - 2(z_1 + z_2) = 0
+				                  \]
+				                  Si \((x,y,z) \in S_3\) y \(\alpha \in \K \), \(x + 3y - 2z = 0 \Rightarrow (\alpha x) + 3(\alpha y ) - 2(\alpha z) = 0 \). Es decir, \((\alpha x, \alpha y, \alpha z ) \in S_3\).
+			            \end{itemize}
+		      \end{itemize}
+		\item Consideremos \(V = \mathfrak{M}_{2}(\mathbb{K}) \) como espacio vectorial sobre \(\K \). Entonces
+		      \begin{itemize}
+			      \item \(S_1 = \set{\begin{pmatrix}
+					            a & b \\
+					            c & 0 \\
+				            \end{pmatrix} \mid a = b + c } = \set{\begin{pmatrix}
+					            b+ c & b \\
+					            c    & 0 \\
+				            \end{pmatrix} \mid b,c \in \K}\) es un subespacio vectorial de \(V \).
+
+			      \item \(S_3 = \set{A \in V \mid A^{t} = A}\) es un subespacio vectorial de \(V \).
+
+			            Si \(A = A^{t} y B = B^{t}\), \((A+B)^{t} = A^{t} + B^{t} = A + B   \).
+			            Por otro lado, si \(A = A^{t } \) y \(\alpha \in \K\), entonces \((\alpha A)^{t} = \alpha A^{t} = \alpha A \).
+
+			            Esto tambien se cumple con el conjunto de matrices antisimétricas.
+
+			      \item \(S_5 = \set{A \in V \mid A^{t} = A \text{ o } A^{t} = -A  }\) no es subespacio vectorial de \(V \).
+
+			            Contraejemplo: \(A = \begin{pmatrix}
+				            1 & 2 \\
+				            2 & 1 \\
+			            \end{pmatrix} \in S_6\), \(B = \begin{pmatrix}
+				            0  & 1 \\
+				            -1 & 0 \\
+			            \end{pmatrix} \in S_6\), pero \(A + B = \begin{pmatrix}
+				            1 & 3 \\
+				            1 & 1 \\
+			            \end{pmatrix}\)
+		      \end{itemize}
+	\end{enumerate}
+\end{example}
+\begin{proposition}[Interseccion y union de subespacios]
+	Dada una colección de subespacios \(S_i \), \(i \in I \), de un espacio vectorial \(V \), se puede comprobar que la intersección
+	\[
+		\bigcap_{i \in I} S_i \text{ siempre es un subespacio vectorial. }
+	\]
+	Sin embargo, la unión de subespacios vectoriales, en general, no es subespacio.
+\end{proposition}
+Por ejemplo, si consideramos \(V = \R^{2 } \) y los subespacios \(S_1 = \set{(x,0) \mid x \in \R }\) y \(S_2 = \set{(0,y) \mid y \in \R }\), la union
+\[
+	S_1 \cup S_2 = \set{(x,0) \mid x \in \R} \cup \set{(0,y) \mid y \in \R }
+\]
+no es subespacio vectorial:
+\[
+	\begin{rcases}
+		(1,0) \in S_1 \cup S_2 \\
+		(0,1) \in S_1 \cup  S_2
+	\end{rcases} \text{ pero } (1,0) + (0,1) = (1,1) \not\in S_1 \cup S_2
+\]
+El menor subespacio que contiene a dos subespacios dados es la suma de subespacios.
+\begin{definition}
+	Sea \(V \) un espacio vectorial sobre \(\K \) y sean \(S_1, S_2 \) dos subespacios de \(V \). Definimos la suma de los subespacios \(S_1 \) y \(S_2 \) y lo denotamos como \(S_1 + S_2 \) del siguiente modo:
+	\[
+		S_1 + S_2 = \set{v_1 + v_2 \mid v_1 \in S_1, v_2 \in S_2 }
+	\]
+\end{definition}
+\begin{proposition}
+	\(S_1 + S_2 \) es subespacio vectorial de \(V \).
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Como \(0_V \in S_1\) y \(0_V \in S_2 \), entones \(0_V = 0_V + 0_V \in  S_1 + S_2 \)
+		\item Si \(v_1 + v_2 \in S_1 + S_2 \) y \(w_1 + w_2 \in S_1 + S_2 \), donde \(v_1,w_1 \in S_1 \) y \(v_2, w_2 \in S_2 \), entonces
+		      \[
+			      v_1 + v_2 + w_1 + w_2 = \underbrace{(v_1 + w_1)}_{\in S_1} + \underbrace{(v_2 + w_2)}_{\in S_2} \in S_1 + S_2
+		      \]
+		\item Si \(v_1 + v_2 \in S_1 + S_2 \), donde \(v_1 \in S_1 \) y \(v_2 \in S_2 \), y \(\alpha \in \K \) entonces
+		      \[
+			      \alpha (v_1 + v_2) = \underbrace{\alpha v_1}_{\in S_1} + \underbrace{\alpha v_2}_{\in S_2} \in S_1 + S_2
+		      \]
+	\end{enumerate}
+\end{proof}
+Más en general, se puede considerar la suma de \(n \) subespacios vectoriales, con \(n \in \N\).
+\begin{definition}[Suma directa]
+	Decimos que dos subespacios \(S \) y \(T \) suman de forma directa o que la suma de \(S \) y \(T \) es suma directa si \(S \cap T = \set{0 }\) y se escribe \(S \oplus T \).
+
+	Si ademas \(S \oplus T = V \) decimos que \(S \) y \(T \) son suplementarios.
+\end{definition}
+\section{Combinaciones lineales, vectores linealmente independientes y bases}
+\begin{definition}[Combinación lineal]
+	Sean \(v_1, \ldots, v_k \) vectores de \(V \). Decimos que el vector \(v \in V \) es combinación lineal de \(v_1, \ldots, v_k \) si existen escalares \(\alpha_1, \ldots, \alpha_k \in \K \) tales que
+	\[
+		v = \alpha_1 v_1 + \cdots + \alpha_k v_k
+	\]
+\end{definition}
+\begin{example}
+	El vector \((1,2,3 )\) es combinación lineal de los vectores \((1,1,1)\), \((1,0,1)\) y \((0,1,1)\):
+	\[
+		(1,2,3) = x(1,1,1) + y(1,0,1) + z(0,1,1),
+	\]
+	\[
+		\begin{dcases}
+			x + y = 1 \\
+			x + z = 2 \\
+			x + y + z = 3
+		\end{dcases} \Rightarrow \text{S.C.D}
+	\]
+	Luego \(\exists x,y,z \in \K\) tales que \(v = x v_1 + y v_2 + z v_3 \).
+\end{example}
+\begin{lemma}
+	Dados los vectores \(v_1, \ldots, v_k \in V \), el conjunto de todas las combinaciones lineales de \(v_1, \ldots, v_k \) es un subespacio vectorial y lo denotamos por \(\langle v_1, \ldots, v_k \rangle\):
+	\[
+		\langle v_1, \ldots, v_k \rangle = \set{\alpha_1 v_1 + \cdots \alpha_k v_k \mid \alpha_1, \ldots, \alpha_k \in \K }
+	\]
+\end{lemma}
+\begin{proof}
+	Por la caracterización de subespacios vectoriales.
+\end{proof}
+\begin{definition}
+	El subespacio \(S = \langle v_1, \ldots, v_k \rangle \) se llama subespacio generado por los vectores \(v_1, \ldots, v_k \) y a los vectores \(v_1, \ldots, v_k \) se les llama sistema generador del subespacio \(S \).
+\end{definition}
+Dos familias de vectores son equivalentes si generan el mismo subespacio vectorial.
+\begin{definition}[Linealmente independientes]
+	Decimos que los vectores \(v_1, \ldots, v_k \) son linealmente independientes cuando
+	\[
+		\alpha_1 v_1 + \cdots + \alpha_k v_k = 0_V \Rightarrow \alpha_1 = 0, \ldots, \alpha_k = 0.
+	\]
+	Equivalentemente, son linealmente independientes cuando ninguno de ellos se puede expresar como combinación lineal de los demás.
+
+\end{definition}
+Cuando los vectores no son linealmente independientes decimos que son linealmente dependientes.
+\begin{remark}
+	\begin{enumerate}
+		\item Si \(0_V \) es uno de los vectores \(v_1, \ldots, v_k \), entonces siempre son linealmente dependientes.
+		\item Si \(v_1, \ldots, v_k \) son linealmente dependientes, entonces cualquier subconjunto de vectores escogidos entre \(v_1, \ldots, v_k \) sigue siendo linealmente independiente.
+		\item Si \(v_1, \ldots, v_k \) son vectores linealmente dependientes, entonces si añadimos más vectores a \(v_1, \ldots, v_k \), éstos seguirán siendo linealmente dependientes.
+		\item Si \(v_1, \ldots, v_k \) son linealmente dependientes, entonces alguno de ellos se puede despejar como combinación lineal de los demás.
+		\item Dos vectores \(v_1, v_2 \) son linealmente independientes si uno no es múltiplo por un escalar del otro.
+	\end{enumerate}
+\end{remark}
+\begin{definition}[Base]
+	Decimos que una familia de vectores \(v_1, \ldots, v_n \) es una base de \(V \), y la denotamos por \(\mathcal{\MakeUppercase{b}} = \set{v_1,\ldots, v_n }\) si son linealmente independientes y son sistema generador (de \(V \)).
+\end{definition}
+En ese caso, todo vector \(v \) de \(V \) se expresa de forma única como combinación lineal de los vectores de \(\mathcal{\MakeUppercase{b}}\): por ser sistema generador, existen \(x_1, \ldots, x_n \in \K \) tales que \(v = x_1 v_1 + \cdots + x_n v_n\). Además, estos escalares son únicos, puesto que si
+\[
+	x_1 v_1 + \cdots x_n v_n = y_1 v_1 + \cdots + x_n v_n
+\]
+entonces, restando,
+\[
+	(x_1 - y_1) v_1 + \cdots + (x_n - y_n)v_n = 0_V
+\]
+y, como son linealmente independientes, \(x_1 = y \), \(\ldots \), \(x_n  = y_n \). A los únicos \((x_1, \ldots, x_n) \in \K^{n } \) que permiten expresar \(v \) como combinación lineal de los vectores de \(\mathcal{\MakeUppercase{b}}\) se les llaman coordenadas de \(v \) respecto de la base \(\mathcal{\MakeUppercase{b}}\).
+\[
+	(v)_{\mathcal{\MakeUppercase{b}}} = (x_1, \ldots, x_n).
+\]
+\begin{example}
+	\begin{enumerate}
+		\item \(\K \) como espacio vectorial sobre \(\K \) tiene de base a \(\mathcal{\MakeUppercase{b}} = \set{1 }\). Por ejemplo, \(\C \) como espacio vectorial sobre \(\C \) tiene de base a \(\mathcal{\MakeUppercase{b}} = \set{1 }\). Sin embargo, si consideramos \(\C \) como espacio vectorial sobre \(\R \) una base sería \(\mathcal{\MakeUppercase{b}}= \set{1,i }\) (necesitamos como mínimo dos vectores para tener un sistema generador).
+		\item El espacio vectorial \(V = \set{0_V }\) no tiene base porque no tiene ninguna familia de vectores linealmente independientes. Por convenio decimos que \(\mathcal{\MakeUppercase{b}} = \varnothing \) es la base de este espacio vectorial.
+		\item \(\set{1 +x, 1 - x }\) es una base del espacio vectorial \(\K_1[x ]\):
+		      \begin{itemize}
+			      \item Son sistema generador ya que cualquier polinomio de grado menor o igual que \(1 \), \(a + bx \), se puede escribir como
+			            \[
+				            a + bx = \lambda (1 + x) + \mu (1 - x )
+			            \]
+			            ya que el sistema (con incógnitas \(\lambda\) y \(\mu\))
+			            \[
+				            \begin{dcases}
+					            \lambda + \mu = a \\
+					            \lambda - \mu - b
+				            \end{dcases}
+			            \]
+			            es sistema compatible (de hecho, \(\lambda = \frac{a + b }{2 }, \mu = \frac{a - b }{2 }\) es solución del sistema).
+			      \item Son linealmente independientes ya que si \(\lambda (1 + x)  + \mu ( 1 - x) = 0 \) entonces
+			            \[
+				            \begin{dcases}
+					            \lambda + \mu = 0 \\
+					            \lambda - \mu = 0
+				            \end{dcases}
+			            \]
+			            y la única solución del sistema es \(\lambda = 0, \mu = 0 \).
+		      \end{itemize}
+	\end{enumerate}
+\end{example}
+\begin{example}
+	Se llaman bases canónicas a las bases más utilizadas de los espacios vectoriales \(\K^{n }, \K[x], \K_n[x]\) y \(\mathcal{\MakeUppercase{m}}_{m \times n}(\K )\):
+	\begin{itemize}
+		\item Base canónica de \(\K^{n}: \mathcal{\MakeUppercase{bc}} = \set{(1,0,\ldots,0), (0,1,\ldots,0), \ldots, (0,\ldots,0,1)}  \).
+		\item Base canónica de \(\K[x]: \mathcal{\MakeUppercase{bc}} = \set{1,x,x^{2},\ldots,x^{k},\ldots  }  \).
+		\item Base canónica de \(\K_n[x]: \mathcal{\MakeUppercase{bc}} = \set{1,x,x^{2},\ldots,x^{n}   }  \).
+		\item Base canónica de \(\mathcal{\MakeUppercase{m}}_{m \times n}(\K): \mathcal{\MakeUppercase{bc}} = \set{E_{ij} \mid i = 1, \ldots, m, \; j = 1, \ldots, n}  \).
+	\end{itemize}
+\end{example}
+\begin{definition}
+	Decimos que \(V \) es finitamente generado si posee algún sistema generador finito.
+\end{definition}
+\begin{lemma}[Existencia de bases en espacios vectoriales finitamente generados]
+	\label{bases}
+	Toda familia de vectores \(v_1, \ldots, v_m \) posee una subfamilia formada por vectores linealmente independientes que es equivalente a la original. En particular, todo espacio vectorial finitamente generado posee una base.
+\end{lemma}
+\begin{proof}
+	Si los vectores \(v_1, \ldots, v_m \) son linealmente independientes, ya está el resultado. Si no, existe al menos una combinación lineal de esos vectores, con escalares no todos nulos, que hace que
+	\[
+		\alpha_1 v_1 + \cdots + \underbrace{\alpha_i v_i}_{\neq 0} + \cdots + \alpha_m v_m = 0_V.
+	\]
+	Supongamos que \(\alpha_i \neq 0 \), así que podemos despejar y obtener
+	\[
+		v_i = -\frac{1 }{\alpha_i }(\alpha_1 v_1 + \cdots + \cancel {\alpha_i v_i} + \cdots + \alpha_m v_m).
+	\]
+	Como el vector \(v_i \) es combinación lineal de los demás,
+	\[
+		\langle v_1, \ldots, v_{i}, \ldots, v_m \rangle = \langle v_1, \ldots, \cancel {v_i}, \ldots, v_m \rangle,
+	\]
+	con lo que obtenemos una familia que genera el mismo subespacio pero con un elemento menos. Repetimos el proceso hasta obtener una subfamilia equivalente cuyos vectores son linealmente independientes.
+\end{proof}
+\begin{lemma}
+	Si los vectores \(v_1, \ldots, v_m \) son linealmente dependientes y \(v_1 \neq 0_{V }\) entonces existe algún \(v_i \) que se puede poner como combinación lineal de \(v_1, \ldots, v_{i-1}\), es decir, uno de los vectores se puede expresar como combinación lineal de los anteriores.
+\end{lemma}
+\begin{proof}
+	Sabemos que existen escalares no todos nulos tal que \(\alpha_1 v_1 + \cdots + \alpha_m v_m = 0_V \). Como \(v_1 \neq 0_V \), existe \(i > 1 \) tal que
+	\[
+		\alpha_1 v_1 + \cdots + \underbrace{\alpha_i}_{\neq 0} v_i = 0_V
+	\]
+	Despejamos \(v_i \) como
+	\[
+		v_i = - \frac{1}{\alpha_i} (\alpha_1 v_1 + \cdots + \alpha_{i-1} v_{i-1})
+	\]
+\end{proof}
+
+\begin{proposition}
+	\label{nm}
+	Sea \(v_1, \ldots, v_n \) una familia de vectores linealmente independientes y \(w_1, \ldots w_m \) una familia de vectores que son sistema generador de \(V \). Entonces \(n \leq m \).
+\end{proposition}
+\begin{proof}
+	Tomamos el primer vector de la familia de vectores linealmente independientes, \(v_1 \). Como
+	\[
+		v_1 \in V = \langle w_1, \ldots, w_m \rangle
+	\]
+	se tiene que los vectores \(v_1, w_1, \ldots, w_m \) son necesariamente linealmente independientes (uno de ellos, el primero, es combinación lineal de los demás). Por el lema anterior, como \(v_1 \neq 0_V \) existe un \(w_i \) que se escribe como combinación lineal de los anteriores. Lo eliminamos y repetimos el proceso, tomando ahora el segundo vector de la familia de vectores linealmente independientes, \(v_2\), y el sistema generador de \(V \) formado por:
+	\[
+		v_1, w_1, \ldots, \cancel {w_i}, \ldots, w_m.
+	\]
+	De esta forma, vamos insertando ``por delante'' vectores del tipo \(v_i \) en el sistema generador y eliminando vectores de tipo \(w_j \). Si hubiera más \(v \)'s que \(w \)'s (si \(n : m \)) llegaríamos a un sistema generador de la forma
+	\[
+		v_1, \ldots, v_m
+	\]
+	de forma que \(v_{m+1} \in  \langle v_1, \ldots, v_m \rangle\), lo cual no es posible porque los vectores \(v_1, \ldots, v_n \) son linealmente independientes por hipótesis. Llegamos, por tanto, a que \(n \leq  m\).
+\end{proof}
+\begin{theorem}
+	Todas las bases de un mismo espacio vectorial \(V \) finitamente generado tienen el mismo número de elementos. A este número se le llama dimensión de \(V \) y se denota \(\dim_K V \).
+\end{theorem}
+\begin{proof}
+	Sean \(\mathcal{\MakeUppercase{b}} = \set{v_1, \ldots, v_n }\) y \(\mathcal{\MakeUppercase{c}} = \set{w_1, \ldots, w_n }\) dos bases de \(V \). Veamos que \(n = m \).
+	\begin{itemize}
+		\item Como \(v_1, \ldots, v_n \) son linealmente independientes y \(w_1, \ldots, w_m\) son un sistema generador, \(n \leq m \).
+		\item Como \(w_1,\ldots,w_m \) son linealmente independientes y \(v_1, \ldots, v_n \) son un sistema generador, \(m \leq  n\).
+	\end{itemize}
+	Por tanto, \(n = m \).
+\end{proof}
+Como conocemos bases canónicas para los espacios vectoriales de tipo \(\K^{n}, \K_n[x] \) y \(\mathcal{\MakeUppercase{m}}_{m \times n}(\K )\), conocemos sus dimensiones:
+\begin{itemize}
+	\item \(\dim \K^{n} = n  \),
+	\item \(\dim \K_n [x] = n + 1 \),
+	\item \(\dim \mathcal{\MakeUppercase{m}}_{m \times n}(\K) = mn \)
+\end{itemize}
+\begin{proposition}
+	\label{base}
+	Sea \(V \) un espacio vectorial de dimensión \(n \). Son equivalentes:
+	\begin{enumerate}
+		\item \(v_1, \ldots, v_n \) es una base de \(V \)
+		\item \(v_1, \ldots, v_n \) es un sistema generador de \(V \)
+		\item \(v_1, \ldots, v_n \) son linealmente independientes
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{description}
+		\item[\(1) \Rightarrow 2) \) y \(1) \Rightarrow 3) \)] Obvio.
+		\item[\(2) \Rightarrow 1)\)] Por reducción al absurdo, si \(v_1, \ldots, v_n \) no fueran linealmente independientes, por el Lema \ref{bases} se puede extraer una subfamilia con vectores linealmente independientes y que genere el mismo espacio que \(v_1, \ldots, v_n \), con lo que obtendríamos una base de \(V \) con un número de vectores más pequeño que \(n \). Esto es una contradicción.
+		\item[\(3) \Rightarrow 1) \)] Por reducción al absurdo, si \(v_1, \ldots, v_n \) no fueran sistema generador, habría algún vector \(v \in V \) que no se pueda poner como combinación lineal de \(v_1, \ldots, v_n \), así que los vectores \(v_1, \ldots, v_n, v \) seguirían siendo linealmente independientes y obtendríamos \(n + 1 \) vectores linealmente independientes. Por otra parte, como \(\dim V = n \), tiene una base \(\mathcal{\MakeUppercase{v}} = \set{w_1, \ldots, w_n }\). Los vectores de \(\mathcal{\MakeUppercase{b}} \) son un sistema generador y estamos obteniendo \(n + 1 \) vectores linealmente independientes y un sistema generador con \(n \) vectores. Esto es una contradicción con la Proposición \ref{nm}.
+	\end{description}
+\end{proof}
+\begin{lemma}
+	\label{completar}
+	Sea \(V \) un espacio vectorial finitamente generado. Toda familia de vectores linealmente independientes se puede completar hasta una base de \(V \).
+\end{lemma}
+\begin{proof}
+	Sean \(w_1, \ldots, w_k \) vectores linealmente independientes. Se toma una base \(\set{v_1, \ldots, v_n }\) de \(V \) como base de referencia y van añadiendo a \(w_1, \ldots, w_k \) vectores de esta base de referencia, de uno en uno, comprobando en cada paso que seguimos teniendo vectores linealmente independientes. El proceso termina cuando tengamos \(n \) vectores linealmente independientes, que son necesariamente una base por la Proposición \ref{base}.
+\end{proof}
+\begin{corollary}
+	Sea \(S \) un subespacio vectorial de \(V \). Entonces \(\dim S \leq \dim V \). Además,
+	\[
+		\dim S = \dim V \Leftrightarrow S = V
+	\]
+\end{corollary}
+\begin{proof}
+	Sea \(\mathcal{\MakeUppercase{b}}_s \) una base de \(S \). Como estos vectores son linealmente independientes, se pueden completar a una base de \(V \) por el Lema \ref{completar}, así que \(s \leq \dim V \).
+
+	Además, si \(\dim S = \dim V \), cualquier base de \(S \) tiene \(n = \dim V\) vectores linealmente independientes, y por la Proposición \ref{base} estos vectores son una base de \(V \). El subespacio generado por ellos da, por una parte \(S \), por ser base de \(S \), y por otra parte \(V \), por ser base de \(V \), con lo que \(S = V \). La otra implicación es obvia.
+\end{proof}
+\begin{theorem}
+	Sean \(S \) y \(T \) dos subespacios de \(V \). Entonces
+	\[
+		\dim (S + T) = \dim S + \dim T - \dim (S \cap T )
+	\]
+\end{theorem}
+\begin{proof}
+	Si \(\dim S = 0 \) entonces \(S = \set{0_V }\), en cuyo caso \(S + T = T, S \cap T = \set{0_V }\) y la fórmula se cumple porque
+	\[
+		\dim (S + T) = \dim T = \underbrace{\dim S}_{0} + \dim T - \underbrace{\dim(S \cap T)}_{0}
+	\]
+	Lo mismo ocurriría si \(\dim T = 0\).
+
+	Supongamos que \(\dim S = s > 0 \) y \(\dim T = t > 0 \). Empezamos con una base \(\mathcal{\MakeUppercase{b}}_{S \cap T} = \set{v_1, \ldots, v_r }\) de \(S \cap  T \).
+	\begin{itemize}
+		\item Por un lado, completamos la base \(\mathcal{\MakeUppercase{b}}_{S \cap T }\) a una base de \(S \): \(\set{v_1, \ldots, v_r, v_{r+1}, \ldots v_s }\).
+		\item Por otro lado, completamos la base \(\mathcal{\MakeUppercase{b}}_{S \cap T }\) a una base de \(T \): \(\set{v_1, \ldots, v_r, w_{r+1}, \ldots, w_t }\).
+	\end{itemize}
+	Veamos que
+	\[
+		\set{v_1, \ldots, v_r, v_{r+1}, \ldots, v_s, w_{r+1}, \ldots, w_t }
+	\]
+	es una base de \(S + T \) (si probamos esto, estaremos viendo que \(S+ T \) tiene una base con \(s + t - r \) vectores, que es la fórmula que queremos demostrar):
+	\begin{itemize}
+		\item Son linealmente independientes: escribimos
+		      \[
+			      \alpha_1 v_1 + \cdots + \alpha_s v_s + \beta_{r+1}w_{r+1} + \cdots + \beta_t w_t = 0_V.
+		      \]
+		      Despejando, tenemos
+		      \[
+			      \underbrace{\alpha_i v_i + \cdots + \alpha_s v_s}_{\in S} = - \underbrace{(\beta_{r+1} w_{r+1} + \cdots + \beta_t w_t)}_{\in  T} \in S \cap  T,
+		      \]
+		      y como \(\mathcal{\MakeUppercase{b}}_{S \cap  T} = \set{v_1, \ldots, v_r }\) es una base de \(S \cap  T \), existen escalares \(\lambda_1, \ldots, \lambda_r \) tales que \(-(\beta_{r+1} w_{r+1} + \cdots + \beta_t w_t ) = \lambda_1 v_1 + \cdots + \lambda_r v_r \). Luego
+		      \[
+			      \lambda_1 v_1 + \cdots + \lambda_r v_r + \beta_{r+1} w_{r+1} + \cdots + \beta_t w_t = 0_V
+		      \]
+		      y usando que los vectores \(v_1, \ldots, v_r, w_{r+1}, w_t \) son linealmente independientes (base de \(T \)) llegamos a
+		      \[
+			      \lambda_1 = 0, \ldots, \lambda_r = 0, \boxed{\beta_{r+1} = 0}, \ldots, \boxed{\beta_t = 0}.
+		      \]
+		      Sustituimos en la ecuación inicial y llegamos a
+		      \[
+			      \alpha_1 v_1 + \cdots + \alpha_s v_s = 0_V.
+		      \]
+		      y como \(v_1, \ldots, v_s \) son linealmente independientes (base de \(S \)), resulta que
+		      \[
+			      \boxed{\alpha_1 = 0}, \ldots, \boxed{\alpha_s = 0 }.
+		      \]
+		\item Son sistema generador:
+		      \begin{align*}
+			      S & = \langle v_1, \ldots, v_r, v_{r+1}, \ldots, v_s \rangle         \\
+			      T & = \langle v_1, \ldots, v_r, \ldots, w_{r+1}, \ldots, w_t \rangle
+		      \end{align*}
+		      con lo que
+		      \[
+			      S + T = \langle v_1, \ldots, v_r, v_{r+1}, \ldots, v_s, w_{r+1}, \ldots, w_r \rangle
+		      \]
+	\end{itemize}
+\end{proof}
+\section{Espacio cociente}
+\begin{definition}
+	Sea \(S \) un subespacio vectorial de \(V \). En \(V \) definimos la siguiente relación
+	\[
+		v \sim w \text{ si } v - w \in S.
+	\]
+\end{definition}
+\begin{proposition}
+	La relación \(\sim \) es una relación de equivalencia.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Reflexiva: para cada \(v, v \sim v \) porque \(v - v = 0_V \in S \)
+		\item Simétrica: \(v \sim w \Rightarrow v - w \in S \Rightarrow w - v \in S \Rightarrow w \sim v\)
+		\item Transitiva:
+		      \[
+			      \begin{rcases}
+				      v \sim w \Rightarrow v - w \in S \\
+				      w \sim u \Rightarrow w - u \in S
+			      \end{rcases} \Rightarrow (v - w) + (w - u) = v-  u \in S \Rightarrow v \sim u
+		      \]
+	\end{itemize}
+\end{proof}
+
+\vspace{0.5cm}
+\begin{proposition}
+	Las clases de equivalencia respecto de la relación \(\sim \) son
+	\[
+		[v]_{\sim} = \set{v + s \mid s \in S} = v + S
+	\]
+\end{proposition}
+\begin{proof}
+	Por doble contenido:
+	\begin{description}
+		\item[\(\boxed{\subseteq}\)] Si \(w \in [v]\), \(w \sim v \) así que \(w - v = s \in S \), y \(w = v + s \in v + S \).
+		\item[\(\boxed{\supseteq }\)] Si tomamos \(w = v + s \) para algún \(s \in S \) entonces \(w - v = s \in S \), luego \(w \sim v \Rightarrow w \in [v ]\).
+	\end{description}
+\end{proof}
+El conjunto cociente \(V / \sim \) lo vamos a denotar como \(V / S \) y va a estar formado por las clases de equivalencia:
+\[
+	V / S = \set{v + S \mid v \in S }
+\]
+\begin{proposition}
+	En el conjunto cociente \(V / S \) podemos definir las operaciones
+	\[
+		\begin{aligned}
+			+ \colon V/S \times V / S & \longrightarrow V / S    \\
+			(v +S, w + S )            & \longmapsto  (v + w) + S
+		\end{aligned}
+	\]
+	y
+	\[
+		\begin{aligned}
+			\cdot_K \colon \K \times V / S & \longrightarrow V / S        \\
+			(\lambda, v + S )              & \longmapsto  (\lambda v) + S
+		\end{aligned}
+	\]
+	Estas operaciones están bien definidas y dan a \(V / S \) una estructura de espacio vectorial. Este espacio vectorial se llama espacio cociente.
+\end{proposition}
+\begin{proof}
+	Veamos que \(+ \) está bien definida, es decir, si \(v + S = \hat{v} + S \) y \(w + S = \hat{w} + S \) entonces \((v + w) + S = (\hat{v} + \hat{w}) + S \):
+	\begin{align*}
+		v + S = \hat{v} + S \Rightarrow v - \hat{v} \in S \\
+		w + S = \hat{w} + S \Rightarrow w - \hat{w} \in S
+	\end{align*}
+	así que
+	\[
+		v + w - (\hat{v} + \hat{w}) = \underbrace{v - \hat{v}}_{\in S} + \underbrace{w - \hat{w}}_{\in  S} \in S.
+	\]
+
+	Veamos que \(\cdot_K \) está bien definida, es decir, si \(v + S = \hat{v} + S \) y \(\lambda \in \K \) entonces \((\lambda v) + S = (\lambda \hat{v}) + S\):
+	\[
+		v + S = \hat{v} + S \Rightarrow v - \hat{v} \in S
+	\]
+	así que
+	\[
+		(\lambda v) - (\lambda \hat{v}) = \lambda \underbrace{v - \hat{v}}_{\in S} \in S
+	\]
+
+	Se puede comprobar que \((V / S, + )\) es un grupo abeliano. El elemento neutro de la \(+ \) es la clase de equivalencia \(0_V + S = S \) y el opuesto de cada clase de equivalencia \(v + S \) es \((-v) + S \). El resto de las propiedades se sigue de forma inmediata.
+\end{proof}
+\part{Aplicaciones lineales}
+
+\begin{definition}
+	Sean \((E, +, \cdot)\) y \((E^\prime, +, \cdot )\) dos espacios vectoriales sobre el mismo cuerpo K. Diremos que la funcion \(f: E \to E^\prime \) es lineal (homomorfismo) si \(f \) satisface las siguientes propiedades:
+	\begin{enumerate}
+		\item \(\forall u,v \in E \), \(f(u+v) = f(u) + f(v )\)
+		\item \(\forall u \in E \), \(\forall \alpha \in \K \), \(f(\alpha u) = \alpha \cdot f(u )\)
+	\end{enumerate}
+\end{definition}
+\begin{proposition}
+	Una aplicacion \(f: E \to E^\prime \) es lineal si y solo si \(\forall u,v \in E \), \(\forall  \alpha, \beta \in \K \quad f(\alpha u + \beta v) = \alpha f(u) + \beta f(v )\)
+\end{proposition}
+\begin{proof}
+	``\(\Rightarrow \)'' Supongamos que \(f\colon E \to E^\prime  \) es lineal, o lo que es lo mismo, que \(f \) satisface las condiciones \(1 \) y \(2 \) de la definicion. Dados \(u,v \in E \) y \(\alpha,\beta \in \K \), por la condicion 1 resulta que
+	\[
+		f(\alpha u + \beta v) = f(\alpha u) + f(\beta v) = \text{ (por la condicion 2) } = \alpha f(u) + \beta f(v )
+	\]
+	``\(\Leftarrow \)'' Reciprocamente, supongamos que \(\forall u,v \in E, \forall \alpha,\beta \in \K \) se verifica que
+	\[
+		f(\alpha u + \beta v) = \alpha f(u) + \beta f(v ).
+	\]
+	Hay que demostrar que \(f \) satisface las condiciones 1 y 2.
+
+	Dados \(u,v \in E \), tomando \(\alpha = \beta = 1 \), tenemos
+	\[
+		f(u + v) = f(1 \cdot u + 1 \cdot v) = 1 \cdot f(u) + 1 \cdot f(v) = f(u) + f(v).
+	\]
+	Por otro lado, si tomamos \(\beta = 0 \), resulta que
+	\[
+		f(\alpha u) = f(\alpha u + 0v) = \alpha f(u) + 0 \cdot f(v) = \alpha f(u).
+	\]
+\end{proof}
+Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_i)\).
+
+\begin{proposition}
+	Si \(E \) y \(E^\prime  \) son \(\K \)-e.v. y \(f : E \to E^\prime \) es una aplicacion lineal, entonces:
+	\begin{enumerate}
+		\item \(f(0) = 0 \)
+		\item \(\forall u \in E, f(-u) = -f(u)\)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item \(\forall u \in E \), \(f(0 \cdot u) = 0 \cdot f(u) = 0\).
+		\item Dado \(u \in E \), se tiene
+		      \[
+			      f(u) + f(-u) = f (u + (-u)) = f(0) = 0
+		      \]
+		      por lo que \(f(-u )\) es el opuesto de \(f(u )\), es decir, \(f(-u) = -f(u )\), puesto que \((E^\prime, + )\) es un grupo.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Siendo \(E \) y \(E^\prime \) \(\K \)-e.v. si denotamos por \(\mathcal{\MakeUppercase{f}}(E,E^\prime  )\) al espacio de todas las funciones definidas entre \(E \) y \(E^\prime  \), y por \(\mathcal{\MakeUppercase{l}}(E,E^\prime )\) al conjunto de las funciones lineales definidas entre \(E \) y \(E^\prime  \), es decir,
+	\[
+		\mathcal{\MakeUppercase{l}}(E,E^\prime ) = \set{f \in \mathcal{\MakeUppercase{f}}(E,E^\prime ) \mid f \text{ es lineal} }
+	\]
+	se verifica que \(\mathcal{\MakeUppercase{l}}(E,E^\prime ) \leq \mathcal{\MakeUppercase{f}}(E,E^\prime )\), o lo que es lo mismo, que \(\mathcal{\MakeUppercase{l}}(E,E^\prime )\) tiene estructura de espacio vectorial respecto de la suma de funciones y producto de una funcion por un escalar definidos en \(\mathcal{\MakeUppercase{f}}(E,E^\prime )\).
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Evidentemente \(\mathcal{\MakeUppercase{l}}(E,
+		      E^\prime ) \neq \varnothing\), puesto que \(0 \in \mathcal{\MakeUppercase{l}}(E,E^\prime )\), ya que \(\forall u,v \in E, \forall \alpha,\beta \in \K \) se tiene
+		      \[
+			      0(\alpha u + \beta v) = 0 = 0 + 0 = \alpha 0 (u) + \beta 0 (v )
+		      \]
+		\item Veamos que \(\forall  f,g \in \mathcal{\MakeUppercase{l}}(E,E^\prime)\) se verifica que \(f + g \in \mathcal{\MakeUppercase{l}}(E,E^\prime )\). Si \(u,v \in E \) y \(\alpha,\beta \in \K \), se verifica que
+		      \begin{multline*}
+			      (f+g)(\alpha u + \beta v) = f(\alpha u + \beta v) + g(\alpha u + \beta v) = \\ = (\alpha f(u) + \beta f(v)) + (\alpha g (u) + \beta g(v)) = \\ = (\alpha f(u) + \alpha g(u)) + (\beta f(v) + \beta g(v)) = \alpha(f +g)(u) + \beta(f+g)(v )
+		      \end{multline*}
+		\item Veamos que \(\forall f \in \mathcal{\MakeUppercase{l}}(E,E^\prime ), \forall \lambda \in \K \) se verifica que \(\lambda f \in \mathcal{\MakeUppercase{l}}(E,E^\prime )\). Si \(u,v \in E \) y \(\alpha,\beta \in \K \), se verifica que
+		      \begin{multline*}
+			      (\lambda f)(\alpha u + \beta v) = \lambda \cdot f (\alpha u + \beta v ) = \lambda (\alpha f(u) + \beta f(v)) = \\
+			      = \alpha \lambda f(u) + \beta \lambda f(v) = \alpha (\lambda f)(u) + \beta (\lambda f) (v).
+		      \end{multline*}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Si \(E, E^\prime, E^{\prime \prime } \) son \(\K\)-e.v. y \(f \colon E \to E^\prime\), \(g \colon E^\prime \to E^{\prime\prime } \) son funciones lineales, entonces la funcion composicion de \(g \) con \(f \), \(g \circ f \colon E \to E^{\prime\prime }\) tambien es lineal.
+\end{proposition}
+\begin{proof}
+	Sean \(u,v \in E \) y \(\alpha,\beta \in \K \). En ese caso
+	\begin{multline*}
+		(g \circ f)(\alpha u + \beta v) = g(f(\alpha u + \beta v)) = g(\alpha f(u) + \beta f(v)) = \\
+		= \alpha g(f(u)) + \beta g(f(v)) = \alpha (g \circ  f)(u) + \beta (g \circ  f)(v).
+	\end{multline*}
+\end{proof}
+
+\begin{proposition}
+	Si \(E \) y \(E^\prime  \) son \(\K \)-e.v. y \(f \colon E \to E^\prime  \) es lineal, se verifica que:
+	\begin{enumerate}
+		\item \(\forall H \subseteq E \), \(H \leq E \Rightarrow f(H) \leq E^\prime \)
+		\item \(\forall H^\prime \subseteq E^\prime \), \(H^\prime  \leq E^\prime \Rightarrow f^{-1} (H^\prime ) \leq E \)
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Supongamos que \(H \leq E \). En ese caso \(0 \in H \) y, puesto que \(f(0) = 0 \), \(0 \in f(H )\).
+
+		      Por otra parte, si \(u^\prime, v^\prime \in f(H )\) y \(\alpha,\beta \in \K \) tendremos, por definicion de \(f(H)\), que existen \(u,v \in H \) tales que \(f(u) = u^\prime \) y \(f(v) = v^\prime \). Luego
+		      \[
+			      \alpha u^\prime + \beta v^\prime = \alpha f(u) + \beta f(v) = f(\alpha u + \beta v)
+		      \]
+		      y, como \(H \leq E \), \(\alpha u + \beta v \in H \). Luego \(\alpha u^\prime + \beta v^\prime \in f(H )\).
+
+		      Hemos llegado a que \(f(H) \leq E^\prime \).
+		\item Supongamos que \(H^\prime \leq E^\prime \). En ese caso \(0 \in H^\prime \) y, puesto que \(f(0) = 0\), \(0 \in f^{-1} (H^\prime )\).
+
+		      Por otra parte, si \(u,v \in f^{-1} (H^\prime )\) y \(\alpha,\beta \in \K \), \(f(u), f(v) \in H^\prime \).
+
+		      Como \(H^\prime \leq E^\prime \), \(\alpha f(u) + \beta f(v) \in H^\prime \Rightarrow f(\alpha u + \beta v) \in H^\prime \) y \(\alpha u + \beta v \in f^{-1} (H^\prime )\).
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Sean \(E \) y \(E^\prime  \) \(\K\)-e.v. y \(f \colon E \to E^\prime \) una funcion lineal, llamaremos nucleo de \(f \) al conjunto
+	\[
+		Ker(f) = f^{-1} ({0}) = \set{u \in E \mid f(u) = 0 }
+	\]
+	e imagen de \(f \) al conjunto
+	\[
+		Im(f) = \set{v \in E^\prime \mid \exists u \in E \mid f(u) = v } = f(E)
+	\]
+\end{definition}
+\begin{remark}
+	\(Ker(f) \leq E \) y \(Im(f) \leq E^\prime \).
+\end{remark}
+
+\begin{definition}
+	Sean \(E, E^\prime  \) \(\K \)-e.v. y \(f \colon E \to E^\prime \) una funcion lineal, a la dimension de la imagen de \(f \) se le denomina rango de \(f \) y a la dimension del nucleo nulidad.
+\end{definition}
+\begin{example}
+	~\begin{enumerate}
+		\item El nucleo de la funcion identidad \(Id_E \colon E \to E \) es el subespacio \(\set{0}\) y su imagen es el subespacio \(E \).
+		\item Sea \(f: \R^{3} \to \R^{3 } \) la proyeccion ortogonal sobre el plano \(z = 0 \).
+		      \[
+			      Ker(f) = \set{(x,y,z) \mid f(x,y,0) = (0,0,0)} = \set{(x,y,z) \mid x = y = 0}
+		      \]
+	\end{enumerate}
+\end{example}
+
+\begin{theorem}
+	Sean \(E \) y \(E^\prime  \) \(\K\)-e.v. y \(f \colon E \to E^\prime  \) una funcion lineal.
+
+	Se verifica que:
+	\begin{enumerate}
+		\item \(f \) es inyectiva \(\iff  \) \(Ker(f) = \set{0 }\).
+		\item \(f \) es suprayectiva \(\iff Im(f) = E^\prime \).
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item ``\(\Rightarrow \)'' Puesto que \(f \) es lineal, \(f(0) = 0 \) y en consecuencia \(0 \in Ker(f )\). Si \(u \in E \) es tal que \(u \in Ker(f )\), entonces \(f(u) = 0 \) y \(f(0) = 0 \).
+
+		      Como partimos de la hipoteiss de que \(f \) es inyectiva, llegamos a que \(u = 0 \). Por tanto, \(Ker(f) = \set{0}\).
+
+		      ``\(\Leftarrow \)'' Supongamos que \(Ker(f) = \set{0 }\) y que \(u,v \in E \) son tales que \(f(u) = f(v )\). Entonces \(f(u) + (-f(v)) = 0 \Rightarrow f(u) + f(-v) = 0 \Rightarrow f(u + (- v)) = 0 \Rightarrow u +(- v) \in Ker(f ) \Rightarrow u + (- v) = 0\). Por tanto, \(u = v \) y llegamos a que \(f \) es inyectiva.
+		\item Por definicion, \(f \) es sobreyectiva si y solo si \(Im(f) = E^\prime \).
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Siendo \(E \) y \(E^\prime  \) dos \(\K \)-e.v., se dice que \(E \) y \(E^\prime  \) son isomorfos si existe una funcion \(f \colon E \to E^\prime \) tal que \(f \) es lineal y biyectiva. En ese caso, se dice que \( f \) es un isomorfismo.
+\end{definition}
+\begin{proposition}
+	Si \(f \colon E \to E^\prime  \) es un isomorfismo, \(f^{-1} \colon E^\prime \to E \) es tambien un isomorfismo.
+\end{proposition}
+\begin{proof}
+	Si \(f\colon E \to E^\prime  \) es biyectiva entonces \(f^{-1} \colon E^\prime \to E \) es tambien biyectiva. Veamos que es lineal.
+
+	\begin{enumerate}
+		\item Sean \(u^\prime, v^\prime \in E^\prime \). Por ser \(f \colon E \to E^\prime  \) biyectiva, \(\exists ! u,v \in E \) tales que \(f(u) = u^\prime \) y \(f(v) = v^\prime \).
+
+		      Luego \(f^{-1} (u^\prime +v^\prime ) = f^{-1} (f(u) + f(v)) = f^{-1} (f(u + v)) =  u + v = f^{-1} (u) + f^{-1} (v)\).
+		\item Sean \(u^\prime \in E^\prime  \) y \(\alpha \in \K \). Entonces \(\exists ! u \in E \mid f(u) = u^\prime  \).
+
+		      Tenemos que
+		      \[
+			      f^{-1}(\alpha u^\prime ) = f^{-1} (\alpha f(u)) = f^{-1} (f(\alpha u)) = \alpha u = \alpha f^{-1} (u^\prime ).
+		      \]
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Sean \(E \) y \(E^\prime  \) dos \(\K \)-e.v., \(\set{u_1,\ldots,u_n}\), base de E, \(\set{v_1, \ldots, v_n }\) un sistema de cualquiera de \(n \) vectores de \(E^\prime  \). En estas condiciones existe una unica funcion lineal \(f \colon E \to E^\prime  \) tal que \(\forall i \in \set{1,\ldots,n }, f(u_i) = v_i \).
+
+	Ademas se verifica:
+	\begin{enumerate}
+		\item \(f \) es inyectiva \(\iff \set{v_1,\ldots,v_n }\) es libre.
+		\item \(f \) es sobrectiva \(\iff \langle v_1,\ldots,v_n \rangle = E^\prime \)
+		\item \(f \) es biyectiva \(\iff \set{v_1,\ldots,v_n }\) es base de \(E^\prime  \).
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item[i)] Existencia. Sea \(u \in E\), como \(B = \set{u_1,\ldots,u_n }\) \(\exists ! (\alpha_1,\ldots,\alpha_n) \in \K^{n}  \) tal que \(u = \sum_{i=1}^{n} \alpha_i u_i \).
+
+			Entonces definimos \(f(u) = \sum_{i=1}^{n } \alpha_i v_i \). Veamos que la funcion \(f \) asi definida para cada \(u \in E\) satisface las dos condiciones requeridas.
+			\begin{enumerate}
+				\item \(f \) es lineal: dados \(u,v \in E \) y \(\lambda, \mu \in \K \), si \( u = \sum_{i=1}^{n } \alpha_i u_i \) y \(v = \sum_{i=1}^{n} \beta_i u_i \), resulta que \(f(\lambda u + \mu v) = f (\lambda \cdot (\sum_{i=1}^{n} \alpha_i u_i ) + \mu \cdot (\sum_{i=1}^{n } \beta_i u_i)) = f((\sum_{i=1}^{n } (\lambda \alpha_i + \mu \beta_i) u_i)) = \sum_{i=1}^{n } (\lambda \alpha_i + \mu \beta_i)v_i = \lambda (\sum_{i=1}^{n } \alpha v_i) + \mu (\sum_{i=1}^{n } \beta_i u_i ) = \lambda f(u) + \mu f(v)\).
+				\item \(\forall i \in \set{1,\ldots,n} \), \(f(u_i) = v_i \). Dado \(i \in \set{1,\ldots,n }\), se tiene
+
+				      \[
+					      u_i = 0 \cdot u_1 + \cdots + 1 \cdot u_i + \cdots 0 \cdot u_n
+				      \]
+				      y por tanto
+				      \[
+					      f(u_i) = 0 \cdot v_1 + \cdots + 1 \cdot v_i + \cdots + 0 \cdot v_n
+				      \]
+			\end{enumerate}
+		\item[ii)] Unicidad. Si \(g \colon E \to E^\prime  \) es una funcion lineal tal que \(\forall  i \in \set{1,\ldots,n} \; g(u_i) = v_i \), siendo \(w \) un vector cualquiera de \(E \), \(\exists (\alpha_1, \ldots, \alpha_n ) \in \K^{n } \) tal que
+			\[
+				w = \sum_{i=1}^{n } \alpha_i u_i.
+			\]
+
+			Entonces \(g(w) = g(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i g(u_i ) = \sum_{i=1}^{n } \alpha_i v_i = \sum_{i=1}^{n } \alpha_i f(u_i) = f(\sum_{i=1}^{n } \alpha_i u_i) = f(w)\). Luego \(f = g \).
+	\end{enumerate}
+	Por ultimo, comprobamos que se verifican a), b) y c).
+	\begin{enumerate}
+		\item[a)] ``\(\Rightarrow \)'' Sea \(\sum_{i=1}^{n } \alpha_i v_i = 0 \). Entonces
+			\[
+				0 = \sum_{i=1}^{n } \alpha_i v_i = \sum_{i=1}^{n } \alpha_i f(u_i) = f(\sum_{i=1}^{n } \alpha_i u_i ).
+			\]
+			Ya que \(f \) es inyectiva, \(\sum_{i=1}^{n } \alpha_i u_i = 0 \) y, como \(\set{u_1,\ldots,u_n }\) es libre, \(\alpha_1 = \cdots = \alpha_n = 0 \).
+
+			``\(\Leftarrow \)'' Si \(w \in Ker(f )\), siendo \(w = \sum_{i=1}^{n } \alpha_i u_i \), tenemos que
+			\[
+				f(w) = 0 = f(\sum_{i=1}^{n } \alpha_i u_i ) = \sum_{i=1}^{n } \alpha_i f(u_i) = \sum_{i=1}^{n } \alpha_i v_i
+			\]
+			y como \(\set{v_1,\ldots,v_n }\) es libre, \(\alpha_1 = \cdots = \alpha_n = 0\). Por tanto, \(w = 0 \) y \(f \) es inyectiva.
+		\item[b)] Tenemos que probar que \(Im(f) = \langle v_1, \ldots, v_n \rangle \). En ese caso, \(f \) es sobreyectiva si y solo si \(\langle v_1, \ldots, v_n \rangle = E^\prime  \).
+
+			Como \(\langle v_1, \ldots,v_n \rangle \leq Im(f )\), solo hace falta comprobar que \(Im(f) \subseteq \langle v_1, \ldots, v_n \rangle \). Si \(v \in Im(f )\), existe \(u = \sum_{i=1}^{n} \alpha_i u_i \in E \) tal que
+			\[
+				v = f(u) = f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_i) = \sum_{i=1}^{n } \alpha_i v_i \in \langle v_1, \ldots, v_n \rangle.
+			\]
+			Asi que \(Im(f) = \langle v_1,\ldots,v_n \rangle = E^\prime \).
+
+		\item[c)] Es consecuencia de los dos apartados anteriores.
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+	Si \(E \) y \(E^\prime \) son \(\K \)-e.v. y \(\set{u_1,\ldots,u_n} \) es una base de \(E \), cualquier funcion lineal \(f \colon E \to E^\prime \) queda completamente determinada por el sistema \(\set{f(u_1),\ldots,f(u_n )}\).
+\end{corollary}
+
+\begin{corollary}
+	Si \(E \) y \(E^\prime  \) son dos \(\K \)-e.v. de dimension finita, entonces
+	\[
+		E \text{ y } E^\prime \text{ son isomorfos} \iff dim(E) = dim(E^\prime )
+	\]
+\end{corollary}
+\begin{proof}
+	``\(\Rightarrow \)'' Si \(E \) y \(E^\prime  \) son isomorfos, \(f \colon E \to E^\prime \) es un isomorfismo y \(\set{u_1,\ldots,u_n }\) es una base de \(E \). Por el teorema anterior, \(\set{f(u_1),\ldots,f(u_n )}\) es una base de \(E^\prime  \) y, por tanto, \(dim(E) = dim(E^\prime ) = n \).
+
+	``\(\Leftarrow \)'' Si \(dim(E) = dim(E^\prime ) = n \), \(\set{u_1,\ldots,u_n }\) es una base de \(E \) y \(\set{v_1,\ldots,v_n }\) es una base de \(E^\prime \). Si consideramos la funcion lineal \(f \colon E \to E^\prime \) tal que \(\forall  i \in \set{1,\ldots,n } \; f(u_i) = v_i \), tenemos que \(f\) es un isomorfismo (demostrado anteriormente) y \(E \) y \(E^\prime  \) son isomorfos.
+\end{proof}
+
+\begin{theorem}[de la dimension para funciones lineales]
+	Si \(f \colon E \to E^\prime \) es una funcion lineal tal que los subespacios \(Ker(f)\) e \(Im(f )\) son de dimension finita, entonces \(E \) es tambien de dimension finita y su dimension viene dada por
+	\[
+		dim(E) = dim(Ker(f)) + dim(Im(f)).
+	\]
+\end{theorem}
+\begin{proof}
+	Sean \(\set{u_1,\ldots,u_r }\) una base de \(Ker(f )\) y \(\set{v_1,\ldots,v_p }\) una base de \(Im(f )\). Sean, por otra parte, \(\set{w_1,\ldots,w_p }\) tales que \(\forall i \in \set{1,\ldots,p}, \; f(w_i) = v_i \).
+
+	El teorema quedara demostrado si comprobamos que \(\set{u_1,\ldots,u_r,w_1,\ldots,w_p }\) es una base de \(E \).
+	\begin{enumerate}
+		\item[a)] \(\set{u_1,\ldots,u_r,w_1,\ldots,w_p }\) es libre.
+
+			Existen \(\alpha_{1}, \ldots, \alpha_r, \beta_1, \ldots, \beta_p \) tal que
+			\[
+				\sum_{i=1}^{r} \alpha_i u_i + \sum_{j=1}^{p } \beta_j w_j = 0.
+			\]
+			Entonces \(f(\sum_{i=1}^{r} \alpha_i u_i + \sum_{j=1}^{p } \beta_j w_j) = f(0) = 0 \).
+
+			Como \(f \) es lineal, \(\sum_{i=1}^{r} \alpha_i f(u_i) + \sum_{j=1}^{p } \beta_j f(w_j) = 0\)  y puesto que los vectores \(u_1,\ldots,u_r \in Ker(f )\), \(\sum_{j =1}^{p } \beta_j v_j = 0 \). Al ser \(\set{v_1,\ldots,v_p }\) libre, obtenemos que \(\beta_1 = \cdots = \beta_p = 0 \).
+
+			Volviendo a la ecuacion inicial, nos queda \(\sum_{i=1}^{r } \alpha_i u_i = 0 \), y como \(\set{u_1,\ldots,u_r }\) es libre, \(\alpha_1 = \cdots = \alpha_r = 0\).
+
+			Por lo tanto, \(\alpha_1 = \cdots = \alpha_r = \beta_1 = \cdots = \beta_p = 0 \) y es un sistema libre.
+
+		\item \(\set{u_1,\ldots,u_r,w_1,\ldots,w_p }\) es un sistema generador de \(E \). Sea \( u \in E \). Como \(f(u) \in Im(f)\) y \(\set{v_1,\ldots,v_p }\) es una base de \(Im(f )\), \(\exists \beta_1,\ldots,\beta_p \) tal que \(f(u ) = \sum_{i=1}^{p } \beta_i v_i \). Por tanto,
+		      \[
+			      f(u) = \sum_{i=1}^{p } \beta_i v_i = \sum_{i=1}^{p } \beta_i f(w_i) = f(\sum_{i=1}^{p } \beta_i w_i).
+		      \]
+		      Luego
+		      \[
+			      0 = f(u) - f(\sum_{i=1}^{p } \beta_i w_i ) = f(u - \sum_{i=1}^{p } \beta_i w_i) \in Ker(f)
+		      \]
+		      Como \(Ker(f) = \langle u_1, \ldots, u_r \rangle\), \(\exists \alpha_1, \ldots, \alpha_r \) tal que \(u - \sum_{i=1}^{p } \beta_i w_i = \sum_{j=1}^{r } \alpha_j u_j \Rightarrow \)
+		      \[
+			      u = \sum_{i=1}^{p } \beta_i w_i + \sum_{j=1}^{r } \alpha_j u_j
+		      \]
+	\end{enumerate}
+\end{proof}
