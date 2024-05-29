@@ -2221,12 +2221,32 @@ En lo que sigue denotaremos con \(A,B,C \) a formulas cualesquiera de la logica 
 
 \begin{remark}
 	El uso tipico de la regla \(I \neg \) es para demostraciones que modelan la reduccion al absurdo. Si quiero demostrar \(A \), supongo \(\neg A \) como premisa auxiliar de una demostracion auxiliar en la que trato de llegar como conclusion a \(B \wedge \neg B\) para una formula cualquiera \(B \). A partir de ahi, deduzco \(A \):
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.5\textwidth]{2.png}
-		\label{fig:}
-	\end{figure}
+	% \begin{figure}[H]
+	% 	\centering
+	% 	\includegraphics[width=0.5\textwidth]{2.png}
+	% 	\label{fig:}
+	% \end{figure}
+	\begin{center}
+		\begin{minipage}{0.4\textwidth}
+			\framedtext{
+				\(\neg A \qquad \qquad \text{Premisa auxiliar}\)
+
+				\(\vdots\)
+
+				\(B \wedge \neg B\)
+			}
+			\(
+			\begin{array}{lr}
+				\neg A \rightarrow B \wedge \neg B \qquad\qquad & I \rightarrow \\
+				\neg \neg A \qquad \qquad                       & I \neg        \\
+				A  \qquad \qquad                                & E \neg
+			\end{array}
+			\)
+		\end{minipage}
+	\end{center}
 \end{remark}
+
+
 
 \begin{example}
 	Demostrar la validez de \(\set{p\rightarrow q, q \rightarrow r, \neg r} \vdash \neg p \).
@@ -3517,12 +3537,28 @@ Los nombres de las 4 nuevas reglas de inferencia son:
 \end{example}
 
 \begin{definition}[Regla de introduccion del universal, \(I \forall  \)]
-	.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.4\textwidth]{fresca.png}
-		\label{fig:fresca-png}
-	\end{figure}
+	~
+	% \begin{figure}[H]
+	% 	\centering
+	% 	\includegraphics[width=0.4\textwidth]{fresca.png}
+	% 	\label{fig:fresca-png}
+	% \end{figure}
+	\begin{center}
+		\begin{minipage}{0.4\textwidth}
+			\[
+				\begin{array}{c}
+					\framedtext{
+						\(y \qquad\qquad\quad\; \text{Variable fresca}\)
+
+						\(\vdots\)
+
+					\(\varphi(y)\)} \vspace{0.2cm} \\
+					\hline
+					\forall x \varphi(x)
+				\end{array}
+			\]
+		\end{minipage}
+	\end{center}
 \end{definition}
 
 \begin{remark}
@@ -3590,11 +3626,29 @@ Los nombres de las 4 nuevas reglas de inferencia son:
 
 \begin{remark}
 	Tipicamente la regla \(E \exists  \) se usa cuando se tiene una formula \(\exists  x \varphi(x) \), iniciando una demostracion auxiliar que tiene como premisa auxiliar \(\varphi(y )\) y llegando a una conclusion que no dependa de \(y \).
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.4\textwidth]{existe.png}
-		\label{fig:}
-	\end{figure}
+	% \begin{figure}[H]
+	% 	\centering
+	% 	\includegraphics[width=0.4\textwidth]{existe.png}
+	% 	\label{fig:}
+	% \end{figure}
+	\begin{center}
+		\begin{minipage}{0.4\textwidth}
+			\(\exists x \varphi(x)\)
+			\framedtext{
+				\(\varphi(y) \qquad \quad \text{Premisa auxiliar}\)
+
+				\(\vdots\)
+
+				\(\psi\)
+			}
+			\(
+			\begin{array}{lr}
+				\varphi(y) \rightarrow \psi \qquad\qquad\qquad & I \rightarrow \\
+				\psi                                           & E \exists
+			\end{array}
+			\)
+		\end{minipage}
+	\end{center}
 \end{remark}
 
 \begin{example}
