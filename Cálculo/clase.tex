@@ -86,12 +86,12 @@ Si \(a,b \in \R \) y \(a \leq  b \), entonces se definen:
 % \end{definition}
 \begin{definition}
 	Sea \(S \) un subconjunto no vacío de \(\R \).
-	
+
 	\begin{enumerate}
 		\item[a)] Se dice que \(S \) está \textbf{acotado superiormente} si existe un numero \(u \in \R \) tal que \(s \leq u \) para todo \(s \in S\). A cada uno de estos numeros \(u \) se le llama cota superior de \(S \).
-			
+
 			\item[b)]Se dice que el conjunto \(S \) está \textbf{acotado inferiormente} si existe un numero \(w \in \R \) tal que \(w \leq s \) para todo \(s \in S \). A cada \(w \) se le llama cota inferior de \(S \).
-			
+
 		\item[c)] Se dice que un conjunto está acotado si está acotado tanto superior como inferiormente; en caso contrario, se dice que es no acotado.
 	\end{enumerate}
 \end{definition}
@@ -109,7 +109,7 @@ Si \(a,b \in \R \) y \(a \leq  b \), entonces se definen:
 				\item si \(t \) es cualquier cota inferior de \(S \), entonces \(t \leq w \).
 			\end{itemize}
 	\end{enumerate}
-	
+
 	Además, si \(S \) tiene supremo o infimo se les denotará, respectivamente, por
 	\[
 		\sup S \;\text{ e } \;\inf S .
@@ -147,15 +147,15 @@ La propiedad análoga para los infimos se puede deducir a partir del axioma del 
 \]
 siendo \(-A = \set{-a \mid a \in A}\).
 \begin{proof}
-	Veamos que \(\exists \inf (A)\) y \(\inf (A) = - \sup (-A)\). En primer lugar, \(-A \neq \varnothing\) porque \(A \neq 0\). Sea \(m \in \R \) con \(a \geq m \; \forall a \in A\), que existe por estar \(A \) acotado inferiormente. Entonces \(-a \leq -m \; \forall a \in A\), es decir, \(-a \leq -m \; \forall -a \in -A \), con lo que \(-A \) está acotado superiormente y, por el axioma del supremo, existe \(\sup (-A)\). 
-	
-	Por otro lado, se tiene que \(-a \leq \sup (-A) \; \forall -a \in -A \Rightarrow a \geq -\sup (-A) \; \forall -a \in -A \iff  a \geq - \sup (-A) \; \forall a \in A\), es decir, \(-\sup (-A) \) es cota inferior de \(A \). 
-	
-	Veamos que \(-\sup (-A)\) es la mayor de las cotas inferiores de \(A \). Sea \(m \in \R\) con \(m \leq a \; \forall a \in A\). Entonces 
+	Veamos que \(\exists \inf (A)\) y \(\inf (A) = - \sup (-A)\). En primer lugar, \(-A \neq \varnothing\) porque \(A \neq 0\). Sea \(m \in \R \) con \(a \geq m \; \forall a \in A\), que existe por estar \(A \) acotado inferiormente. Entonces \(-a \leq -m \; \forall a \in A\), es decir, \(-a \leq -m \; \forall -a \in -A \), con lo que \(-A \) está acotado superiormente y, por el axioma del supremo, existe \(\sup (-A)\).
+
+	Por otro lado, se tiene que \(-a \leq \sup (-A) \; \forall -a \in -A \Rightarrow a \geq -\sup (-A) \; \forall -a \in -A \iff  a \geq - \sup (-A) \; \forall a \in A\), es decir, \(-\sup (-A) \) es cota inferior de \(A \).
+
+	Veamos que \(-\sup (-A)\) es la mayor de las cotas inferiores de \(A \). Sea \(m \in \R\) con \(m \leq a \; \forall a \in A\). Entonces
 	\begin{align*}
 		m \leq a \; \forall a \in A & \iff  -m \geq -a \; \forall a \in A \iff -m \geq -a \; \forall -a \in -A \\ & \Rightarrow -m \text{ es una cota superior de } -A \Rightarrow -m \geq \sup (-A) \Rightarrow m \leq -\sup (-A)
 	\end{align*}
-	Luego, \(-\sup (-A) = \inf (A)\).  
+	Luego, \(-\sup (-A) = \inf (A)\).
 \end{proof}
 \section{Números naturales, enteros y racionales}
 Los otros tres conjuntos numericos más conocidos son:
@@ -183,7 +183,7 @@ Por ejemplo, tiene sentido considerar el resultado de la ``operacion'' \(2^{\sqr
 \end{proposition}
 \begin{proof}
 	Supongamos que \(\N \) esta acotado. Como es un subconjunto de \(\R \) no vacÍo, entonces existirÁ el supremo de \(\N \), al que denotaremos \(p \). Como \(p \) es una cota superior mínima de \(\N \), el numero \(p - 1 \) no puede ser una cota superior, con lo que debe haber algun numero natural \(n \in \N \), de manera que \(p - 1 < n \leq p \). Pero, en ese caso, sumando \(1 \) a \(n \), tendríamos que \(p < n + 1 \), con \(n + 1 \in \N \), por lo que \(p \) no puede ser el supremo de \(\N \).
-	
+
 	Hemos llegado a una contradiccion. No hay supremo de \(\N \) y, por tanto, \(\N \) no puede estar acotado.
 \end{proof}
 A partir de esta propiedad se siguen consecuencias muy importantes que permiten relacionar los naturales, enteros y racionales con los numeros reales:
@@ -223,7 +223,7 @@ Dado \(x \in \R \) se define su valor absoluto como \(|x| = max\set{x,-x} = \beg
 Algunas propiedades del valor absoluto son:
 \begin{itemize}
 	\item \(|x \cdot y | = |x| \cdot |y| \; \forall x,y \in \R \). Veamos la demostracion.
-	      
+
 	      Sabemos que \(|x| = \begin{dcases}
 		      x \text{ si } x \geq 0 \\
 		      - x \text{ si } x < 0
@@ -231,14 +231,14 @@ Algunas propiedades del valor absoluto son:
 		      y \text{ si } y \geq 0 \\
 		      - y \text{ si } y < 0
 	      \end{dcases}\).
-	      
+
 	      Por tanto, \(|x \cdot y| = \begin{dcases}
 		      x \cdot y \text{ si } xy \geq 0 \\
 		      -x \cdot y \text{ si } xy < 0
 	      \end{dcases}\)
-	      
+
 	      Consideramos los 4 casos segun el valor de \(x \) e \(y \).
-	      
+
 	      \begin{itemize}
 		      \item Si \(x \geq 0\), \(y \geq 0 \), \(|x| \cdot |y| = x \cdot y = |x \cdot y| \)
 		      \item Si \(x \geq 0 \), \(y < 0 \), entonces \(|x| \cdot |y| = x \cdot (-y) = -(x\cdot y) = |x \cdot y|\).
@@ -246,17 +246,17 @@ Algunas propiedades del valor absoluto son:
 		      \item Si \(x < 0, y < 0 \), \(|x| \cdot |y| = (-x) (-y) = x \cdot y = |x \cdot y | \)
 	      \end{itemize}
 	\item Dados \(x \in \R \) y \(a \geq  0 \), se tiene que \(|x| \leq a \iff -a \leq x \leq a \).
-	      
+
 	      \(|x| = max\set{x,-x} \leq a \iff  x \leq a \) y \(-x \leq a \) \(\iff  x \leq a \) y \(x \geq -a \) \(\iff -a \leq x \leq a \)
-	      
+
 	      \begin{example}
 		      \(|x - a| \leq \varepsilon \iff - \varepsilon \leq x - a \leq \varepsilon \iff x - \varepsilon \leq x \leq a + \varepsilon \iff x \in [a - \varepsilon, a + \varepsilon]\)
-		      
+
 		      \(|x - a | < \varepsilon \iff x \in (a - \varepsilon, a  + \varepsilon)\)
 	      \end{example}
 	\item Es falso que \(|x + y | = |x | + |y| \; \forall x,y \in \R \). Consideramos un contraejemplo: \(|3 + (-3) | = |3| + |-3| = 6 \neq 0\).
 	\item \(|x + y| \leq |x | + |y| \), o equivalentemente, \(-(|x| + |y|) \leq |x + y| \leq |x| + |y| \). Veamos la demostración:
-	      
+
 	      \[
 		      \begin{array}{c}
 			      - |x| \leq x \leq |x| \\
@@ -283,21 +283,21 @@ Dado ahora \(A \subset \R \),
 \end{itemize}
 \begin{example}
 	Consideramos \(A \subset \R \) con \(A = (1,2 )\).
-	
+
 	En este caso, \(\AA = (1,2) = A \), \(A^\prime = [1,2]\), \(\overline{A} = [1,2]\).
-	
+
 	\(\AA = A \Rightarrow \) \(A \) es abierto. \(\overline{A} \supseteq A \Rightarrow A \) no es cerrado.
-	
-	
+
+
 \end{example}
 \begin{example}
-	Sea \(A = [1,2)\). En este caso, \(\AA = (1,2)\), con lo que \(A\)  no es abierto, \(A^\prime = [1,2]\) y \(\overline{A} = [1,2]\), luego tampoco es cerrado. 
+	Sea \(A = [1,2)\). En este caso, \(\AA = (1,2)\), con lo que \(A\)  no es abierto, \(A^\prime = [1,2]\) y \(\overline{A} = [1,2]\), luego tampoco es cerrado.
 \end{example}
 \begin{example}
 	Consideramos \(A = \set{\frac{1}{n} \mid n \in \N }\).
-	
-	Dado cualquier punto, ningún entorno suyo estará completamente contenido en \(A \). Luego \(\AA = \varnothing \). 
-	
+
+	Dado cualquier punto, ningún entorno suyo estará completamente contenido en \(A \). Luego \(\AA = \varnothing \).
+
 	Como \(\frac{1}{n}\) tiende hacia cero, \(A^\prime  = \set{0}\). Por la misma razon, \(\overline{A} = A \cup \set{0}\).
 \end{example}
 \section{Principio de inducción. Conjuntos finitos y numerables.}
@@ -467,7 +467,7 @@ Es posible definir las progresiones aritmeticas de manera recursiva \(x_1 = a \)
 		\iff S_n - rS_n = a + ar + \cdots + ar^{n-1} - ar - ar^{2} - \cdots - ar^{n} \iff  (1 - r) S_n = a - ar^{n} \\ \iff S_n = \frac{a(1 - r^{n})}{1 - r}
 	\end{multline*}
 \end{proof}
-Como consecuencia, 
+Como consecuencia,
 \[
 	S_\infty = x_1 + x_2 + \cdots = \lim\limits_{n \to \infty} S_n = \lim\limits_{n \to \infty} \frac{a(1-r^{n} ) }{1 - r} = \begin{dcases}
 		\frac{a }{1-r } \; \text{ si } r < 1 \\
@@ -480,10 +480,10 @@ Como consecuencia,
 \]
 
 \begin{proposition}
-	La suma de los \(n \) primeros términos de una progresion aritmética de primer término \(a \) y diferencia \(d \) es \(S_n = \frac{(a + [a + (n-1)d])n}{2} = \frac{(x_1 + x_n)\cdot n}{2}\). 
+	La suma de los \(n \) primeros términos de una progresion aritmética de primer término \(a \) y diferencia \(d \) es \(S_n = \frac{(a + [a + (n-1)d])n}{2} = \frac{(x_1 + x_n)\cdot n}{2}\).
 \end{proposition}
 \begin{proof}
-	No vista en clase. 
+	No vista en clase.
 \end{proof}
 
 \subsection{Subsucesiones}
@@ -511,12 +511,12 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	Una sucesión \(\set{x_n}_{n \in \N }\) está acotada superiormente si se puede encontrar un \(M \in \R \) de manera que \(\forall n \in \N \; x_n \leq M \), acotada inferiormente si se puede encontrar un \(m \in \R \) de manera que \(\forall n \in \N \; n \leq x_n \), y se dice que está acotada si lo está superior e inferiormente.
 \end{definition}
 \begin{example}
-	Sucesiones acotadas superiormente, pero no acotadas, son: \(\set{-n}, \set{-(n)! }\). 
-	
-	Sucesiones acotadas inferiormente, pero no acotadas, son: \(\set{n}, \set{n^{2}}\). 
-	
-	Sucesiones acotadas son: \(\set{(-1)^{n}, \frac{1}{n }}\). 
-	
+	Sucesiones acotadas superiormente, pero no acotadas, son: \(\set{-n}, \set{-(n)! }\).
+
+	Sucesiones acotadas inferiormente, pero no acotadas, son: \(\set{n}, \set{n^{2}}\).
+
+	Sucesiones acotadas son: \(\set{(-1)^{n}, \frac{1}{n }}\).
+
 	Una sucesión no acotada ni superior ni inferiormente es \(\set{(-n)^{n-1}}\).
 \end{example}
 \begin{theorem}
@@ -530,7 +530,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \section{Convergencia de sucesiones}
 \begin{definition}[Convergencia]
 	Dados \(\set{x_n}^{\infty}_{n=1 } \subset \R 	 \) y \(a \in \R \), diremos que \(\set{x_n}^{\infty}_{n = 1 } \) converge al numero \(a \), y lo denotaremos por \(\lim\limits_{n \to \infty} x_n = a \), si dado \(\varepsilon > 0 \) existe \(n_0 \in \N \) con \(|x_n - a| < \varepsilon \; \forall n \in \N \) con \(n \geq n_0 \).
-	
+
 \end{definition}
 \begin{remark}
 	Aplicando las propiedades del valor absoluto, observamos que \(|x_n - a | < \varepsilon\) es equivalente a que \(x_n \in (a - \varepsilon, a + \varepsilon)\).
@@ -540,11 +540,11 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \end{proposition}
 \begin{proof}
 	Supongamos, por reduccion al absurdo, que existe \(\set{x_n}^{\infty}_{n = 1} \) y \(a,b \in \R \) tales que \(\lim\limits_{n \to \infty} x_n = a \) y \(\lim\limits_{n \to \infty} x_n = b \). Supongamos que \(a < b \), siendo análogo para \(b < a \).
-	
+
 	Si la sucesion es convergente, para todo entorno de \(a\) a partir de un momento dado todos los elementos de la sucesion están dicho entorno. Lo mismo para un entorno de \(b \). Cogemos un \(\varepsilon\) tal que \(a + \varepsilon \leq b + \varepsilon \Rightarrow 2\varepsilon \leq b - a \Rightarrow 0 < \varepsilon \leq \frac{b-a}{ 2}\).
-	
-	Sea \(\varepsilon = \frac{b-a }{2 }\). Como \(\lim\limits_{n  \to \infty} x_n = a \),  \(\exists n_1 \in \N \) tal que \(x_n \in (a - \varepsilon, a + \varepsilon)\) \( \; \forall n \geq  n_{1} \in \N \) y, como \(\lim\limits_{n \to \infty} x_n = b \),  \( \exists n_2 \in  \N \) tal que \(x_n \in (b - \varepsilon, b + \varepsilon) \; \forall n \geq  n_2 \in \N\). 
-	
+
+	Sea \(\varepsilon = \frac{b-a }{2 }\). Como \(\lim\limits_{n  \to \infty} x_n = a \),  \(\exists n_1 \in \N \) tal que \(x_n \in (a - \varepsilon, a + \varepsilon)\) \( \; \forall n \geq  n_{1} \in \N \) y, como \(\lim\limits_{n \to \infty} x_n = b \),  \( \exists n_2 \in  \N \) tal que \(x_n \in (b - \varepsilon, b + \varepsilon) \; \forall n \geq  n_2 \in \N\).
+
 	Definimos \(n_0 = \max\set{n_1,n_2} \in \N \). Entonces, se tiene que \(x_n \in (a - \varepsilon, a + \varepsilon)\) y \(x_n \in (b - \varepsilon, b + \epsilon) \; \forall n \geq n_0\). Esto no es posible puesto que habíamos supuesto que \((a - \varepsilon, a + \varepsilon) \cap (b - \varepsilon, b + \varepsilon) = \varnothing \). Luego el límite, si existe, es único.
 \end{proof}
 % \begin{proof}
@@ -599,22 +599,22 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	Definimos
 	\(
 	M \coloneqq \sup \set{\left\vert x_1  \right\vert, \left\vert x_2  \right\vert, \ldots, \left\vert x_{n_0 - 1} \right\vert, 1 + \left\vert x  \right\vert}
-	\), de lo que se sigue que \(\left\vert x_n  \right\vert \leq M \) para todo \(n \in \N \). Luego \(\set{x_n}\) está acotada.  
+	\), de lo que se sigue que \(\left\vert x_n  \right\vert \leq M \) para todo \(n \in \N \). Luego \(\set{x_n}\) está acotada.
 \end{proof}
 \begin{proposition}
 	\label{moncon}
 	Toda sucesión monótona acotada es convergente.
 \end{proposition}
 \begin{proof}
-	Sea \(\set{x_n}^{\infty}_{n = 1} \) una sucesión monótona acotada. Supongamos que es monótona creciente, siendo análogo si fuese monótona decreciente. 
-	
-	Por el axioma del supremo, existe \(a = \sup \set{x_n \mid n \in \N }\). Como \(a \) es el supremo de \(\set{x_n}\), dado \(\varepsilon > 0\) existe \(x_{n_0} \) con \(n_0 \in \N\) tal que \(a - \varepsilon < x_{n_0} \leq a\). Puesto que la sucesión es creciente, se tiene para todo \( n \in \N, n \geq  n_0\), con lo que, en efecto, \(\lim\limits_{n \to \infty} x_n = a\).   
+	Sea \(\set{x_n}^{\infty}_{n = 1} \) una sucesión monótona acotada. Supongamos que es monótona creciente, siendo análogo si fuese monótona decreciente.
+
+	Por el axioma del supremo, existe \(a = \sup \set{x_n \mid n \in \N }\). Como \(a \) es el supremo de \(\set{x_n}\), dado \(\varepsilon > 0\) existe \(x_{n_0} \) con \(n_0 \in \N\) tal que \(a - \varepsilon < x_{n_0} \leq a\). Puesto que la sucesión es creciente, se tiene para todo \( n \in \N, n \geq  n_0\), con lo que, en efecto, \(\lim\limits_{n \to \infty} x_n = a\).
 \end{proof}
 \begin{theorem}[Teorema de Bolzano-Weierstrass]
 	Toda sucesión acotada contiene una subsucesión convergente.
 \end{theorem}
 \begin{proof}
-	Toda sucesión contiene una subsucesión monotona por \ref{submon}. El resultado se sigue de aplicar que toda sucesión monótona acotada es convergente (\ref{moncon}). 
+	Toda sucesión contiene una subsucesión monotona por \ref{submon}. El resultado se sigue de aplicar que toda sucesión monótona acotada es convergente (\ref{moncon}).
 \end{proof}
 
 \begin{theorem}
@@ -622,9 +622,9 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \end{theorem}
 \begin{proof}
 	Como \((x_n )\) es una sucesión acotada, necesariamente existe \(K \in \R \) tal que \(\left\vert x_n  \right\vert < K \; \forall n \in \N \).
-	
+
 	Por otra parte, como \(\lim\limits_{n \to \infty} y_n = 0\), dado \(\varepsilon > 0 \), existe \(n_0 \in \N \) tal que \(\left\vert y_n - 0  \right\vert < \frac{\varepsilon}{K} \; \forall n \geq n_0\).
-	
+
 	Así, obtenemos
 	\[
 		\left\vert x_n y_n - 0  \right\vert = \left\vert x_n y_n  \right\vert = \left\vert x_n  \right\vert \cdot \left\vert y_n  \right\vert < K \cdot \frac{\varepsilon}{K} = \varepsilon
@@ -645,14 +645,14 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \end{proposition}
 \begin{proof}
 	Supongamos que \(\lim\limits_{n \to \infty} x_n = a \). Sea \(\varepsilon > 0 \), entonces existe \(n_0 \in \N \) con \(|x_n - a| < \varepsilon \; \forall n \geq n_0\).
-	
+
 	Tenemos que ver que \(| |x_n| - |a| | \leq \left\vert x_n - a  \right\vert < \varepsilon \; \forall n \geq n_0 \), con lo que se tendría el resultado.
-	
+
 	Usando las propiedades del valor absoluto vistas en el tema anterior,
 	\[|x_n| = \left\vert (x_n-a) + a \right\vert \leq \left\vert x_n-a  \right\vert  + \left\vert a  \right\vert \Rightarrow \left\vert x_n  \right\vert - \left\vert a  \right\vert \leq \left\vert x_n-a  \right\vert.
 	\]
 	Análogamente, \(\left\vert a  \right\vert - \left\vert x_n  \right\vert \leq \left\vert a - x_n \right\vert = \left\vert -(x_n-a) \right\vert = \left\vert x_n-a  \right\vert \).
-	
+
 	Por tanto, \(\left\vert \left\vert x_n  \right\vert - \left\vert a  \right\vert  \right\vert \leq \left\vert x_n - a  \right\vert\) y \(\lim\limits_{n \to \infty} \left\vert x_n  \right\vert = \left\vert a  \right\vert \).
 \end{proof}
 
@@ -661,7 +661,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \end{proposition}
 \begin{proof}
 	Sea \(\varepsilon > 0 \), entonces existe \(n_1 \in \N \) tal que \(\left\vert x_n - a  \right\vert < \varepsilon \; \forall n \geq n_1 \) y \(n_2 \in \N \) tal que \(\left\vert y_n - a  \right\vert < \varepsilon \; \forall n \geq n_2 \). Definimos \(n_0 = max\set{n_1,n_2 }\). Entonces \(\left\vert x_n - a  \right\vert \; \forall n \geq n_0 \)  y \(\left\vert y_n - a  \right\vert \; \forall n \geq n_0 \).
-	
+
 	Como \(x_n \leq z_n \leq y_n \), \[
 		a - \varepsilon < x_n \leq z_n \leq y_n < a + \varepsilon \; \forall n \in \N \Rightarrow z_n \in (a-\varepsilon,a+\varepsilon) \; \forall n \geq n_0 \Rightarrow |z_n - a| \leq \varepsilon
 	\] y se tiene que \(\lim\limits_{n \to \infty} z_n = a\).
@@ -789,12 +789,12 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	\]
 \end{proposition}
 \begin{proof}
-	Supongamos que \((x_n)^{\infty}_{n=1}\) es una sucesión de Cauchy. Entonces, para \(\varepsilon = 1 \), \(\exists n_0 \in \N\) tal que \(\left\vert x_n - x_m  \right\vert < 1 \; \forall n,m \geq n_0\). En particular, \(\left\vert x_n - x_{n_0 } \right\vert < 1\; \forall n \geq n_0\). Aplicando la desigualdad triangular para \(n \geq n_0\), 
+	Supongamos que \((x_n)^{\infty}_{n=1}\) es una sucesión de Cauchy. Entonces, para \(\varepsilon = 1 \), \(\exists n_0 \in \N\) tal que \(\left\vert x_n - x_m  \right\vert < 1 \; \forall n,m \geq n_0\). En particular, \(\left\vert x_n - x_{n_0 } \right\vert < 1\; \forall n \geq n_0\). Aplicando la desigualdad triangular para \(n \geq n_0\),
 	\[
 		\left\vert x_n  \right\vert = \left\vert x_n - x_{n_0} + x_{n_0} \right\vert \leq \left\vert x_n - x_{n_0} \right\vert + \left\vert x_{n_0} \right\vert < 1 + \left\vert x_{n_0} \right\vert.
 	\]
-	
-	Definimos \(M = \max\set{|x_1|, |x_2|, \ldots, |x_{n_0} - 1|, 1 + \left\vert x_{n_0} \right\vert }\). Entonces, claramente \(|x_n| \leq M \; \forall n \in \N \) y \((x_n)^{\infty}_{n=1}\) está acotada. 
+
+	Definimos \(M = \max\set{|x_1|, |x_2|, \ldots, |x_{n_0} - 1|, 1 + \left\vert x_{n_0} \right\vert }\). Entonces, claramente \(|x_n| \leq M \; \forall n \in \N \) y \((x_n)^{\infty}_{n=1}\) está acotada.
 \end{proof}
 \begin{theorem}
 	Sea \((x_n)^{\infty}_{n=1} \subset \R \). Entonces
@@ -806,23 +806,23 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	~
 	\begin{description}
 		\item[\(\Rightarrow\) ] Supongamos que  \(\lim\limits_{n \to \infty} x_n = a \). Sea \(\varepsilon > 0 \), entonces existe \(n_0 \in \N \) tal que \(\left\vert x_n - a  \right\vert < \frac{\varepsilon}{2} \; \forall n \geq n_0 \). Por otro lado, \[\left\vert x_n - x_m  \right\vert = \left\vert x_n - a + a - x_m  \right\vert \leq \left\vert x_n - a  \right\vert + \left\vert x_m - a  \right\vert < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \; \forall n,m \geq n_0\] Luego \((x_n)^{\infty}_{n=1}\) es de Cauchy.
-			
+
 		\item[\(\Leftarrow\)] Sea \(\varepsilon > 0 \). Sea \(n_1 \in \N\) con \(\left\vert x_n - x_m  \right\vert < \varepsilon \; \forall n,m \geq n_1 \).
-			
+
 			Como \((x_n)^{\infty}_{n=1} \) es una sucesion de Cauchy aplicando \ref{cauchyac} \((x_n)^{\infty}_{n=1}  \) es acotada y, por lo tanto, contiene una subsucesion convergente a un numero real \(a \) (\(\lim\limits_{n \to \infty} x_n = a \)).
-			
+
 			Sea \(n_{k_0} \in \N \) con \(\left\vert x_{n_k} - a  \right\vert < \varepsilon \; \forall n_k \geq n_{k_0}\), \(n_k \geq n_{k_0} \geq n_0 \).
-			
+
 			\(\left\vert x_n - a  \right\vert = \left\vert x_n - x_{n_k} + x_{n_k} - a \right\vert \leq \left\vert x_n - x_{n_k } \right\vert + \left\vert x_{n_k} - a \right\vert < 2\varepsilon \; \forall n \geq n_0\). (incompleto)
 	\end{description}
-	
+
 \end{proof}
 \begin{remark}
 	Sea \((x_n)^{\infty}_{n=1} \). Entonces
 	\[
 		(x_n)^{\infty}_{n=1} \text{ es una sucesion de Cauchy} \Rightarrow \text{Dada \(\varepsilon > 0 \) existe } n_0 \in \N \text{ con } \left\vert x_{n+1} - x_n  \right\vert < \varepsilon \; \forall n \geq n_0
 	\]
-	
+
 \end{remark}
 
 \begin{proposition}
@@ -833,7 +833,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \end{proposition}
 \begin{proof}
 	\[a \vee b = a + b - \left\vert a - b  \right\vert \; \forall a,b \in \R \]
-	
+
 	\[x_n \vee y_n = \underbrace{x_n (\rightarrow a) + y_n (\rightarrow b) - \underbrace{\left\vert x_n - y_n  \right\vert}_{\rightarrow \left\vert a - b  \right\vert }}_{a + b - \left\vert a - b \right\vert = a \vee b} \]
 \end{proof}
 \section{Otros criterios de convergencia}
@@ -894,14 +894,14 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \part{Series}
 \section{Series de números reales}
 \begin{definition}[Serie]
-	Sea \((x_n)^{\infty}_{n=1} \subset \R \). 
-	
+	Sea \((x_n)^{\infty}_{n=1} \subset \R \).
+
 	Sea \(X_n = x_1 + x_2 + \cdots + x_n = \sum_{k =1}^{n } x_k \), la suma parcial \(n\)-ésima con \(n \in \N \).
-	
-	La sucesión \((X_n)^{\infty}_{n=1} \) de sumas parciales recibe el nombre de serie asociada a la sucesion \((x_n)^{\infty}_{n=1} \), y si \((X_n)^{\infty}_{n=1} \) converge, a dicho límite se le denota por \(\sum_{n =1}^{\infty} x_n \) y se dice que \((x_n)^{\infty}_{n=1} \) es sumable. 
-	
-	Si \(\lim\limits_{n \to \infty} X_n = \pm\infty \), se dice que la serie diverge a \(\pm\infty \). También se denota \(\sum_{n =1}^{\infty} x_n = \pm \infty \). 
-	
+
+	La sucesión \((X_n)^{\infty}_{n=1} \) de sumas parciales recibe el nombre de serie asociada a la sucesion \((x_n)^{\infty}_{n=1} \), y si \((X_n)^{\infty}_{n=1} \) converge, a dicho límite se le denota por \(\sum_{n =1}^{\infty} x_n \) y se dice que \((x_n)^{\infty}_{n=1} \) es sumable.
+
+	Si \(\lim\limits_{n \to \infty} X_n = \pm\infty \), se dice que la serie diverge a \(\pm\infty \). También se denota \(\sum_{n =1}^{\infty} x_n = \pm \infty \).
+
 	En otro caso, se dice que la serie ni converge ni diverge.
 \end{definition}
 \begin{remark}
@@ -912,27 +912,27 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \begin{example}
 	\begin{enumerate}
 		\item Si \(x_n = (-1)^{n }, n \in \N \).
-		      
+
 		      \(X_1 = x_1 = -1 \)
-		      
+
 		      \(X_2 = x_1 + x_2 = (-1) + 1 = 0 \)
-		      
+
 		      \(X_3 = x_1 + x_2 + x_3 = -1 \)
-		      
+
 		      ...
-		      
+
 		      La serie \(\sum_{n =1}^{\infty} (-1)^{n} \) no converge ni diverge.
 		\item \(\sum_{n =1}^{\infty} \frac{1 }{n(n-1)}\)
-		      
+
 		      \(\frac{1}{n(n-1)} = \frac{1}{n } - \frac{1}{n-1 }\)
-		      
+
 		      \(\frac{1}{1 \cdot 2 } + \frac{1}{2 \cdot 3 } + \frac{1}{3 \cdot 4 } + \cdots + \frac{1}{n(n-1)} = (\frac{1}{1} - \frac{1}{2}) + ( \frac{1}{2} - \frac{1}{3}) + \cdots = 1 - \frac{1}{n + 1} \overset{n \to +\infty}{\longrightarrow} 1\).
 		\item Series telescopicas: \(\sum_{n =1}^{\infty} (y_n - y_{n+1})\)
-		      
+
 		      \(Y_n = (y_1 - y_2) + (y_2 - y_3) + (y_3 - y_4) + \cdots + (y_{n+1} - y_n) + (y_n + y_{n+1}) = y_1 - y_{n+1}\).
-		      
+
 		      \(\sum_{n =1}^{\infty} (y_n - y_{n+1})\) converge \(\iff (y_n)^{\infty}_{n=1} \) converge.
-		      
+
 		      Además, en este caso, \(\sum_{n =1}^{\infty} (y_n - y_{n+1}) = 1 - \lim\limits_{n \to \infty} y_n \).
 	\end{enumerate}
 \end{example}
@@ -951,29 +951,29 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	\]
 \end{proposition}
 \begin{proof}
-	\(\sum_{n =1}^{\infty} x_n \) converge \(\iff \) existe \(\lim\limits_{n \to \infty} \sum_{k =1}^{n } x_k \iff (X_n)^{\infty}_{n=1}\) converge \(\iff (X_n)^{\infty}_{n=1}\) es una sucesión de Cauchy \( \iff\) \( \forall \varepsilon > 0 \text{ existe } n_0 \in \N \text{ con } \left\vert X_n - X_m  \right\vert < \varepsilon\; \forall n,m \geq n_0\). Pero tenemos que 
+	\(\sum_{n =1}^{\infty} x_n \) converge \(\iff \) existe \(\lim\limits_{n \to \infty} \sum_{k =1}^{n } x_k \iff (X_n)^{\infty}_{n=1}\) converge \(\iff (X_n)^{\infty}_{n=1}\) es una sucesión de Cauchy \( \iff\) \( \forall \varepsilon > 0 \text{ existe } n_0 \in \N \text{ con } \left\vert X_n - X_m  \right\vert < \varepsilon\; \forall n,m \geq n_0\). Pero tenemos que
 	\begin{align*}
-		\left\vert X_n - X_m  \right\vert & = \left\vert (x_1 + x_2 + \cdots + x_m + x_{m+1} + \cdots + x_n) - (x_1 + x_2 + \cdots + x_m) \right\vert \\ & = \left\vert x_{m+1} + x_{m+2} + \cdots + x_n  \right\vert. 
+		\left\vert X_n - X_m  \right\vert & = \left\vert (x_1 + x_2 + \cdots + x_m + x_{m+1} + \cdots + x_n) - (x_1 + x_2 + \cdots + x_m) \right\vert \\ & = \left\vert x_{m+1} + x_{m+2} + \cdots + x_n  \right\vert.
 	\end{align*}
-	
+
 	Luego \(\left\vert \sum_{i=m }^{n } x_i \right\vert = \left\vert x_{m+1} + x_{m+2} + \cdots + x_n  \right\vert < \varepsilon \; \forall n \geq m \geq n_0 \).
 \end{proof}
 \begin{example}
 	Serie geometrica de primer termino \( a \) y razón \(r \).
-	
+
 	\(x_1 = a\), \(x_2 = r \cdot a \), \(x_3 = r \cdot x_2 = r \cdot r \cdot a\), \(\ldots \). Se tiene \(x_n =a \cdot r^{n-1} \).
-	
+
 	\(\sum_{n =1}^{\infty} x_n = \sum_{n =1}^{\infty} a \cdot r^{n - 1 } \) converge si \(|r| < 1 \) y ademas \(\sum_{n =1}^{\infty} a \cdot r^{n-1} = a \cdot \frac{1}{1-r} = \frac{a }{1 - r} \).
 \end{example}
 \begin{proposition}
 	Sea \((x_n)^{\infty}_{n=1} \subset \R \).
-	
+
 	\[
 		\sum_{n =1}^{\infty} x_n \text{ converge } \substack{\Rightarrow \\ \cancel \Leftarrow} \lim\limits_{n \to \infty} x_n = 0.
 	\]
 \end{proposition}
 \begin{proof}
-	Basta considerar \(n = m \) en el criterio de Cauchy: si \( \varepsilon > 0 \) podemos encontrar \(n_0 \in \N\) de manera que si \(n \geq n_0\), entonces \(\left\vert x_n \right\vert < \varepsilon\), y esto es lo mismo que decir que \(x_n = 0\).     
+	Basta considerar \(n = m \) en el criterio de Cauchy: si \( \varepsilon > 0 \) podemos encontrar \(n_0 \in \N\) de manera que si \(n \geq n_0\), entonces \(\left\vert x_n \right\vert < \varepsilon\), y esto es lo mismo que decir que \(x_n = 0\).
 \end{proof}
 \begin{proposition}
 	Sea \((x_n)^{\infty}_{n=1} \subset \R \) con \(x_n \geq 0, \; \forall n \in \N \). Entonces:
@@ -982,9 +982,9 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	\]
 \end{proposition}
 \begin{proof}
-	Como \(x_n \geq 0 \; \forall n \in \N\), se tiene que la serie es una sucesión monótona creciente ya que \(X_1 \leq X_2 \leq X_3 \leq \cdots \). 
-	
-	Sabemos por el tema anterior que toda sucesión monótona es convergente si y sólo si está acotada. Luego es suficiente con aplicar este teorema para llegar al resultado. 
+	Como \(x_n \geq 0 \; \forall n \in \N\), se tiene que la serie es una sucesión monótona creciente ya que \(X_1 \leq X_2 \leq X_3 \leq \cdots \).
+
+	Sabemos por el tema anterior que toda sucesión monótona es convergente si y sólo si está acotada. Luego es suficiente con aplicar este teorema para llegar al resultado.
 \end{proof}
 
 \begin{proposition}
@@ -1020,45 +1020,45 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \begin{example}
 	\begin{itemize}
 		\item \(\sum_{n =1}^{\infty} \frac{1}{n^{2} + 5n }\).
-		      
+
 		      Tenemos que \(5n > 0 \Rightarrow n^{2} + 5n > n^{2} \Rightarrow \frac{1}{n^{2} + 5n } < \frac{1}{n^{2} }  \).
-		      
+
 		      Ademas, como \(\sum_{n =1}^{\infty} \frac{1}{n^{2} } < \infty\), obtenemos que \(\sum_{n =1}^{\infty} \frac{1}{n^{2} + 5n } < \infty \).
 		\item \(\sum_{n  =n }^{\infty} \frac{1}{n! }\).
-		      
+
 		      \(1! = 1, 2! = 2, 3! = 3 \cdot 2 \geq 2 \cdot 2 = 2^{2}, 4! = 4 \cdot 3 \cdot 2 \geq 2^{3} \ldots\)
-		      
+
 		      Por tanto, tenemos que \(n! \geq 2^{n+1} \; \forall n \in \N\). Luego \(\frac{1}{n!} \leq \frac{1}{2^{n+1} }\).
-		      
+
 		      Ademas, como\(\sum_{n =1}^{\infty} \frac{1}{2^{n-1} } = \frac{1}{1 - \frac{1}{2}} = 2\), tenemos que \(\sum_{n =1}^{\infty} \frac{1}{n!} < \infty \) y converge.
-		      
+
 		\item \(\sum_{n =1}^{\infty} \frac{4 + \sin^{2}  (n^{3} +1 )}{2^{n} + n^{2}  }\).
-		      
+
 		      \( 4 + \sin^{2}(n^{3} + 1 ) \leq 5  \) y \(2^{n} + n^{2} \geq n^{2} \Rightarrow \frac{1}{2^{n} + n^{2}  } \leq \frac{1}{n^{2} }   \).
-		      
+
 		      Por tanto, \(\frac{1 + \sin^{2}(n^{3} +1 )}{2^{n} + n^{2}  } \leq \frac{5}{n^{2} }\).
-		      
+
 		      \(\sum_{n =1}^{\infty} \frac{5}{n^{2} } = 5 \sum_{i=1}^{\infty} \frac{1}{n^{2} } < \infty\).
-		      
+
 		      Luego la serie converge.
-		      
+
 		\item \(\sum_{n =1}^{\infty} \frac{7 }{2 + n^{3 } }\)
 		      Como \(\frac{7}{2 + n^{3} } > 0 \) con:
-		      
+
 		      \(2 + n^{3} \geq n^{3} \Rightarrow \frac{1}{2 + n^{3} } \leq \frac{1}{n^{3} }\).
-		      
+
 		      \(\sum_{n =1}^{\infty} \frac{7}{n^{3} } = 7 \cdot \sum_{n =1}^{\infty} \frac{1}{n^{3} } < \infty\)
-		      
+
 		      La serie converge.
-		      
+
 		\item \(\sum_{n =1}^{\infty} \frac{4}{\sqrt[3]{2 + n^{5} } } < \infty\)
 		\item \(\sum_{n =1}^{\infty} \frac{1}{\sqrt[7]{4 + n^{3} } }\)
-		      
+
 		      \(4 + n^{3} \geq n^{3} \Rightarrow \sqrt[7]{4 + n^{3} } \geq \sqrt[7]{n^{3} } \Rightarrow \frac{1}{\sqrt[7]{4 + n^{3} } } \leq \frac{1}{\sqrt[7]{n^{3} } } = \frac{1}{n^{\frac{3}{7}} }\) y \(\sum_{n =1}^{\infty} \frac{1}{n^{\frac{3}{7}}  } = \infty\). No sirve. Hay que buscar otra alternativa.
-		      
+
 		      Como \(\forall n \geq  2\) \(4 + n^{3} \geq 2n^{3} \Rightarrow \sqrt[7]{4 + n^{3} } \geq \sqrt[7]{2n^{3} } \Rightarrow \frac{1}{\sqrt[7]{4 + n^{3} } } \leq \frac{1}{\sqrt[7]{n^{3} } } = \frac{1}{n^{\frac{3}{7}} }\) y \(\sum_{n =1}^{\infty} \frac{1}{n^{\frac{3}{7}}  } = \infty\) se tiene que la serie diverge a \(+\infty \).
-		      
-		      
+
+
 	\end{itemize}
 \end{example}
 
@@ -1077,7 +1077,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 		      \[
 			      \alpha - \frac{\alpha}{2} \leq \frac{x_n }{y_n } \leq \alpha + \frac{\alpha}{2} \Rightarrow \frac{\alpha}{2} y_n \leq x_n \leq \frac{3\alpha}{2} y_n,
 		      \]
-		      por lo que, teniendo en cuenta el primer criterio de comparación (\ref{1ercrit}), teniendo en cuenta que las tres series tienen el mismo carácter, el resultado está demostrado. 
+		      por lo que, teniendo en cuenta el primer criterio de comparación (\ref{1ercrit}), teniendo en cuenta que las tres series tienen el mismo carácter, el resultado está demostrado.
 		\item Si \(\lim\limits_{n \to \infty} \frac{x_n }{y_n } = 0\), entonces existe \(n_0 \in \N\) tal que \(\forall n \geq n_0 \) se verifica que \(\frac{x_n }{y_n} \leq 1\), es decir, \(\forall n \geq n_0\), \(x_n \leq y_n\), con lo que basta con aplicar el primer criterio de comparación (\ref{1ercrit}) para concluir el resultado.
 		\item Si \(\lim\limits_{n \to \infty} \frac{x_n }{y_n } = +\infty\), dado cualquier \(M \in R^{+}\) existe \(n_0 \in \N \) tal que \(\forall n \geq  n_0\) se verifica que \(M \leq \frac{x_n }{y_n }\), es decir, \(My_n \leq x_n \), con lo que la demostración concluye aplicando el primer criterio de comparación ()\ref{1ercrit}) a las series \(\sum M y_n = M \sum y_n \) y \(\sum x_n\).
 	\end{enumerate}
@@ -1085,7 +1085,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \begin{example}
 	~\begin{itemize}
 		\item \(\sum_{n =1}^{\infty} \frac{1}{n + \sqrt{n } }\)
-		      
+
 		      \[
 			      \frac{\frac{1 }{n + \sqrt{n } }}{\frac{1}{n }} = \frac{n }{n + \sqrt{n } } = \frac{1}{1 + \frac{\sqrt{n } }{n }} = \frac{1}{1 + \sqrt{\frac{1}{n }} } \overset{n\rightarrow \infty}{\longrightarrow} 1 (\neq 0) \Rightarrow \sum_{n =1}^{\infty} \frac{1}{n+\sqrt{n} } = + \infty
 		      \]
@@ -1136,7 +1136,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	\]
 \end{proposition}
 \begin{proof}
-	No vista en clase, aplicando desigualdad triangular. 
+	No vista en clase, aplicando desigualdad triangular.
 \end{proof}
 \begin{definition}
 	Dada \((x_n)^{\infty}_{n=1} \subset \R \), diremos que \(\sum_{n =1}^{\infty} x_n \) es condicionalmente convergente si es convergente y no es absolutamente convergente.
@@ -1145,17 +1145,17 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	Sea \((x_n)^{\infty}_{n=1} \subset \R \) una sucesion de numeros reales decreciente de manera que \(\lim\limits_{n \to \infty} x_n = 0 \). Entonces la serie \(\sum_{n =1}^{\infty} (-1)^{n} \cdot x_n  \) (que podemos visualizar como \(\sum_{n =1}^{\infty} (-1)^{n} x_n = x_1 - x_2 + x_3 - x_4 + \cdots \)) es convergente.
 \end{theorem}
 \begin{proof}
-	No vista en clase. 
+	No vista en clase.
 \end{proof}
 \begin{example}
 	La serie \(\sum_{n =1}^{\infty} (-1)^{n} \frac{1 }{n } = -1 + \frac{1}{2} - \frac{1}{3} + \frac{1}{4} - \frac{1}{5} + \cdots \) es convergente pero no absolutamente convergente. Luego es condicionalmente convergente.
-	
+
 	\(\sum_{n =1}^{\infty} (-1)^{n} \cdot \sin (n) \) no converge.
-	
+
 	\(\sum_{n =1}^{\infty} \frac{(-1)^{n+1} \cdot 5 }{n} = \sum_{n =1}^{\infty} (-1)^{n+1} \frac{5}{n} \). Como \(\frac{5}{n} \) es monotona decreciente y tiende hacia 0, aplicando el criterio de Leibniz, la serie converge.
-	
+
 	\(\sum_{n =1}^{\infty} \frac{(-1)^{n} \cdot 3^{n-2}  }{2^{n} }\).
-	
+
 	\(\frac{3^{n-2} }{2^{n} } = \frac{\frac{3^{n} }{3^{2} }}{\frac{2^{n} }{1}} = \frac{3^{n} }{3^{2} \cdot 3^{n}  } = \frac{1}{9} \cdot \left (\frac{3}{2}\right )^{n} \rightarrow \infty\) (serie geometrica). Resulta que como no existe\(\lim\limits_{n \to \infty} \frac{(-1)^{n} \cdot 3^{n}  }{2^{n} }\) la serie del enunciado no converge.
 \end{example}
 
@@ -1165,7 +1165,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	Una función (de variable real) es una regla cualquiera que hace corresponder un número real y solamente uno a cada número de un cierto conjunto \(A \subset \R \):
 	\[
 		\begin{aligned}
-			f \colon A & \longrightarrow \R  \\
+			f \colon A & \longrightarrow \R \\
 			x          & \longmapsto f (x )
 		\end{aligned}
 	\]
@@ -1207,45 +1207,45 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \end{example}
 \begin{example}
 	\(h(x) = \frac{1}{\sqrt{1 - x^{2} } }\)
-	
+
 	Dado \(x \in Domh \), se tiene que \(1 - x^{2} \geq 0, \sqrt{1 - x^{2}}  \neq 0 \Rightarrow 1-x^{2}  > 0 \). Por tanto, \(Domh = \set{x \in \R \mid 1 - x^{2} > 0  }\)
-	
-	Resolviendo la ecuación, obtenemos como raíces \(x = \pm 1 \). Dividiendo por tramos: 
-	
+
+	Resolviendo la ecuación, obtenemos como raíces \(x = \pm 1 \). Dividiendo por tramos:
+
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
 			% Draw the number line
 			\draw[thick] (-3,0) -- (3,0);
-			
+
 			% Draw the points at -1 and 1
 			\filldraw (1,0) circle (2pt);
 			\filldraw (-1,0) circle (2pt);
-			
+
 			% Draw the labels below the points
 			\node[below] at (-1,0) {$-1$};
 			\node[below] at (1,0) {$1$};
-			
+
 			% Draw the plus and minus signs
 			\node[above] at (-2,0) {$-$};
 			\node[above] at (0,0) {$+$};
 			\node[above] at (2,0) {$-$};
 		\end{tikzpicture}
 	\end{figure}
-	Por lo tanto, \(Domh = (-1,1 )\) ya que es el tramo que cumple que \(1 - x^{2} > 0\). 
-	
+	Por lo tanto, \(Domh = (-1,1 )\) ya que es el tramo que cumple que \(1 - x^{2} > 0\).
+
 	Para calcular la imagen de \(h \), sabemos que \( y \in Imh\) si \(\exists x \in (-1,1) \mid h(x) = y\).
-	
+
 	\begin{itemize}
 		\item Para \(y \leq  0 \): \(\exists x \in (-1,1) \mid h(x) = y \iff 0 < \frac{1}{\sqrt{1 - x^{2} } } = y \leq  0\). No es posible.
 		\item Para \(y > 0 \): si \(y \in Imh, \exists x \in (-1,1 )\) tal que \(h(x) = y \Rightarrow \frac{1}{\sqrt{1 - x^{2} } } = y \Rightarrow 1 = y(\sqrt{1 - x^{2} } ) \Rightarrow 1 = y^{2} \cdot (1 - x^{2} ) \Rightarrow \frac{1}{y^{2} } = 1 - x^{2} \Rightarrow x^{2} = 1 - \frac{1}{y^{2} } \Rightarrow x = \pm \sqrt{1 - \frac{1}{y^{2} }}\).
-		      
+
 		      Supongamos \(y \in Imh \Rightarrow x \in (-1,1) \mid h(x) = y \Rightarrow \frac{1}{\sqrt{1 - x^{2} } } = y \Rightarrow x = \pm \sqrt{1 - \frac{1}{y^{2} }} {\color{red}\in \R ? } \; 1 - \frac{1}{y^{2} } \geq 0 \iff 1 \geq  \frac{1}{y^{2} } \iff y^{2} \geq 1  \). Luego \(Imh = [1,\infty)\).
-		      
+
 		      Cómo comprobamos si \(y \in Imh \)?
-		      
+
 		      \(h(\sqrt{1 - \frac{1}{y^{2} }} ) = \frac{1}{\sqrt{1 - (\sqrt{1 - \frac{1}{y^{2} }} )^{2} } } = \frac{1}{\sqrt{1 - 1 + \frac{1}{y^{2} }} } = \frac{1}{\sqrt{\frac{1}{y^{2}}} } = \sqrt{y^{2} } = |y| = y\).
-		      
+
 		      Además, \(\sqrt{1 - \frac{1}{y^{2} }} \in (0,1 )\).
 		      \begin{itemize}
 			      \item \(\sqrt{1 - \frac{1}{y^{2} }} \geq 0 \).
@@ -1281,7 +1281,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	Sea \(f \colon A \to \R \) y \(g : B \to R \) tal que \(f(a) \subset B \). Se define la función composición como
 	\[
 		\begin{aligned}
-			g \circ f \colon A & \longrightarrow  \R                    \\
+			g \circ f \colon A & \longrightarrow  \R                   \\
 			x                  & \longmapsto (g \circ f )(x) = g(f(x))
 		\end{aligned}
 	\]
@@ -1305,50 +1305,50 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \end{definition}
 \begin{example}
 	\(\lim\limits_{x  \to 1 } 2x = 2 \).
-	
+
 	Cojo un \(\varepsilon > 0 \). Tengo que ver que \(\exists \delta > 0 \) tal que \(|2x - 2| < \varepsilon \; \forall x \in (1-\delta, 1 + \delta), x \neq 1 \Rightarrow \)
-	
+
 	\(- \varepsilon < 2x - 2 < \varepsilon \Rightarrow 2 - \varepsilon < 2x < 2 + \varepsilon\).
-	
+
 	Luego sabemos que \(2(1-\delta) = 2 - \varepsilon \Rightarrow 1 - \delta = \frac{2 - \varepsilon}{2 } \Rightarrow \delta = 1 - \frac{2-\varepsilon}{2} = 1 -1 + \frac{\varepsilon}{2} = \frac{\varepsilon}{2}\).
-	
+
 	Tenemos que dado \(\varepsilon > 0 \), \(\exists \delta = \frac{\varepsilon}{2}\), \(1 - \frac{\varepsilon}{2} < x < 1 + \frac{\varepsilon}{2} \Rightarrow 2 - \varepsilon < 2x < 2 + \varepsilon\).
-	
+
 	Hemos encontrado un \(\delta\) que cumple lo anterior. Luego \(\lim\limits_{x  \to a } 2x = 2 \).
 \end{example}
 \begin{definition}[Límites laterales]
-	Sea \(f(x )\) una función definida en \(\R \). 
-	
+	Sea \(f(x )\) una función definida en \(\R \).
+
 	\begin{itemize}
 		\item Diremos que \(\lim\limits_{x  \to \alpha^{+} } f(x) = l  \) es un límite lateral por la derecha si \(\forall \varepsilon > 0 \) \(\; \exists \delta > 0 \) tal que \(\left\vert f(x) - l  \right\vert < \varepsilon \) cuando \(\alpha < x < \alpha + \varepsilon\).
-		      
+
 		\item Diremos que \(\lim\limits_{x  \to \alpha^{-} } f(x) = l  \) es un límite lateral por la izquierda si \(\forall \varepsilon > 0 \) \(\; \exists \delta > 0 \) tal que \(\left\vert f(x) - l  \right\vert < \varepsilon \) cuando \(\alpha- \varepsilon < x < \alpha\).
 	\end{itemize}
-	
+
 \end{definition}
 \begin{definition}[Límites infinitos]
-	Sea \(f(x )\) una función definida en \(\R \). 
-	
+	Sea \(f(x )\) una función definida en \(\R \).
+
 	\begin{itemize}
 		\item Diremos que \(f(x )\) tiende a infinito en un punto \(\alpha\), \(\lim\limits_{x  \to \alpha} = + \infty \), si \(\forall M \in \R \) \(\; \exists \delta > 0 \) tal que \(f(x) > M \) cuando \(0 < \left\vert x - \alpha \right\vert < \delta\).
-		      
+
 		\item Diremos que \(f(x )\) tiende a menos infinito en un punto \(\alpha\), \(\lim\limits_{x  \to \alpha} = - \infty \), si \(\forall m \in \R \) \(\; \exists \delta > 0 \) tal que \(f(x) < m \) cuando \(0 < \left\vert x - \alpha \right\vert < \delta\).
 	\end{itemize}
 \end{definition}
 \begin{definition}[Límites infinitos laterales]
-	Sea \(f(x )\) una función definida en \(\R \). 
-	
+	Sea \(f(x )\) una función definida en \(\R \).
+
 	\begin{itemize}
 		\item \(\lim\limits_{x  \to \alpha^{+}} f(x) = +\infty\) si \(\forall M \in \R \; \exists \delta > 0 \) tal que \(f(x) > M \) cuando \(\alpha < x < \alpha + \delta\).
-		      
+
 		\item \(\lim\limits_{x  \to \alpha^{-}} f(x) = +\infty\) si \(\forall M \in \R \; \exists \delta > 0 \) tal que \(f(x) > M \) cuando \(\alpha - \delta < x < \alpha\).
 	\end{itemize}
-	
-	Esto es análogo para \(-\infty\), aplicando las definiciones anteriores.   
+
+	Esto es análogo para \(-\infty\), aplicando las definiciones anteriores.
 \end{definition}
 \begin{definition}[Límites en el infinito]
-	Sea \(f(x )\) una función definida en \(\R \). 
-	
+	Sea \(f(x )\) una función definida en \(\R \).
+
 	\begin{itemize}
 		\item \(\lim\limits_{x  \to +\infty} f(x) = l \in \R \) si \(\forall \varepsilon > 0 \in \R \) \(\; \exists N \in \R \) tal que \(\left\vert f(x) - l  \right\vert < \varepsilon\) cuando \(x > N \).
 		\item \(\lim\limits_{x  \to - \infty} f(x) = l \in \R \) si \(\forall \varepsilon > 0 \in \R \) \(\; \exists N \in \R \) tal que \(\left\vert f(x) - l  \right\vert < \varepsilon\) cuando \(x < N \).
@@ -1360,12 +1360,12 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	Si \(\alpha\) es un punto de acumulacion de \(Domf \) y \(\lim\limits_{x  \to \alpha} f(x )\) existe, entonces es único.
 \end{theorem}
 \begin{proof}
-	Supongamos que \(\lim\limits_{x \to \alpha} f(x) = l_1 \) y \(\lim\limits_{x \to \alpha} = l_2 \), con \(l_1 < l_2 \) (análogo para \(l_2 < l_1\)). Cogemos un \(\varepsilon > 0 \) tal que \((l_1 - \varepsilon, l_1 + \varepsilon) \cap (l_2 - \varepsilon, l_2 + \varepsilon) = \varnothing \Rightarrow l_1 + \varepsilon < l_2 - \varepsilon \Rightarrow 2\varepsilon < l_2 - l_1 \Rightarrow \varepsilon < \frac{l_2 - l_1 }{2}\). 
-	
-	Como \(\lim\limits_{x  \to \alpha} f(x) = l_1 \Rightarrow  \) para \(\varepsilon > 0 \; \exists \delta_1 > 0 \text{ tal que }  \left\vert f(x) - l_1  \right\vert < \varepsilon \; \forall x \in Domf \cap (\alpha - \delta_1, \alpha + \delta_1 ), x \neq \alpha\). 
-	
+	Supongamos que \(\lim\limits_{x \to \alpha} f(x) = l_1 \) y \(\lim\limits_{x \to \alpha} = l_2 \), con \(l_1 < l_2 \) (análogo para \(l_2 < l_1\)). Cogemos un \(\varepsilon > 0 \) tal que \((l_1 - \varepsilon, l_1 + \varepsilon) \cap (l_2 - \varepsilon, l_2 + \varepsilon) = \varnothing \Rightarrow l_1 + \varepsilon < l_2 - \varepsilon \Rightarrow 2\varepsilon < l_2 - l_1 \Rightarrow \varepsilon < \frac{l_2 - l_1 }{2}\).
+
+	Como \(\lim\limits_{x  \to \alpha} f(x) = l_1 \Rightarrow  \) para \(\varepsilon > 0 \; \exists \delta_1 > 0 \text{ tal que }  \left\vert f(x) - l_1  \right\vert < \varepsilon \; \forall x \in Domf \cap (\alpha - \delta_1, \alpha + \delta_1 ), x \neq \alpha\).
+
 	Como \(\lim\limits_{x  \to \alpha } f(x) = l_2 \Rightarrow \) para \(\varepsilon > 0 \; \exists \delta_2 > 0 \text{ tal que }  \left\vert f(x) - l_2  \right\vert < \varepsilon \; \forall x \in Domf \cap (\alpha - \delta_2, \alpha + \delta_2 )\), \(x \neq \alpha \).
-	
+
 	Defino \(\delta = \min\set{d_1, d_2 }\). Como \(\alpha \) es punto de acumulacion de \(Domf \), \(\exists x_0 \in (\alpha - \delta, \alpha + \delta) \cap Domf \) con \(x_0 \neq \alpha\) que cumple
 	\[
 		\left\vert f(x_0) - l_1  \right\vert < \varepsilon \Rightarrow - \varepsilon < f(x_0) - l_1 < \varepsilon \Rightarrow l_1 - \varepsilon < f(x_0) < l_1 + \varepsilon
@@ -1374,7 +1374,7 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	\[
 		\left\vert f(x_0) - l_2  \right\vert < \varepsilon \Rightarrow l_2 - \varepsilon < f(x_0) < l_2 + \varepsilon
 	\]
-	Luego \(f(x_0) \in (l_1 - \varepsilon, l_1 + \varepsilon) \cap (l_2 - \varepsilon, l_2 + \varepsilon)\). Esto es una contradicción con que los intervalos son disjuntos, como habíamos supuesto inicialmente. 
+	Luego \(f(x_0) \in (l_1 - \varepsilon, l_1 + \varepsilon) \cap (l_2 - \varepsilon, l_2 + \varepsilon)\). Esto es una contradicción con que los intervalos son disjuntos, como habíamos supuesto inicialmente.
 \end{proof}
 
 
@@ -1388,13 +1388,13 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \begin{proof}
 	\begin{description}
 		\item[\(\Rightarrow \)]] Supongamos que \(\lim\limits_{x  \to \alpha} f(x) = l  \). Sea \((x_n )\), \(x_n \overset{n \rightarrow \infty}{\longrightarrow} \alpha \) con \(x_n \neq \alpha\). Tenemos que ver que \(\set{f(x_n )}\) converge a \(l \) \(\Rightarrow \forall \varepsilon > 0 \; \exists n_0 \in \N / \left\vert f(x_n) - l \right\vert < \varepsilon \; \forall n \geq n_0 \).
-		
+
 		Sea \(\varepsilon > 0 \). Sabemos que (*) \(\lim\limits_{x  \to \alpha} f(x) = l \), es decir, \(\exists \delta > 0 \) de forma que \(\left\vert f(x) - l  \right\vert < \varepsilon \; \forall x \in A \cap (\alpha - \delta, \alpha + \delta)\), \(x \neq \alpha\).
-		
-		También sabemos que \(x_n \rightarrow \alpha\), \(x_n \neq \alpha\), luego para \(\delta > 0 \), existe \(n_0 \in \N \) tal que \(\left\vert x_n - \alpha \right\vert < \delta \; \forall n \geq n_0\). Entonces, por (*) tenemos que \(\left\vert f(x_n) - l  \right\vert < \varepsilon \; \forall n \geq n_0\) ya que \(x_n \in A \), \(\left\vert x_n - \alpha \right\vert < \delta\). Por tanto, \(\lim\limits_{n  \to \infty} f(x_n) = l\). 
-		
+
+		También sabemos que \(x_n \rightarrow \alpha\), \(x_n \neq \alpha\), luego para \(\delta > 0 \), existe \(n_0 \in \N \) tal que \(\left\vert x_n - \alpha \right\vert < \delta \; \forall n \geq n_0\). Entonces, por (*) tenemos que \(\left\vert f(x_n) - l  \right\vert < \varepsilon \; \forall n \geq n_0\) ya que \(x_n \in A \), \(\left\vert x_n - \alpha \right\vert < \delta\). Por tanto, \(\lim\limits_{n  \to \infty} f(x_n) = l\).
+
 		\item[\(\Leftarrow \)]] Supongamos que no existe \(\lim\limits_{x \to \alpha} f(x)\) y veamos que esto implica lo contrario de la hipótesis, es decir, que \(\exists \set{x_n } \subset A, x_n \rightarrow \alpha, x_n \neq \alpha\) tal que \(f(x_n) \cancel \rightarrow l \).
-		
+
 		Si \(\cancel \exists \lim\limits_{x  \to \alpha} f(x) = l , \exists \varepsilon > 0  \) tal que \(\forall \delta > 0 \; \exists x \in A \cap (\alpha - \delta, \alpha + \delta), x \neq \alpha,\) tal que \(\left\vert f(x) - l \right\vert \geq \varepsilon\). Elegimos \(\delta = \frac{1}{n }\) con \(n \in \N  \Rightarrow \exists x_n \in A \cap (\alpha - \delta, \alpha + \delta)\) tal que \(\left\vert f(x_n) - l  \right\vert \geq \varepsilon\). Entonces \(x_n \in (\alpha - \frac{1}{n}, \alpha + \frac{1}{n}) \Rightarrow x_n \rightarrow \alpha\). Tambien tenemos que \(\left\vert f(x_n) - l  \right\vert \geq \varepsilon\), luego \(f(x_n) \cancel \rightarrow l \).
 	\end{description}
 \end{proof}
@@ -1414,25 +1414,25 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 	Probaremos el primer resultado utilizando la definición de límite.
 	\begin{itemize}
 		\item Tenemos que probar que, dado \(\varepsilon > 0, \exists \delta > 0 \) tal que \(\left\vert f(x) + g(x) - (l + m ) \right\vert < \varepsilon \; \forall x \in Dom(f + g) \cap (\alpha - \delta, \alpha + \delta)\) con \( x \neq \alpha \).
-		      
+
 		      Sea \(\frac{\varepsilon}{2} > 0 \). Sabemos que \(\exists \delta_1 > 0 / \left\vert f(x) - l  \right\vert < \frac{\varepsilon}{2} \; \forall x \in Domf \cap (\alpha - \delta_1, \alpha + \delta_1) \). Tambien \(\exists  \delta_2 > 0 / \left\vert g(x) - m  \right\vert < \frac{\varepsilon}{2} \; \forall x \in Domg \cap (\alpha - \delta_2, \alpha + \delta_2)\).
-		      
-		      Definimos \(\delta = \min \set{\delta_1,\delta_2} > 0 \) y entonces se tiene que, \(\forall x \in Dom(f + g) \cap (a - \delta, a + \delta)\),  
+
+		      Definimos \(\delta = \min \set{\delta_1,\delta_2} > 0 \) y entonces se tiene que, \(\forall x \in Dom(f + g) \cap (a - \delta, a + \delta)\),
 		      \begin{multline*}
 			      \left\vert f(x) + g(x) - (l + m ) \right\vert = \left\vert f(x) - l + g(x) - m  \right\vert \leq \left\vert f(x) - l  \right\vert + \left\vert g(x )  - m \right\vert < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
 		      \end{multline*}
 	\end{itemize}
-	Todas las propiedades se pueden demostrar o bien de este modo o bien por sucesiones, aplicando la caracterización \ref{caractsuc}. Probaremos también la propiedad del límite del producto de funciones siguiendo el segundo método: 
+	Todas las propiedades se pueden demostrar o bien de este modo o bien por sucesiones, aplicando la caracterización \ref{caractsuc}. Probaremos también la propiedad del límite del producto de funciones siguiendo el segundo método:
 	\begin{itemize}
 		\item Sea \((x_n )\) cualquier sucesión en \(A \) tal que \(x_n \neq \alpha \; \forall n \in \N\) y \( \lim\limits_{n \to \infty} x_n = \alpha\). Por el teorema \ref{caractsuc} se obtiene que \(\lim\limits_{n \to \infty} f(x_n) = l \) y \(\lim\limits_{n \to \infty} g(x_n) = m\).
-		      
-		      Por lo tanto, aplicando las propiedades de límites de sucesiones (\ref{proplimsuc}), llegamos a que 
+
+		      Por lo tanto, aplicando las propiedades de límites de sucesiones (\ref{proplimsuc}), llegamos a que
 		      \[
 			      \lim\limits_{n \to \infty} f(x_n) g(x_n) = (\lim\limits_{n \to \infty} f(x_n)) (\lim\limits_{n \to \infty} g(x_n)) = l \cdot m.
 		      \]
-		      Luego, aplicando de nuevo el teorema \ref{caractsuc}, 
+		      Luego, aplicando de nuevo el teorema \ref{caractsuc},
 		      \[
-			      \lim\limits_{x  \to \alpha} f(x)g(x ) = \lim\limits_{n \to \infty} f(x_n) g(x_n) = l \cdot m. 
+			      \lim\limits_{x  \to \alpha} f(x)g(x ) = \lim\limits_{n \to \infty} f(x_n) g(x_n) = l \cdot m.
 		      \]
 	\end{itemize}
 \end{proof}
@@ -1462,43 +1462,43 @@ Una notación generalizada para indicar que \((x_{n_k })\) es una subsucesión d
 \begin{example}
 	\begin{itemize}
 		\item \(\lim\limits_{x  \to \infty} e^{-x}senx  \).
-		      
+
 		      Sabemos que \(-1 \leq \sin x \leq 1 \; \forall x \in \R \Rightarrow - e^{-x} \leq e^{-x} \sin x \leq e^{-x}   \).
-		      
+
 		      Como \((-1)e^{-x} \overset{x\to \infty}{\longrightarrow } 0 \) y  \(e^{-x} \overset{x\to \infty}{\longrightarrow } 0 \), aplicando la regla del sandwich, \(\lim\limits_{x  \to \infty} e^{-x}senx  = 0\).
-		      
+
 		\item \(\lim\limits_{x  \to 0} x \cos \frac{1}{x }\). Sabemos que \(-1 \leq \cos \frac{1}{x} \leq  1 \;\forall x \in \R \setminus \set{0 }\).
-		      
+
 		      \(\lim\limits_{x  \to 0^{+}  } x \cos \frac{1}{x}\): \(-1 \leq \cos \frac{1}{x} \leq  1 \Rightarrow -x (\rightarrow 0)\leq x \cdot \cos \frac{1}{x} \leq x (\rightarrow 0)\). Por tanto, \(\lim\limits_{x \to 0^{+} } x \cos \frac{1}{x} = 0 \).
-		      
+
 		      \(\lim\limits_{x \to 0^{-} } x \cos  \frac{1}{x} \): \(-1 \leq \cos \frac{1}{x} \leq 1 \Rightarrow -x (\rightarrow 0)\geq x\cos  \frac{1}{x} \geq x (\rightarrow 0)\). Luego \(\lim\limits_{x  \to 0^{-} } x \cos \frac{1}{x} = 0 \).
-		      
+
 		      Entonces \(\lim\limits_{x  \to 0 } x \cos \frac{1}{x} = 0 . \)
-		      
+
 		      Otra forma es considerar el valor absoluto: \(\lim\limits_{x  \to 0 } \left\vert x \cos \frac{1}{x } \right\vert = \lim\limits_{x  \to 0 } \left\vert x 	\right\vert \left\vert \cos  \frac{1}{x } \right\vert \)
-		      
+
 		      \(0 \leq \left\vert \cos \frac{1}{x } \right\vert \leq 1 \Rightarrow 0 \leq \left\vert x  \right\vert \left\vert \cos  \frac{1}{x } \right\vert \leq \left\vert x  \right\vert \). Como \(0 \rightarrow 0 \) y \(\left\vert x  \right\vert \rightarrow 0 \), \(\lim\limits_{x  \to 0 } \left\vert x \cos  \frac{1}{x } \right\vert= 0 \).
 	\end{itemize}
 \end{example}
 \begin{proposition}
 	\label{limitepositivo}
-	Sea \(A \subseteq \R \), sea \(f \colon A \to \R\) y sea \(c \in \R \) un punto de acumulación de \(A \). Si 
+	Sea \(A \subseteq \R \), sea \(f \colon A \to \R\) y sea \(c \in \R \) un punto de acumulación de \(A \). Si
 	\(
 	\lim\limits_{x  \to c } f(x) > 0
-	\), 
+	\),
 	entonces \(\exists \delta > 0 \) tal que si \(x \in (c - \delta, c + \delta), x \neq c \), \(f(x) > 0\).\footnote{También se puede demostrar que si el límite es negativo la función es negativa alrededor (similar).}
 \end{proposition}
 \begin{proof}
-	Supongamos que \(\lim\limits_{x  \to c } f(x) = l \), con \(l >0 \). Tomamos \(\epsilon = \frac{1}{2} l > 0 \) y, aplicando la definición de límite, se tiene que \(\exists \delta > 0 \) tal que si \(0 < \left\vert x - c  \right\vert < \delta\) y \(x \in A \), entonces \(\left\vert f(x) - l  \right\vert < \frac{1}{2} l\). Luego \(-\frac{1}{2}l < f(x) - l < \frac{1}{2} l \Rightarrow \frac{1}{2} l < f(x) < \frac{3}{2} l\). En particular, \(f(x) > \frac{1}{2} l > 0\).        
+	Supongamos que \(\lim\limits_{x  \to c } f(x) = l \), con \(l >0 \). Tomamos \(\epsilon = \frac{1}{2} l > 0 \) y, aplicando la definición de límite, se tiene que \(\exists \delta > 0 \) tal que si \(0 < \left\vert x - c  \right\vert < \delta\) y \(x \in A \), entonces \(\left\vert f(x) - l  \right\vert < \frac{1}{2} l\). Luego \(-\frac{1}{2}l < f(x) - l < \frac{1}{2} l \Rightarrow \frac{1}{2} l < f(x) < \frac{3}{2} l\). En particular, \(f(x) > \frac{1}{2} l > 0\).
 \end{proof}
 \section{Continuidad}
 \begin{definition}
 	Diremos que una función \(f \) es continua en \(x_0 \in Domf\), con \(x_0 \) un punto de acumulación, si y sólo si \(\lim\limits_{x  \to x_0 } f(x)= f(x_0 )\).
-	
+
 	Diremos que \(f \) es continua en un intervalo \((a,b )\) si es continua en todos los puntos. De igual forma, diremos que \(f \) es continua en \([a,b ]\) si es continua en \((a,b )\) y continua por la derecha de \(a \) y por la izquierda de \(b \).
 \end{definition}
 \begin{example}
-	Funciones continuas en su dominio son: polinomios, \(\sin x\), \(\cos x\), \(\sqrt{x }\), \(e^{x}\), \(\ln x, \ldots\)     
+	Funciones continuas en su dominio son: polinomios, \(\sin x\), \(\cos x\), \(\sqrt{x }\), \(e^{x}\), \(\ln x, \ldots\)
 \end{example}
 Además, sumar o multiplicar dos funciones continuas, dividir dos funciones continuas con denominador distinto de cero, composicion de funciones continuas, es una función continua.
 \begin{definition}[General de continuidad]
@@ -1533,18 +1533,18 @@ Además, sumar o multiplicar dos funciones continuas, dividir dos funciones cont
 	\begin{itemize}
 		\item \(f(\gamma) = 0\). Entonces \(c = \gamma\) y queda demostrado.
 		\item \(f(\gamma) < 0 \). Defino \(a_1 = a \) y \(b_1 = \gamma\). Entonces \(f(a_1) >0 \) y \(f(b_1) < 0 \) y se puede repetir el proceso. Definimos \(\gamma = \frac{a_1 + b_1 }{2 }\). Puede ocurrir que \(f(\gamma) = 0, f(\gamma) > 0 \) o \(f(\gamma) < 0 \). Si \(f(\gamma) = 0, c = \frac{a_1 + b_1}{2}\). Si \(f(\gamma) > 0 \), definimos \(a_2 = \frac{a_1 + b_1 }{2 }\) y \(b_2 = b_1\). Si \(f(\gamma) < 0 \), defino \(a_2 = a_1 \) y \(b_2 = \frac{a_1 + b_1 }{2 }\). Si sigo repitiendo el proceso, obtengo que dado \(I_n = [a_n,b_n], f(a_n) > 0 \), \(f(b_n) < 0 \), \(I_{n+1} \subset I_n \). Por el teorema de los intervalos anidados (\ref{anidados}), si \(I_n = [a_n,b_n ]\) cumple que \(I_n \supset I_{n+1} \; \forall n \in \N \), entonces \(\exists c \in \R \) tal que \(c \in I_n \; \forall  n \in \N \). Falta demostrar que \(c \) es el punto tal que \(f(c) = 0\).
-		      
+
 		      Sabemos que \(b_1 - a_1 = \frac{b - a }{2}, b_2 - a_2 = \frac{b - a }{4} = \frac{b - a }{2^{2} }\). En general, \(b_n - a_n = \frac{b - a }{2^{n} }\).
-		      
+
 		      Como \(c \in I_n \;\forall n \in \N \),
 		      \begin{itemize}
 			      \item \(a_n \leq c \leq b_n \Rightarrow a_n - a_n \leq c - a_n \leq b_n - a_n \Rightarrow 0(\rightarrow 0) \leq c - a_n \leq b_n - a_n = \frac{b - a }{2^{n} }(\rightarrow 0)\). Luego, por el teorema del sandwich, \(\lim\limits_{n \to \infty} c - a_n = 0 \).
-			            
+
 			            Por tanto, \(\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} c - c + a_n = \lim\limits_{n \to \infty} c - \lim\limits_{n \to \infty} c - a_n = c - 0 = c \) y \(\lim\limits_{n \to \infty} a_n = c \).
 			      \item Siguiendo el mismo razonamiento, también se tiene que \(\lim\limits_{n \to \infty} b_n = c \).
 		      \end{itemize}
 		      Como \(f \) es continua en \([a,b] \subset A \), si \(a_n \rightarrow c \) entonces \(f(a_n) \rightarrow f(c )\) y si \(b_n \rightarrow c \) entonces \(f(b_n) \rightarrow f(c )\).
-		      
+
 		      Además, \(f(a_n) \geq 0 \; \forall n \) y \(f(b_n ) \leq 0 \;\forall n \). Por tanto, la única opción es que \(f(c) = 0 \).
 		\item \(f(\gamma ) > 0 \). Llamamos \(a_1 = \frac{a+ b }{2} \) y \(b_1 = b \Rightarrow f(a_1) > 0\) y \(f(b_1) < 0 \). El proceso es análogo al de cuando \(f(\lambda) < 0 \).
 	\end{itemize}
@@ -1553,22 +1553,22 @@ Además, sumar o multiplicar dos funciones continuas, dividir dos funciones cont
 \begin{example}
 	\begin{itemize}
 		\item \(\exists x \in \R \text{ tal que } \cos (x ) = x \)?
-		      
+
 		      \(f(x) = \cos x - x \in C(\R )\) (continua). Se tiene que
 		      \(F(0) = \cos 0  - 0 = 1 > 0\) y \(F(\frac{\pi}{2}) = \cos \frac{\pi}{2} - \frac{\pi}{2} = - \frac{\pi}{2} < 0 \). Por el teorema de Bolzano, sabemos que \(\exists c \in (0, \frac{\pi}{2})\) tal que \(F(c) = 0 \Rightarrow \cos c - c = 0 \Rightarrow \cos  c = c \).
-		      
+
 	\end{itemize}
 \end{example}
 \begin{example}
 	\begin{itemize}
 		\item Ejercicio 5 pg 147 - Sea que \(f,g \) esten definidas en \(A \subseteq \R \) a \(\R \) y sea \(c \) punto de acumulacion de \(A \). Supongase que \(f \) esta acotada en una vecindad de \(c \) y que \(\lim\limits_{x  \to c } g = 0 \). Demostrar que \(\lim\limits_{x  \to  c } fg = 0 \).
-		      
+
 		      Es decir, que para \(\forall \varepsilon > 0, \text{tomando } \frac{\varepsilon}{M},  \;\exists \delta > 0\) tal que \(\forall x \in (c - \delta, c + \delta) \cap A \), \(\left\vert f(x)g(x) - 0  \right\vert < \frac{\varepsilon}{M}\).
-		      
+
 		      Sabemos que \(f \) esta acotada alrededor de \(c \), es decir, existe \(M > 0 \), \(\exists \hat{\delta} > 0 \), \(\left\vert f(x ) \right\vert < M \; \forall x \in (c - \hat{\delta}, c + \hat{\delta })\).
-		      
+
 		      Por otro lado, sea \(\varepsilon > 0 \). Sabemos que \(\lim\limits_{x  \to c } g = 0 \), entonces para \(\frac{\varepsilon}{M}\) \(\exists \overline{\delta} > 0 \) tal que \(\forall x \in (c - \overline{\delta}, c + \overline{\delta}) \cap A, \left\vert g(x) - 0  \right\vert < \frac{\varepsilon}{M}\).
-		      
+
 		      Si tomamos \(\delta = \min\set{\overline{\delta}, \hat{\delta }}\). Tengo que probar que \(\forall x \in (c - \delta, c + \delta) \cap A, x \neq c \), se cumple \(\left\vert f(x) g(x) - 0  \right\vert < \varepsilon\). Luego
 		      \[
 			      \left\vert f(x)g(x) - 0  \right\vert = \left\vert f(x) g(x ) \right\vert  = \left\vert f(x ) \right\vert \cdot \left\vert g(x ) \right\vert < M \cdot \frac{\varepsilon}{M} = \varepsilon
@@ -1576,24 +1576,24 @@ Además, sumar o multiplicar dos funciones continuas, dividir dos funciones cont
 		      % \item Ejercicio 9 pg 147. Sea que \(f,g \) esten definidas de \(A \) en \(\R \) y sea \(c \) un punto de acumulacion de \(A \).
 		      %       \begin{enumerate}
 		      % 	      \item[a)] Demostrar que si existe tanto \(\lim\limits_{x  \to c } f \) como \(\lim\limits_{x  \to c } (f+g) \), entonces existe \(\lim\limits_{x  \to c } g .\)
-		      
+
 		      % 		      Utilizando las propiedades de los límites, \(\lim\limits_{x  \to c } g = \lim\limits_{x  \to c } g + f - f = \lim\limits_{x  \to c } g + f - \lim\limits_{x \to c} f \). Como es la resta de dos límites que existen, entonces \(\lim\limits_{x  \to c } g \) existe.
-		      
+
 		      % 	      \item[b)] Si existen \(\lim\limits_{x  \to c } f \) y \(\lim\limits_{x  \to c } fg \), se sigue que existe \(\lim\limits_{x  \to c } g \)?
-		      
+
 		      % 		      Falso. Contraejemplo: \(\lim\limits_{x  \to 0 } x = 0 \) y \(\lim\limits_{x  \to 0 } x \sin \frac{1}{x} = 0 \). Pero \(\lim\limits_{x  \to 0 } \sin \frac{1}{x}\) no existe.
 		      %   \end{enumerate}
 	\end{itemize}
 \end{example}
 \begin{theorem}
-	Sean \(A,B \subseteq \R \) y sean \(f \colon A \to \R\) y \(g \colon B \to \R\) funciones tales que \(f(A) \subseteq B\). Si \(f \) es continua en un punto \(c \in A \) y \(g \) es continua en \(b = f(c ) \in B\), entonces la composición \(g \circ f\colon A \to \R\) es continua en \(c \).       
+	Sean \(A,B \subseteq \R \) y sean \(f \colon A \to \R\) y \(g \colon B \to \R\) funciones tales que \(f(A) \subseteq B\). Si \(f \) es continua en un punto \(c \in A \) y \(g \) es continua en \(b = f(c ) \in B\), entonces la composición \(g \circ f\colon A \to \R\) es continua en \(c \).
 \end{theorem}
 \begin{proof}
-	Sea \(W \) una vecindad de \(g(b )\). Puesto que \(g \) es continua en \(b \), existe una vecindad \(V \) de \(b = f(c )\) tal que si \(y \in B \cap V\) entonces \(g(y) \in W \). Puesto que \(f \) es continua en \(c \), existe una vecindad \(U \) de \(c \) tal que si \(x \in A \cap U\), entonces \(f(x) \in V\). Puesto que \(f(A) \subseteq B\), se sigue que si \(x \in A \cap U \), entonces \(f(x) \in B \cap V \), de modo que \((g \circ  f)(x) = g(f(x)) \in W\). Pero como \(W \) es una vecindad cualquiera de \(g(b )\), esto indica que \(g \circ  f\) es continua en \(c \).          
+	Sea \(W \) una vecindad de \(g(b )\). Puesto que \(g \) es continua en \(b \), existe una vecindad \(V \) de \(b = f(c )\) tal que si \(y \in B \cap V\) entonces \(g(y) \in W \). Puesto que \(f \) es continua en \(c \), existe una vecindad \(U \) de \(c \) tal que si \(x \in A \cap U\), entonces \(f(x) \in V\). Puesto que \(f(A) \subseteq B\), se sigue que si \(x \in A \cap U \), entonces \(f(x) \in B \cap V \), de modo que \((g \circ  f)(x) = g(f(x)) \in W\). Pero como \(W \) es una vecindad cualquiera de \(g(b )\), esto indica que \(g \circ  f\) es continua en \(c \).
 \end{proof}
 \begin{theorem}[Teorema de Darboux]
 	Sean \(a,b \in \R \) con \(a < b \) y supongamos que \(f\colon A \to \R \) es continua en \([a,b] \subset A \).
-	
+
 	\begin{itemize}
 		\item Si \(f(a) < f(b )\), entonces para cada \(z \in (f(a), f(b ))\), existe \(c \in (a,b )\) tal que
 		      \[
@@ -1606,12 +1606,12 @@ Además, sumar o multiplicar dos funciones continuas, dividir dos funciones cont
 	\end{itemize}
 \end{theorem}
 \begin{proof}
-	No vista en clase. 
+	No vista en clase.
 \end{proof}
 
 \begin{theorem}[Teorema de Weierstrass]
 	Sean \(a,b \in \R \) con \(a < b \) y supongamos que \(f \colon A \to B \) es continua en \([a,b] \subset A \).
-	
+
 	Entonces:
 	\[
 		f \text{ esta acotada en }[a,b]
@@ -1622,7 +1622,7 @@ Además, sumar o multiplicar dos funciones continuas, dividir dos funciones cont
 	\]
 \end{theorem}
 \begin{proof}
-	No vista en clase. 
+	No vista en clase.
 \end{proof}
 
 \part{Derivadas}
@@ -1683,9 +1683,9 @@ Y en \(x_0 = 0\)? \(f^\prime (0 )\) no tiene sentido porque \(f \) no esta defin
 Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 \begin{itemize}
 	\item \(x_0 \in Domf \).
-	      
+
 	      \(f(x) = \ln x \Rightarrow f^\prime (x) = \frac{1}{x}\) solamente es valida en \((0,\infty )\).
-	      
+
 	\item La fórmula tiene que tener sentido.
 	      \[
 		      f(x) = arcsen(x) \Rightarrow f^\prime (x) = \frac{1}{\sqrt{1 - x^{2} } } \text{ solamente es valida en } (-1,1).
@@ -1705,11 +1705,11 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 		      \end{cases}
 	      \]
 	      Sin embargo, para calcular \(f^\prime (2 )\) habría que calcularlo de otra forma.
-	      
+
 	      \[
 		      f^\prime (2) = \lim\limits_{h  \to 0 } \frac{f(2 + h) - f(2)}{h } = \lim\limits_{h  \to 0 } \frac{f(2 + h) - 4 }{h }
 	      \].
-	      
+
 	      Calculamos los límites laterales:
 	      \[
 		      \begin{dcases}
@@ -1736,7 +1736,7 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 			      (f + g)^\prime (x_0) & = \lim\limits_{h  \to 0 } \frac{(f + g)(x_{0} + h) - (f + g)(x_0)}{h} \\&  =  \lim\limits_{h  \to 0 } \frac{f(x_0 + h) + g(x_0 + h) - (f(x_0) + g(x_0))}{h } \\ &  = \lim\limits_{h  \to 0 } \frac{f(x_0 + h) - f(x_0)}{h} + \lim\limits_{h  \to 0 } \frac{g(x_0 + h) - g(h)}{h } \\ & = f^\prime (x_0) + g^\prime (x_0)
 		      \end{align*}
 		      Como \(f,g \) son derivables en \(x_0 \Rightarrow f^\prime (x_0), g^\prime (x_0) \in \R \Rightarrow (f + g)^\prime (x_0) = f^\prime (x_0) + g^\prime (x_0) \in \R \) y \(f + g \) es derivable.
-		\item  
+		\item
 		      \begin{align*}
 			      (\lambda f)^\prime (x_0) & = \lim\limits_{h  \to 0 } \frac{(\lambda f)(x_0 + h) - (\lambda f)(x_0)}{h} = \lim\limits_{h  \to 0 } \frac{\lambda f(x_{0} + h ) - \lambda f(x_0)}{h} \\ & = \lim\limits_{h  \to 0 }\lambda \cdot \frac{f(x_0 + h) - f(x_0)}{h} = \lim\limits_{h  \to 0 } \lambda \cdot \lim\limits_{h  \to 0} \frac{f(x_0 + h) - f(x_0)}{h} \\ & = \lambda f^\prime (x_0)
 		      \end{align*}
@@ -1751,7 +1751,7 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 	Si \(f \) es derivable en \(x_0\), entonces \(f \) es continua en \(x_0 \).
 \end{theorem}
 \begin{proof}
-	Dado \(x \in I \), \(x \neq x_0\), 
+	Dado \(x \in I \), \(x \neq x_0\),
 	\[
 		f(x) - f(x_0) = \frac{(f(x) - f(x_0))}{x - x_0} (x - x_0)
 	\]
@@ -1763,7 +1763,7 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 	\[
 		\lim\limits_{x  \to x_0 } f(x) = \lim\limits_{x  \to x_0 } (f(x) - f(x_0) + f(x_0)) = \lim\limits_{x  \to x_0 } (f(x) - f(x_0)) + \lim\limits_{x  \to x_0 } f(x_0) = f(x_0)
 	\]
-	Luego \(f \) es continua en \(x_0 \) por definición. 
+	Luego \(f \) es continua en \(x_0 \) por definición.
 \end{proof}
 \begin{theorem}[Regla de la cadena]
 	Si \(f \) es derivable en \(x_0 \) y \(g \) es derivable en \(f(x_0 )\), entonces \(g \circ f \) es derivable en \(x_0 \) y
@@ -1772,7 +1772,7 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 	\]
 \end{theorem}
 \begin{proof}
-	No vista en clase. 
+	No vista en clase.
 \end{proof}
 % \begin{example}
 % 	\(f(x) = x^{3}, g(x) = e^{x}  \) 
@@ -1799,23 +1799,23 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 	\]
 	\begin{enumerate}
 		\item \(f \) es continua en \(x \neq  0 \):
-		      
+
 		      \(\lim\limits_{x  \to x_0 } f(x) = f(x_0)?\) \(\lim\limits_{x  \to x_0 } x^{2} \sin \frac{1}{x} + 2x^{2} = \lim\limits_{x  \to x_0 } x^{2} \sin \frac{1}{x} + \lim\limits_{x  \to x_0 } 2x^{2} =  x^{2}_0 \sin \frac{1}{x_0} + 	2x^{2}_0    \)
-		      
+
 		      \(f \) es continua en \(x = 0\)?
-		      
+
 		      \(\lim\limits_{x  \to 0 } x^{2} \sin \frac{1}{x} + 2x^{2} \overset{?}{=} \lim\limits_{x \to 0 } x^{2} \sin \frac{1}{x} + \underbrace{\lim\limits_{x  \to 0 } 2x^{2} }_{=0}= \lim\limits_{x  \to 0 } x^{2}\sin \frac{1}{x}  = 0 + 0 = 0  \).
-		      
+
 		      \(\left\vert x^{2} \sin \frac{1}{x}  \right\vert = \left\vert x^{2}  \right\vert \left\vert \sin \frac{1}{x } \right\vert = x^{2} \cdot \left\vert \sin \frac{1}{x } \right\vert  \leq x^{2} \overset{x\rightarrow 0}{\longrightarrow} \lim\limits_{x  \to 0 } \left\vert x^{2} \sin \frac{1}{x }  \right\vert = 0  \).
-		      
+
 		      \(f \) es derivable en \(x = x_0 \neq  0 ? \)
-		      
+
 		      \(f(x) = x^{2} \sin \frac{1}{x} + 2x^{2}  \)
-		      
+
 		      \(\frac{1}{x }\) es derivable en \(x_0 \neq 0 \), \(\sin (y )\) es derivable en \(y = \frac{1}{x_0 } \overset{R.C.}{\Rightarrow} \sin \frac{1}{x }\) es derivable en \(x_0 \).  Por tanto, \(f \) es derivable en \(\R \setminus \set{0 }\).
-		      
+
 		      \(f \) es derivable en \(x = 0 \)?
-		      
+
 		      \[
 			      f^\prime (x) = \begin{cases}
 				      2x \sin \frac{1}{x} + x^{2} \cos \frac{1}{x} \cdot - \frac{1}{x^{2} } + 4x \qquad x \neq 0 \\
@@ -1823,9 +1823,9 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 			      \end{cases}
 		      \]
 		      \(\lim\limits_{x  \to 0 } f^\prime (x) = \lim\limits_{x  \to 0 } 2x \sin \frac{1}{x} - \cos \frac{1}{x} + 4x\).
-		      
+
 		      Veamos que \(\cancel\exists \lim\limits_{x  \to 0 } \cos \frac{1}{x }\). Consideramos \(x_n = \frac{1}{2\pi n} \Rightarrow \cos \frac{1}{\frac{1}{2\pi n }} = \cos  2\pi n n = 1 \). Tambien \(y_n = \frac{1}{2\pi n + \pi } \overset{n \rightarrow \infty}{\longrightarrow} 0 \). \(\cos \frac{1}{y_n} = \cos \frac{1}{\frac{1}{2\pi n + \pi}} = \cos 2\pi n + \pi = -1\).
-		      
+
 		      Luego
 		      \[
 			      \lim\limits_{n  \to \infty} 2x_n \sin \frac{1}{x_n} - \cos \frac{1}{x_n} + 4x_n = -1
@@ -1834,11 +1834,11 @@ Cuándo puedo utilizar las fórmulas de las derivadas en \(x_0\)?
 			      \lim\limits_{n \to \infty} 2y_n \sin \frac{1}{y_n} - \cos \frac{1}{y_n} + 4y_n = 1
 		      \]
 		      Como \(1 \neq  -1 \), \(\lim\limits_{x  \to 0 } f^\prime (x)\) no existe \(\Rightarrow \) \(f \) es derivable en \(x = 0 \)? No sabemos nada.
-		      
+
 		      \(f^\prime (0) = \lim\limits_{h  \to 0} \frac{f(0 + h) - f(0 )}{h } = \lim\limits_{h  \to 0 } \frac{h^{2 } \cdot \sin \frac{1}{h} + 2h^{2}  }{h} = \lim\limits_{h  \to 0 } h \sin \frac{1}{h} + 2h = 0\) (por sandwich). Por tanto, \(f \) es derivable en \(x = 0 \).
-		      
+
 		      \(f \) es derivable en \(\R \).
-		      
+
 		      \vspace{0.2cm}
 		      \(f^\prime \) es continua en \(\R \):
 		      \begin{itemize}
@@ -1857,20 +1857,20 @@ Podemos distinguir varios tipos de funciones según su continuidad y la continui
 
 \begin{theorem}[Teorema del extremo interior]
 	\label{extrint}
-	Sea \(c \) un punto interior del intervalo \(I \) en el que \(f \colon I \to \R \) tiene un extremo relativo. Si la derivada de \(f \) en \(c \) existe, entonces \(f^\prime (c) = 0\).  
+	Sea \(c \) un punto interior del intervalo \(I \) en el que \(f \colon I \to \R \) tiene un extremo relativo. Si la derivada de \(f \) en \(c \) existe, entonces \(f^\prime (c) = 0\).
 \end{theorem}
 \begin{proof}
-	Supongamos que \(f \) tiene un máximo relativo en \(c \in I\). La demostración del caso de un mínimo relativo es similar. 
-	
+	Supongamos que \(f \) tiene un máximo relativo en \(c \in I\). La demostración del caso de un mínimo relativo es similar.
+
 	Si \(f^\prime (c) > 0\), entonces por el teorema \ref{limitepositivo} existe \(\delta > 0 \) tal que
 	\[
-		\frac{f(x) - f(c)}{x - c} > 0 \text{ para } x \in (c - \delta, c + \delta), x \neq c. 
+		\frac{f(x) - f(c)}{x - c} > 0 \text{ para } x \in (c - \delta, c + \delta), x \neq c.
 	\]
-	Si \(x \in V\) y \(x > c \), se tiene entonces 
+	Si \(x \in V\) y \(x > c \), se tiene entonces
 	\[
-		f(x) - f(c) = (x - c ) \cdot \frac{f(x) - f(c )}{x - c } > 0 
+		f(x) - f(c) = (x - c ) \cdot \frac{f(x) - f(c )}{x - c } > 0
 	\]
-	Pero esto contradice la hipótesis de que \(f \) tiene un máximo relativo en \(c \). Por tanto, no se puede tener \(f^\prime (c) > 0\). De manera similar, no se puede tener \(f^\prime (c) <0 \). Por lo tanto, se debe tener \(f^\prime (c) = 0\).   
+	Pero esto contradice la hipótesis de que \(f \) tiene un máximo relativo en \(c \). Por tanto, no se puede tener \(f^\prime (c) > 0\). De manera similar, no se puede tener \(f^\prime (c) <0 \). Por lo tanto, se debe tener \(f^\prime (c) = 0\).
 \end{proof}
 
 \section{Teoremas sobre Funciones Derivables}
@@ -1894,7 +1894,7 @@ Podemos distinguir varios tipos de funciones según su continuidad y la continui
 % \end{proof}
 \begin{proof}
 	Sea \(f\) una funcion continua en \([a,b ]\), derivable en \((a,b )\) y \(f(a) = f(b )\).
-	
+
 	Definimos otra funcion \(g(x) = f(x) - f(a)\). Entonces \(g(a) = f(a) - f(a) = 0 \) y \(g(b) = f(b) - f(a) = 0 \). Es obvio que \(g\) es continua en \([a,b ]\), derivable en \((a,b )\) y \(g(a) = g(b) = 0 \).
 	\begin{description}
 		\item[1 Caso] \(g(x_0) > 0 \) \(x_0 \in (a,b )\). Como \(g \) es continua en \([a,b ] \Rightarrow \exists x_M \mid g(x) \leq g(x_M) \; \forall x \in [a,b]\). Ademas, como \(g(x_0) > 0 \Rightarrow g(x_M) > 0\). Aplicando el teorema del extremo interior, \ref{extrint}, se tiene que \(g^\prime (x_M) = 0\), luego \(c = x_M\).
@@ -1927,7 +1927,7 @@ Podemos distinguir varios tipos de funciones según su continuidad y la continui
 	Consecuencias del teorema del valor medio:
 	\begin{itemize}
 		\item Si \(f^\prime  (x) = 0 \; \forall x \in (a,b) \Rightarrow f(x )\) es una constante.
-		      
+
 		      Sea \(f \) una funcion definida entre \([a,b]\) tal que \(f^\prime (x) = 0 \forall x \in (a,b )\). Como es derivable, tambien es continua. Definimos un punto \(x \in (a,b)\) Comprobamos las hipotesis del valor medio por \(f \) en el intervalo \([a,x ]\).
 		      \begin{itemize}
 			      \item \(f \) es continua en \([a,x ]\) porque lo es en \([a,b] \supset [a,x ]\).
@@ -1935,24 +1935,24 @@ Podemos distinguir varios tipos de funciones según su continuidad y la continui
 		      \end{itemize}
 		      Por el teorema del valor medio, \(\exists c \in (a,x) \mid f(x) - f(a) = f^\prime (c) (x-a) = 0 (x-a) = 0\). Luego \(f(x) = f(a )\). Por tanto, \(f(x) = f(a) \;\forall x \in (a,b )\) y es constante.
 		\item Si \(f^\prime (x) = g^\prime (x) \; \forall x \in (a,b) \Rightarrow f(x) = g(x) + C \; \forall x \in (a,b )\).
-		      
-		      Sean \(f,g \) funciones definidas en \([a,b ]\) tal que \(f^\prime (x) = g^\prime (x ) \; \forall x \in (a,b)\). Dado un punto \(x \in (a,b)\), se tiene que: 
+
+		      Sean \(f,g \) funciones definidas en \([a,b ]\) tal que \(f^\prime (x) = g^\prime (x ) \; \forall x \in (a,b)\). Dado un punto \(x \in (a,b)\), se tiene que:
 		      \begin{itemize}
 			      \item \(f, g \) son continuas en \([a,x ]\) porque lo son en \([a,b ]\).
 			      \item \(f,g \) son derivables en \((a,x )\) porque lo son en \((a,b )\).
 		      \end{itemize}
-		      Por el teorema del valor medio, \(\exists c \in (a,x)\) tal que 
+		      Por el teorema del valor medio, \(\exists c \in (a,x)\) tal que
 		      \[
 			      \begin{dcases}
-				      f(x) - f(a) = f^\prime (c)(x - a) \Rightarrow f(x) = f^\prime (c) \cdot (x - a) + f(a) \\ 
+				      f(x) - f(a) = f^\prime (c)(x - a) \Rightarrow f(x) = f^\prime (c) \cdot (x - a) + f(a) \\
 				      g(x) - g(a) = g^\prime (c) (x-a) \Rightarrow g(x) = g^\prime (c) \cdot (x - a) + g(a)
 			      \end{dcases}
 		      \]
-		      Si restamos las funciones, y teniendo en cuenta que \(f^\prime (c) = g^\prime (c)\), nos queda 
+		      Si restamos las funciones, y teniendo en cuenta que \(f^\prime (c) = g^\prime (c)\), nos queda
 		      \begin{align*}
 			      f(x) - g(x) & = \cancel {f^\prime (c) \cdot (x - a)} + f(a) - (\cancel {g^\prime (c) \cdot (x - a)} + g(a)) = f(a) - g(a) \\ & \Rightarrow f(x) = g(x) + \underbrace{(f-g)(a)}_{\text{constante}}
 		      \end{align*}
-		      Por tanto, \(f(x) = g(x) + C \). 
+		      Por tanto, \(f(x) = g(x) + C \).
 	\end{itemize}
 \end{remark}
 \begin{theorem}[de L'Hopital]
@@ -1963,20 +1963,20 @@ Podemos distinguir varios tipos de funciones según su continuidad y la continui
 	si el segundo límite tiene sentido.
 \end{theorem}
 \begin{proof}
-	No visto en clase. 
+	No visto en clase.
 \end{proof}
 
 \vspace{0.4cm}
 \begin{example}
-	Calcular \(\lim\limits_{x  \to 0^{+}} x^{\sin x}\). 
-	
+	Calcular \(\lim\limits_{x  \to 0^{+}} x^{\sin x}\).
+
 	\[\lim\limits_{x  \to 0^{+ } } x^{\sin x} = \lim\limits_{x  \to 0^{+ } } e^{\ln (x \sin x)} = \lim\limits_{x  \to 0^{+ } } e^{\sin x \ln x} = \lim\limits_{x  \to 0^{+ } } e^{\frac{\ln x }{1 / \sin x}} = (y = \frac{\ln x }{1 / x }) = \lim\limits_{y  \to ??} e^{y}     .\]
-	
-	Por otro lado, 
+
+	Por otro lado,
 	\begin{align*}
 		\lim\limits_{x  \to 0^{+ } } \frac{\ln x }{1 / \sin x}  \overset{(\frac{\infty}{\infty}) L^\prime H}{=} & \lim\limits_{x \to 0^{+} } \frac{ 1 / x }{(-1)(\sin  x)^{-2} \cos  x } = \lim\limits_{x  \to 0^{+} } \frac{-(\sin x)^{2} }{x \cos  x} \\ & =  -\lim\limits_{x  \to 0^{+ } } \frac{\sin x \cdot \sin x}{x \cdot \cos x} = - \lim\limits_{x  \to 0^{+ } } \sin x\ \cdot \lim\limits_{x  \to 0^{+ } } \frac{\sin x}{\cos x} \overset{L^\prime H}{=} 1 \cdot 0 = 0
 	\end{align*}
-	
+
 	Luego \(\lim\limits_{y \to 0} e^{y} = e^{0} = 1   \).
 \end{example}
 
@@ -2050,12 +2050,12 @@ El error obtenido es: \(E = \left\vert p(1) - \sin 1 \right\vert = \left\vert \f
 	\[
 		F(x) = f(x) - f(x) - f^\prime (t) (x - x) - \cdots - f^{(n)}(x) \frac{(x -x)^{n} }{n!} = 0
 	\]
-	
+
 	Por tanto, \(\begin{cases}
 		G(x) = F(x) = 0 \\
 		G(x_0) = 0
 	\end{cases}\Rightarrow G(x) = G(x_0) = 0\)
-	
+
 	Por el teorema de Rolle, \(\exists c \in (x, x_0 )\) o \((x_0, x )\) tal que \(G^\prime (c) = 0 \), es decir,
 	\[
 		G^\prime (t) = F^\prime (t) - \frac{F(x_0 )}{(x - x_0)^{n + 1} } \cdot (n + 1) (x - t)^{n} (-1)
@@ -2081,7 +2081,7 @@ El error obtenido es: \(E = \left\vert p(1) - \sin 1 \right\vert = \left\vert \f
 		P_{3,0,\sin x}(x) = x - \frac{x^{3} }{6} \Rightarrow \sin 1 \approx 1 - \frac{1}{6} = 0.8333
 	\]
 	El error cometido es: Error \(= \sin 1 - P_{3,0,\sin x}(1) = \frac{\sin (c)}{4!}(1 - 0)^{4}  \) con \(c \in (0,1 )\).
-	
+
 	Por tanto,
 	\[
 		\left\vert \text{Error }  \right\vert \leq \left\vert \frac{\sin (c)}{4!} (1 - 0)^{4}  \right\vert \leq \frac{1}{24}.
@@ -2094,10 +2094,10 @@ Por ejemplo,
 \begin{itemize}
 	\item \(\lim\limits_{x  \to 0 } \frac{\sin x }{x }= \lim\limits_{x  \to 0 } \frac{x - \frac{\sin (c )}{2! }x^{2} }{x} = \lim\limits_{x  \to 0 } 1 - \frac{\sin c }{2! }x = 1\).
 	\item \(\lim\limits_{x  \to 0 } \frac{\tan x - \sin x }{x^{3} } = \lim\limits_{x  \to 0 } \frac{\frac{3}{3!}x^{3} + \text{Error}  }{x^{3} } = \lim\limits_{x  \to 0 } \frac{1}{2} + \lim\limits_{x  \to 0 } \frac{\text{Error}  }{x^{3} } = \frac{1}{2}\) ya que \(\tan x - \sin x \approx 3x^{3 } \) (polinomio de Taylor de grado \(3 \) en \(0 \) ).
-	      
+
 	      \(f(0) = \tan 0 - \sin 0 = 0 \), \(f^\prime (x) = 1 + \tan^{2}x - \cos x \Rightarrow f^\prime (0) = 1 + 0 -1 = 0 \), \(f^{(2)}(x) = 2 \tan x (1 + \tan^{2} x ) + \sin x \Rightarrow f^{(2)}(0) = 0  \), \(f^{(3)}(x) = 2[(1 + \tan^{2}x )(1 + \tan^{2}x ) + \tan x (2\tan x (1 + \tan^{2} x))] + \cos x \Rightarrow f^{(3)}(0) = 2 + 1 \neq 0 \).
-	      
-	      \(\text{Error}  = \frac{f^{(n + 1)}(c) }{(x - x_0)^{n + 1} } = \frac{f^{(4)}(c) }{(x - x_0)^{4} }\). Por otro lado,  \(\lim\limits_{x  \to 0 } \frac{\frac{f^{(4)}(c) }{4!}x^{4} }{x^{3} } = \lim\limits_{x \to 0} \frac{f^{(4)}(c)}{4!} \cdot x = 0\) porque \(c \in (0,x)\).  
+
+	      \(\text{Error}  = \frac{f^{(n + 1)}(c) }{(x - x_0)^{n + 1} } = \frac{f^{(4)}(c) }{(x - x_0)^{4} }\). Por otro lado,  \(\lim\limits_{x  \to 0 } \frac{\frac{f^{(4)}(c) }{4!}x^{4} }{x^{3} } = \lim\limits_{x \to 0} \frac{f^{(4)}(c)}{4!} \cdot x = 0\) porque \(c \in (0,x)\).
 \end{itemize}
 Entonces, siguiendo esta idea:
 \[
@@ -2109,11 +2109,11 @@ Decimos que \(\frac{f^{(n)}(x_0) }{n!}(x - x_0)^{n} \) es el infinitesimo equiva
 
 \begin{example}
 	\(\lim\limits_{x \to 0} \frac{\tan x }{x } \)
-	
+
 	\(f(0) = \tan 0 = 0 \),
-	
+
 	\(f^\prime (x) = 1 + \tan^{2}x \Rightarrow f^\prime (0) = 1 \Rightarrow \frac{f^\prime (0)}{1!} x = x \)
-	
+
 	Luego \(\lim\limits_{x \to 0} \frac{\tan x }{x } = \lim\limits_{x  \to 0 } \frac{x }{x } = \lim\limits_{x  \to 0 } 1 = 1 \).
 \end{example}
 \begin{example}
@@ -2138,27 +2138,27 @@ Decimos que \(\frac{f^{(n)}(x_0) }{n!}(x - x_0)^{n} \) es el infinitesimo equiva
 	\begin{tikzpicture}[scale=1.3]
 		\draw[thick,->] (-1,0) -- (4,0);
 		\draw[thick,->] (0,-2.5) -- (0,3);
-		
+
 		% Define the function f(x)
 		\draw[domain=-0.6:3, smooth, variable=\x, thick]
 		plot ({\x}, {-(\x-1)^3 + 3*(\x-1)});
-		
+
 		% Shaded area under curve from a to 0
 		\fill[red, opacity=0.3]
 		(-0.5,0) -- plot[domain=-0.5:0.9, smooth] (\x, {-(\x-1)^3 + 3*(\x-1)}) -- (1,0) -- cycle;
-		
+
 		% Shaded area under curve from 0 to b
 		\fill[blue, opacity=0.3]
 		(1,0) -- plot[domain=0.9:2.6, smooth] (\x, {-(\x-1)^3 + 3*(\x-1)}) -- (2.72,0) -- cycle;
-		
-		
+
+
 		% Add labels for a and b
 		\node at (-0.5, 0.3) {$a$};
 		\node at (2.6,-0.3) {$b$};
-		
+
 		% Add label for f(x)
 		\node at (2,2.5) {$f(x)$};
-		
+
 	\end{tikzpicture}
 \end{minipage}
 
@@ -2169,30 +2169,30 @@ Decimos que \(\frac{f^{(n)}(x_0) }{n!}(x - x_0)^{n} \) es el infinitesimo equiva
 	\begin{tikzpicture}[every node/.style={scale=0.7}, scale=1.3]
 		% Define the function f(x)
 		\def\func{-(\x-1)^3 + 3*(\x-1)}
-		
+
 		% Draw axes
 		\draw[thick,->] (-1,0) -- (3,0);
 		\draw[thick,->] (0,-2.5) -- (0,3);
-		
+
 		% Plot the function f(x)
 		\draw[domain=-0.6:3, smooth, variable=\x, thick]
 		plot ({\x}, {\func});
-		
-		
+
+
 		% Add labels for a and b
 		\node at (-0.5,0.2) {$a$};
 		\node at (2.9,0.2) {$b$};
-		
+
 		% Add label for f(x)
 		\node at (2,2.5) {$f(x)$};
-		
+
 		% Define the points a and b
 		\def\a{-0.5}
 		\def\b{2.73}
-		
+
 		% Calculate the width of each segment
 		\pgfmathsetmacro{\width}{(\b-\a)/7}
-		
+
 		% Draw the rectangles with maximum height and mark the x_i points
 		\foreach \i in {1,...,7} {
 				\pgfmathsetmacro{\xprev}{\a + (\i-1)*\width}
@@ -2204,16 +2204,16 @@ Decimos que \(\frac{f^{(n)}(x_0) }{n!}(x - x_0)^{n} \) es el infinitesimo equiva
 				% Draw the rectangle with yellow outline
 				\draw[blue]
 				(\xprev, 0) -- (\xprev, \height) -- (\x, \height) -- (\x, 0) -- cycle;
-				\draw[olive]
+				\draw[green]
 				(\xprev, 0) -- (\xprev, \heightdos) -- (\x, \heightdos) -- (\x, 0) -- cycle;
 				% Mark x_i points
 				% \draw[dashed] (\x, 0) -- (\x, \height);
-				
+
 				\node at (\x, -0.3) {$x_{\i}$};
 			}
 		% Mark x_0 point
 		\node at (\a, -0.3) {$x_0$};
-		
+
 	\end{tikzpicture}
 \end{minipage}
 \begin{minipage}{0.65\textwidth}
@@ -2222,7 +2222,7 @@ Decimos que \(\frac{f^{(n)}(x_0) }{n!}(x - x_0)^{n} \) es el infinitesimo equiva
 		U = \sum_{i=1}^{n } M_i (x_i - x_{i -1 }) \text{ y } L = \sum_{i=1}^{n } m_i (x_i - x_{i-1}) \text{ (áreas rectangulos)}
 	\]
 	Observamos que \(L \leq U \) para cualquier particion.
-	
+
 	De hecho, si cogemos todas las particiones posibles y nos quedamos con el supremo de \(L \) y el infimo de \(U \), seguimos manteniendo la desigualdad:
 	\[
 		\sup L \leq \inf U
@@ -2238,21 +2238,21 @@ Además, definimos \(\int^{a}_b f = - \int^{b}_{a} f \) y \(\int^{a}_{a} f =0 \)
 \vspace{1.5cm}
 \section{Propiedades de las integrales}
 \begin{theorem}
-	Sea \(f\colon I \to \R\), con \(I \subseteq \R\). 
+	Sea \(f\colon I \to \R\), con \(I \subseteq \R\).
 	\[
-		\text{Si } f \text{ es continua en } [a,b] \Rightarrow f \text{ es integrable en } [a,b].     
+		\text{Si } f \text{ es continua en } [a,b] \Rightarrow f \text{ es integrable en } [a,b].
 	\]
-	Además, el área comprendida entre la gráfica de una función continua positiva, el eje \(X \) y las rectas \(x = a \) y \(x = b\), es igual a 
+	Además, el área comprendida entre la gráfica de una función continua positiva, el eje \(X \) y las rectas \(x = a \) y \(x = b\), es igual a
 	\[
-		\int^{b}_{a} f. 
+		\int^{b}_{a} f.
 	\]
 \end{theorem}
 \begin{proof}
-	Tampoco se ha visto en clase. 
+	Tampoco se ha visto en clase.
 \end{proof}
 \begin{example}
 	\(f(x) = c \), con \(c \in \R\).
-	
+
 	Sean \(a,b \in \R \) y consideramos el intervalo \([b,a ]\). Sea \(P = \set{x_0, x_1, \ldots, x_n } \subset [a,b]\).
 	\begin{multline*}
 		L (f, P) = \sum_{i=1}^{n } m_i (x_i - x_{i-1}) = \sum_{i=1}^{n } c(x_i - x_{i-1}) = c \sum_{i=1}^{n } (x_i - x_{i-1}) = c (x_n - x_0) = c (b-a)
@@ -2267,26 +2267,26 @@ Además, definimos \(\int^{a}_b f = - \int^{b}_{a} f \) y \(\int^{a}_{a} f =0 \)
 			% Draw axes
 			\draw[thick,->] (-1,0) -- (4,0);
 			\draw[thick,->] (0,-1) -- (0,2);
-			
+
 			% Plot the function f(x) = 1
 			\draw[domain=-0.5:3.5, smooth, variable=\x, thick]
 			plot ({\x}, {1}) node[right] {$f(x) = 1$};
-			
+
 			% Shaded area under the curve from x = 1 to x = 3
 			\fill[blue, opacity=0.3]
 			(1,0) -- (1,1) -- (3,1) -- (3,0) -- cycle;
-			
+
 			% Add dashed lines to show the limits of integration
 			\draw[dashed] (1,0) -- (1,1);
 			\draw[dashed] (3,0) -- (3,1);
-			
+
 			% Add labels for the limits of integration
 			\node at (1,-0.3) {$1$};
 			\node at (3,-0.3) {$3$};
-			
+
 			% Label the integral
 			\node at (2,2) {$\int_{1}^{3} 1 \, \mathrm{d} x = 2$};
-			
+
 		\end{tikzpicture}
 	\end{figure}
 \end{example}
@@ -2306,49 +2306,49 @@ Además, definimos \(\int^{a}_b f = - \int^{b}_{a} f \) y \(\int^{a}_{a} f =0 \)
 		L(x, P_n) = \sum_{j =1}^{n } m_j \cdot (x_j - x_{j-1}) = \sum_{j =1}^{n } x_{j-1} \cdot \frac{1}{n} = \sum_{j =1}^{n } \frac{j-1}{n} \cdot \frac{1}{n} = \frac{1}{n^{2} }  \sum_{j =1}^{n } (j - 1)
 	\]
 	Por tanto, nos queda que \(U(x, P_n) = \frac{1}{n^{2} } \sum_{j =1}^{n } j\) y \(L(x,P_n) = \frac{1}{n^{2} } \sum_{j =1}^{n } (j - 1)\).
-	
+
 	Sea \(U(f) = \inf (U(f,P)) \) y \(L(f) = \sup (L(f,P ))\). Es obvio que \(L(f) \leq U(f )\). En particular,
 	\[
 		\frac{1}{n^{2} } \sum_{j =1}^{n } (j - 1) = L(f, P_n) \leq L(f) \leq U(f) \leq U(f,P_n) = \frac{1}{n^{2} } \sum_{j =1}^{n } j
 	\]
 	Ademas, \(\sum_{j =1}^{n } j = \frac{n (n + 1)}{2 }\) y \(\sum_{j =1}^{n } (j - 1) = \sum_{j=1}^{n} j - \sum_{j =1}^{n } 1 = \frac{n(n-1)}{2} - n \).
-	
+
 	Por tanto, \(L(f, P_n) = \frac{1}{n^{2} } \cdot \frac{n(n + 1)}{2} - n = \frac{n^{2} + n}{2n^{2} } - \frac{n }{n^{2} } \overset{n \rightarrow \infty}{\longrightarrow} \frac{1}{2}\) y \(U(f,P_n) = \frac{1}{n^{2} } \frac{n(n + 1)}{2} = \frac{n^{2} + n }{2n^{2} } \overset{n \rightarrow \infty}{\longrightarrow} \frac{1}{2}\).
-	
+
 	Entonces, \(L(f) = U(f) = \frac{1}{2}\) y \(f \) es integrable \(\Rightarrow \int^{1}_{0} x dx = \frac{1}{2} \).
-	
+
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
 			% Draw axes
 			\draw[thick,->] (-1,0) -- (3,0);
 			\draw[thick,->] (0,-1) -- (0,3);
-			
+
 			% Plot the function f(x) = x
 			\draw[domain=-0.5:2.5, smooth, variable=\x, thick]
 			plot ({\x}, {\x}) node[right] {$f(x) = x$};
-			
+
 			% Shaded area under the curve from x = 0 to x = 2
 			\fill[blue, opacity=0.3]
 			(0,0) -- (0,0) -- (2,2) -- (2,0) -- cycle;
-			
+
 			% Add dashed lines to show the limits of integration
 			\draw[dashed] (0,0) -- (0,0);
 			\draw[dashed] (2,0) -- (2,2);
-			
+
 			% Add labels for the limits of integration
 			\node at (0.2,-0.3) {$0$};
 			\node at (2,-0.3) {$1$};
-			
+
 			% Label the integral
 			% \node at (1.5,3.5) {$\int_{0}^{1} x \, \mathrm{d} x = \frac{1}{2}$};
-			
+
 		\end{tikzpicture}
 	\end{figure}
 \end{example}
 
 \begin{proposition}
-	Sean \(f \) y \(g \) integrables en \([a,b ]\), entonces: 
+	Sean \(f \) y \(g \) integrables en \([a,b ]\), entonces:
 	\begin{itemize}
 		\item \(f + g \) es integrable en \([a,b ]\) y \(\int^{b}_a (f + g) = \int^{b}_a f + \int^{b}_a g \).
 		\item \(\lambda f \) es integrable en \([a,b ]\) y \(\int^{b}_a \lambda f = \lambda \int^{b}_a f\).
@@ -2357,22 +2357,24 @@ Además, definimos \(\int^{a}_b f = - \int^{b}_{a} f \) y \(\int^{a}_{a} f =0 \)
 	\end{itemize}
 \end{proposition}
 \begin{proposition}
-	Sea \(f\colon I \to \R\), \(I \subset \R\) y \(a,b,c \in \R\) con \(a \leq  b \leq  c\) . Entonces 
+	Sea \(f\colon I \to \R\), \(I \subset \R\) y \(a,b,c \in \R\) con \(a \leq  b \leq  c\) . Entonces
 	\[
-		f \text{ es integrable en } [a,c] \iff f \text{ es integrable en } [a,b] \text{ y } [b,c].  
+		f \text{ es integrable en } [a,c] \iff f \text{ es integrable en } [a,b] \text{ y } [b,c].
 	\]
-	Además, \(\int^{c}_a f = \int^{b}_{a} f + \int^{c}_b f\).  
+	Además, \(\int^{c}_a f = \int^{b}_{a} f + \int^{c}_b f\).
 \end{proposition}
 \begin{proposition}
-	Sean \(f \) y \(g \) integrables en \([a,b ]\): 
+	Sean \(f \) y \(g \) integrables en \([a,b ]\):
 	\begin{itemize}
 		\item Si \(f(x) \geq 0 \quad  \forall x \in [a,b]\), entonces \(\int^{b}_a f \geq 0\).
 		\item Si \(f(x) \geq g(x) \quad \forall x \in [a,b]\), entonces \(\int^{b}_a f \geq \int^{b}_a g\).
 	\end{itemize}
 \end{proposition}
+
+\vspace{40pt}
 \section{Teoremas sobre Integrales}
 \begin{theorem}[Regla de Barrow]
-	Sean \(f \) y \(F \) continuas en \([a,b ]\) y \(F \) derivable en \((a,b )\) tal que \(F^\prime (x) = f(x) \; \forall x \in (a,b)\). Entonces, 
+	Sean \(f \) y \(F \) continuas en \([a,b ]\) y \(F \) derivable en \((a,b )\) tal que \(F^\prime (x) = f(x) \; \forall x \in (a,b)\). Entonces,
 	\[
 		\int^{b}_a f(x) \; \mathrm{d}x = \left [F(x) \right ]^{b}_a = F(b) - F(a)
 	\]
@@ -2382,16 +2384,16 @@ Además, definimos \(\int^{a}_b f = - \int^{b}_{a} f \) y \(\int^{a}_{a} f =0 \)
 \end{theorem}
 \begin{proof}
 	Sabemos que si \(f \) es continua en \([a,b ]\) entonces es integrable en \([a,b ]\). Dado \(x \in [a,b ]\), tambien se tiene que \(f \) es integrable en \([a,x ]\).
-	
+
 	Definimos \(F(x) = \int^{x}_a f(t) dt  \). Veamos que \(F(x )\) es derivable en \(c \in [a,b ]\) es decir, \(F^\prime (c) = \lim\limits_{h  \to 0 } \frac{F(c + h) - F(c )}{h} = f(c) \Rightarrow \forall \varepsilon > 0 \;\exists \delta > 0\) t.q. si \(h \in (-\delta, \delta), h \neq 0,\) se cumple \(\left\vert \frac{F(c+h) - F(c)}{h} - f(c) \right\vert < \varepsilon \).
-	
+
 	\begin{align*}
 		\left\vert \frac{F(c+h) - F(c)}{h} - f(c) \right\vert & = \left\vert \frac{\int^{c+h}_a f(t )dt  - \int^{c}_a f(t) dt }{h} - f(c) \right\vert = \left\vert \frac{\int^{c+h}_c f(t) dt }{h} - f(c) \right\vert                                        \\
 		                                                      & = \left\vert \frac{\int^{c +h}_c f(t) dt }{h} - f(c ) \right\vert = \left\vert \frac{\int^{c + h}_c f(t)dt }{h} - f(c) \cdot \underbrace{\frac{1}{h} \int^{c +h}_{c} 1 dt }_{=1} \right\vert \\ & = \left\vert \frac{1}{h} \cdot \left [ \int^{c + h}_c f(t) dt - f(c) \cdot \int^{c + h}_{c} 1 dt   \right ] \right\vert = \left\vert \frac{1}{h} \cdot \int^{c +h}_c f(t) - f(c) dt   \right\vert \\ & \leq \left\vert \frac{1}{h } \right\vert \int^{c + h}_{c} \left\vert f(t) - f(c ) \right\vert dt = \left\vert \frac{F(c + h ) - F(c)}{h} - f(c) \right\vert  \overset{?}{<} \varepsilon
 	\end{align*}
-	Sea \(\varepsilon > 0 \). Como \(f \) es continua en \(c \), entonces \(\exists \delta > 0 \) tal que \(\forall t \in (c - \delta, c + \delta)\), \(t \neq c\), se cumple \(\left\vert f(t) - f(c ) \right\vert < \varepsilon\). Luego \(\forall h \in (- \delta, \delta ), h \neq 0\), suponemos que \(h > 0 \) (similar si \(h < 0 \)) y tenemos que    
+	Sea \(\varepsilon > 0 \). Como \(f \) es continua en \(c \), entonces \(\exists \delta > 0 \) tal que \(\forall t \in (c - \delta, c + \delta)\), \(t \neq c\), se cumple \(\left\vert f(t) - f(c ) \right\vert < \varepsilon\). Luego \(\forall h \in (- \delta, \delta ), h \neq 0\), suponemos que \(h > 0 \) (similar si \(h < 0 \)) y tenemos que
 	\begin{align*}
-		\left\vert \frac{F(c + h) - F(c )}{h} - f(c) \right\vert & \leq \frac{1}{\left\vert h  \right\vert } \cdot \int^{c + h}_c \left\vert f(t) - f(c ) \right\vert dt < \frac{1}{h} \cdot \int^{c + h}_c \varepsilon dt \\ & =  \frac{1}{h} \cdot \varepsilon \cdot \int^{c + h}_c 1 dt = \frac{1}{h} \cdot \varepsilon \cdot h = \varepsilon 
+		\left\vert \frac{F(c + h) - F(c )}{h} - f(c) \right\vert & \leq \frac{1}{\left\vert h  \right\vert } \cdot \int^{c + h}_c \left\vert f(t) - f(c ) \right\vert dt < \frac{1}{h} \cdot \int^{c + h}_c \varepsilon dt \\ & =  \frac{1}{h} \cdot \varepsilon \cdot \int^{c + h}_c 1 dt = \frac{1}{h} \cdot \varepsilon \cdot h = \varepsilon
 	\end{align*}
 	*Borrador, falta reescribirlo*
 \end{proof}
