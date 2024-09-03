@@ -1196,6 +1196,10 @@ Cuando queramos comprobar si un subconjunto es o no subespacio vectorial de \(V 
 	\]
 	Sin embargo, la unión de subespacios vectoriales, en general, no es subespacio.
 \end{proposition}
+\begin{proof}
+	Ejercicio.
+\end{proof}
+
 Por ejemplo, si consideramos \(V = \R^{2 } \) y los subespacios \(S_1 = \set{(x,0) \mid x \in \R }\) y \(S_2 = \set{(0,y) \mid y \in \R }\), la union
 \[
 	S_1 \cup S_2 = \set{(x,0) \mid x \in \R} \cup \set{(0,y) \mid y \in \R }
@@ -1219,7 +1223,7 @@ El menor subespacio que contiene a dos subespacios dados es la suma de subespaci
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-		\item Como \(0_V \in S_1\) y \(0_V \in S_2 \), entones \(0_V = 0_V + 0_V \in  S_1 + S_2 \)
+		\item Como \(0_V \in S_1\) y \(0_V \in S_2 \), entonces \(0_V = 0_V + 0_V \in  S_1 + S_2 \)
 		\item Si \(v_1 + v_2 \in S_1 + S_2 \) y \(w_1 + w_2 \in S_1 + S_2 \), donde \(v_1,w_1 \in S_1 \) y \(v_2, w_2 \in S_2 \), entonces
 		      \[
 			      v_1 + v_2 + w_1 + w_2 = \underbrace{(v_1 + w_1)}_{\in S_1} + \underbrace{(v_2 + w_2)}_{\in S_2} \in S_1 + S_2
@@ -1544,6 +1548,7 @@ Como conocemos bases canónicas para los espacios vectoriales de tipo \(\K^{n}, 
 		\item[\(\boxed{\supseteq }\)] Si tomamos \(w = v + s \) para algún \(s \in S \) entonces \(w - v = s \in S \), luego \(w \sim v \Rightarrow w \in [v ]\).
 	\end{description}
 \end{proof}
+
 El conjunto cociente \(V / \sim \) lo vamos a denotar como \(V / S \) y va a estar formado por las clases de equivalencia:
 \[
 	V / S = \set{v + S \mid v \in S }
@@ -1588,9 +1593,9 @@ El conjunto cociente \(V / \sim \) lo vamos a denotar como \(V / S \) y va a est
 	Se puede comprobar que \((V / S, + )\) es un grupo abeliano. El elemento neutro de la \(+ \) es la clase de equivalencia \(0_V + S = S \) y el opuesto de cada clase de equivalencia \(v + S \) es \((-v) + S \). El resto de las propiedades se sigue de forma inmediata.
 \end{proof}
 \part{Aplicaciones lineales}
-
+\section{Aplicaciones lineales}
 \begin{definition}
-	Sean \((E, +, \cdot)\) y \((E^\prime, +, \cdot )\) dos espacios vectoriales sobre el mismo cuerpo K. Diremos que la funcion \(f: E \to E^\prime \) es lineal (homomorfismo) si \(f \) satisface las siguientes propiedades:
+	Sean \((E, +, \cdot)\) y \((E^\prime, +, \cdot )\) dos espacios vectoriales sobre el mismo cuerpo \(\K\) . Diremos que la funcion \(f: E \to E^\prime \) es lineal (homomorfismo) si \(f \) satisface las siguientes propiedades:
 	\begin{enumerate}
 		\item \(\forall u,v \in E \), \(f(u+v) = f(u) + f(v )\)
 		\item \(\forall u \in E \), \(\forall \alpha \in \K \), \(f(\alpha u) = \alpha \cdot f(u )\)
@@ -1600,27 +1605,51 @@ El conjunto cociente \(V / \sim \) lo vamos a denotar como \(V / S \) y va a est
 	Una aplicacion \(f: E \to E^\prime \) es lineal si y solo si \(\forall u,v \in E \), \(\forall  \alpha, \beta \in \K \quad f(\alpha u + \beta v) = \alpha f(u) + \beta f(v )\)
 \end{proposition}
 \begin{proof}
-	``\(\Rightarrow \)'' Supongamos que \(f\colon E \to E^\prime  \) es lineal, o lo que es lo mismo, que \(f \) satisface las condiciones \(1 \) y \(2 \) de la definicion. Dados \(u,v \in E \) y \(\alpha,\beta \in \K \), por la condicion 1 resulta que
-	\[
-		f(\alpha u + \beta v) = f(\alpha u) + f(\beta v) = \text{ (por la condicion 2) } = \alpha f(u) + \beta f(v )
-	\]
-	``\(\Leftarrow \)'' Reciprocamente, supongamos que \(\forall u,v \in E, \forall \alpha,\beta \in \K \) se verifica que
-	\[
-		f(\alpha u + \beta v) = \alpha f(u) + \beta f(v ).
-	\]
-	Hay que demostrar que \(f \) satisface las condiciones 1 y 2.
+	\begin{description}
+		\item[\(\Rightarrow\)]] Supongamos que \(f\colon E \to E^\prime  \) es lineal, o lo que es lo mismo, que \(f \) satisface las condiciones \(1 \) y \(2 \) de la definicion. Dados \(u,v \in E \) y \(\alpha,\beta \in \K \), por la condicion 1 resulta que
+		\[
+			f(\alpha u + \beta v) = f(\alpha u) + f(\beta v) = \text{ (por la condicion 2) } = \alpha f(u) + \beta f(v )
+		\]
+		\item[\(\Leftarrow\)]] Reciprocamente, supongamos que \(\forall u,v \in E, \forall \alpha,\beta \in \K \) se verifica que
+		\[
+			f(\alpha u + \beta v) = \alpha f(u) + \beta f(v ).
+		\]
+		Hay que demostrar que \(f \) satisface las condiciones 1 y 2.
 
-	Dados \(u,v \in E \), tomando \(\alpha = \beta = 1 \), tenemos
-	\[
-		f(u + v) = f(1 \cdot u + 1 \cdot v) = 1 \cdot f(u) + 1 \cdot f(v) = f(u) + f(v).
-	\]
-	Por otro lado, si tomamos \(\beta = 0 \), resulta que
-	\[
-		f(\alpha u) = f(\alpha u + 0v) = \alpha f(u) + 0 \cdot f(v) = \alpha f(u).
-	\]
+		Dados \(u,v \in E \), tomando \(\alpha = \beta = 1 \), tenemos
+		\[
+			f(u + v) = f(1 \cdot u + 1 \cdot v) = 1 \cdot f(u) + 1 \cdot f(v) = f(u) + f(v).
+		\]
+		Por otro lado, si tomamos \(\beta = 0 \), resulta que
+		\[
+			f(\alpha u) = f(\alpha u + 0v) = \alpha f(u) + 0 \cdot f(v) = \alpha f(u).
+		\]
+	\end{description}
+
 \end{proof}
 Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_i)\).
 
+\begin{example}
+	\begin{enumerate}
+		\item La función identidad \(I_{d_E} \colon E \to E \)
+		\item La función proyección i-ésima
+		      \[
+			      \begin{aligned}
+				      p_i \colon E_1 \times \cdots \times E_n & \longrightarrow E_i \\
+				      (u_1, \ldots, u_n )                     & \longmapsto u_i
+			      \end{aligned}
+		      \]
+		\item La integracion definida: \[
+			\begin{aligned}
+				I \colon C([a,b], \R ) & \longrightarrow \R       \\
+				f           & \longmapsto \int^{b}_a f 
+			\end{aligned}
+		\]
+		\item La función \(\det \colon \mathfrak{\MakeUppercase{m}}_n (\K ) \to \K \) no es lineal.  
+
+	\end{enumerate}
+\end{example}
+\section{Propiedades}
 \begin{proposition}
 	Si \(E \) y \(E^\prime  \) son \(\K \)-e.v. y \(f : E \to E^\prime \) es una aplicacion lineal, entonces:
 	\begin{enumerate}
@@ -1675,7 +1704,7 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 		= \alpha g(f(u)) + \beta g(f(v)) = \alpha (g \circ  f)(u) + \beta (g \circ  f)(v).
 	\end{multline*}
 \end{proof}
-
+\section{Núcleo e imagen}
 \begin{proposition}
 	Si \(E \) y \(E^\prime  \) son \(\K \)-e.v. y \(f \colon E \to E^\prime  \) es lineal, se verifica que:
 	\begin{enumerate}
@@ -1703,11 +1732,11 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 \end{proof}
 
 \begin{definition}
-	Sean \(E \) y \(E^\prime  \) \(\K\)-e.v. y \(f \colon E \to E^\prime \) una funcion lineal, llamaremos nucleo de \(f \) al conjunto
+	Sean \(E \) y \(E^\prime  \) \(\K\)-e.v. y \(f \colon E \to E^\prime \) una función lineal, llamaremos \textbf{núcleo} de \(f \) al conjunto
 	\[
 		Ker(f) = f^{-1} ({0}) = \set{u \in E \mid f(u) = 0 }
 	\]
-	e imagen de \(f \) al conjunto
+	e \textbf{imagen} de \(f \) al conjunto
 	\[
 		Im(f) = \set{v \in E^\prime \mid \exists u \in E \mid f(u) = v } = f(E)
 	\]
@@ -1717,7 +1746,7 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 \end{remark}
 
 \begin{definition}
-	Sean \(E, E^\prime  \) \(\K \)-e.v. y \(f \colon E \to E^\prime \) una funcion lineal, a la dimension de la imagen de \(f \) se le denomina rango de \(f \) y a la dimension del nucleo nulidad.
+	Sean \(E, E^\prime  \) \(\K \)-e.v. y \(f \colon E \to E^\prime \) una funcion lineal, a la dimension de la imagen de \(f \) se le denomina \textbf{rango} de \(f \) y a la dimension del nucleo \textbf{nulidad}.
 \end{definition}
 \begin{example}
 	~\begin{enumerate}
@@ -1749,6 +1778,7 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 	\end{enumerate}
 \end{proof}
 
+\section{Espacios vectoriales isomorfos}
 \begin{definition}
 	Siendo \(E \) y \(E^\prime  \) dos \(\K \)-e.v., se dice que \(E \) y \(E^\prime  \) son isomorfos si existe una funcion \(f \colon E \to E^\prime \) tal que \(f \) es lineal y biyectiva. En ese caso, se dice que \( f \) es un isomorfismo.
 \end{definition}
@@ -1771,8 +1801,9 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 	\end{enumerate}
 \end{proof}
 
+\section{Funciones lineales en espacios vectoriales de dimensión finita}
 \begin{theorem}
-	Sean \(E \) y \(E^\prime  \) dos \(\K \)-e.v., \(\set{u_1,\ldots,u_n}\), base de E, \(\set{v_1, \ldots, v_n }\) un sistema de cualquiera de \(n \) vectores de \(E^\prime  \). En estas condiciones existe una unica funcion lineal \(f \colon E \to E^\prime  \) tal que \(\forall i \in \set{1,\ldots,n }, f(u_i) = v_i \).
+	Sean \(E \) y \(E^\prime  \) dos \(\K \)-e.v., \(\set{u_1,\ldots,u_n}\), base de \(E\) , \(\set{v_1, \ldots, v_n }\) un sistema de cualquiera de \(n \) vectores de \(E^\prime  \). En estas condiciones existe una unica funcion lineal \(f \colon E \to E^\prime  \) tal que \(\forall i \in \set{1,\ldots,n }, f(u_i) = v_i \).
 
 	Ademas se verifica:
 	\begin{enumerate}
@@ -1829,7 +1860,7 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 		\item[c)] Es consecuencia de los dos apartados anteriores.
 	\end{enumerate}
 \end{proof}
-
+\subsection{Determinación de aplicaciones lineales}
 \begin{corollary}
 	Si \(E \) y \(E^\prime \) son \(\K \)-e.v. y \(\set{u_1,\ldots,u_n} \) es una base de \(E \), cualquier funcion lineal \(f \colon E \to E^\prime \) queda completamente determinada por el sistema \(\set{f(u_1),\ldots,f(u_n )}\).
 \end{corollary}
@@ -1846,7 +1877,8 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 	``\(\Leftarrow \)'' Si \(dim(E) = dim(E^\prime ) = n \), \(\set{u_1,\ldots,u_n }\) es una base de \(E \) y \(\set{v_1,\ldots,v_n }\) es una base de \(E^\prime \). Si consideramos la funcion lineal \(f \colon E \to E^\prime \) tal que \(\forall  i \in \set{1,\ldots,n } \; f(u_i) = v_i \), tenemos que \(f\) es un isomorfismo (demostrado anteriormente) y \(E \) y \(E^\prime  \) son isomorfos.
 \end{proof}
 
-\begin{theorem}[de la dimension para funciones lineales]
+\subsection{Dimensiones del núcleo y de la imagen}
+\begin{theorem}[de la dimensión para funciones lineales]
 	Si \(f \colon E \to E^\prime \) es una funcion lineal tal que los subespacios \(Ker(f)\) e \(Im(f )\) son de dimension finita, entonces \(E \) es tambien de dimension finita y su dimension viene dada por
 	\[
 		dim(E) = dim(Ker(f)) + dim(Im(f)).
@@ -1885,3 +1917,8 @@ Por induccion: \(f(\sum_{i=1}^{n } \alpha_i u_i) = \sum_{i=1}^{n } \alpha_i f(u_
 		      \]
 	\end{enumerate}
 \end{proof}
+
+\subsection{Matriz asociada a una aplicación lineal}
+Sea \(f \colon  E \to E^\prime	\), funcion lineal con \(E \) y \( E^\prime\) espacios vectoriales de dimension finita y \(B = \set{u_1, \ldots, u_n }\) una base de \(E \), entonces \(f \) queda completamente determinada por el sistema \(\set{f(u_1), \ldots, f(u_n )}\).  
+
+Sea \(B^\prime = \set{v_1, \ldots, v_n}\). Conocido el sistema de vectores \(\set{(f(u_1))_{B^\prime }, \ldots, (f(u_n))_{B^\prime}}\) vamos a obtener una expresion que nos permita calcular \(\forall w \in E\) las coordenadas de \(f(w )\) respecto de \(B^\prime \) sin más que conocer las coordenadas de \(w \) respecto de \(B \).     
