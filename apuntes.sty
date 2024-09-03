@@ -1,31 +1,3 @@
-%% apuntes.sty
-%% A package modified from NotesTeXV3.sty from 
-%%        https://jhep.sissa.it/jhep/help/JHEP_TeXclass.jsp 
-%% by Aditya Dhumuntarao. 
-%% ------------------------------- Legal -------------------------------
-%% Adity Dhumuntarao does not own the copyright to the original package,
-%% jheppub.sty. All modification have been approved by the Jhep Editori-
-%% al committee, and permission has been attributed to Aditya to distri-
-%% bute freely the modified version of jheppub.sty, known as NotesTeXV3.sty
-%% 
-%% This work may be distributed and/or modified under the conditions of 
-%% the LaTeX Project Public License, either version 1.3 of this license
-%% or (at your option) any later version. The latest version of this 
-%% license is in 
-%%        http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX version
-%% 2005/12/01 or later.
-%% The Current Maintainer of this work is 
-%%        Aditya Dhumuntarao <adhumunt@gmail.com>
-%% --------------------------------------------------------------------
-
-% ----------------------------------------------------------------------
-%           Jhep Master Presets 
-% ----------------------------------------------------------------------
-
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{NotesTeXV3}[2021/10/22 rV3]
-
 \gdef\@fpheader{\ }
 \gdef\@journal{jhep}
 \usepackage{epstopdf}
@@ -65,7 +37,7 @@
 \usepackage{systeme}
 \usepackage[
 	type={CC},
-	modifier={by-sa},
+	modifier={by-nc-sa},
 	version={4.0},
 ]{doclicense}
 
@@ -74,7 +46,7 @@
 % ----------------------------------------------------------------------
 
 \usepackage[T1]{fontenc}                            % Font Styling
-\usepackage{lmodern,mathrsfs}
+\usepackage{helvet,mathrsfs}
 
 \usepackage[shortlabels]{enumitem}                  % Enumitem Options
 
@@ -85,14 +57,11 @@
 \usepackage{setspace,multicol}                      % Text Presets
 \usepackage{tikz,physics}                           % Physics Presets
 \usepackage{cleveref}								% Better references
-\usepackage{listings}								% Code blocks
-\usepackage{xfrac}
 
 \everymath{\displaystyle} % Displaystyle for all math environments
 % ----------------------------------------------------------------------
 %           User Page Prefrences 
 % ----------------------------------------------------------------------
-\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 \geometry{paperheight=11in,paperwidth=8.5in,                   %fix paperwidth and height.
 	marginparwidth=0pt,marginparsep=0pt,textwidth=.8\paperwidth,hoffset=0in,voffset=-1in
@@ -101,11 +70,6 @@
 	headsep=.03\paperheight,footskip=20pt,
 	textheight=.795\paperheight}
 
-% \geometry{paperheight=11in,paperwidth=8.5in,                   %fix paperwidth and height.
-% marginparsep=.02\paperwidth,marginparwidth=.2\paperwidth,
-% inner=.11\paperwidth,voffset=-1in,headheight=.02\paperheight,
-% headsep=.03\paperheight,footskip=20pt,
-% textheight=.795\paperheight,textwidth=.62\paperwidth}
 
 \newlength{\myoddoffset}%
 \setlength{\myoddoffset}{\marginparwidth + \marginparsep}%
@@ -117,7 +81,9 @@
 	\fancyheadoffset[rh]{\myoddoffset}%
 	\renewcommand{\headrulewidth}{0.1pt}%
 	\fancyhead[L]{\textsc{\leftmark}}%
-	\fancyhead[R]{\footnotesize \textit{\rightmark}~~~~ \thepage}%
+	% \fancyhead[R]{\footnotesize \textit{\rightmark}~~~~ \thepage}%
+	\fancyhead[R]{\thepage}%
+
 }%
 \pagestyle{fancy}%
 
@@ -128,10 +94,6 @@
 	\fancyfoot[L]{\footnotesize \thepage}%
 }%
 
-\newenvironment{fullpage}
-{\smallskip\noindent\begin{minipage}
-		{\textwidth+\marginparwidth+\marginparsep}\hrule\smallskip\smallskip}
-		{\hrule\end{minipage}\vspace{.1in}}
 
 % ----------------------------------------------------------------------
 %           User Created Environments 
@@ -152,7 +114,6 @@
 {0.25em}% Space after theorem head
 {\sffamily\normalsize\color{dred}\bfseries\thmname{#1}\nobreakspace\thmnumber{#2}% Theorem text (e.g. Theorem 2.1)
 	\thmnote{\nobreakspace\sffamily\bfseries\color{black}---\nobreakspace#3}}
-\renewcommand{\qedsymbol}{$\blacksquare$}
 
 
 % Boxed/framed environments
@@ -353,71 +314,6 @@
 \newenvironment{example}{\begin{oBox}\begin{exampleT}}{\end{exampleT}\end{oBox}}
 \newenvironment{remark}{\begin{oBox}\begin{remarkT}}{\end{remarkT}\end{oBox}}
 
-
-
-\newcommand{\horlines}[2][\linewidth]{%
-	\noindent\begin{tikzpicture}
-		\draw[line width=0.1mm, white] (0,0.3) -- (#1,0.3);
-		\draw[line width=0.1mm, white] (0,#2+1.2) -- (#1,#2+1.2);
-		\foreach \x in {1,...,#2} {
-				\draw[line width=0.1mm, black!10] (0,\x) -- (#1,\x);
-			}
-	\end{tikzpicture}}
-
-% \newlength{\spacelength}
-% \settowidth{\spacelength}{\normalfont\ }
-% \declaretheoremstyle[
-% 	headfont={\bfseries\sffamily\footnotesize},
-% 	notefont={\bfseries},
-% 	bodyfont={\normalfont},
-% 	headpunct={\relax},%\newline,
-% 	headformat={%
-% 			\makebox[0pt][r]{Teorema\ \NUMBER\hspace{\marginparsep}}\hskip-\spacelength{\normalsize\NOTE}},
-% ]{theorem}
-
-
-
-% \declaretheoremstyle[
-% 	headfont={\bfseries\sffamily\footnotesize},
-% 	notefont={\bfseries},
-% 	bodyfont={\normalfont},
-% 	headpunct={\relax},%\newline,
-% 	headformat={%
-% 			\makebox[0pt][r]{Proposición\ \NUMBER\hspace{\marginparsep}}\hskip-\spacelength{\normalsize\NOTE}},
-% ]{proposition}
-
-% \tcolorboxenvironment{theorem}{
-% 	boxrule=0pt,
-% 	boxsep=0pt,
-% 	colback={White!90!orng},
-% 	enhanced jigsaw,
-% 	borderline west={1pt}{0pt}{orng},
-% 	sharp corners,
-% 	before skip=10pt,
-% 	after skip=10pt,
-% 	left=5pt,
-% 	right=5pt,
-% 	breakable,
-% }
-
-% \tcolorboxenvironment{proposition}{
-% 	boxrule=0pt,
-% 	boxsep=0pt,
-% 	colback={White!90!orng},
-% 	enhanced jigsaw,
-% 	borderline west={1pt}{0pt}{orng},
-% 	sharp corners,
-% 	before skip=10pt,
-% 	after skip=10pt,
-% 	left=5pt,
-% 	right=5pt,
-% 	breakable,
-% }
-
-% \declaretheorem[style=theorem]{theorem}
-% \declaretheorem[style=proposition]{proposition}
-
-
 \let\proof\relax
 \let\endproof\relax
 \AtBeginDocument{\renewcommand\proofname{Demostración}}
@@ -445,154 +341,11 @@
 	breakable,
 }
 
-% mdframed ={
-% 			skipabove=0pt,
-% 			skipbelow=14pt,
-% 			rightline=false,
-% 			leftline=true,
-% 			topline=false,
-% 			bottomline=false,
-% 			linecolor=black,
-% 			backgroundcolor=black!0,
-% 			innerleftmargin=10pt,
-% 			innerrightmargin=10pt,
-% 			innertopmargin=0,
-% 			leftmargin=0cm,
-% 			rightmargin=0cm,
-% 			linewidth=2pt,
-% 			innerbottommargin=10pt,
-% 		},
-
-% \declaretheoremstyle[
-% 	headfont={\footnotesize\itshape},
-% 	notefont={\bfseries},
-% 	bodyfont={\normalfont},
-% 	headpunct={\relax},
-% 	headformat={%
-% 			\makebox[0pt][r]{\NAME\hspace{\marginparsep}}\hskip-\spacelength{\NOTE}},
-% ]{claim}
 
 \declaretheorem[
-	qed=\qedsymbol]{proof}
-
-% \declaretheorem[style=claim]{Intuition}
-
-% \declaretheoremstyle[
-% 	headfont={\bfseries\sffamily\footnotesize},
-% 	notefont={\bfseries},
-% 	bodyfont={\normalfont},
-% 	headpunct={\relax},%\newline,
-% 	headformat={%
-% 			\makebox[0pt][r]{Pregunta\ \NUMBER\hspace{\marginparsep}}\hskip-\spacelength{\normalsize\NOTE}},
-% ]{ques}
-
-% \theoremstyle{ques}
-% \newtheorem{ques}{Pregunta}
-
-% \declaretheoremstyle[
-% 	headfont={\bfseries\sffamily\footnotesize},
-% 	notefont={\bfseries},
-% 	bodyfont={\normalfont},
-% 	headpunct={\relax},%\newline,
-% 	headformat={%
-% 			\makebox[0pt][r]{Definición\ \NUMBER\hspace{\marginparsep}}\hskip-\spacelength{\normalsize\NOTE}},
-% ]{definition}
-
-% \theoremstyle{definition}
-% \newtheorem{definition}{Definición}
-% \tcolorboxenvironment{definition}{
-% 	boxrule=0pt,
-% 	boxsep=0pt,
-% 	colback={White!90!Cerulean},
-% 	enhanced jigsaw,
-% 	borderline west={1pt}{0pt}{Cerulean},
-% 	sharp corners,
-% 	before skip=10pt,
-% 	after skip=10pt,
-% 	left=5pt,
-% 	right=5pt,
-% 	breakable,
-% }
-
-% \declaretheoremstyle[
-% 	headfont={\bfseries\sffamily\footnotesize},
-% 	notefont={\bfseries},
-% 	bodyfont={\normalfont},
-% 	headpunct={\relax},%\newline,
-% 	headformat={%
-% 			\makebox[0pt][r]{Lema\ \NUMBER\hspace{\marginparsep}}\hskip-\spacelength{\normalsize\NOTE}},
-% ]{lemma}
-
-% \theoremstyle{lemma}
-% \newtheorem{lemma}{Lema}
-% \tcolorboxenvironment{lemma}{
-% 	boxrule=0pt,
-% 	boxsep=0pt,
-% 	blanker,
-% 	borderline west={1pt}{0pt}{Red},
-% 	before skip=10pt,
-% 	after skip=10pt,
-% 	sharp corners,
-% 	left=5pt,
-% 	right=5pt,
-% 	breakable,
-% }
-
-% \declaretheoremstyle[
-% 	headfont={\bfseries\sffamily\footnotesize},
-% 	notefont={\bfseries},
-% 	bodyfont={\normalfont},
-% 	headpunct={\relax},%\newline,
-% 	headformat={%
-% 			\makebox[0pt][r]{Corolario\ \NUMBER\hspace{\marginparsep}}\hskip-\spacelength{\normalsize\NOTE}},
-% ]{corollary}
-
-% \theoremstyle{theorem}
-% \newtheorem{corollary}{Corolario}
-% \tcolorboxenvironment{corollary}{
-% 	boxrule=0pt,
-% 	boxsep=0pt,
-% 	blanker,
-% 	borderline west={1pt}{0pt}{Red},
-% 	before skip=10pt,
-% 	after skip=10pt,
-% 	sharp corners,
-% 	left=5pt,
-% 	right=5pt,
-% 	breakable,
-% }
+	qed=\qedsymbol,name=Demostración]{proof}
 
 
-% \theoremstyle{claim}
-% \newtheorem{intu}{Intuición}
-
-% \theoremstyle{claim}
-% \newtheorem{solu}{Solución}
-
-% \theoremstyle{claim}
-% \newtheorem{remark}{Observación}
-
-% \theoremstyle{claim}
-% \newtheorem{example}{Ejemplo}
-% \tcolorboxenvironment{example}{
-% 	boxrule=0pt,
-% 	boxsep=0pt,
-% 	blanker,
-% 	borderline west={1pt}{0pt}{Black},
-% 	sharp corners,
-% 	before skip=10pt,
-% 	after skip=10pt,
-% 	left=5pt,
-% 	right=5pt,
-% 	breakable,
-% }
-
-\renewcommand*{\raggedleftmarginnote}{\noindent}
-\renewcommand*{\raggedrightmarginnote}{\noindent}
-\newcommand{\mn}[1]{\textsuperscript{\thesidenote}{}\marginnote{\textsuperscript{\thesidenote}{}\itshape\footnotesize #1}\refstepcounter{sidenote}}
-\newcommand{\en}[1]{\marginnote{\footnotesize{#1}}}
-\newcommand{\lec}[2]{{\setlength{\marginparwidth}{.07\paperwidth}\reversemarginpar\marginnote{\centering\footnotesize{\textsf{\bfseries #1}}\\#2}}}
-\newcommand{\sn}[1]{\sidenote{\itshape\footnotesize #1}}
 
 % ----------------------------------------------------------------------
 %           User Macros: Add Below 
@@ -600,6 +353,9 @@
 
 
 %===========================================================================================================
+
+
+
 
 \def\@subheader{\@empty}
 \def\@keywords{\@empty}
@@ -629,30 +385,6 @@
 \newcommand\preprint[1]{\gdef\@preprint{\hfill #1}}
 
 
-
-%Equivalent to ``\footnote'', but can be used inside the \author macro
-% because it does not write the footnote mark
-% it has an optional argument that will be used as footnote mark when given
-% WARNING: when the optional argument is used, the footnotecounter is not increased
-% WARNING: the character ``!'' cannot be used.
-% If you really need it use somthing like [\relax !] as the optional arg.
-% \newcommand\note[2][]{%
-% 	\if!#1!%
-% 	\stepcounter{footnote}\footnotetext{#2}%
-% 	\else%
-% 	{\renewcommand\thefootnote{#1}%
-% 		\footnotetext{#2}}%
-% 	\fi}
-
-
-
-% %Use this if you want to try to keep some piece of the abstract on a
-% %very long first page
-% \newcommand\compress{%
-% 	\renewcommand\afterProceedingsSpace{\bigskip}%
-% 	\renewcommand\afterTitleSpace{\bigskip}%
-% 	\renewcommand\afterRuleSpace{\bigskip\bigskip}
-% 	\renewcommand\afterEmailSpace{\par\bigskip}}
 
 %authors and affiliations
 \newtoks\auth@toks
@@ -717,13 +449,34 @@
 
 \DeclareFixedFont\trfont{OT1}{phv}{b}{sc}{11}
 
+\tcbset{
+	webbox/.style={
+			colback=gray!5, % Very light gray background
+			colframe=black!70, % Dark gray border
+			fonttitle=\bfseries, % Bold title font
+			coltitle=black, % Title color
+			boxrule=0.5mm, % Thin border
+			arc=0mm, % Square corners
+			boxsep=3mm, % Small padding
+			width=0.3\linewidth, % Box width
+			top=1mm, % Minimal top padding
+			bottom=1mm, % Minimal bottom padding
+			left=1mm, % Minimal left padding
+			right=1mm, % Minimal right padding
+			sharp corners, % Keeps the corners sharp
+			enhanced, % Allows for the use of shadows
+			frame hidden, % Hide the outer frame
+			colbacktitle=black!10, % Background color for the title
+			halign=center, % Center the text inside the box
+		}
+}
 % first page
 \renewcommand\maketitle{
 	%% First page
 	\pagestyle{empty}
 	\thispagestyle{titlepage}
 
-	\newgeometry{marginparwidth=0pt,marginparsep=0pt,textwidth=.8\paperwidth,hoffset=0in,voffset=0in}
+	\newgeometry{marginparwidth=0pt,marginparsep=0pt,textwidth=.8\paperwidth,hoffset=0in,voffset=0in,textheight=.8\paperheight}
 	\setcounter{page}{0}
 	\noindent{\small\scshape\@fpheader}\@preprint\par
 	\afterLogoSpace
@@ -735,7 +488,7 @@
 	\if!\@proceeding!\else\noindent{\scshape\@proceeding}\fi
 	\afterProceedingsSpace
 	% Title
-	{\huge\centering\sffamily\scshape\@title\par}
+	{\huge\centering\scshape\@title\par}
 	\afterTitleSpace
 	% Rule
 	{\color{purple}\hrule height .6\p@}%
@@ -754,7 +507,7 @@
 	\fi
 	% Author
 	%{\bfseries\raggedright\sffamily\the\auth@toks\par}
-	{\raggedright\sffamily\scshape\the\auth@toks\par}
+	{\raggedright\scshape\the\auth@toks\par}
 	\afterAuthorSpace
 	% Affiliation
 	\ifaffil\begin{list}{}{%
@@ -791,6 +544,19 @@
 	% Dedication
 	\if!\@dedicated!\else\vbox{\small\textit{\raggedleft\@dedicated}}\afterDedicatedSpace\fi
 	%
+
+	\vfill
+
+	\begin{center}
+		{\large Descarga la última versión de este documento en}
+		\begin{tcolorbox}[webbox]
+			{\large \href{https://dub.sh/apuntes}{\texttt{\textbf{dub.sh/apuntes}}}}
+		\end{tcolorbox}
+	\end{center}
+
+	\vspace{50pt}
+
+	\hspace*{\fill} \doclicenseText
 
 	\ifnotoc\else
 		\iftoccontinuous\else\newpage\fi
@@ -862,35 +628,8 @@
 \numberwithin{equation}{section}
 
 
-%headings style
-\renewcommand\section{\@startsection{section}{1}{\z@}%
-  {-3.5ex \@plus -1.3ex \@minus -.7ex}%
-  {2.3ex \@plus.4ex \@minus .4ex}%
-  {\normalfont\large\bfseries\sfseries}}
-\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-	{-2.3ex\@plus -1ex \@minus -.5ex}%
-	{1.2ex \@plus .3ex \@minus .3ex}%
-	{\normalfont\normalsize\bfseries}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-	{-2.3ex\@plus -1ex \@minus -.5ex}%
-	{1ex \@plus .2ex \@minus .2ex}%
-	{\normalfont\normalsize\bfseries}}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-	{1.75ex \@plus1ex \@minus.2ex}%
-	{-1em}%
-	{\normalfont\normalsize\bfseries}}
-\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-	{1.75ex \@plus1ex \@minus .2ex}%
-	{-1em}%
-	{\normalfont\normalsize\bfseries}}
-
 \RequirePackage{titlesec}
 
-% \titleformat{name=\section}
-% {\normalfont}
-% {\color{purple}\Large\bfseries\S\thesection\enskip}
-% {0pt}
-% {\Large\bfseries}
 
 \renewcommand*{\sectionformat}{\color{purple}\S\thesection\autodot\enskip}
 \renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\autodot\enskip}
@@ -898,66 +637,21 @@
 
 
 \RedeclareSectionCommand[tocdynnumwidth]{part}
-\RedeclareSectionCommand[counterwithin=part,tocdynnumwidth]{section}
+\RedeclareSectionCommand[counterwithin=part,tocentryindent=1.5em,
+	tocpagenumberwidth=2em, tocnumwidth=2em]{section}
 \RedeclareSectionCommands[tocdynnumwidth,tocdynindent]
 {subsection,subsubsection,paragraph,subparagraph}
 
 
 
-% \titleformat{name=\section,numberless}[hang]
-% {\normalfont}
-% {}
-% {0pt}
-% {\Large\bfseries}
 
-% \titleformat{name=\subsection}
-% {\normalfont}
-% {\color{purple}\Large\bfseries\S\thesubsection\enskip}
-% {0pt}
-% {\large\bfseries}
-
-% \titleformat{name=\part}[hang]
-% {{\thispagestyle{fancypart}}\Huge\bfseries}
-% {\marginnote{
-%   \begin{center}
-%   {\color{black}\thepart}
-%   \end{center}}[-.95in]}{0pt}{\Huge\bfseries\itshape}
 \renewcommand*\thepart{\arabic{part}}
 
-% \titleformat{\part}[hang]{{\thispagestyle{fancypart}}\Huge\bfseries}{\marginnote{
-% 		\begin{tcolorbox}[width=\marginparwidth,height=\marginparwidth/2,colback=white!100!white,colframe=white!100!white,center title,fonttitle=\bfseries\Huge]
-% 			\hspace{-3cm}{\fontsize{3cm}{1cm}\selectfont\color{purple}\thepart}
-% 		\end{tcolorbox}
-% 	}[-1.25in]}{0pt}{\Huge\bfseries}
-% \addtokomafont{partprefix}{\rmfamily}
-% \renewcommand*{\partformat}{\color{purple}\scalebox{2.3}{\thepart}}
 \titleformat{name=\part}[hang]
 {{\thispagestyle{fancypart}}\huge\bfseries\sffamily}{\scalebox{2.718}{\color{purple}\thepart}}{0.5em}{}
-% \renewcommand*{\partformat}{\mbox{%
-% 		\scalebox{1.5}{{\nobreakspace}}%
-% 		\scalebox{2.718}{\color{purple}\thepart}\enskip}}
 
 \let\oldpart\part% Store \part in \oldpart
 \renewcommand{\part}{\clearpage\oldpart}% Insert \clearpage before every \part
-
-%Caption of figure and table
-\def\fnum@figure{\textbf{\figurename\nobreakspace\thefigure}}
-\def\fnum@table{\textbf{\tablename\nobreakspace\thetable}}
-
-%redefining \@makecaption, to have captions with \small font size
-%taken from article.cls l.489--498
-%the only differences are the ``\small '' commands added on two lines
-\long\def\@makecaption#1#2{%
-	\vskip\abovecaptionskip
-	\sbox\@tempboxa{\small #1. #2}%
-	\ifdim \wd\@tempboxa >\hsize
-		\small #1. #2\par
-	\else
-		\global \@minipagefalse
-		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-	\fi
-	\vskip\belowcaptionskip}
-
 
 
 
@@ -976,7 +670,6 @@
 	\end{oldthebibliography}%
 }
 
-\usepackage{orcidlink}
 
 % \author{Diego Rodriguez\,\orcidlink{0009-0009-2488-9258}}
 \author{Diego Rodríguez}
@@ -985,11 +678,12 @@
 	Estudiante de Matemáticas e Ingeniería Informática\\
 	Universidad Rey Juan Carlos\\
 	Curso 2023-2024 \\
-	\href{https://diiegorgueez.me/posts/apuntes}{Página web}\\
+	\href{https://dub.sh/apuntes}{Página web}\\
 	\href{https://github.com/DiegoRodriguezT}{GitHub}\\
 	% \href{https://www.linkedin.com/in/diegordguez/}{LinkedIn}\\
 }
 \emailAdd{d.rodriguezto.2023@alumnos.urjc.es}
+
 
 \newcommand\I{\ensuremath{\mathbb{I}} }
 \newcommand\N{\ensuremath{\mathbb{N}} }
@@ -1007,26 +701,8 @@
 \let\impliedby\Leftarrow
 \let\iff\Leftrightarrow
 \let\epsilon\varepsilon
-\usepackage{stmaryrd} % for \lightning
-\newcommand\contra{\scalebox{1.1}{$\lightning$}}
 
 % horizontal rule
 \newcommand\hr{
 	\noindent\rule[0.5ex]{\linewidth}{0.5pt}
 }
-
-\usepackage{tikz}
-\usepackage{tikz-cd}
-\usetikzlibrary{intersections, angles, quotes, calc, positioning}
-\usetikzlibrary{arrows.meta}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.13}
-\tikzset{
-	force/.style={thick, {Circle[length=2pt]}-stealth, shorten <=-1pt}
-}
-
-\renewcommand{\qedsymbol}{$\blacksquare$}
-
-% ----------------------------------------------------------------------
-%           Listings 
-% ----------------------------------------------------------------------
